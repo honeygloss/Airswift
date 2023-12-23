@@ -5,6 +5,7 @@
 package airswift;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
@@ -42,13 +43,28 @@ public class CustomerInformation extends javax.swing.JFrame {
     }
     void deleteData(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String email, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency){
         try{
-            BufferedWriter bwriter = new BufferedWriter(new FileWriter("Customer.txt"));
-            BufferedReader breader = new BufferedReader(new FileReader("Customer.txt"));
-            for(int j=0;j<ln;j++){
-                breader.readLine();
-                if(breader.readLine().equals(flag)){
-                    bwriter.flush();
+            File inputFile = new File("Customer.txt");
+            File tempFile = new File("CustomerTemp.txt");
+            try(BufferedReader breader = new BufferedReader(new FileReader(inputFile));
+                BufferedWriter bwriter = new BufferedWriter(new FileWriter(tempFile))){
+                String currentLine;
+                boolean flagFound = false;
+                while((currentLine = breader.readLine()) != null){
+                    if(!flagFound && currentLine.equals(flag)){
+                        flagFound = true;
+                        continue;
+                    }
+                    bwriter.write(currentLine + "\r\n");
                 }
+            }
+            
+            if (!inputFile.delete()) {
+                System.out.println("Could not delete the original file");
+                return;
+            }
+            // Rename the temporary file to the original file
+            if (!tempFile.renameTo(inputFile)) {
+                System.out.println("Could not rename the temporary file");
             }
         }
         catch (FileNotFoundException ex) {
@@ -60,24 +76,18 @@ public class CustomerInformation extends javax.swing.JFrame {
     }
     void updateData(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String email, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency){
         try {
-            
+            BufferedReader readerb = new BufferedReader(new FileReader("Customer.txt"));
             RandomAccessFile raf = new RandomAccessFile("Customer.txt", "rw");
-            for(int i=0;i<ln;i++){
-                raf.readLine();
-                flag=raf.readLine();
+            for (int i = 0; i < ln; i++) {
+                String line = raf.readLine();
+                if (line == null){
+                    break;
+                }
             }
-            raf.writeBytes("Title: "+title+",");
-            raf.writeBytes("passport: "+passport+",");
-            raf.writeBytes("fName: "+fName+",");
-            raf.writeBytes("lName: "+lName+",");
-            raf.writeBytes("nationality: "+nationality+",");
-            raf.writeBytes("phoneNumber: "+phoneNumber+",");
-            raf.writeBytes("DOB: "+DOB+",");
-            raf.writeBytes("Email: "+email+",");
-            raf.writeBytes("ChangePass: "+changePass+",");
-            raf.writeBytes("ConfirmPass: "+confirmPass+",");
-            raf.writeBytes("fNameEmergency: "+fNameEmergency+",");
-            raf.writeBytes("phoneNumberEmergency: "+phoneNumberEmergency+",");
+            for (int i = 0; i < ln; i++) {
+                flag = readerb.readLine();  
+            }
+            raf.writeBytes("Title: "+title+","+"passport: "+passport+","+"fName: "+fName+","+"lName: "+lName+","+"nationality: "+nationality+","+"phoneNumber: "+phoneNumber+","+"DOB: "+DOB+","+"Email: "+email+","+"ChangePass: "+changePass+","+"ConfirmPass: "+confirmPass+","+"fNameEmergency: "+fNameEmergency+","+"phoneNumberEmergency: "+phoneNumberEmergency);
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
@@ -340,10 +350,12 @@ public class CustomerInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_phoneNumberEmergencyFieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        
+        readFile();
+        countLines();
        if(changePassField.getText().equals(confirmPassField.getText())){
            JOptionPane.showMessageDialog(null, "Password is not match");
        }
+       
        updateData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
        deleteData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
     }//GEN-LAST:event_updateButtonActionPerformed
