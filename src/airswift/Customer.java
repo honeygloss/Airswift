@@ -40,28 +40,12 @@ class Customer {
         this.changePass = changePass;
         this.confirmPass = confirmPass;
         this.relationship = relationship;
-    }
+    } 
     
-    Customer(String data) {
-        String[] dataArr = data.split(",");
-        this.title = dataArr[0];
-        this.passport = dataArr[1];
-        this.fName = dataArr[2];
-        this.lName = dataArr[3];
-        this.nationality = dataArr[4];
-        this.phoneNumber = dataArr[5];
-        this.DOB = dataArr[6];
-        this.emailAddress = dataArr[7];
-        this.fNameEmergency = dataArr[10];
-        this.phoneNumberEmergency = dataArr[11];
-        this.changePass = dataArr[8];
-        this.confirmPass = dataArr[9];
-        this.relationship = dataArr[12];
-        
-    }
+    
     
     public void setTitle(String title){this.title = title;}
-    public void setFName(String fName){this.fName=fName;}
+    public void setFName(String fName){this.fName = fName;}
     public void setLName(String lName){this.lName = lName;}
     public void setPassport(String passport) {this.passport = passport;}
     public void setNationality(String nationality){this.nationality = nationality;}
@@ -90,6 +74,6 @@ class Customer {
     
     @Override
     public String toString() {
-        return ("Title: "+title+","+"passport: "+passport+","+"fName: "+fName+","+"lName: "+lName+","+"nationality: "+nationality+","+"phoneNumber: "+phoneNumber+","+"DOB: "+DOB+","+"Email: "+emailAddress+","+"ChangePass: "+changePass+","+"ConfirmPass: "+confirmPass+","+"fNameEmergency: "+fNameEmergency+","+"phoneNumberEmergency: "+phoneNumberEmergency+","+"relatiosnhip: "+relationship);
+        return (title+","+passport+","+fName+","+lName+","+nationality+","+phoneNumber+","+DOB+","+emailAddress+","+changePass+","+confirmPass+","+fNameEmergency+","+phoneNumberEmergency+","+relationship+"\n");
     }
 }
