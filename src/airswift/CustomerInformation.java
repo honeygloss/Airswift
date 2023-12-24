@@ -46,6 +46,8 @@ public class CustomerInformation extends javax.swing.JFrame {
         }
     }
     
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -236,59 +238,79 @@ public class CustomerInformation extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+       
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-
-        
+        int currentIndex=0;
         String search_email = emailAddressField.getText();
-        ArrayList<String> tempArray = new ArrayList<>();
-        
-        
+        String title = titleField.getText();
+        String fName = fNameField.getText();
+        String lName = lNameField.getText();
+        String nationality = nationalityField.getText();
+        String phoneNum = phoneNumberField.getText();
+        String dob = dobField.getText();
+        String changePass = changePassField.getText();
+        String confirmPass = confirmPassField.getText();
+        String fNameEmergency = fNameEmergencyField.getText();
+        String phoneNumberEmergency =  phoneNumberEmergencyField.getText();
+        String relationship = relationshipListdown.getSelectedItem().toString();
+        String[] tempArray = new String[100];
         try{
-            try(FileReader fr = new FileReader("Customer.txt")){
+            try(FileReader fr = new FileReader("Customer.txt")){        
                 Scanner reader = new Scanner(fr);
                 String line;
                 String[] lineArr;
                 while(reader.hasNextLine()){
                     line = reader.nextLine();
-
                     lineArr = line.split(",");
-                    if(lineArr[7].equals(search_email)){
-                        tempArray.add(
-                        titleField.getText() + "," +
-                        fNameField.getText() + "," +
-                        lNameField.getText() + "," +
-                        nationalityField.getText() + "," +
-                        phoneNumberField.getText() + "," +
-                        dobField.getText() + "," +
-                        lineArr[7] + "," +
-                        changePassField.getText() + "," +
-                        confirmPassField.getText() + "," +
-                        fNameEmergencyField.getText() + "," +   
-                        phoneNumberEmergencyField.getText() + "," +
-                        relationshipListdown.getSelectedItem().toString());
-                        
-                     
-                    }else{tempArray.add(line);
-                    }
-                    JOptionPane.showMessageDialog(this, "user updated");
-                   
+                    if(lineArr[6].equals(search_email)){
+                        String updatedLine =
+                        title + "," +
+                        fName + "," +
+                        lName + "," +
+                        nationality + "," +
+                        phoneNum + "," +
+                        dob + "," +
+                        lineArr[6] + "," +
+                        changePass + "," +
+                        confirmPass + "," +
+                        fNameEmergency + "," +   
+                        phoneNumberEmergency + "," +
+                        relationship;
+                        tempArray[currentIndex++] = updatedLine;
+                        System.out.println("email is found");
+                    }else{
+                        tempArray[currentIndex++] = line;
+                    } 
                 }
+                
                 fr.close();
-}catch(Exception e){}
-}catch(Exception e){}
-                try{ 
-                try(PrintWriter pw = new PrintWriter("Customer.txt")){
-                    for(String str:tempArray)
-                        pw.println(str);
-}catch(Exception e){}}
-catch(Exception e){}
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        try{ 
+            try(PrintWriter pw = new PrintWriter("Customer.txt")){
+                for (int i = 0; i < currentIndex; i++)
+                    pw.println(tempArray[i]);
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+} catch(Exception e){
+    System.out.println(e.toString());
+            }
+        for (int i = 0; i < currentIndex; i++){
+        System.out.print(tempArray[i]);
+        System.out.print("\n");
+        }
+        
+    JOptionPane.showMessageDialog(this, "user updated");
+        /*int option = JOptionPane.showConfirmDialog(this, "Do you want to update again?", "Update", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.NO_OPTION) {
+            break; // Exit the loop if the user chooses not to update again
+        }*/
 
-
-
-
-
-           
     }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
