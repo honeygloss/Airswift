@@ -12,6 +12,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -31,7 +33,7 @@ public class CustomerInformation extends javax.swing.JFrame {
     
     void readFile(){
         try{
-            FileReader fr = new FileReader("customer.txt");
+            FileReader fr = new FileReader("Customer.txt");
             
        
         } catch(FileNotFoundException ex){
@@ -42,123 +44,6 @@ public class CustomerInformation extends javax.swing.JFrame {
             }
         
         }
-    }
-    void deleteData(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String email, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency){
-        try{
-            File inputFile = new File("Customer.txt");
-            File tempFile = new File("CustomerTemp.txt");
-            try(BufferedReader breader = new BufferedReader(new FileReader(inputFile));
-                BufferedWriter bwriter = new BufferedWriter(new FileWriter(tempFile))){
-                String currentLine;
-                boolean flagFound = false;
-                while((currentLine = breader.readLine()) != null){
-                    if(!flagFound && currentLine.equals(flag)){
-                        flagFound = true;
-                        continue;
-                    }
-                    bwriter.write(currentLine + "\r\n");
-                }
-            }
-            
-            if (!inputFile.delete()) {
-                System.out.println("Could not delete the original file");
-                return;
-            }
-            // Rename the temporary file to the original file
-            if (!tempFile.renameTo(inputFile)) {
-                System.out.println("Could not rename the temporary file");
-            }
-        }
-        catch (FileNotFoundException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    void updateData(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String email, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency){
-        Customer[] customerList = new Customer[ln];
-        String search_email = emailAddressField.getText();
-        int currentIndex=0;
-        try{
-            try(FileReader fr = new FileReader(new File("Customer.txt"))){
-                BufferedReader br = new BufferedReader(fr);
-                String data;
-                Customer tempCustomer;
-                
-                while((data = br.readLine()) != null){
-                    tempCustomer = new Customer(data);
-                    if(tempCustomer.getEmailAddress().equals(search_email)){
-                        tempCustomer.setPassport(passportField.getText());
-                        tempCustomer.setNationality(nationalityField.getText());
-                        tempCustomer.setPhoneNumber(phoneNumberField.getText());
-                        tempCustomer.setDOB(dobField.getText());
-                        tempCustomer.setChangePass(changePassField.getText());
-                        tempCustomer.setConfirmPass(confirmPassField.getText());
-                        tempCustomer.setFullNameEmergency(fNameEmergencyField.getText());
-                        tempCustomer.setPhoneNumberEmergency(phoneNumberEmergencyField.getText());
-                    }
-                    customerList[currentIndex] = tempCustomer;
-                    currentIndex++;
-                }
-                
-            }
-            try(PrintWriter pw = new PrintWriter(new FileWriter("Customer.txt", true))){
-                for(int i=0; i<ln; i++){
-                    if (customerList != null) {
-                        pw.println(customerList.toString());
-                    }
-                }
-                
-            }
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        
-        /*
-        try {
-            BufferedReader readerb = new BufferedReader(new FileReader("Customer.txt"));
-            RandomAccessFile raf = new RandomAccessFile("Customer.txt", "rw");
-            
-            
-            
-            for (int i = 0; i < ln; i++) {
-                String line = raf.readLine();
-                if (line == null){
-                    break;
-                }
-            }
-            for (int i = 0; i < ln; i++) {
-                flag = readerb.readLine();  
-            }
-            raf.writeBytes("Title: "+title+","+"passport: "+passport+","+"fName: "+fName+","+"lName: "+lName+","+"nationality: "+nationality+","+"phoneNumber: "+phoneNumber+","+"DOB: "+DOB+","+"Email: "+email+","+"ChangePass: "+changePass+","+"ConfirmPass: "+confirmPass+","+"fNameEmergency: "+fNameEmergency+","+"phoneNumberEmergency: "+phoneNumberEmergency);
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    } 
-    
-    void countLines(){
-        try {
-            ln=0;
-            RandomAccessFile raf = new RandomAccessFile("Customer.txt", "rw");
-            for(int i=0;raf.readLine()!=null;i++){
-                ln++;
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
     
     /**
@@ -173,7 +58,6 @@ public class CustomerInformation extends javax.swing.JFrame {
         cInformationText = new javax.swing.JLabel();
         pInformationText = new javax.swing.JLabel();
         titleField = new javax.swing.JTextField();
-        passportField = new javax.swing.JTextField();
         fNameField = new javax.swing.JTextField();
         lNameField = new javax.swing.JTextField();
         nationalityField = new javax.swing.JTextField();
@@ -191,6 +75,7 @@ public class CustomerInformation extends javax.swing.JFrame {
         saveButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        passportField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,36 +87,12 @@ public class CustomerInformation extends javax.swing.JFrame {
         pInformationText.setText("Emergency Contact");
 
         titleField.setText("Title");
-        titleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleFieldActionPerformed(evt);
-            }
-        });
-
-        passportField.setText("Passport Number");
-        passportField.setPreferredSize(new java.awt.Dimension(26, 26));
-        passportField.setRequestFocusEnabled(false);
-        passportField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passportFieldActionPerformed(evt);
-            }
-        });
 
         fNameField.setText("First Name");
-        fNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fNameFieldActionPerformed(evt);
-            }
-        });
 
         lNameField.setText("Last Name");
 
         nationalityField.setText("Nationality");
-        nationalityField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nationalityFieldActionPerformed(evt);
-            }
-        });
 
         phoneNumberField.setText("Phone Number");
 
@@ -249,11 +110,6 @@ public class CustomerInformation extends javax.swing.JFrame {
         fNameEmergencyField.setText("Full Name");
 
         phoneNumberEmergencyField.setText("Phone Number");
-        phoneNumberEmergencyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneNumberEmergencyFieldActionPerformed(evt);
-            }
-        });
 
         relationshipListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parents", "Cousin", "Siblings", "Caretaker" }));
 
@@ -273,6 +129,8 @@ public class CustomerInformation extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("AirSwift");
+
+        passportField.setText("Passport Number");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -295,11 +153,11 @@ public class CustomerInformation extends javax.swing.JFrame {
                                         .addComponent(titleField))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(passportField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lNameField)
                                         .addComponent(phoneNumberField)
                                         .addComponent(emailAddressField)
-                                        .addComponent(confirmPassField, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                                        .addComponent(confirmPassField, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                        .addComponent(passportField)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(fNameEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -335,8 +193,8 @@ public class CustomerInformation extends javax.swing.JFrame {
                 .addComponent(cInformationText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passportField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleField))
+                    .addComponent(titleField)
+                    .addComponent(passportField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,35 +237,58 @@ public class CustomerInformation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        
-    }//GEN-LAST:event_titleFieldActionPerformed
-
-    private void passportFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passportFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passportFieldActionPerformed
-
-    private void fNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fNameFieldActionPerformed
-
-    private void nationalityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalityFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nationalityFieldActionPerformed
-
-    private void phoneNumberEmergencyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneNumberEmergencyFieldActionPerformed
-
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-       countLines();
-       readFile();
-       if(changePassField.getText().equals(confirmPassField.getText())){
-           JOptionPane.showMessageDialog(null, "Password is not match");
-       }
-       
-       updateData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
-       //deleteData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
+
+        
+        String search_email = emailAddressField.getText();
+        ArrayList<String> tempArray = new ArrayList<>();
+        
+        
+        try{
+            try(FileReader fr = new FileReader("Customer.txt")){
+                Scanner reader = new Scanner(fr);
+                String line;
+                String[] lineArr;
+                while(reader.hasNextLine()){
+                    line = reader.nextLine();
+
+                    lineArr = line.split(",");
+                    if(lineArr[7].equals(search_email)){
+                        tempArray.add(
+                        titleField.getText() + "," +
+                        fNameField.getText() + "," +
+                        lNameField.getText() + "," +
+                        nationalityField.getText() + "," +
+                        phoneNumberField.getText() + "," +
+                        dobField.getText() + "," +
+                        lineArr[7] + "," +
+                        changePassField.getText() + "," +
+                        confirmPassField.getText() + "," +
+                        fNameEmergencyField.getText() + "," +   
+                        phoneNumberEmergencyField.getText() + "," +
+                        relationshipListdown.getSelectedItem().toString());
+                        
+                     
+                    }else{tempArray.add(line);
+                    }
+                    JOptionPane.showMessageDialog(this, "user updated");
+                   
+                }
+                fr.close();
+}catch(Exception e){}
+}catch(Exception e){}
+                try{ 
+                try(PrintWriter pw = new PrintWriter("Customer.txt")){
+                    for(String str:tempArray)
+                        pw.println(str);
+}catch(Exception e){}}
+catch(Exception e){}
+
+
+
+
+
+           
     }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
@@ -439,6 +320,7 @@ public class CustomerInformation extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
                 new CustomerInformation().setVisible(true);
             }

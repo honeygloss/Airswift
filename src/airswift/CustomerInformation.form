@@ -41,11 +41,11 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="passportField" max="32767" attributes="0"/>
                                       <Component id="lNameField" max="32767" attributes="0"/>
                                       <Component id="phoneNumberField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="emailAddressField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="confirmPassField" alignment="0" pref="165" max="32767" attributes="0"/>
+                                      <Component id="passportField" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -95,8 +95,8 @@
               <Component id="cInformationText" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="passportField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="titleField" alignment="3" max="32767" attributes="0"/>
+                  <Component id="passportField" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -172,29 +172,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Title"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="titleFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="passportField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Passport Number"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[26, 26]"/>
-        </Property>
-        <Property name="requestFocusEnabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passportFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="fNameField">
       <Properties>
         <Property name="text" type="java.lang.String" value="First Name"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fNameFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="lNameField">
       <Properties>
@@ -205,9 +187,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nationality"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nationalityFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneNumberField">
       <Properties>
@@ -251,9 +230,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Phone Number"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneNumberEmergencyFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="relationshipListdown">
       <Properties>
@@ -302,6 +278,11 @@
           <Color blue="99" green="99" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="AirSwift"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="passportField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Passport Number"/>
       </Properties>
     </Component>
   </SubComponents>
