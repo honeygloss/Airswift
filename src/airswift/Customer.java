@@ -42,7 +42,24 @@ class Customer {
         this.relationship = relationship;
     } 
     
-    
+    Customer(String data) {
+        String[] dataArr = data.split(" ");
+        if (dataArr.length >= 13) {
+        this.title = dataArr[0];
+        this.passport = dataArr[1];
+        this.fName = dataArr[2];
+        this.lName = dataArr[3];
+        this.nationality = dataArr[4];
+        this.phoneNumber = dataArr[5];
+        this.DOB = dataArr[6];
+        this.emailAddress = dataArr[7];
+        this.changePass = dataArr[8];
+        this.confirmPass = dataArr[9];
+        this.fNameEmergency = dataArr[10];
+        this.phoneNumberEmergency = dataArr[11];
+        this.relationship = dataArr[12];
+        }
+    }
     
     public void setTitle(String title){this.title = title;}
     public void setFName(String fName){this.fName = fName;}
