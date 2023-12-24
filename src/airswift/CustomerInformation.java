@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +32,7 @@ public class CustomerInformation extends javax.swing.JFrame {
     void readFile(){
         try{
             FileReader fr = new FileReader("customer.txt");
+            
        
         } catch(FileNotFoundException ex){
             try{
@@ -75,9 +77,56 @@ public class CustomerInformation extends javax.swing.JFrame {
         
     }
     void updateData(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String email, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency){
+        Customer[] customerList = new Customer[ln];
+        String search_email = emailAddressField.getText();
+        int currentIndex=0;
+        try{
+            try(FileReader fr = new FileReader(new File("Customer.txt"))){
+                BufferedReader br = new BufferedReader(fr);
+                String data;
+                Customer tempCustomer;
+                
+                while((data = br.readLine()) != null){
+                    tempCustomer = new Customer(data);
+                    if(tempCustomer.getEmailAddress().equals(search_email)){
+                        tempCustomer.setPassport(passportField.getText());
+                        tempCustomer.setNationality(nationalityField.getText());
+                        tempCustomer.setPhoneNumber(phoneNumberField.getText());
+                        tempCustomer.setDOB(dobField.getText());
+                        tempCustomer.setChangePass(changePassField.getText());
+                        tempCustomer.setConfirmPass(confirmPassField.getText());
+                        tempCustomer.setFullNameEmergency(fNameEmergencyField.getText());
+                        tempCustomer.setPhoneNumberEmergency(phoneNumberEmergencyField.getText());
+                    }
+                    customerList[currentIndex] = tempCustomer;
+                    currentIndex++;
+                }
+                
+            }
+            try(PrintWriter pw = new PrintWriter(new FileWriter("Customer.txt", true))){
+                for(int i=0; i<ln; i++){
+                    if (customerList != null) {
+                        pw.println(customerList.toString());
+                    }
+                }
+                
+            }
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        /*
         try {
             BufferedReader readerb = new BufferedReader(new FileReader("Customer.txt"));
             RandomAccessFile raf = new RandomAccessFile("Customer.txt", "rw");
+            
+            
+            
             for (int i = 0; i < ln; i++) {
                 String line = raf.readLine();
                 if (line == null){
@@ -94,6 +143,7 @@ public class CustomerInformation extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     } 
     
     void countLines(){
@@ -350,14 +400,14 @@ public class CustomerInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_phoneNumberEmergencyFieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        readFile();
-        countLines();
+       countLines();
+       readFile();
        if(changePassField.getText().equals(confirmPassField.getText())){
            JOptionPane.showMessageDialog(null, "Password is not match");
        }
        
        updateData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
-       deleteData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
+       //deleteData(titleField.getText(),passportField.getText(),fNameField.getText(),lNameField.getText(),nationalityField.getText(),phoneNumberField.getText(), dobField.getText(), emailAddressField.getText(), changePassField.getText(), confirmPassField.getText(),fNameEmergencyField.getText(), phoneNumberEmergencyField.getText());
     }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
