@@ -177,6 +177,9 @@
               </Layout>
               <SubComponents>
                 <Component class="com.toedter.calendar.JDateChooser" name="departDate">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="departDateLabel">
                   <Properties>
@@ -190,6 +193,9 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="returnDate">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="toListdown">
                   <Properties>

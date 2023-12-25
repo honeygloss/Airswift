@@ -133,9 +133,13 @@ public class FlightMenu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(189, 210, 238));
 
+        departDate.setDateFormatString("dd-MM-yyyy");
+
         departDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         departDateLabel.setForeground(new java.awt.Color(51, 51, 51));
         departDateLabel.setText("Depart Date");
+
+        returnDate.setDateFormatString("dd-MM-yyyy");
 
         toListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
         toListdown.addActionListener(new java.awt.event.ActionListener() {
