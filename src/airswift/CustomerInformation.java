@@ -19,6 +19,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /**
  *
  * @author ASUS
@@ -31,6 +32,7 @@ public class CustomerInformation extends javax.swing.JFrame {
      */
     public CustomerInformation() {
         initComponents();
+        AutoCompleteDecorator.decorate(nationalityField);
     }
     boolean isFound = false;
     void readFile(){
@@ -59,12 +61,6 @@ public class CustomerInformation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jDayChooser1 = new com.toedter.calendar.JDayChooser();
-        dateChooserPanel1 = new com.toedter.calendar.demo.DateChooserPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        changePassLabel1 = new javax.swing.JLabel();
-        changePassField1 = new javax.swing.JPasswordField();
         cInformationText = new javax.swing.JLabel();
         pInformationText = new javax.swing.JLabel();
         fNameField = new javax.swing.JTextField();
@@ -89,12 +85,6 @@ public class CustomerInformation extends javax.swing.JFrame {
         changePassLabel = new javax.swing.JLabel();
         confirmaPassLabel = new javax.swing.JLabel();
         confirmPassField = new javax.swing.JPasswordField();
-
-        jPasswordField1.setText("jPasswordField1");
-
-        changePassLabel1.setText("Change Password");
-
-        changePassField1.setText("jPasswordField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -208,7 +198,7 @@ public class CustomerInformation extends javax.swing.JFrame {
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(dobField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(nationalityField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(0, 6, Short.MAX_VALUE))
+                                                .addGap(0, 3, Short.MAX_VALUE))
                                             .addComponent(titleField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -473,21 +463,15 @@ public class CustomerInformation extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel cInformationText;
     private javax.swing.JPasswordField changePassField;
-    private javax.swing.JPasswordField changePassField1;
     private javax.swing.JLabel changePassLabel;
-    private javax.swing.JLabel changePassLabel1;
     private javax.swing.JPasswordField confirmPassField;
     private javax.swing.JLabel confirmaPassLabel;
-    private com.toedter.calendar.demo.DateChooserPanel dateChooserPanel1;
     private com.toedter.calendar.JDateChooser dobField;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField emailAddressField;
     private javax.swing.JTextField fNameEmergencyField;
     private javax.swing.JTextField fNameField;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField lNameField;
     private javax.swing.JComboBox<String> nationalityField;
     private javax.swing.JLabel nationalityLabel;
