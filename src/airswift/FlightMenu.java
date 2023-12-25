@@ -4,17 +4,25 @@
  */
 package airswift;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import javaswingdev.GradientDropdownMenu;
+import javaswingdev.MenuEvent;
+import net.miginfocom.swing.MigLayout;
+
 
 /**
  *
  * @author ASUS
  */
 public class FlightMenu extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FlightMenu
      */
@@ -24,6 +32,54 @@ public class FlightMenu extends javax.swing.JFrame {
         AutoCompleteDecorator.decorate(toListdown);
         AutoCompleteDecorator.decorate(passengersListdown);
         AutoCompleteDecorator.decorate(cabinClassListdown);
+        Date min = new Date();
+        departDate.setMinSelectableDate(min);
+        returnDate.setMinSelectableDate(min);
+        departDate.getDateEditor().addPropertyChangeListener(e -> {
+            if ("date".equals(e.getPropertyName())) {
+                // When the departure date changes, set the minimum selectable date for return date
+                Date selectedDepartureDate = departDate.getDate();
+                returnDate.setMinSelectableDate(selectedDepartureDate);
+            }
+        });
+
+        
+        returnDate.getDateEditor().addPropertyChangeListener(e -> {
+            if ("date".equals(e.getPropertyName())) {
+                
+            }
+        });
+        
+        GradientDropdownMenu menu = new GradientDropdownMenu();
+        menu.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        menu.setBackground(new Color(51,51,51));
+        menu.setHeaderGradient(false);
+        menu.addItem("AirSwift");
+        menu.addItem("Profile");
+        menu.addItem("Log Out");
+        
+        menu.applay(this);
+        menu.addEvent(new MenuEvent(){
+           @Override
+           public void selected(int index, int subIndex, boolean menuItem){
+               if(menuItem && index == 1){
+                   new CustomerInformation().setVisible(true);
+                   FlightMenu.this.dispose();
+               }
+           }
+        });
+        // Center the frame
+        /*private void showCustomer(Component cust){
+            FlightMenu.removeAll();
+            FlightMenu.add(cust);
+            FlightMenu.repaint();
+            FlightMenu.revalidate();
+        }*/
+        
+        
+    
+        
+       
         
     }
 
@@ -43,28 +99,42 @@ public class FlightMenu extends javax.swing.JFrame {
         departDate = new com.toedter.calendar.JDateChooser();
         departDateLabel = new javax.swing.JLabel();
         returnDate = new com.toedter.calendar.JDateChooser();
-        toListdown = new javax.swing.JComboBox<>();
-        fromListdown = new javax.swing.JComboBox<>();
-        passengersListdown = new javax.swing.JComboBox<>();
+        toListdown = new airswift.ComboBoxSuggestion();
+        fromListdown = new airswift.ComboBoxSuggestion();
+        passengersListdown = new airswift.ComboBoxSuggestion();
         fromLabel2 = new javax.swing.JLabel();
         fromLabel = new javax.swing.JLabel();
-        cabinClassListdown = new javax.swing.JComboBox<>();
+        cabinClassListdown = new airswift.ComboBoxSuggestion();
         returnDateLabel = new javax.swing.JLabel();
         findFlightButton = new javax.swing.JButton();
         toLabel = new javax.swing.JLabel();
         fromLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         airSwiftLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         profileButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        myBookingTab.setBackground(new java.awt.Color(189, 210, 238));
+        myBookingTab.setForeground(new java.awt.Color(51, 51, 51));
+        myBookingTab.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(189, 210, 238));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         myBookingTab.addTab("MY BOOKING", jPanel3);
 
+        jPanel2.setBackground(new java.awt.Color(189, 210, 238));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel4.setBackground(new java.awt.Color(189, 210, 238));
+
+        departDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        departDateLabel.setForeground(new java.awt.Color(51, 51, 51));
         departDateLabel.setText("Depart Date");
 
         toListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
@@ -74,6 +144,7 @@ public class FlightMenu extends javax.swing.JFrame {
             }
         });
 
+        fromListdown.setForeground(new java.awt.Color(220, 235, 235));
         fromListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
         fromListdown.setName("FROM"); // NOI18N
         fromListdown.addActionListener(new java.awt.event.ActionListener() {
@@ -90,8 +161,13 @@ public class FlightMenu extends javax.swing.JFrame {
             }
         });
 
+        fromLabel2.setBackground(new java.awt.Color(51, 51, 51));
+        fromLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fromLabel2.setForeground(new java.awt.Color(51, 51, 51));
         fromLabel2.setText("Passengers");
 
+        fromLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fromLabel.setForeground(new java.awt.Color(51, 51, 51));
         fromLabel.setText("Class Cabin");
 
         cabinClassListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economy", "Business" }));
@@ -102,19 +178,28 @@ public class FlightMenu extends javax.swing.JFrame {
             }
         });
 
+        returnDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        returnDateLabel.setForeground(new java.awt.Color(51, 51, 51));
         returnDateLabel.setText("Return Date");
 
         findFlightButton.setBackground(new java.awt.Color(0, 153, 153));
         findFlightButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        findFlightButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\search.png")); // NOI18N
         findFlightButton.setText("FIND A FLIGHT");
+        findFlightButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         findFlightButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findFlightButtonActionPerformed(evt);
             }
         });
 
+        toLabel.setBackground(new java.awt.Color(51, 51, 51));
+        toLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        toLabel.setForeground(new java.awt.Color(51, 51, 51));
         toLabel.setText("To");
 
+        fromLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fromLabel1.setForeground(new java.awt.Color(51, 51, 51));
         fromLabel1.setText("From");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -167,7 +252,7 @@ public class FlightMenu extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(fromListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(toListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fromLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,24 +267,27 @@ public class FlightMenu extends javax.swing.JFrame {
 
         myBookingTab.addTab("BOOK A FLIGHT", jPanel2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 119, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
-        );
+        getContentPane().add(myBookingTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 317, 965, 287));
 
         airSwiftLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         airSwiftLabel.setForeground(new java.awt.Color(0, 153, 153));
         airSwiftLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         airSwiftLabel.setText("Airswift");
+        getContentPane().add(airSwiftLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 120, 40));
 
-        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Downloads\\profileicon.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\ee.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 970, 310));
+
+        jPanel1.setBackground(new java.awt.Color(189, 210, 238));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+
+        profileButton.setBackground(new java.awt.Color(189, 210, 238));
+        profileButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        profileButton.setForeground(new java.awt.Color(51, 51, 51));
+        profileButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\profileicon.png")); // NOI18N
         profileButton.setText("Profile");
+        profileButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 2, true));
         profileButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileButtonMouseClicked(evt);
@@ -211,51 +299,61 @@ public class FlightMenu extends javax.swing.JFrame {
             }
         });
 
+        logOutButton.setBackground(new java.awt.Color(189, 210, 238));
+        logOutButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        logOutButton.setForeground(new java.awt.Color(51, 51, 51));
         logOutButton.setText("Log Out");
+        logOutButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 2, true));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myBookingTab, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(airSwiftLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(profileButton)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(762, Short.MAX_VALUE)
+                .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(airSwiftLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myBookingTab, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(logOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(profileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 572, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 610));
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   
     private void cabinClassListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cabinClassListdownActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cabinClassListdownActionPerformed
 
     private void toListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toListdownActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_toListdownActionPerformed
 
     private void fromListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromListdownActionPerformed
-        int currentIndex=0;
+        
         try{
             FileReader fr = new FileReader("Flight.txt");
             Scanner sc = new Scanner(fr);
@@ -265,18 +363,14 @@ public class FlightMenu extends javax.swing.JFrame {
                 line = sc.nextLine();
                 lineArr = line.split("\n");
                 if(lineArr[0].equals(fromListdown.getSelectedItem())){
-                    try(PrintWriter pw = new PrintWriter("Tansaction.txt")){
-                            pw.println(lineArr[currentIndex++]);
-                    }catch(Exception e){
-                        System.out.println(e.toString());
-                    }
+                    toListdown.removeItem(fromListdown.getSelectedItem());
                 }
                 
             }
         
         }catch(Exception e){
                 System.out.println(e.toString());
-            }
+        }
     }//GEN-LAST:event_fromListdownActionPerformed
 
     private void passengersListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengersListdownActionPerformed
@@ -284,17 +378,26 @@ public class FlightMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_passengersListdownActionPerformed
 
     private void findFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findFlightButtonActionPerformed
-        // TODO add your handling code here:
+        if(fromListdown.getSelectedItem().toString().isEmpty() || toListdown.getSelectedItem().toString().isEmpty() || passengersListdown.getSelectedItem().toString().isEmpty() || cabinClassListdown.getSelectedItem().toString().isEmpty() || departDate.getDate() == null){
+           JOptionPane.showMessageDialog(this, "Fill all the fields"); 
+           return;
+        }
+        if(fromListdown.getSelectedItem().toString().equals(toListdown.getSelectedItem().toString())){
+           JOptionPane.showMessageDialog(this, "From and To flights needs to be different"); 
+           return;
+        }
+        
+        
     }//GEN-LAST:event_findFlightButtonActionPerformed
+
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_profileButtonActionPerformed
 
     private void profileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileButtonMouseClicked
         new CustomerInformation().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_profileButtonMouseClicked
-
-    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_profileButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,6 +444,8 @@ public class FlightMenu extends javax.swing.JFrame {
     private javax.swing.JLabel fromLabel1;
     private javax.swing.JLabel fromLabel2;
     private javax.swing.JComboBox<String> fromListdown;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -354,4 +459,8 @@ public class FlightMenu extends javax.swing.JFrame {
     private javax.swing.JLabel toLabel;
     private javax.swing.JComboBox<String> toListdown;
     // End of variables declaration//GEN-END:variables
+
+   
+
+    
 }
