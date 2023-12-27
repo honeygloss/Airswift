@@ -102,9 +102,10 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt){
+        String user=txtUser.getText();
+        String pass=String.valueOf(txtPassword.getPassword());
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
