@@ -84,18 +84,22 @@ public class FlightMenu extends javax.swing.JFrame {
     private void showForm(Component com) {
         jPanel1.removeAll();
         jLabel1.setVisible(false);
+        jLabel1.removeAll();
+        jLabel1.add(com);
+        jLabel1.repaint();
+        jLabel1.revalidate();
         myBookingTab.removeAll();
-        jPanel1.repaint();
-        jPanel1.revalidate();
+        myBookingTab.add(com);
         myBookingTab.repaint();
         myBookingTab.revalidate();
         //if (com != null) {
-            jPanel1.setLayout(new BorderLayout());
-            jPanel1.add(com, BorderLayout.CENTER);
+            //jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(com);//, BorderLayout.CENTER);
             jPanel1.repaint();
             jPanel1.revalidate();
         //}
-       
+        
+        
     }
    
     
