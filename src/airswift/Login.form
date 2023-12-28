@@ -63,7 +63,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtUser" max="32767" attributes="0"/>
+                                  <Component id="txtEmailAddress" max="32767" attributes="0"/>
                                   <Component id="txtPassword" pref="184" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -86,7 +86,7 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmailAddress" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -97,18 +97,21 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="airswift.TextField" name="txtUser">
+            <Component class="airswift.TextField" name="txtEmailAddress">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f2" green="f2" red="f2" type="rgb"/>
                 </Property>
-                <Property name="hint" type="java.lang.String" value="UserName"/>
+                <Property name="hint" type="java.lang.String" value="Email Address"/>
               </Properties>
             </Component>
             <Component class="airswift.PasswordField" name="txtPassword">
               <Properties>
                 <Property name="hint" type="java.lang.String" value="Password"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+              </Events>
             </Component>
             <Component class="airswift.Button" name="cmdLogin">
               <Properties>

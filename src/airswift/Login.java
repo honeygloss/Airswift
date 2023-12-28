@@ -5,6 +5,7 @@
 package airswift;
 
 import java.awt.Color;
+import airswift.Customer;
 
 public class Login extends javax.swing.JFrame {
 
@@ -27,7 +28,7 @@ public class Login extends javax.swing.JFrame {
 
         background = new airswift.Background();
         panel = new javax.swing.JPanel();
-        txtUser = new airswift.TextField();
+        txtEmailAddress = new airswift.TextField();
         txtPassword = new airswift.PasswordField();
         cmdLogin = new airswift.Button();
         jLabel1 = new javax.swing.JLabel();
@@ -39,10 +40,15 @@ public class Login extends javax.swing.JFrame {
 
         panel.setOpaque(false);
 
-        txtUser.setForeground(new java.awt.Color(242, 242, 242));
-        txtUser.setHint("UserName");
+        txtEmailAddress.setForeground(new java.awt.Color(242, 242, 242));
+        txtEmailAddress.setHint("Email Address");
 
         txtPassword.setHint("Password");
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         cmdLogin.setForeground(new java.awt.Color(242, 242, 242));
         cmdLogin.setText("LOGIN");
@@ -60,7 +66,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
@@ -76,7 +82,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -102,8 +108,12 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt){
-        String user=txtUser.getText();
+        String user=txtEmailAddress.getText();
         String pass=String.valueOf(txtPassword.getPassword());
     }
     public static void main(String args[]) {
@@ -143,7 +153,7 @@ public class Login extends javax.swing.JFrame {
     private airswift.Button cmdLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
+    private airswift.TextField txtEmailAddress;
     private airswift.PasswordField txtPassword;
-    private airswift.TextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
