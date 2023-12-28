@@ -17,7 +17,7 @@ public class AirSwift {
         // TODO code application logic here
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerInformation().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }

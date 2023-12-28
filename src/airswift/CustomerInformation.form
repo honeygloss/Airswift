@@ -19,84 +19,85 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="updateButton" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace pref="130" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="fNameEmergencyField" min="-2" pref="210" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="phoneNumberEmergencyField" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="relationshipText" min="-2" pref="72" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="relationshipListdown" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fNameEmergencyLabel" pref="86" max="32767" attributes="0"/>
+                                  <Component id="relationshipText" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="fNameEmergencyField" min="-2" pref="118" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                      <Component id="phoneNumberEmergencyLabel" min="-2" pref="101" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="changePassLabel" min="-2" pref="109" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="changePassField" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="fNameField" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="titleField" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="dobLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="nationalityLabel" pref="84" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="nationalityField" min="-2" pref="109" max="-2" attributes="0"/>
-                                                  <Component id="dobField" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace pref="63" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="confirmaPassLabel" min="-2" pref="102" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="confirmPassField" min="-2" pref="103" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="emailAddressField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="phoneNumberField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lNameField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="passportField" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="pInformationText" min="-2" pref="291" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="relationshipListdown" min="-2" pref="113" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="pInformationText" min="-2" pref="235" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="dobLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="relationshipText1" max="32767" attributes="0"/>
+                                  <Component id="fNameLabel" max="32767" attributes="0"/>
+                                  <Component id="nationalityLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="changePassLabel" pref="112" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="changePassField" max="32767" attributes="0"/>
+                                      <Component id="dobField" alignment="0" pref="117" max="32767" attributes="0"/>
+                                      <Component id="fNameField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="nationalityListdown" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="titleListdown" min="-2" pref="113" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="emailLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="phoneNumberLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lNameLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="passportLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="confirmaPassLabel" pref="105" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="phoneNumberEmergencyField" max="32767" attributes="0"/>
+                          <Component id="confirmPassField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="passportField" alignment="0" pref="120" max="32767" attributes="0"/>
+                          <Component id="lNameField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="phoneNumberField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="emailAddressField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="updateButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="check" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="pInformationText1" min="-2" pref="253" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
-          </Group>
-          <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
-              <Component id="pInformationText1" min="-2" pref="308" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -104,29 +105,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="pInformationText1" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="titleField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="passportField" alignment="3" max="32767" attributes="0"/>
+                  <Component id="relationshipText1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passportLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="titleListdown" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lNameField" min="-2" max="-2" attributes="0"/>
-                  <Component id="fNameField" min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fNameField" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nationalityLabel" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="nationalityField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="phoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="phoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nationalityListdown" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="dobLabel" max="32767" attributes="0"/>
-                  <Component id="emailAddressField" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="emailAddressField" alignment="3" max="32767" attributes="0"/>
+                      <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="dobField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="dobLabel" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -135,21 +144,32 @@
                   <Component id="confirmaPassLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="confirmPassField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="pInformationText" min="-2" pref="32" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="check" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pInformationText" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fNameEmergencyField" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="phoneNumberEmergencyField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="phoneNumberEmergencyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fNameEmergencyField" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="fNameEmergencyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="relationshipText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="relationshipListdown" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="relationshipListdown" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="updateButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -164,35 +184,32 @@
         <Property name="text" type="java.lang.String" value="Personal Information"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="titleField">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Mr."/>
-            <StringItem index="1" value="Mrs."/>
-            <StringItem index="2" value="Miss"/>
-            <StringItem index="3" value="Ms."/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="passportField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Passport Number"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passportFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passportFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="fNameField">
       <Properties>
         <Property name="text" type="java.lang.String" value="First Name"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="lNameField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Last Name"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lNameFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lNameFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="nationalityLabel">
       <Properties>
@@ -202,212 +219,14 @@
         <Property name="text" type="java.lang.String" value="Nationality"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="nationalityField">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="191">
-            <StringItem index="0" value="Afghan"/>
-            <StringItem index="1" value="Albanian"/>
-            <StringItem index="2" value="Algerian"/>
-            <StringItem index="3" value="American"/>
-            <StringItem index="4" value="Andorran"/>
-            <StringItem index="5" value="Angolan"/>
-            <StringItem index="6" value="Antiguans"/>
-            <StringItem index="7" value="Argentine"/>
-            <StringItem index="8" value="Armenian"/>
-            <StringItem index="9" value="Australian"/>
-            <StringItem index="10" value="Austrian"/>
-            <StringItem index="11" value="Azerbaijani"/>
-            <StringItem index="12" value="Bahamian"/>
-            <StringItem index="13" value="Bahraini"/>
-            <StringItem index="14" value="Bangladeshi"/>
-            <StringItem index="15" value="Barbadian"/>
-            <StringItem index="16" value="Belarusian"/>
-            <StringItem index="17" value="Belgian"/>
-            <StringItem index="18" value="Belizean"/>
-            <StringItem index="19" value="Beninese"/>
-            <StringItem index="20" value="Bhutanese"/>
-            <StringItem index="21" value="Bolivian"/>
-            <StringItem index="22" value="Bosnian"/>
-            <StringItem index="23" value="Brazilian"/>
-            <StringItem index="24" value="British"/>
-            <StringItem index="25" value="Bruneian"/>
-            <StringItem index="26" value="Bulgarian"/>
-            <StringItem index="27" value="Burkinabe"/>
-            <StringItem index="28" value="Burmese"/>
-            <StringItem index="29" value="Burundian"/>
-            <StringItem index="30" value="Cambodian"/>
-            <StringItem index="31" value="Cameroonian"/>
-            <StringItem index="32" value="Canadian"/>
-            <StringItem index="33" value="Cape Verdean"/>
-            <StringItem index="34" value="Central African"/>
-            <StringItem index="35" value="Chadian"/>
-            <StringItem index="36" value="Chilean"/>
-            <StringItem index="37" value="Chinese"/>
-            <StringItem index="38" value="Colombian"/>
-            <StringItem index="39" value="Comoran"/>
-            <StringItem index="40" value="Congolese"/>
-            <StringItem index="41" value="Costa Rican"/>
-            <StringItem index="42" value="Croatian"/>
-            <StringItem index="43" value="Cuban"/>
-            <StringItem index="44" value="Cypriot"/>
-            <StringItem index="45" value="Czech"/>
-            <StringItem index="46" value="Danish"/>
-            <StringItem index="47" value="Djibouti"/>
-            <StringItem index="48" value="Dominican"/>
-            <StringItem index="49" value="Dutch"/>
-            <StringItem index="50" value="East Timorese"/>
-            <StringItem index="51" value="Ecuadorean"/>
-            <StringItem index="52" value="Egyptian"/>
-            <StringItem index="53" value="Emirian"/>
-            <StringItem index="54" value="Equatorial Guinean"/>
-            <StringItem index="55" value="Eritrean"/>
-            <StringItem index="56" value="Estonian"/>
-            <StringItem index="57" value="Ethiopian"/>
-            <StringItem index="58" value="Fijian"/>
-            <StringItem index="59" value="Filipino"/>
-            <StringItem index="60" value="Finnish"/>
-            <StringItem index="61" value="French"/>
-            <StringItem index="62" value="Gabonese"/>
-            <StringItem index="63" value="Gambian"/>
-            <StringItem index="64" value="Georgian"/>
-            <StringItem index="65" value="German"/>
-            <StringItem index="66" value="Ghanaian"/>
-            <StringItem index="67" value="Greek"/>
-            <StringItem index="68" value="Grenadian"/>
-            <StringItem index="69" value="Guatemalan"/>
-            <StringItem index="70" value="Guinea-Bissauan"/>
-            <StringItem index="71" value="Guinean"/>
-            <StringItem index="72" value="Guyanese"/>
-            <StringItem index="73" value="Haitian"/>
-            <StringItem index="74" value="Herzegovinian"/>
-            <StringItem index="75" value="Honduran"/>
-            <StringItem index="76" value="Hungarian"/>
-            <StringItem index="77" value="I-Kiribati"/>
-            <StringItem index="78" value="Icelander"/>
-            <StringItem index="79" value="Indian"/>
-            <StringItem index="80" value="Indonesian"/>
-            <StringItem index="81" value="Iranian"/>
-            <StringItem index="82" value="Iraqi"/>
-            <StringItem index="83" value="Irish"/>
-            <StringItem index="84" value="Israeli"/>
-            <StringItem index="85" value="Italian"/>
-            <StringItem index="86" value="Ivorian"/>
-            <StringItem index="87" value="Jamaican"/>
-            <StringItem index="88" value="Japanese"/>
-            <StringItem index="89" value="Jordanian"/>
-            <StringItem index="90" value="Kazakhstani"/>
-            <StringItem index="91" value="Kenyan"/>
-            <StringItem index="92" value="Kittian and Nevisian"/>
-            <StringItem index="93" value="Kuwaiti"/>
-            <StringItem index="94" value="Kyrgyz"/>
-            <StringItem index="95" value="Laotian"/>
-            <StringItem index="96" value="Latvian"/>
-            <StringItem index="97" value="Lebanese"/>
-            <StringItem index="98" value="Liberian"/>
-            <StringItem index="99" value="Libyan"/>
-            <StringItem index="100" value="Liechtensteiner"/>
-            <StringItem index="101" value="Lithuanian"/>
-            <StringItem index="102" value="Luxembourger"/>
-            <StringItem index="103" value="Macedonian"/>
-            <StringItem index="104" value="Malagasy"/>
-            <StringItem index="105" value="Malawian"/>
-            <StringItem index="106" value="Malaysian"/>
-            <StringItem index="107" value="Maldivan"/>
-            <StringItem index="108" value="Malian"/>
-            <StringItem index="109" value="Maltese"/>
-            <StringItem index="110" value="Marshallese"/>
-            <StringItem index="111" value="Mauritanian"/>
-            <StringItem index="112" value="Mauritian"/>
-            <StringItem index="113" value="Mexican"/>
-            <StringItem index="114" value="Micronesian"/>
-            <StringItem index="115" value="Moldovan"/>
-            <StringItem index="116" value="Monacan"/>
-            <StringItem index="117" value="Mongolian"/>
-            <StringItem index="118" value="Moroccan"/>
-            <StringItem index="119" value="Mosotho"/>
-            <StringItem index="120" value="Motswana"/>
-            <StringItem index="121" value="Mozambican"/>
-            <StringItem index="122" value="Namibian"/>
-            <StringItem index="123" value="Nauruan"/>
-            <StringItem index="124" value="Nepalese"/>
-            <StringItem index="125" value="New Zealander"/>
-            <StringItem index="126" value="Nicaraguan"/>
-            <StringItem index="127" value="Nigerian"/>
-            <StringItem index="128" value="Nigerien"/>
-            <StringItem index="129" value="North Korean"/>
-            <StringItem index="130" value="Northern Irish"/>
-            <StringItem index="131" value="Norwegian"/>
-            <StringItem index="132" value="Omani"/>
-            <StringItem index="133" value="Pakistani"/>
-            <StringItem index="134" value="Palauan"/>
-            <StringItem index="135" value="Palestinian"/>
-            <StringItem index="136" value="Panamanian"/>
-            <StringItem index="137" value="Papua New Guinean"/>
-            <StringItem index="138" value="Paraguayan"/>
-            <StringItem index="139" value="Peruvian"/>
-            <StringItem index="140" value="Polish"/>
-            <StringItem index="141" value="Portuguese"/>
-            <StringItem index="142" value="Qatari"/>
-            <StringItem index="143" value="Romanian"/>
-            <StringItem index="144" value="Russian"/>
-            <StringItem index="145" value="Rwandan"/>
-            <StringItem index="146" value="Saint Lucian"/>
-            <StringItem index="147" value="Salvadoran"/>
-            <StringItem index="148" value="Samoan"/>
-            <StringItem index="149" value="San Marinese"/>
-            <StringItem index="150" value="Sao Tomean"/>
-            <StringItem index="151" value="Saudi"/>
-            <StringItem index="152" value="Scottish"/>
-            <StringItem index="153" value="Senegalese"/>
-            <StringItem index="154" value="Serbian"/>
-            <StringItem index="155" value="Seychellois"/>
-            <StringItem index="156" value="Sierra Leonean"/>
-            <StringItem index="157" value="Singaporean"/>
-            <StringItem index="158" value="Slovakian"/>
-            <StringItem index="159" value="Slovenian"/>
-            <StringItem index="160" value="Solomon Islander"/>
-            <StringItem index="161" value="Somali"/>
-            <StringItem index="162" value="South African"/>
-            <StringItem index="163" value="South Korean"/>
-            <StringItem index="164" value="Spanish"/>
-            <StringItem index="165" value="Sri Lankan"/>
-            <StringItem index="166" value="Sudanese"/>
-            <StringItem index="167" value="Surinamer"/>
-            <StringItem index="168" value="Swazi"/>
-            <StringItem index="169" value="Swedish"/>
-            <StringItem index="170" value="Swiss"/>
-            <StringItem index="171" value="Syrian"/>
-            <StringItem index="172" value="Tajik"/>
-            <StringItem index="173" value="Tanzanian"/>
-            <StringItem index="174" value="Thai"/>
-            <StringItem index="175" value="Togolese"/>
-            <StringItem index="176" value="Tongan"/>
-            <StringItem index="177" value="Trinidadian or Tobagonian"/>
-            <StringItem index="178" value="Tunisian"/>
-            <StringItem index="179" value="Turkish"/>
-            <StringItem index="180" value="Tuvaluan"/>
-            <StringItem index="181" value="Ugandan"/>
-            <StringItem index="182" value="Ukrainian"/>
-            <StringItem index="183" value="Uruguayan"/>
-            <StringItem index="184" value="Uzbekistani"/>
-            <StringItem index="185" value="Venezuelan"/>
-            <StringItem index="186" value="Vietnamese"/>
-            <StringItem index="187" value="Welsh"/>
-            <StringItem index="188" value="Yemenite"/>
-            <StringItem index="189" value="Zambian"/>
-            <StringItem index="190" value="Zimbabwean"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="phoneNumberField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Phone Number"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="dobLabel">
       <Properties>
@@ -426,6 +245,10 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Email Address"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailAddressFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailAddressFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="changePassLabel">
       <Properties>
@@ -439,6 +262,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jPasswordField2"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="changePassFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="changePassFieldFocusLost"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changePassFieldMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="confirmaPassLabel">
       <Properties>
@@ -453,6 +281,9 @@
         <Property name="text" type="java.lang.String" value="jPasswordField2"/>
       </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="confirmPassFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="confirmPassFieldFocusLost"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="confirmPassFieldMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmPassFieldActionPerformed"/>
       </Events>
     </Component>
@@ -470,11 +301,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Full Name"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="phoneNumberEmergencyField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Phone Number"/>
-      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameEmergencyFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameEmergencyFieldFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fNameEmergencyFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="relationshipText">
       <Properties>
@@ -484,39 +315,328 @@
         <Property name="text" type="java.lang.String" value="Relationship"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="relationshipListdown">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Parents"/>
-            <StringItem index="1" value="Cousin"/>
-            <StringItem index="2" value="Siblings"/>
-            <StringItem index="3" value="Caretaker"/>
-          </StringArray>
-        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relationshipListdownActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="updateButton">
+    <Component class="javax.swing.JLabel" name="relationshipText1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="update"/>
+        <Property name="text" type="java.lang.String" value="Title"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="passportLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Passport "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lNameLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Last Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="phoneNumberLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Phone Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="emailLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Email"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fNameLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="First Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fNameEmergencyLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Full Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="phoneNumberEmergencyLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Phone Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="phoneNumberEmergencyField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Phone Number"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberEmergencyFieldFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberEmergencyFieldFocusLost"/>
+      </Events>
+    </Component>
+    <Component class="airswift.Button" name="updateButton">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="UPDATE"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="combo_suggestion.ComboBoxSuggestion" name="nationalityListdown">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="191">
+            <StringItem index="0" value="Afghan"/>
+            <StringItem index="1" value="Albanian"/>
+            <StringItem index="2" value="Algerian"/>
+            <StringItem index="3" value="Andorran"/>
+            <StringItem index="4" value="Angolan"/>
+            <StringItem index="5" value="Antiguan"/>
+            <StringItem index="6" value="Argentine"/>
+            <StringItem index="7" value="Armenian"/>
+            <StringItem index="8" value="Australian"/>
+            <StringItem index="9" value="Austrian"/>
+            <StringItem index="10" value="Azerbaijani"/>
+            <StringItem index="11" value="Bahamian"/>
+            <StringItem index="12" value="Bahraini"/>
+            <StringItem index="13" value="Bangladeshi"/>
+            <StringItem index="14" value="Barbadian"/>
+            <StringItem index="15" value="Belarusian"/>
+            <StringItem index="16" value="Belgian"/>
+            <StringItem index="17" value="Belizean"/>
+            <StringItem index="18" value="Beninese"/>
+            <StringItem index="19" value="Bhutanese"/>
+            <StringItem index="20" value="Bolivian"/>
+            <StringItem index="21" value="Bosnian"/>
+            <StringItem index="22" value="Brazilian"/>
+            <StringItem index="23" value="Bruneian"/>
+            <StringItem index="24" value="Bulgarian"/>
+            <StringItem index="25" value="Burkinabe"/>
+            <StringItem index="26" value="Burundian"/>
+            <StringItem index="27" value="Cambodian"/>
+            <StringItem index="28" value="Cameroonian"/>
+            <StringItem index="29" value="Canadian"/>
+            <StringItem index="30" value="Cape Verdean"/>
+            <StringItem index="31" value="Central African"/>
+            <StringItem index="32" value="Chadian"/>
+            <StringItem index="33" value="Chilean"/>
+            <StringItem index="34" value="Chinese"/>
+            <StringItem index="35" value="Colombian"/>
+            <StringItem index="36" value="Comoran"/>
+            <StringItem index="37" value="Congolese"/>
+            <StringItem index="38" value="Costa Rican"/>
+            <StringItem index="39" value="Croatian"/>
+            <StringItem index="40" value="Cuban"/>
+            <StringItem index="41" value="Cypriot"/>
+            <StringItem index="42" value="Czech"/>
+            <StringItem index="43" value="Danish"/>
+            <StringItem index="44" value="Djiboutian"/>
+            <StringItem index="45" value="Dominican"/>
+            <StringItem index="46" value="Dutch"/>
+            <StringItem index="47" value="East Timorese (Timorese)"/>
+            <StringItem index="48" value="Ecuadorean"/>
+            <StringItem index="49" value="Egyptian"/>
+            <StringItem index="50" value="Emirian"/>
+            <StringItem index="51" value="Equatorial Guinean"/>
+            <StringItem index="52" value="Eritrean"/>
+            <StringItem index="53" value="Estonian"/>
+            <StringItem index="54" value="Ethiopian"/>
+            <StringItem index="55" value="Fijian"/>
+            <StringItem index="56" value="Filipino"/>
+            <StringItem index="57" value="Finnish"/>
+            <StringItem index="58" value="French"/>
+            <StringItem index="59" value="Gabonese"/>
+            <StringItem index="60" value="Gambian"/>
+            <StringItem index="61" value="Georgian"/>
+            <StringItem index="62" value="German"/>
+            <StringItem index="63" value="Ghanaian"/>
+            <StringItem index="64" value="Greek"/>
+            <StringItem index="65" value="Grenadian"/>
+            <StringItem index="66" value="Guatemalan"/>
+            <StringItem index="67" value="Guinea-Bissauan"/>
+            <StringItem index="68" value="Guinean"/>
+            <StringItem index="69" value="Guyanese"/>
+            <StringItem index="70" value="Haitian"/>
+            <StringItem index="71" value="Herzegovinian"/>
+            <StringItem index="72" value="Honduran"/>
+            <StringItem index="73" value="Hungarian"/>
+            <StringItem index="74" value="I-Kiribati"/>
+            <StringItem index="75" value="Icelander"/>
+            <StringItem index="76" value="Indian"/>
+            <StringItem index="77" value="Indonesian"/>
+            <StringItem index="78" value="Iranian"/>
+            <StringItem index="79" value="Iraqi"/>
+            <StringItem index="80" value="Irish"/>
+            <StringItem index="81" value="Israeli"/>
+            <StringItem index="82" value="Italian"/>
+            <StringItem index="83" value="Ivorian"/>
+            <StringItem index="84" value="Jamaican"/>
+            <StringItem index="85" value="Japanese"/>
+            <StringItem index="86" value="Jordanian"/>
+            <StringItem index="87" value="Kazakhstani"/>
+            <StringItem index="88" value="Kenyan"/>
+            <StringItem index="89" value="Kittian and Nevisian"/>
+            <StringItem index="90" value="Kuwaiti"/>
+            <StringItem index="91" value="Kyrgyz"/>
+            <StringItem index="92" value="Laotian"/>
+            <StringItem index="93" value="Latvian"/>
+            <StringItem index="94" value="Lebanese"/>
+            <StringItem index="95" value="Liberian"/>
+            <StringItem index="96" value="Libyan"/>
+            <StringItem index="97" value="Liechtensteiner"/>
+            <StringItem index="98" value="Lithuanian"/>
+            <StringItem index="99" value="Luxembourger"/>
+            <StringItem index="100" value="Macedonian"/>
+            <StringItem index="101" value="Malagasy"/>
+            <StringItem index="102" value="Malawian"/>
+            <StringItem index="103" value="Malaysian"/>
+            <StringItem index="104" value="Maldivan"/>
+            <StringItem index="105" value="Malian"/>
+            <StringItem index="106" value="Maltese"/>
+            <StringItem index="107" value="Marshallese"/>
+            <StringItem index="108" value="Mauritanian"/>
+            <StringItem index="109" value="Mauritian"/>
+            <StringItem index="110" value="Mexican"/>
+            <StringItem index="111" value="Micronesian"/>
+            <StringItem index="112" value="Moldovan"/>
+            <StringItem index="113" value="Monacan"/>
+            <StringItem index="114" value="Mongolian"/>
+            <StringItem index="115" value="Montenegrin"/>
+            <StringItem index="116" value="Moroccan"/>
+            <StringItem index="117" value="Mosotho"/>
+            <StringItem index="118" value="Motswana"/>
+            <StringItem index="119" value="Mozambican"/>
+            <StringItem index="120" value="Namibian"/>
+            <StringItem index="121" value="Nauruan"/>
+            <StringItem index="122" value="Nepalese"/>
+            <StringItem index="123" value="New Zealander"/>
+            <StringItem index="124" value="Nicaraguan"/>
+            <StringItem index="125" value="Nigerian"/>
+            <StringItem index="126" value="Nigerien"/>
+            <StringItem index="127" value="North Korean"/>
+            <StringItem index="128" value="Northern Irish"/>
+            <StringItem index="129" value="Norwegian"/>
+            <StringItem index="130" value="Omani"/>
+            <StringItem index="131" value="Pakistani"/>
+            <StringItem index="132" value="Palauan"/>
+            <StringItem index="133" value="Palestinian"/>
+            <StringItem index="134" value="Panamanian"/>
+            <StringItem index="135" value="Papua New Guinean"/>
+            <StringItem index="136" value="Paraguayan"/>
+            <StringItem index="137" value="Peruvian"/>
+            <StringItem index="138" value="Polish"/>
+            <StringItem index="139" value="Portuguese"/>
+            <StringItem index="140" value="Qatari"/>
+            <StringItem index="141" value="Romanian"/>
+            <StringItem index="142" value="Russian"/>
+            <StringItem index="143" value="Rwandan"/>
+            <StringItem index="144" value="Saint Lucian"/>
+            <StringItem index="145" value="Salvadoran"/>
+            <StringItem index="146" value="Samoan"/>
+            <StringItem index="147" value="San Marinese"/>
+            <StringItem index="148" value="Sao Tomean"/>
+            <StringItem index="149" value="Saudi"/>
+            <StringItem index="150" value="Scottish"/>
+            <StringItem index="151" value="Senegalese"/>
+            <StringItem index="152" value="Serbian"/>
+            <StringItem index="153" value="Seychellois"/>
+            <StringItem index="154" value="Sierra Leonean"/>
+            <StringItem index="155" value="Singaporean"/>
+            <StringItem index="156" value="Slovakian"/>
+            <StringItem index="157" value="Slovenian"/>
+            <StringItem index="158" value="Solomon Islander"/>
+            <StringItem index="159" value="Somali"/>
+            <StringItem index="160" value="South African"/>
+            <StringItem index="161" value="South Korean"/>
+            <StringItem index="162" value="Spanish"/>
+            <StringItem index="163" value="Sri Lankan"/>
+            <StringItem index="164" value="Sudanese"/>
+            <StringItem index="165" value="Surinamer"/>
+            <StringItem index="166" value="Swazi"/>
+            <StringItem index="167" value="Swedish"/>
+            <StringItem index="168" value="Swiss"/>
+            <StringItem index="169" value="Syrian"/>
+            <StringItem index="170" value="Taiwanese"/>
+            <StringItem index="171" value="Tajik"/>
+            <StringItem index="172" value="Tanzanian"/>
+            <StringItem index="173" value="Thai"/>
+            <StringItem index="174" value="Togolese"/>
+            <StringItem index="175" value="Tongan"/>
+            <StringItem index="176" value="Trinidadian or Tobagonian"/>
+            <StringItem index="177" value="Tunisian"/>
+            <StringItem index="178" value="Turkish"/>
+            <StringItem index="179" value="Tuvaluan"/>
+            <StringItem index="180" value="Ugandan"/>
+            <StringItem index="181" value="Ukrainian"/>
+            <StringItem index="182" value="Uruguayan"/>
+            <StringItem index="183" value="Uzbekistani"/>
+            <StringItem index="184" value="Venezuelan"/>
+            <StringItem index="185" value="Vietnamese"/>
+            <StringItem index="186" value="Welsh"/>
+            <StringItem index="187" value="Yemenite"/>
+            <StringItem index="188" value="Zambian"/>
+            <StringItem index="189" value="Zimbabwean"/>
+            <StringItem index="190" value=" "/>
+          </StringArray>
+        </Property>
       </Properties>
+    </Component>
+    <Component class="combo_suggestion.ComboBoxSuggestion" name="relationshipListdown">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Parents"/>
+            <StringItem index="1" value="Relatives"/>
+            <StringItem index="2" value="Caretaker"/>
+            <StringItem index="3" value="Siblings"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="combo_suggestion.ComboBoxSuggestion" name="titleListdown">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Mr."/>
+            <StringItem index="1" value="Mrs."/>
+            <StringItem index="2" value="Miss"/>
+            <StringItem index="3" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="check">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="show password"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

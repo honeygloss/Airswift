@@ -13,7 +13,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,14 +37,27 @@ public class CustomerInformation extends javax.swing.JPanel {
     /**
      * Creates new form CustomerInformation1
      */
-    public CustomerInformation(String name) {
+    public CustomerInformation() {
         initComponents();
-        jLabel1.setText(name);
-        AutoCompleteDecorator.decorate(nationalityField);
-        
-       
-       ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Flight window.jpeg");
-       backgroundImage = backgroundImageIcon.getImage();
+        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Flight window.jpeg");
+        backgroundImage = backgroundImageIcon.getImage();
+        Customer cust = new Customer();
+        emailAddressField.setText(cust.getEmailAddress());
+        nationalityListdown.setSelectedItem(cust.getNationality());
+        passportField.setText(cust.getPassport());
+        fNameField.setText(cust.getFName());
+        lNameField.setText(cust.getLName());
+        phoneNumberField.setText(cust.getPhoneNumber());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dobString = cust.getDOB(); // Assuming cust.getDOB() returns a string
+        Date dobDate;
+
+        try {
+             dobDate = sdf.parse(dobString);
+                    dobField.setDate(dobDate);
+        } catch (ParseException e) {
+             // Handle the parse exception appropriately
+            }
     }
     
     @Override
@@ -51,11 +66,6 @@ public class CustomerInformation extends javax.swing.JPanel {
 
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
-    
-
-    
-   
-
     
     boolean isFound = false;
     void readFile(){
@@ -84,12 +94,10 @@ public class CustomerInformation extends javax.swing.JPanel {
     private void initComponents() {
 
         pInformationText1 = new javax.swing.JLabel();
-        titleField = new javax.swing.JComboBox<>();
         passportField = new javax.swing.JTextField();
         fNameField = new javax.swing.JTextField();
         lNameField = new javax.swing.JTextField();
         nationalityLabel = new javax.swing.JLabel();
-        nationalityField = new javax.swing.JComboBox<>();
         phoneNumberField = new javax.swing.JTextField();
         dobLabel = new javax.swing.JLabel();
         dobField = new com.toedter.calendar.JDateChooser();
@@ -100,11 +108,22 @@ public class CustomerInformation extends javax.swing.JPanel {
         confirmPassField = new javax.swing.JPasswordField();
         pInformationText = new javax.swing.JLabel();
         fNameEmergencyField = new javax.swing.JTextField();
-        phoneNumberEmergencyField = new javax.swing.JTextField();
         relationshipText = new javax.swing.JLabel();
-        relationshipListdown = new javax.swing.JComboBox<>();
-        updateButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        relationshipText1 = new javax.swing.JLabel();
+        passportLabel = new javax.swing.JLabel();
+        lNameLabel = new javax.swing.JLabel();
+        phoneNumberLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        fNameLabel = new javax.swing.JLabel();
+        fNameEmergencyLabel = new javax.swing.JLabel();
+        phoneNumberEmergencyLabel = new javax.swing.JLabel();
+        phoneNumberEmergencyField = new javax.swing.JTextField();
+        updateButton = new airswift.Button();
+        nationalityListdown = new combo_suggestion.ComboBoxSuggestion();
+        relationshipListdown = new combo_suggestion.ComboBoxSuggestion();
+        titleListdown = new combo_suggestion.ComboBoxSuggestion();
+        check = new javax.swing.JCheckBox();
 
         setOpaque(false);
 
@@ -112,20 +131,48 @@ public class CustomerInformation extends javax.swing.JPanel {
         pInformationText1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pInformationText1.setText("Personal Information");
 
-        titleField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr.", "Mrs.", "Miss", "Ms." }));
-
         passportField.setText("Passport Number");
+        passportField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passportFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passportFieldFocusLost(evt);
+            }
+        });
 
         fNameField.setText("First Name");
+        fNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fNameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fNameFieldFocusLost(evt);
+            }
+        });
 
         lNameField.setText("Last Name");
+        lNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lNameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lNameFieldFocusLost(evt);
+            }
+        });
 
         nationalityLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         nationalityLabel.setText("Nationality");
 
-        nationalityField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djibouti", "Dominican", "Dutch", "East Timorese", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean" }));
-
         phoneNumberField.setText("Phone Number");
+        phoneNumberField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                phoneNumberFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phoneNumberFieldFocusLost(evt);
+            }
+        });
 
         dobLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         dobLabel.setText("Date of Birth");
@@ -133,16 +180,50 @@ public class CustomerInformation extends javax.swing.JPanel {
         dobField.setDateFormatString("dd-MM-yyyy");
 
         emailAddressField.setText("Email Address");
+        emailAddressField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailAddressFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailAddressFieldFocusLost(evt);
+            }
+        });
 
         changePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         changePassLabel.setText("Change Password");
 
         changePassField.setText("jPasswordField2");
+        changePassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                changePassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                changePassFieldFocusLost(evt);
+            }
+        });
+        changePassField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                changePassFieldMousePressed(evt);
+            }
+        });
 
         confirmaPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmaPassLabel.setText("Confirm Password");
 
         confirmPassField.setText("jPasswordField2");
+        confirmPassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                confirmPassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                confirmPassFieldFocusLost(evt);
+            }
+        });
+        confirmPassField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                confirmPassFieldMousePressed(evt);
+            }
+        });
         confirmPassField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmPassFieldActionPerformed(evt);
@@ -155,135 +236,206 @@ public class CustomerInformation extends javax.swing.JPanel {
         pInformationText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         fNameEmergencyField.setText("Full Name");
-
-        phoneNumberEmergencyField.setText("Phone Number");
+        fNameEmergencyField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fNameEmergencyFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fNameEmergencyFieldFocusLost(evt);
+            }
+        });
+        fNameEmergencyField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNameEmergencyFieldActionPerformed(evt);
+            }
+        });
 
         relationshipText.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         relationshipText.setText("Relationship");
 
-        relationshipListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parents", "Cousin", "Siblings", "Caretaker" }));
-        relationshipListdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relationshipListdownActionPerformed(evt);
+        jLabel1.setText("jLabel1");
+
+        relationshipText1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        relationshipText1.setText("Title");
+
+        passportLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        passportLabel.setText("Passport ");
+
+        lNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lNameLabel.setText("Last Name");
+
+        phoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        phoneNumberLabel.setText("Phone Number");
+
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        emailLabel.setText("Email");
+
+        fNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fNameLabel.setText("First Name");
+
+        fNameEmergencyLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fNameEmergencyLabel.setText("Full Name");
+
+        phoneNumberEmergencyLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        phoneNumberEmergencyLabel.setText("Phone Number");
+
+        phoneNumberEmergencyField.setText("Phone Number");
+        phoneNumberEmergencyField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                phoneNumberEmergencyFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phoneNumberEmergencyFieldFocusLost(evt);
             }
         });
 
-        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        updateButton.setText("update");
+        updateButton.setBackground(new java.awt.Color(0, 51, 51));
+        updateButton.setForeground(new java.awt.Color(242, 242, 242));
+        updateButton.setText("UPDATE");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("jLabel1");
+        nationalityListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghan", "Albanian", "Algerian", "Andorran", "Angolan", "Antiguan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "Bruneian", "Bulgarian", "Burkinabe", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "East Timorese (Timorese)", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean", " " }));
+
+        relationshipListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Parents", "Relatives", "Caretaker", "Siblings" }));
+
+        titleListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mr.", "Mrs.", "Miss", " " }));
+
+        check.setText("show password");
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(130, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(fNameEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(phoneNumberEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameEmergencyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                    .addComponent(relationshipText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(fNameEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(phoneNumberEmergencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(relationshipListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(pInformationText, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(relationshipText, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(relationshipListdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(262, 262, 262))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(changePassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(changePassField))
-                                                    .addComponent(fNameField)
-                                                    .addComponent(titleField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(65, 65, 65))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(dobLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(nationalityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(nationalityField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(dobField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(confirmaPassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(confirmPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(emailAddressField)
-                                            .addComponent(phoneNumberField)
-                                            .addComponent(lNameField)
-                                            .addComponent(passportField)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(106, 106, 106)
-                                        .addComponent(pInformationText, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 3, Short.MAX_VALUE)))))
-                .addGap(236, 236, 236))
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(pInformationText1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(dobLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(relationshipText1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nationalityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(changePassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(changePassField)
+                                        .addComponent(dobField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                        .addComponent(fNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nationalityListdown, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                    .addComponent(titleListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(phoneNumberLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(passportLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(confirmaPassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(phoneNumberEmergencyField)
+                            .addComponent(confirmPassField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(passportField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(lNameField)
+                            .addComponent(phoneNumberField)
+                            .addComponent(emailAddressField)
+                            .addComponent(updateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(check, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(202, 202, 202))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pInformationText1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(311, 311, 311))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(36, 36, 36)
                 .addComponent(pInformationText1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passportField))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passportField)
+                    .addComponent(relationshipText1)
+                    .addComponent(passportLabel)
+                    .addComponent(titleListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNameLabel)
+                    .addComponent(fNameLabel)
                     .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nationalityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nationalityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneNumberLabel)
+                    .addComponent(nationalityListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dobLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailAddressField)
-                    .addComponent(dobField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(emailAddressField)
+                        .addComponent(emailLabel))
+                    .addComponent(dobField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dobLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changePassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(changePassField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmaPassLabel)
                     .addComponent(confirmPassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(pInformationText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(check)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pInformationText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneNumberEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneNumberEmergencyLabel)
                     .addComponent(fNameEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneNumberEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fNameEmergencyLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(relationshipText)
-                    .addComponent(relationshipListdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(updateButton)
-                .addGap(25, 25, 25))
+                    .addComponent(relationshipListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -291,18 +443,114 @@ public class CustomerInformation extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmPassFieldActionPerformed
 
-    private void relationshipListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relationshipListdownActionPerformed
+    private void fNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusGained
+        if (fNameField.getText().equals("First Name")) {
+            fNameField.setText("");
+        }
+    }//GEN-LAST:event_fNameFieldFocusGained
+
+    private void fNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusLost
+        if (fNameField.getText().isEmpty()) {
+            fNameField.setText("First Name");
+        }
+    }//GEN-LAST:event_fNameFieldFocusLost
+
+    private void passportFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusGained
+        if (passportField.getText().equals("Passport Number")) {
+            passportField.setText("");
+        }
+    }//GEN-LAST:event_passportFieldFocusGained
+
+    private void passportFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusLost
+         if (passportField.getText().isEmpty()) {
+            passportField.setText("Passport Number");
+        }
+    }//GEN-LAST:event_passportFieldFocusLost
+
+    private void lNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusGained
+        if (lNameField.getText().equals("Last Name")) {
+            lNameField.setText("");
+        }
+    }//GEN-LAST:event_lNameFieldFocusGained
+
+    private void lNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusLost
+        if (lNameField.getText().isEmpty()) {
+            lNameField.setText("Last Name");
+        }
+    }//GEN-LAST:event_lNameFieldFocusLost
+
+    private void phoneNumberFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusGained
+        if (phoneNumberField.getText().equals("Phone Number")) {
+            phoneNumberField.setText("");
+        }
+    }//GEN-LAST:event_phoneNumberFieldFocusGained
+
+    private void emailAddressFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailAddressFieldFocusGained
+        if (emailAddressField.getText().equals("Email Address")) {
+            emailAddressField.setText("");
+        }
+    }//GEN-LAST:event_emailAddressFieldFocusGained
+
+    private void phoneNumberFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusLost
+        if (phoneNumberField.getText().isEmpty()) {
+            phoneNumberField.setText("Phone Number");
+        }
+    }//GEN-LAST:event_phoneNumberFieldFocusLost
+
+    private void emailAddressFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailAddressFieldFocusLost
+        if (emailAddressField.getText().isEmpty()) {
+            emailAddressField.setText("Email Address");
+        }
+    }//GEN-LAST:event_emailAddressFieldFocusLost
+
+    private void fNameEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusGained
+        if (fNameEmergencyField.getText().equals("Full Name")) {
+            fNameEmergencyField.setText("");
+        }
+    }//GEN-LAST:event_fNameEmergencyFieldFocusGained
+
+    private void phoneNumberEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusGained
+        if (phoneNumberEmergencyField.getText().equals("Phone Number")) {
+            phoneNumberEmergencyField.setText("");
+        }
+    }//GEN-LAST:event_phoneNumberEmergencyFieldFocusGained
+
+    private void fNameEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusLost
+         if (fNameEmergencyField.getText().isEmpty()) {
+            fNameEmergencyField.setText("Full Name");
+        }
+    }//GEN-LAST:event_fNameEmergencyFieldFocusLost
+
+    private void phoneNumberEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusLost
+        if (phoneNumberEmergencyField.getText().isEmpty()) {
+            phoneNumberEmergencyField.setText("Phone Number");
+        }
+    }//GEN-LAST:event_phoneNumberEmergencyFieldFocusLost
+
+    private void fNameEmergencyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_relationshipListdownActionPerformed
+    }//GEN-LAST:event_fNameEmergencyFieldActionPerformed
+
+    private void changePassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_changePassFieldFocusGained
+        if (changePassField.getText().equals("jPasswordField2")) {
+            changePassField.setText("");
+        }
+    }//GEN-LAST:event_changePassFieldFocusGained
+
+    private void changePassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_changePassFieldFocusLost
+        if (changePassField.getText().isEmpty()) {
+            changePassField.setText("jPasswordField2");
+        }
+    }//GEN-LAST:event_changePassFieldFocusLost
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-         int currentIndex=0;
+        int currentIndex=0;
         String search_email = emailAddressField.getText();
-        String title = titleField.getSelectedItem().toString();
+        String title = nationalityListdown.getSelectedItem().toString();
         String passport = passportField.getText();
         String fName = fNameField.getText();
         String lName = lNameField.getText();
-        String nationality = nationalityField.getSelectedItem().toString();
+        String nationality = nationalityListdown.getSelectedItem().toString();
         String phoneNum = phoneNumberField.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dob = sdf.format(dobField.getDate());
@@ -434,32 +682,69 @@ public class CustomerInformation extends javax.swing.JPanel {
             System.out.print("\n");
         }
         
-        
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void confirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusGained
+        if (confirmPassField.getText().equals("jPasswordField2")) {
+            confirmPassField.setText("");
+        }
+    }//GEN-LAST:event_confirmPassFieldFocusGained
+
+    private void confirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusLost
+        if (confirmPassField.getText().isEmpty()) {
+            confirmPassField.setText("jPasswordField2");
+        }
+    }//GEN-LAST:event_confirmPassFieldFocusLost
+
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+        if(check.isSelected()){
+            changePassField.setEchoChar((char) 0);
+            confirmPassField.setEchoChar((char) 0);
+        }else
+            changePassField.setEchoChar('*');
+            confirmPassField.setEchoChar('*');
+    }//GEN-LAST:event_checkActionPerformed
+
+    private void changePassFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePassFieldMousePressed
+        changePassField.setEchoChar((char)0);
+    }//GEN-LAST:event_changePassFieldMousePressed
+
+    private void confirmPassFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmPassFieldMousePressed
+        confirmPassField.setEchoChar((char)0);
+    }//GEN-LAST:event_confirmPassFieldMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField changePassField;
     private javax.swing.JLabel changePassLabel;
+    private javax.swing.JCheckBox check;
     private javax.swing.JPasswordField confirmPassField;
     private javax.swing.JLabel confirmaPassLabel;
     private com.toedter.calendar.JDateChooser dobField;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField emailAddressField;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField fNameEmergencyField;
+    private javax.swing.JLabel fNameEmergencyLabel;
     private javax.swing.JTextField fNameField;
+    private javax.swing.JLabel fNameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField lNameField;
-    private javax.swing.JComboBox<String> nationalityField;
+    private javax.swing.JLabel lNameLabel;
     private javax.swing.JLabel nationalityLabel;
+    private combo_suggestion.ComboBoxSuggestion nationalityListdown;
     private javax.swing.JLabel pInformationText;
     private javax.swing.JLabel pInformationText1;
     private javax.swing.JTextField passportField;
+    private javax.swing.JLabel passportLabel;
     private javax.swing.JTextField phoneNumberEmergencyField;
+    private javax.swing.JLabel phoneNumberEmergencyLabel;
     private javax.swing.JTextField phoneNumberField;
-    private javax.swing.JComboBox<String> relationshipListdown;
+    private javax.swing.JLabel phoneNumberLabel;
+    private combo_suggestion.ComboBoxSuggestion relationshipListdown;
     private javax.swing.JLabel relationshipText;
-    private javax.swing.JComboBox<String> titleField;
-    private javax.swing.JButton updateButton;
+    private javax.swing.JLabel relationshipText1;
+    private combo_suggestion.ComboBoxSuggestion titleListdown;
+    private airswift.Button updateButton;
     // End of variables declaration//GEN-END:variables
 }

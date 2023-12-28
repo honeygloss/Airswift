@@ -8,7 +8,7 @@ import java.awt.Color;
 import airswift.Customer;
 
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
@@ -115,6 +115,15 @@ public class Login extends javax.swing.JFrame {
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt){
         String user=txtEmailAddress.getText();
         String pass=String.valueOf(txtPassword.getPassword());
+        
+        
+        Customer custInfo = new Customer();
+        custInfo.setEmailAddress(user);
+        
+        
+        
+        
+        
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -153,7 +162,7 @@ public class Login extends javax.swing.JFrame {
     private airswift.Button cmdLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
-    private airswift.TextField txtEmailAddress;
-    private airswift.PasswordField txtPassword;
+    public airswift.TextField txtEmailAddress;
+    public airswift.PasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
