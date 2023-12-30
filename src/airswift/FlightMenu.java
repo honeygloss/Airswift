@@ -15,8 +15,6 @@ import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-
 
 /**
  *
@@ -29,10 +27,6 @@ public class FlightMenu extends javax.swing.JFrame {
      */
     public FlightMenu() {
         initComponents();
-         AutoCompleteDecorator.decorate(fromListdown);
-        AutoCompleteDecorator.decorate(toListdown);
-        AutoCompleteDecorator.decorate(passengersListdown);
-        AutoCompleteDecorator.decorate(cabinClassListdown);
         setResizable(false);
         Date min = new Date();
         
@@ -118,16 +112,16 @@ public class FlightMenu extends javax.swing.JFrame {
         departDate = new com.toedter.calendar.JDateChooser();
         departDateLabel = new javax.swing.JLabel();
         returnDate = new com.toedter.calendar.JDateChooser();
-        toListdown = new javax.swing.JComboBox<>();
-        fromListdown = new javax.swing.JComboBox<>();
-        passengersListdown = new javax.swing.JComboBox<>();
         fromLabel2 = new javax.swing.JLabel();
         fromLabel = new javax.swing.JLabel();
-        cabinClassListdown = new javax.swing.JComboBox<>();
         returnDateLabel = new javax.swing.JLabel();
         toLabel = new javax.swing.JLabel();
         fromLabel1 = new javax.swing.JLabel();
         findaFlightButton = new swing.ButtonGradient();
+        toListdown = new combo_suggestion.ComboBoxSuggestion();
+        fromListdown = new combo_suggestion.ComboBoxSuggestion();
+        classCabinListdown = new combo_suggestion.ComboBoxSuggestion();
+        passengersListdown2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -144,37 +138,15 @@ public class FlightMenu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
 
+        departDate.setBackground(new java.awt.Color(255, 255, 255));
         departDate.setDateFormatString("dd-MM-yyyy");
 
         departDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         departDateLabel.setForeground(new java.awt.Color(51, 51, 51));
         departDateLabel.setText("Depart Date");
 
+        returnDate.setBackground(new java.awt.Color(255, 255, 255));
         returnDate.setDateFormatString("dd-MM-yyyy");
-
-        toListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
-        toListdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toListdownActionPerformed(evt);
-            }
-        });
-
-        fromListdown.setForeground(new java.awt.Color(220, 235, 235));
-        fromListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
-        fromListdown.setName("FROM"); // NOI18N
-        fromListdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromListdownActionPerformed(evt);
-            }
-        });
-
-        passengersListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        passengersListdown.setName("FROM"); // NOI18N
-        passengersListdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passengersListdownActionPerformed(evt);
-            }
-        });
 
         fromLabel2.setBackground(new java.awt.Color(51, 51, 51));
         fromLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -184,14 +156,6 @@ public class FlightMenu extends javax.swing.JFrame {
         fromLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         fromLabel.setForeground(new java.awt.Color(51, 51, 51));
         fromLabel.setText("Class Cabin");
-
-        cabinClassListdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economy", "Business" }));
-        cabinClassListdown.setName("FROM"); // NOI18N
-        cabinClassListdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cabinClassListdownActionPerformed(evt);
-            }
-        });
 
         returnDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         returnDateLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -208,12 +172,36 @@ public class FlightMenu extends javax.swing.JFrame {
 
         findaFlightButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\search.png")); // NOI18N
         findaFlightButton.setText("Find a Flight");
-        findaFlightButton.setColor1(new java.awt.Color(0, 0, 51));
-        findaFlightButton.setColor2(new java.awt.Color(51, 51, 51));
+        findaFlightButton.setColor1(new java.awt.Color(0, 51, 255));
+        findaFlightButton.setColor2(new java.awt.Color(0, 51, 153));
         findaFlightButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         findaFlightButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findaFlightButtonActionPerformed(evt);
+            }
+        });
+
+        toListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
+        toListdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toListdownActionPerformed(evt);
+            }
+        });
+
+        fromListdown.setForeground(new java.awt.Color(255, 255, 255));
+        fromListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kuala Lumpur (KUL)", "Subang (SZB)", "Kota Bharu (KBR)", "Kuala Terengganu (TGG)", "Johor Bahru (JHB)", "Alor Setar (AOR)", "Kerteh (KTE)", "Penang (PEN)", "Kuantan (KUA)", "Langkawi (LGK)", "Miri (MYY)", "Mulu (MZV)", "Sibu (SBW)", "Tawau (TWU)", "Labuan (LBU)", "Bintulu (BTU)", "Kuching (KCH)", "Limbang (LMN)", "Sandakan (SDK)", "Lahad Datu (LDU)", "Kota Kinabalu (BKI)", "Bario (BBN)", "Kudat (KUD)", "Lawa (LWY)", "Mukah (MKM)", "Marudi (MUR)", "Bakalalan (BKM)", "Long Akah (LKH)", "Long Banga (LBH)", "Long Lellang (LGL)", "Long Seridan (ODN)", "Tanjung Manis (TGC)" }));
+        fromListdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromListdownActionPerformed(evt);
+            }
+        });
+
+        classCabinListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Economy", "Business" }));
+
+        passengersListdown2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        passengersListdown2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passengersListdown2ActionPerformed(evt);
             }
         });
 
@@ -225,28 +213,27 @@ public class FlightMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fromLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passengersListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                    .addComponent(fromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fromListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passengersListdown2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cabinClassListdown, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(toListdown, javax.swing.GroupLayout.Alignment.LEADING, 0, 180, Short.MAX_VALUE))
-                            .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
+                            .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(departDate, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(departDateLabel))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(returnDateLabel)
-                            .addComponent(returnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(findaFlightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28))
+                            .addComponent(departDateLabel)
+                            .addComponent(departDate, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(classCabinListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(returnDateLabel)
+                    .addComponent(findaFlightButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(returnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,22 +243,23 @@ public class FlightMenu extends javax.swing.JFrame {
                     .addComponent(returnDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(departDate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(returnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fromListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(toListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(toListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fromListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(departDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(returnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fromLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passengersListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cabinClassListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(findaFlightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(findaFlightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(classCabinListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passengersListdown2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 880, 170));
@@ -344,13 +332,18 @@ public class FlightMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void toListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toListdownActionPerformed
+    private void findaFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findaFlightButtonActionPerformed
+        FlightBooking flightBookingPanel = new FlightBooking(menu);
 
-    }//GEN-LAST:event_toListdownActionPerformed
+        showForm(flightBookingPanel);
+    }//GEN-LAST:event_findaFlightButtonActionPerformed
+
+    private void passengersListdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengersListdown2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passengersListdown2ActionPerformed
 
     private void fromListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromListdownActionPerformed
-
-        try{
+          try{
             FileReader fr = new FileReader("Flight.txt");
             Scanner sc = new Scanner(fr);
             String line;
@@ -369,19 +362,9 @@ public class FlightMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fromListdownActionPerformed
 
-    private void passengersListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengersListdownActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passengersListdownActionPerformed
-
-    private void cabinClassListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cabinClassListdownActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cabinClassListdownActionPerformed
-
-    private void findaFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findaFlightButtonActionPerformed
-        FlightBooking flightBookingPanel = new FlightBooking(menu);
-
-        showForm(flightBookingPanel);
-    }//GEN-LAST:event_findaFlightButtonActionPerformed
+    private void toListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toListdownActionPerformed
+       
+    }//GEN-LAST:event_toListdownActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,14 +403,14 @@ public class FlightMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cabinClassListdown;
+    private combo_suggestion.ComboBoxSuggestion classCabinListdown;
     private com.toedter.calendar.JDateChooser departDate;
     private javax.swing.JLabel departDateLabel;
     private swing.ButtonGradient findaFlightButton;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromLabel1;
     private javax.swing.JLabel fromLabel2;
-    private javax.swing.JComboBox<String> fromListdown;
+    private combo_suggestion.ComboBoxSuggestion fromListdown;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane2;
@@ -436,10 +419,10 @@ public class FlightMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane myBookingTab;
-    private javax.swing.JComboBox<String> passengersListdown;
+    private combo_suggestion.ComboBoxSuggestion passengersListdown2;
     private com.toedter.calendar.JDateChooser returnDate;
     private javax.swing.JLabel returnDateLabel;
     private javax.swing.JLabel toLabel;
-    private javax.swing.JComboBox<String> toListdown;
+    private combo_suggestion.ComboBoxSuggestion toListdown;
     // End of variables declaration//GEN-END:variables
 }
