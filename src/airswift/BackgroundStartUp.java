@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package airswift;
+import javax.swing.JComponent;
 import com.twelvemonkeys.image.ImageUtil;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.JComponent;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,7 +44,7 @@ public class BackgroundStartUp extends JComponent {
     }
     
     public BackgroundStartUp(){
-        image = new ImageIcon(getClass().getResource("/main/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"));
+        image = new ImageIcon(getClass().getResource("/airswift/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"));
     }
     
     private void createImage() {
@@ -59,7 +60,7 @@ public class BackgroundStartUp extends JComponent {
                 if (blur != null) {
                     createBlurImage(g2);
                 }
-              //createBlurImage(g2);
+                //createBlurImage(g2);
                 g2.dispose();
             }
         }
@@ -67,7 +68,7 @@ public class BackgroundStartUp extends JComponent {
     
     private void createBlurImage(Graphics2D g) {
         int x =blur.getX();
-        int y = blur.getY();
+        int y =blur.getY();
         int width =blur.getWidth();
         int height =blur.getHeight();
         int shadow = 8;

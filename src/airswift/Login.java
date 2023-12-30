@@ -131,6 +131,8 @@ public class Login extends javax.swing.JFrame {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         // TODO add your handling code here:
+        String user = txtEmailAddress.getText();
+        String pass = String.valueOf(txtPassword.getPassword());
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     /**

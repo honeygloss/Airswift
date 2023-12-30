@@ -31,7 +31,7 @@ import airswift.ShadowRenderer;
  */
 public class BackgroundR extends JComponent {
 
-    public Component getBlur() {
+   public Component getBlur() {
         return blur;
     }
 
@@ -51,7 +51,7 @@ public class BackgroundR extends JComponent {
     private Component blur;
 
     public BackgroundR() {
-        image = new ImageIcon(getClass().getResource("/main/logo airswift.png"));
+        image = new ImageIcon(getClass().getResource("/airswift/logo airswift.png"));
     }
 
     private void createImage() {
