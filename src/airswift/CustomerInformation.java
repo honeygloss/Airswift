@@ -4,8 +4,6 @@
  */
 package airswift;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.FileNotFoundException;
@@ -25,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -41,8 +38,9 @@ public class CustomerInformation extends javax.swing.JPanel {
         initComponents();
         ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Flight window.jpeg");
         backgroundImage = backgroundImageIcon.getImage();
-        Customer cust = new Customer();
+       /*Customer cust = new Customer();
         emailAddressField.setText(cust.getEmailAddress());
+        emailAddressField.setEditable(false);
         nationalityListdown.setSelectedItem(cust.getNationality());
         passportField.setText(cust.getPassport());
         fNameField.setText(cust.getFName());
@@ -57,7 +55,7 @@ public class CustomerInformation extends javax.swing.JPanel {
                     dobField.setDate(dobDate);
         } catch (ParseException e) {
              // Handle the parse exception appropriately
-            }
+            }*/
     }
     
     @Override
@@ -186,6 +184,16 @@ public class CustomerInformation extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 emailAddressFieldFocusLost(evt);
+            }
+        });
+        emailAddressField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                emailAddressFieldMouseClicked(evt);
+            }
+        });
+        emailAddressField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailAddressFieldActionPerformed(evt);
             }
         });
 
@@ -391,11 +399,12 @@ public class CustomerInformation extends javax.swing.JPanel {
                     .addComponent(passportLabel)
                     .addComponent(titleListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lNameLabel)
-                    .addComponent(fNameLabel)
-                    .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lNameLabel)
+                        .addComponent(fNameLabel)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nationalityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -429,13 +438,16 @@ public class CustomerInformation extends javax.swing.JPanel {
                     .addComponent(phoneNumberEmergencyLabel)
                     .addComponent(fNameEmergencyField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fNameEmergencyLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(relationshipText)
-                    .addComponent(relationshipListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(relationshipText)
+                            .addComponent(relationshipListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(84, 84, 84))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -561,14 +573,11 @@ public class CustomerInformation extends javax.swing.JPanel {
         String relationship = relationshipListdown.getSelectedItem().toString();
         String[] tempArray = new String[100];
         
-        if(search_email.isEmpty()){
-           JOptionPane.showMessageDialog(this, "fill email address"); 
-           return;
-        }
-        if(!emailAddressField.getText().contains("@")){
-            JOptionPane.showMessageDialog(this, "email address is not valid"); 
+        if(title.isEmpty() || passport.isEmpty() || fName.isEmpty() || lName.isEmpty() ||  nationality.isEmpty() || phoneNum.isEmpty() || dob == null || fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
+        
         if(changePassField.getText().length()<8){
             JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
             return;
@@ -700,9 +709,10 @@ public class CustomerInformation extends javax.swing.JPanel {
         if(check.isSelected()){
             changePassField.setEchoChar((char) 0);
             confirmPassField.setEchoChar((char) 0);
-        }else
+        }else{
             changePassField.setEchoChar('*');
             confirmPassField.setEchoChar('*');
+        }
     }//GEN-LAST:event_checkActionPerformed
 
     private void changePassFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePassFieldMousePressed
@@ -712,6 +722,15 @@ public class CustomerInformation extends javax.swing.JPanel {
     private void confirmPassFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmPassFieldMousePressed
         confirmPassField.setEchoChar((char)0);
     }//GEN-LAST:event_confirmPassFieldMousePressed
+
+    private void emailAddressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailAddressFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailAddressFieldActionPerformed
+
+    private void emailAddressFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailAddressFieldMouseClicked
+       // JOptionPane.showMessageDialog(this, "Email is not editable"); 
+       // return;
+    }//GEN-LAST:event_emailAddressFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
