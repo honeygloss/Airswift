@@ -4,17 +4,17 @@
  */
 package airswift;
 
-import java.awt.Color;
-import airswift.Customer;
-
+/**
+ *
+ * @author user
+ */
 public class Login extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        //setBackground(new Color(0,0,0,));
     }
 
     /**
@@ -29,9 +29,9 @@ public class Login extends javax.swing.JFrame {
         background = new airswift.Background();
         panel = new javax.swing.JPanel();
         txtEmailAddress = new airswift.TextField();
+        jLabel1 = new javax.swing.JLabel();
         txtPassword = new airswift.PasswordField();
         cmdLogin = new airswift.Button();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -40,8 +40,11 @@ public class Login extends javax.swing.JFrame {
 
         panel.setOpaque(false);
 
-        txtEmailAddress.setForeground(new java.awt.Color(242, 242, 242));
         txtEmailAddress.setHint("Email Address");
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("LOGIN");
 
         txtPassword.setHint("Password");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -50,12 +53,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        cmdLogin.setForeground(new java.awt.Color(242, 242, 242));
         cmdLogin.setText("LOGIN");
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("LOGIN");
+        cmdLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -64,44 +67,58 @@ public class Login extends javax.swing.JFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addGap(103, 103, 103)
+                        .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        background.add(panel);
-        panel.setBounds(200, 70, 310, 220);
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(207, Short.MAX_VALUE))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,19 +129,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt){
-        String user=txtEmailAddress.getText();
-        String pass=String.valueOf(txtPassword.getPassword());
-        
-        
-        Customer custInfo = new Customer();
-        custInfo.setEmailAddress(user);
-        
-        
-        
-        
-        
-    }
+    private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdLoginActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -162,7 +173,7 @@ public class Login extends javax.swing.JFrame {
     private airswift.Button cmdLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
-    public airswift.TextField txtEmailAddress;
-    public airswift.PasswordField txtPassword;
+    private airswift.TextField txtEmailAddress;
+    private airswift.PasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

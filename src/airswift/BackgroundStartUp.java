@@ -3,30 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package airswift;
-
-import javax.swing.JComponent;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.RenderingHints;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Component;
 import com.twelvemonkeys.image.ImageUtil;
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JComponent;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.Shape;
+import javax.swing.Icon;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import java.awt.geom.RoundRectangle2D;
-import airswift.FancyBorderRadius;
-import airswift.ShadowRenderer;
 
 
-public class Background extends JComponent {
-
+public class BackgroundStartUp extends JComponent {
+    
+    private Icon image;
+    private BufferedImage bufferedImage;
+    private Component blur;
+    
     public Component getBlur() {
         return blur;
     }
@@ -41,15 +41,11 @@ public class Background extends JComponent {
             }
         });
     }
-
-    private Icon image;
-    private BufferedImage bufferedImage;
-    private Component blur;
-
-    public Background() {
-        image = new ImageIcon(getClass().getResource("/airswift/logo airswift.png"));
+    
+    public BackgroundStartUp(){
+        image = new ImageIcon(getClass().getResource("/main/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"));
     }
-
+    
     private void createImage() {
         if (image != null) {
             int width = getWidth();
@@ -68,7 +64,7 @@ public class Background extends JComponent {
             }
         }
     }
-
+    
     private void createBlurImage(Graphics2D g) {
         int x =blur.getX();
         int y = blur.getY();
@@ -78,37 +74,28 @@ public class Background extends JComponent {
         if (width > 0 && height > 0) {
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = img.createGraphics();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            /*g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             Shape shape = new FancyBorderRadius(width, height, "32% 68% 65% 35% / 60% 78% 22% 40%").getShape();
             g2.fill(shape);
             g2.setComposite(AlphaComposite.SrcIn);
             g2.drawImage(ImageUtil.blur(bufferedImage.getSubimage(x, y, width, height), 30f), 0, 0, null);
             g2.setComposite(AlphaComposite.SrcOver);
             g2.setColor(new Color(255, 255, 255, 20));
-            g2.fill(shape);
-            //g2.drawImage(ImageUtil.blur(bufferedImage.getSubimage(x, y, width, height), 30f), 0, 0, null);
+            g2.fill(shape);*/
+            g2.drawImage(ImageUtil.blur(bufferedImage.getSubimage(x, y, width, height), 50f), 0, 0, null);
             g2.dispose();
             g.drawImage(new ShadowRenderer(shadow, 0.3f, new Color(0, 0, 0)).createShadow(img), (int) (x - shadow * 0.8f), (int) (y - shadow * 0.8f), null);
             g.drawImage(img, x, y, null);
         }
     }
-
+    
     @Override
-    protected void paintComponent(Graphics grphcs) {
-        if (bufferedImage != null) {
-            BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2 = img.createGraphics();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
-            g2.setComposite(AlphaComposite.SrcIn);
-            g2.drawImage(bufferedImage, 0, 0, null);
-            g2.dispose();
-            grphcs.drawImage(img, 0, 0, null);
-        }
-        //grphcs.drawImage(bufferedImage,0,0,null);
+    protected void paintComponent (Graphics grphcs){
+        grphcs.drawImage(bufferedImage,0,0,null);
         super.paintComponent(grphcs);
+        
     }
-
+    
     @Override
     public void setBounds(int i, int i1, int i2, int i3) {
         super.setBounds(i, i1, i2, i3);
@@ -121,7 +108,7 @@ public class Background extends JComponent {
         });
         //createImage();
     }
-
+    
     private Rectangle getAutoSize(Icon image) {
         int w = getWidth();
         int h = getHeight();

@@ -25,7 +25,11 @@ import airswift.FancyBorderRadius;
 import airswift.ShadowRenderer;
 
 
-public class Background extends JComponent {
+/**
+ *
+ * @author RAVEN
+ */
+public class BackgroundR extends JComponent {
 
     public Component getBlur() {
         return blur;
@@ -46,8 +50,8 @@ public class Background extends JComponent {
     private BufferedImage bufferedImage;
     private Component blur;
 
-    public Background() {
-        image = new ImageIcon(getClass().getResource("/airswift/logo airswift.png"));
+    public BackgroundR() {
+        image = new ImageIcon(getClass().getResource("/main/logo airswift.png"));
     }
 
     private void createImage() {
