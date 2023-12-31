@@ -8,12 +8,19 @@ package airswift;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.FileReader;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -22,6 +29,9 @@ import net.miginfocom.swing.MigLayout;
  */
 public class FlightMenu extends javax.swing.JFrame {
     private GradientDropdownMenu menu;
+    private JButton[] bookingButtons; // Array to store dynamically created buttons
+    private int numberOfBookings;
+    private boolean buttonsCreated = false;
     /**
      * Creates new form FlightMenu1
      */
@@ -73,23 +83,93 @@ public class FlightMenu extends javax.swing.JFrame {
            }}
         });
         
-       
-}
-    
-    
-        private void showForm(Component com) {
-        
-           
-           jPanel1.removeAll();
-           jPanel1.setLayout(new BorderLayout());
-           jPanel1.add(com);
-           jPanel1.repaint();
-           jPanel1.revalidate();
-           if (com instanceof FlightBooking) {
-            ((FlightBooking) com).setGradientDropdownMenu(menu);
-           }
+
+        /*myBookingTab.addChangeListener(e -> {
+        SwingUtilities.invokeLater(() -> {
+        if (myBookingTab.getSelectedIndex() == 1 ) {
+            System.out.println("Selected index changed to 1");
+            createBookingButtons();
         }
+        });
+        });*/
+    }
+        
+    
+    private void showForm(Component com) {
+        jPanel1.removeAll();
+        jPanel1.setLayout(new BorderLayout());
+        jPanel1.add(com);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+        if (com instanceof FlightBooking) {
+            ((FlightBooking) com).setGradientDropdownMenu(menu);
+        }
+    }
+    private void createBookingButtons() {
+        SwingUtilities.invokeLater(() -> {
+        jPanel3.removeAll();
+        // Replace the following line with code to fetch the number of bookings from your data source
        
+        int numberOfBookings = getNumberOfBookings();
+
+        // Create a new ArrayList to store the dynamically created buttons
+        bookingButtons = new JButton[numberOfBookings];
+        jPanel3.setLayout(new FlowLayout((FlowLayout.CENTER)));
+
+        // Create buttons based on the number of bookings
+        for (int i = 1; i <= numberOfBookings; i++) {
+            JButton bookingButton = new JButton("Booking " + i);
+            bookingButtons[i - 1] = bookingButton;
+
+            int finalI = i; 
+            bookingButton.addActionListener(e -> handleBookingButtonClick(finalI)); 
+            bookingButton.setVisible(true);
+            bookingButton.setFont(new java.awt.Font("Segoe UI", 1, 12));
+            bookingButton.setBackground(new Color(0,51,153));
+            bookingButton.setForeground(new Color(255,255,255));
+            bookingButton.setPreferredSize(new Dimension(120, 40));
+            
+            jPanel3.setLayout(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = i - 1; // Adjust as needed
+            gbc.anchor = GridBagConstraints.CENTER;
+
+            jPanel3.add(bookingButton,gbc);
+        }
+
+        // Repaint and revalidate the panel to reflect the changes
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        });
+        
+    }
+    
+    private int getNumberOfBookings() {
+        Customer cust = new Customer();
+        int count=0;
+        try (FileReader fr = new FileReader("Transaction.txt");
+        Scanner sc = new Scanner(fr)) {
+        String line;
+        String[] lineArr;
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                lineArr = line.split("\n");
+                if (lineArr[0].equals("aisyahmsupian@gmail.com")) {
+                    count++;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Print exception details
+        }
+        return count; // Placeholder value; replace it with actual logic
+    }
+    
+    private void handleBookingButtonClick(int bookingNumber) {
+        // Handle the button click event for the specific booking (bookingNumber)
+        JOptionPane.showMessageDialog(this, "Button " + bookingNumber + " clicked!");
+    }
+        
 
         // Add the custom panel as the first component of myBookingTab
         
@@ -132,6 +212,11 @@ public class FlightMenu extends javax.swing.JFrame {
         myBookingTab.setBackground(new java.awt.Color(153, 153, 255));
         myBookingTab.setForeground(new java.awt.Color(0, 51, 51));
         myBookingTab.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        myBookingTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myBookingTabMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -312,6 +397,8 @@ public class FlightMenu extends javax.swing.JFrame {
                     .addContainerGap(239, Short.MAX_VALUE)))
         );
 
+        myBookingTab.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -365,6 +452,12 @@ public class FlightMenu extends javax.swing.JFrame {
     private void toListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toListdownActionPerformed
        
     }//GEN-LAST:event_toListdownActionPerformed
+
+    private void myBookingTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myBookingTabMouseClicked
+        if (myBookingTab.getSelectedIndex() == 1) {
+            createBookingButtons();
+        }
+    }//GEN-LAST:event_myBookingTabMouseClicked
 
     /**
      * @param args the command line arguments
