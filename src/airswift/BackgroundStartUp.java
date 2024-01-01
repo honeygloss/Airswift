@@ -44,7 +44,7 @@ public class BackgroundStartUp extends JComponent {
     }
     
     public BackgroundStartUp(){
-        image = new ImageIcon(getClass().getResource("/airswift/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"));
+        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png");
     }
     
     private void createImage() {

@@ -79,7 +79,11 @@ public class FlightMenu extends javax.swing.JFrame {
                  }
                  if(index == 0){
                     initComponents();  
-               } 
+               }if( index == 2) {
+                   new StartUp().setVisible(true);
+                   dispose();
+                   
+               }
            }}
         });
         
