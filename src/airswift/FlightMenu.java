@@ -13,7 +13,10 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javaswingdev.GradientDropdownMenu;
@@ -424,9 +427,54 @@ public class FlightMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findaFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findaFlightButtonActionPerformed
+        Booking book = new Booking();
+        int startIndex = fromListdown.getSelectedItem().toString().indexOf("(");
+        int lastIndex = fromListdown.getSelectedItem().toString().indexOf(")");
+        book.setDepartShort(fromListdown.getSelectedItem().toString().substring((startIndex+1),lastIndex));
+        startIndex = toListdown.getSelectedItem().toString().indexOf("(");
+        lastIndex = toListdown.getSelectedItem().toString().indexOf(")");
+        book.setReturnShort(toListdown.getSelectedItem().toString().substring((startIndex+1),lastIndex));
+        startIndex = 0;
+        lastIndex = fromListdown.getSelectedItem().toString().indexOf("(");
+        book.setDepartLong(fromListdown.getSelectedItem().toString().substring(startIndex,lastIndex));
+        lastIndex = toListdown.getSelectedItem().toString().indexOf("(");
+        book.setReturnLong(toListdown.getSelectedItem().toString().substring(startIndex,lastIndex));
+        book.setPassenger(Integer.parseInt(passengersListdown2.getSelectedItem().toString()));  
+        book.setDepartDate(departDate.getDate());
+        book.setReturnDate(returnDate.getDate());
+        book.setCabin(classCabinListdown.getSelectedItem().toString());
+        
         FlightBooking flightBookingPanel = new FlightBooking(menu);
-
+        flightBookingPanel.departShort.setText(book.getDepartShort());
+        flightBookingPanel.departLong.setText(book.getDepartLong().toUpperCase());
+        flightBookingPanel.returnShort.setText(book.getReturnShort());
+        flightBookingPanel.returnLong.setText(book.getReturnLong().toUpperCase());
+       
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
+        flightBookingPanel.departDate.setText(dateFormat1.format(book.getDepartDate()));
+        flightBookingPanel.returnDate.setText(dateFormat1.format(book.getReturnDate()));
+        String passString = ""+book.getPassenger();
+        flightBookingPanel.passenger.setText(passString);
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
+        flightBookingPanel.departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
+        SimpleDateFormat dateFormat3 = new SimpleDateFormat("dd MMM\n\tEEE");
+        flightBookingPanel.departButton.setText(dateFormat3.format(book.getDepartDate()));
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(book.getDepartDate());
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        flightBookingPanel.departButtonMin1.setText(dateFormat3.format(calendar.getTime()));
+        calendar.setTime(book.getDepartDate());
+        calendar.add(Calendar.DAY_OF_MONTH, -2);
+        flightBookingPanel.departButtonMin2.setText(dateFormat3.format(calendar.getTime()));
+        calendar.setTime(book.getDepartDate());
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        flightBookingPanel.departButtonAdd1.setText(dateFormat3.format(calendar.getTime()));
+        calendar.setTime(book.getDepartDate());
+        calendar.add(Calendar.DAY_OF_MONTH, 2);
+        flightBookingPanel.departButtonAdd2.setText(dateFormat3.format(calendar.getTime()));
         showForm(flightBookingPanel);
+      
     }//GEN-LAST:event_findaFlightButtonActionPerformed
 
     private void passengersListdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengersListdown2ActionPerformed

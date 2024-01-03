@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -307,9 +307,6 @@
                         </Component>
                         <Component class="swing.ButtonGradient" name="findaFlightButton">
                           <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="2" name="C:\Users\ASUS\OneDrive\Documents\NetBeansProjects\AirSwift\search.png"/>
-                            </Property>
                             <Property name="text" type="java.lang.String" value="Find a Flight"/>
                             <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -472,7 +469,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\ASUS\OneDrive\Documents\NetBeansProjects\AirSwift\src\airswift\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"/>
+                  <Image iconType="2" name="C:\Users\zamhu\Documents\NetBeansProjects\New Folder\Airswift\src\airswift\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>
