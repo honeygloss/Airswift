@@ -573,7 +573,7 @@ public class CustomerInformation extends javax.swing.JPanel {
         String relationship = relationshipListdown.getSelectedItem().toString();
         String[] tempArray = new String[100];
         
-        if(title.isEmpty() || passport.isEmpty() || fName.isEmpty() || lName.isEmpty() ||  nationality.isEmpty() || phoneNum.isEmpty() || dob == null || fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
+        if(fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }

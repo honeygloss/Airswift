@@ -18,7 +18,6 @@ class Customer {
     private String phoneNumber;
     private String DOB;
     private String emailAddress;
-    private String changePass;
     private String confirmPass;
     private String fNameEmergency;
     private String phoneNumberEmergency;
@@ -26,7 +25,7 @@ class Customer {
     
     public Customer(){}
     
-    public Customer(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String emailAddress, String changePass, String confirmPass, String fNameEmergency, String phoneNumberEmergency, String relationship){
+    public Customer(String title, String passport, String fName, String lName, String nationality, String phoneNumber, String DOB, String emailAddress, String confirmPass, String fNameEmergency, String phoneNumberEmergency, String relationship){
         this.title = title;
         this.passport = passport;
         this.fName = fName;
@@ -37,7 +36,6 @@ class Customer {
         this.emailAddress = emailAddress;
         this.fNameEmergency = fNameEmergency;
         this.phoneNumberEmergency = phoneNumberEmergency;
-        this.changePass = changePass;
         this.confirmPass = confirmPass;
         this.relationship = relationship;
     } 
@@ -53,11 +51,10 @@ class Customer {
         this.phoneNumber = dataArr[5];
         this.DOB = dataArr[6];
         this.emailAddress = dataArr[7];
-        this.changePass = dataArr[8];
-        this.confirmPass = dataArr[9];
-        this.fNameEmergency = dataArr[10];
-        this.phoneNumberEmergency = dataArr[11];
-        this.relationship = dataArr[12];
+        this.confirmPass = dataArr[8];
+        this.fNameEmergency = dataArr[9];
+        this.phoneNumberEmergency = dataArr[10];
+        this.relationship = dataArr[11];
         }
     }
     
@@ -69,7 +66,6 @@ class Customer {
     public void setPhoneNumber(String phoneNumber){this.phoneNumber = phoneNumber;}
     public void setDOB(String DOB){ this.DOB = DOB;}
     public void setEmailAddress(String emailAddress){ this.emailAddress = emailAddress;}
-    public void setChangePass(String changePass){this.changePass = changePass; }
     public void setConfirmPass(String confirmPass){this.confirmPass = confirmPass; }
     public void setRelationship(String relationship){this.relationship = relationship;}
     public void setFullNameEmergency(String fNameEmergency){this.fNameEmergency = fNameEmergency;}
@@ -83,7 +79,6 @@ class Customer {
     public String getPhoneNumber(){ return phoneNumber;}
     public String getDOB(){ return DOB;}
     public String getEmailAddress(){ return emailAddress;}
-    public String getChangePass(){ return changePass; }
     public String getConfirmPass(){ return confirmPass; }
     public String getRelationship(){ return relationship;}
     public String getFullNameEmergency(){ return fNameEmergency;}
@@ -91,6 +86,6 @@ class Customer {
     
     
     public String toString() {
-        return (title+","+passport+","+fName+","+lName+","+nationality+","+phoneNumber+","+DOB+","+emailAddress+","+changePass+","+confirmPass+","+fNameEmergency+","+phoneNumberEmergency+","+relationship+"\n");
+        return (title+","+passport+","+fName+","+lName+","+nationality+","+phoneNumber+","+DOB+","+emailAddress+","+confirmPass+","+fNameEmergency+","+phoneNumberEmergency+","+relationship+"\n");
     }
 }
