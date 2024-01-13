@@ -40,7 +40,7 @@ public class FlightMenu extends javax.swing.JFrame {
      */
     public FlightMenu() {
         initComponents();
-        setResizable(false);
+        setResizable(true);
         Date min = new Date();
         
         departDate.setMinSelectableDate(min);
@@ -102,7 +102,7 @@ public class FlightMenu extends javax.swing.JFrame {
     }
         
     
-    private void showForm(Component com) {
+    public void showForm(Component com) {
         jPanel1.removeAll();
         jPanel1.setLayout(new BorderLayout());
         jPanel1.add(com);
@@ -110,6 +110,9 @@ public class FlightMenu extends javax.swing.JFrame {
         jPanel1.revalidate();
         if (com instanceof FlightBooking) {
             ((FlightBooking) com).setGradientDropdownMenu(menu);
+        }
+        else if(com instanceof FlightSeat){
+            ((FlightSeat) com).setGradientDropDownMenu(menu);
         }
     }
     private void createBookingButtons() {
@@ -214,6 +217,7 @@ public class FlightMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         myBookingTab.setBackground(new java.awt.Color(153, 153, 255));
@@ -262,7 +266,6 @@ public class FlightMenu extends javax.swing.JFrame {
         fromLabel1.setForeground(new java.awt.Color(51, 51, 51));
         fromLabel1.setText("From");
 
-        findaFlightButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\search.png")); // NOI18N
         findaFlightButton.setText("Find a Flight");
         findaFlightButton.setColor1(new java.awt.Color(0, 51, 255));
         findaFlightButton.setColor2(new java.awt.Color(0, 51, 153));
@@ -362,7 +365,7 @@ public class FlightMenu extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         myBookingTab.addTab("MY BOOKING", jPanel3);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -423,7 +426,8 @@ public class FlightMenu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 530));
 
-        pack();
+        setSize(new java.awt.Dimension(911, 538));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void findaFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findaFlightButtonActionPerformed
@@ -444,7 +448,7 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setReturnDate(returnDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
         
-        FlightBooking flightBookingPanel = new FlightBooking(menu);
+        FlightBooking flightBookingPanel = new FlightBooking(menu, book);
         flightBookingPanel.departShort.setText(book.getDepartShort());
         flightBookingPanel.departLong.setText(book.getDepartLong().toUpperCase());
         flightBookingPanel.returnShort.setText(book.getReturnShort());
@@ -457,7 +461,8 @@ public class FlightMenu extends javax.swing.JFrame {
         flightBookingPanel.passenger.setText(passString);
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
         flightBookingPanel.departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
-        SimpleDateFormat dateFormat3 = new SimpleDateFormat("dd MMM\n\tEEE");
+        //  SimpleDateFormat dateFormat3 = new SimpleDateFormat("dd MMM");
+        /*SimpleDateFormat dateFormat4 = new SimpleDateFormat("EEE");
         flightBookingPanel.departButton.setText(dateFormat3.format(book.getDepartDate()));
         
         Calendar calendar = Calendar.getInstance();
@@ -472,8 +477,11 @@ public class FlightMenu extends javax.swing.JFrame {
         flightBookingPanel.departButtonAdd1.setText(dateFormat3.format(calendar.getTime()));
         calendar.setTime(book.getDepartDate());
         calendar.add(Calendar.DAY_OF_MONTH, 2);
-        flightBookingPanel.departButtonAdd2.setText(dateFormat3.format(calendar.getTime()));
-        showForm(flightBookingPanel);
+        flightBookingPanel.departButtonAdd2.setText(dateFormat3.format(calendar.getTime()));        */
+      
+       showForm(flightBookingPanel);
+       
+        
       
     }//GEN-LAST:event_findaFlightButtonActionPerformed
 
@@ -543,6 +551,7 @@ public class FlightMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FlightMenu().setVisible(true);
+                
             }
         });
     }

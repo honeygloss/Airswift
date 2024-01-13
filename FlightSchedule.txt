@@ -1,0 +1,6 @@
+1000;AS 276;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;23:00;
+1001;AS 303;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;07:05;
+1002;AS 262;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;21:15;
+1003;AS 514;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;19:55;
+1004;AS 661;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;04:55;
+1005;AS 444;Alor Setar ;Kerteh ;Fri Jan 12 13:31:47 MYT 2024;14:45;

@@ -3,7 +3,7 @@ package airswift;
 import java.util.Date;
 
 
-public class Booking{
+public class Booking{ 
     private String departShort;
     private String departLong;
     private String returnShort;

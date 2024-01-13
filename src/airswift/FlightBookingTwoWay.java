@@ -7,53 +7,38 @@ package airswift;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
-import javaswingdev.GradientDropdownMenu;
-import java.util.Scanner;
 import java.util.StringTokenizer;
+import javaswingdev.GradientDropdownMenu;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
- * @author ASUS
+ * @author zamhu
  */
-public class FlightBooking extends javax.swing.JPanel {
+public class FlightBookingTwoWay extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
-    
-   
     /**
-     * Creates new form FlightBooking
+     * Creates new form FlightBookingTwoWay
      */
-    
-    public FlightBooking(){
+    public FlightBookingTwoWay() {
         initComponents();
-
     }
     
-    /**
-     *
-     * @param menu
-     * @param booking
-     */
-    public FlightBooking(GradientDropdownMenu menu, Booking booking) {
+    public FlightBookingTwoWay(GradientDropdownMenu menu, Booking booking) {
         this.gradientDropdownMenu = menu;
         book = booking;
         
@@ -115,7 +100,7 @@ public class FlightBooking extends javax.swing.JPanel {
             PrintWriter pr2 = new PrintWriter(fr2);
 
             FileReader read = new FileReader("FlightSchedule.txt");
-            Scanner filein= new Scanner(read);
+            java.util.Scanner filein= new java.util.Scanner(read);
 
             FlightSchedule fstemp[]=new FlightSchedule[900];
             int t = 0;
@@ -251,20 +236,12 @@ public class FlightBooking extends javax.swing.JPanel {
         JButton[] buttons = new JButton[randomNum];
 
         for (int i = 0; i < randomNum; i++) {
-            if(booking.getCabin().equalsIgnoreCase("Economy"))
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
-                +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
-                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
-            else
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
-                +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
-                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>250.00</b></html>");
+            buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+            +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
+            + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
+            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
           
             buttons[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
             buttons[i].setBackground(new Color(153,153,255));
@@ -315,6 +292,7 @@ public class FlightBooking extends javax.swing.JPanel {
     public void setBooking(Booking booking){
         book = booking;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -324,6 +302,7 @@ public class FlightBooking extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         bg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         findAflight = new javax.swing.JPanel();
@@ -341,19 +320,21 @@ public class FlightBooking extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         backButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         departDateDis = new javax.swing.JLabel();
         buttonGradient2 = new airswift.ButtonGradient();
         buttonGradient3 = new airswift.ButtonGradient();
         availTicket = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(854, 551));
-        setLayout(new java.awt.BorderLayout());
+        setPreferredSize(new java.awt.Dimension(920, 551));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(854, 551));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(204, 204, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        bg.setPreferredSize(new java.awt.Dimension(920, 551));
+        bg.setPreferredSize(new java.awt.Dimension(920, 530));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -454,10 +435,10 @@ public class FlightBooking extends javax.swing.JPanel {
         });
         bg.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 600, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setToolTipText("");
-        jPanel1.setAutoscrolls(true);
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setToolTipText("");
+        jPanel2.setAutoscrolls(true);
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
         departDateDis.setBackground(new java.awt.Color(255, 255, 255));
         departDateDis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -465,9 +446,9 @@ public class FlightBooking extends javax.swing.JPanel {
         departDateDis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         departDateDis.setText("jLabel2");
         departDateDis.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(departDateDis, java.awt.BorderLayout.CENTER);
+        jPanel2.add(departDateDis, java.awt.BorderLayout.CENTER);
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 185, 280, 50));
+        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 185, 280, 50));
 
         buttonGradient2.setBackground(new java.awt.Color(204, 0, 153));
         buttonGradient2.setBorder(null);
@@ -500,19 +481,39 @@ public class FlightBooking extends javax.swing.JPanel {
         availTicket.setBackground(new java.awt.Color(204, 204, 255));
         bg.add(availTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 220));
 
-        add(bg, java.awt.BorderLayout.CENTER);
+        jPanel1.add(bg, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 897, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 531, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         new FlightMenu().showForm(new FlightSeat(book, gradientDropdownMenu));
-       
+
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void backButtonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_backButtonPropertyChange
         // TODO add your handling code here:
-        
-        
+
     }//GEN-LAST:event_backButtonPropertyChange
 
     private void buttonGradient2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGradient2ActionPerformed
@@ -538,6 +539,7 @@ public class FlightBooking extends javax.swing.JPanel {
     private javax.swing.JPanel findAflight;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
