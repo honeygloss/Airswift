@@ -21,8 +21,8 @@ import java.awt.Color;
 import java.awt.Shape;
 import javax.swing.SwingUtilities;
 import java.awt.geom.RoundRectangle2D;
-import airswift.FancyBorderRadius;
-import airswift.ShadowRenderer;
+import Login.FancyBorderRadius;
+import Login.ShadowRenderer;
 
 
 public class Background extends JComponent {

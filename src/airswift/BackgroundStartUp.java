@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package airswift;
+import Login.ShadowRenderer;
 import javax.swing.JComponent;
 import com.twelvemonkeys.image.ImageUtil;
 import java.awt.AlphaComposite;

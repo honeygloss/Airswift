@@ -13,9 +13,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import airswift.FancyBorderRadius;
-import airswift.FancyBorderRadius;
-import airswift.RippleEffect;
+import Login.FancyBorderRadius;
+import Login.RippleEffect;
 
 /**
  *
