@@ -1,0 +1,2 @@
+Miss,01010101,Nur Adlina,Salihuddin,Malaysian,01010101,29-06-2003,adlina@gmail.com,12345678
+Miss,10302010,Ad,Saleh,Malaysian,0103022022,01-01-2002,ad@gmail.com,12345678

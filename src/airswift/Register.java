@@ -4,7 +4,17 @@
  */
 package airswift;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+ 
 
 /**
  *
@@ -12,13 +22,34 @@ import java.text.SimpleDateFormat;
  */
 public class Register extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Register
-     */
+    //Customer register = new Customer();
     public Register() {
         initComponents();
     }
 
+    boolean isFound = false;
+    void readFile(){
+        try{
+            FileReader fr = new FileReader("UserRegister.txt");
+            Scanner scanner = new Scanner(fr);
+            while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            System.out.println(line); // You can modify this to do something with each line
+        }
+
+        scanner.close();
+        fr.close();
+       
+        } catch(FileNotFoundException ex){
+            try{
+            FileWriter writer = new FileWriter("UserRegister.txt",true);
+            } catch(IOException ex1){
+                Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        } 
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -318,7 +349,6 @@ public class Register extends javax.swing.JFrame {
 
     private void txtTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_txtTitleActionPerformed
 
     private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
@@ -347,15 +377,82 @@ public class Register extends javax.swing.JFrame {
         String nationality = txtNationality.getSelectedItem().toString();
         String emailAddress = txtEmailAddress.getText();
         String phoneNumber = txtPhoneNumber.getText();
-        String fname = txtFirstName.getText();
-        String lname = txtLastName.getText();
+        String fName = txtFirstName.getText();
+        String lName = txtLastName.getText();
         String passport = txtPassport.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String DOB = sdf.format(txtDOB.getDate());
         String pass = txtRegisterPassword.getText();
-        String changePass = txtCPassword.getText();
+        String confirmPass = txtCPassword.getText();
         
-        new StartUp().setVisible(true);
+        try {
+            FileWriter wr = new FileWriter("UserRegister.txt",true);
+            wr.write(title + "," +
+                     passport + "," +
+                     fName + "," +
+                     lName + "," +
+                     nationality + "," +
+                     phoneNumber + "," +
+                     DOB + "," +
+                     emailAddress + "," +
+                     confirmPass);
+            wr.write(System.getProperty("line.separator"));
+            wr.close();
+            JOptionPane.showMessageDialog(null,"Success");
+            setVisible(false);
+            new Register().setVisible(true);
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error");
+
+        }
+        /*try{
+            PrintWriter pw=new PrintWriter(writer);
+            try(FileWriter writer = new FileWriter("UserRegister.txt",true)){   
+                
+                Scanner in=new Scanner(System.in);
+                String line;
+                String[] lineArr;
+                
+                    lineArr = line.split(",");
+                    if(lineArr[7].equals(emailAddress)){
+                        
+                        System.out.println("email is found");
+                        title = in.nextLine();
+                        fName = in.nextLine;
+                        lName = in.nextLine();
+                        passport = in.nextLine();
+                        nationality = in.nextLine;
+                        phoneNumber = in.nextLine();
+                        DOB = in.nextDate;
+                        confirmPass = in.nextLine;
+        
+                        pw.print(
+                        title + "," +
+                        passport + "," +
+                        fName + "," +
+                        lName + "," +
+                        nationality + "," +
+                        phoneNumber + "," +
+                        DOB + "," +
+                        lineArr[7] + "," +
+                        confirmPass );
+                    }else{
+                        
+                        System.out.println("email is not found");
+                    } 
+                }
+                
+                pw.close();
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        new StartUp().setVisible(true);*/
     }//GEN-LAST:event_cmdSignUpActionPerformed
 
     private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed

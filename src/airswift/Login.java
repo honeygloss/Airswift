@@ -4,19 +4,54 @@
  */
 package airswift;
 
+import javax.swing.JOptionPane;
+import airswift.Register;
+import airswift.Customer;
 /**
  *
  * @author user
  */
+import java.awt.Component;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import airswift.FlightMenu;
+
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    Customer login = new Customer();
+     
     public Login() {
         initComponents();
-    }
+        }
 
+    boolean isFound = false;
+    void readFile(){
+        try{
+            FileReader fr = new FileReader("Login.txt");
+            
+       
+        } catch(FileNotFoundException ex){
+            try{
+            FileWriter writer = new FileWriter("Login.txt",true);
+            } catch(IOException ex1){
+                Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        }
+        
+    }
+    
+    
+        
+        
+    
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +91,11 @@ public class Login extends javax.swing.JFrame {
 
         txtPassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         cmdLogin.setText("LOGIN");
         cmdLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +109,11 @@ public class Login extends javax.swing.JFrame {
         txtEmailAddress.setHint("Email Address");
         txtEmailAddress.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtEmailAddress.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailAddressActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -129,11 +174,69 @@ public class Login extends javax.swing.JFrame {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         // TODO add your handling code here:
-       String user = txtEmailAddress.getText();
-       String pass = txtPassword.getText();
+       /*String user = txtEmailAddress.getText();
+       String confirmPass = txtPassword.getText();
        
-       new CustomerInformation().setVisible(true);
+       if(txtPassword.getText().length()<8){
+            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
+            return;
+        }
+        
+       
+        try{
+            try(FileReader fr = new FileReader("UserRegister.txt")){        
+                Scanner reader = new Scanner(fr);
+                String line;
+                String[] lineArr;
+                String readLine;
+                while(reader.hasNextLine()){
+                    line = reader.nextLine();
+                    lineArr = line.split(",");
+                    if(lineArr[0].equals(user)){
+                        readLine =
+                        user + "," +
+                        confirmPass  ;
+                        
+                        System.out.println("email is found");
+                        
+                        login.setConfirmPass(confirmPass);
+                        
+                    }else{
+                        
+                        System.out.println("email is not found");
+                    } 
+                }
+                
+                fr.close();
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        try{ 
+            try(PrintWriter pw = new PrintWriter("Login.txt")){
+                pw.println(readLine);
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        System.out.print(tempArray[i]);
+        System.out.print("\n");
+        }
+       
+       new FlightMenu().setVisible(true);*/
     }//GEN-LAST:event_cmdLoginActionPerformed
+
+    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailAddressActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
