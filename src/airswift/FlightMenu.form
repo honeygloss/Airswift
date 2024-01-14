@@ -8,7 +8,7 @@
     </Property>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,26,0,0,3,-113"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,53,0,0,3,-115"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -161,27 +161,38 @@
                                   </Group>
                                   <EmptySpace pref="45" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="classCabinListdown" min="-2" pref="154" max="-2" attributes="0"/>
+                                          <EmptySpace pref="313" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="returnDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="findaFlightButton" pref="178" max="32767" attributes="0"/>
+                                              <Component id="returnDate" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="toLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                               <Component id="fromLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                               <Component id="toListdown" min="-2" pref="154" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="departDateLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="departDate" min="-2" pref="182" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="departDateLabel" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="departDate" min="-2" pref="182" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="returnCheckbox" min="-2" pref="178" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="classCabinListdown" min="-2" pref="154" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="45" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="returnDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="findaFlightButton" pref="178" max="32767" attributes="0"/>
-                                      <Component id="returnDate" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -203,17 +214,26 @@
                                       <Component id="departDate" max="32767" attributes="0"/>
                                       <Component id="returnDate" alignment="1" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="9" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="fromLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="fromLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="findaFlightButton" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="classCabinListdown" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Component id="passengersListdown2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="fromLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="fromLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="classCabinListdown" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Component id="passengersListdown2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="returnCheckbox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="findaFlightButton" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -446,6 +466,20 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passengersListdown2ActionPerformed"/>
                           </Events>
                         </Component>
+                        <Component class="javax.swing.JCheckBox" name="returnCheckbox">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="14" style="1"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="33" green="33" red="33" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Return"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="returnCheckboxItemStateChanged"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -473,7 +507,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\zamhu\Documents\NetBeansProjects\New Folder\Airswift\src\airswift\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"/>
+                  <Image iconType="2" name="C:\Users\ASUS\OneDrive\Documents\NetBeansProjects\AirSwift\src\airswift\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>
