@@ -11,18 +11,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaswingdev.GradientDropdownMenu;
-import javaswingdev.MenuEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -31,6 +26,7 @@ import javax.swing.SwingUtilities;
 public class CustomerInformation extends javax.swing.JPanel {
    private GradientDropdownMenu menu;
    private Image backgroundImage;
+   Customer cust = new Customer();
     /**
      * Creates new form CustomerInformation1
      */
@@ -38,7 +34,7 @@ public class CustomerInformation extends javax.swing.JPanel {
         initComponents();
         ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Flight window.jpeg");
         backgroundImage = backgroundImageIcon.getImage();
-       /*Customer cust = new Customer();
+       /*
         emailAddressField.setText(cust.getEmailAddress());
         emailAddressField.setEditable(false);
         nationalityListdown.setSelectedItem(cust.getNationality());
@@ -178,14 +174,6 @@ public class CustomerInformation extends javax.swing.JPanel {
         dobField.setDateFormatString("dd-MM-yyyy");
 
         emailAddressField.setText("Email Address");
-        emailAddressField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                emailAddressFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                emailAddressFieldFocusLost(evt);
-            }
-        });
         emailAddressField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 emailAddressFieldMouseClicked(evt);
@@ -307,10 +295,34 @@ public class CustomerInformation extends javax.swing.JPanel {
         });
 
         nationalityListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghan", "Albanian", "Algerian", "Andorran", "Angolan", "Antiguan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "Bruneian", "Bulgarian", "Burkinabe", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "East Timorese (Timorese)", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean", " " }));
+        nationalityListdown.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nationalityListdownFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nationalityListdownFocusLost(evt);
+            }
+        });
 
         relationshipListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Parents", "Relatives", "Caretaker", "Siblings" }));
+        relationshipListdown.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                relationshipListdownFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                relationshipListdownFocusLost(evt);
+            }
+        });
 
         titleListdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mr.", "Mrs.", "Miss", " " }));
+        titleListdown.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                titleListdownFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                titleListdownFocusLost(evt);
+            }
+        });
 
         check.setText("show password");
         check.addActionListener(new java.awt.event.ActionListener() {
@@ -456,86 +468,74 @@ public class CustomerInformation extends javax.swing.JPanel {
     }//GEN-LAST:event_confirmPassFieldActionPerformed
 
     private void fNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusGained
-        if (fNameField.getText().equals("First Name")) {
-            fNameField.setText("");
+        if (fNameField.getText().equals(cust.getFName())) {
+            fNameField.setText("First Name");
         }
     }//GEN-LAST:event_fNameFieldFocusGained
 
     private void fNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusLost
-        if (fNameField.getText().isEmpty()) {
-            fNameField.setText("First Name");
+        if (fNameField.getText().isEmpty() || fNameField.getText().equals("First Name")) {
+            fNameField.setText(cust.getFName());
         }
     }//GEN-LAST:event_fNameFieldFocusLost
 
     private void passportFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusGained
-        if (passportField.getText().equals("Passport Number")) {
-            passportField.setText("");
+        if (passportField.getText().equals(cust.getPassport())) {
+            passportField.setText("Passport Number");
         }
     }//GEN-LAST:event_passportFieldFocusGained
 
     private void passportFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusLost
-         if (passportField.getText().isEmpty()) {
-            passportField.setText("Passport Number");
+         if (passportField.getText().isEmpty() || passportField.getText().equals("Passport Number")) {
+            passportField.setText(cust.getPassport());
         }
     }//GEN-LAST:event_passportFieldFocusLost
 
     private void lNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusGained
-        if (lNameField.getText().equals("Last Name")) {
-            lNameField.setText("");
+        if (lNameField.getText().equals(cust.getLName())) {
+            lNameField.setText("Last Name");
         }
     }//GEN-LAST:event_lNameFieldFocusGained
 
     private void lNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusLost
-        if (lNameField.getText().isEmpty()) {
-            lNameField.setText("Last Name");
+        if (lNameField.getText().isEmpty() || lNameField.getText().equals("Last Name")) {
+            lNameField.setText(cust.getLName());
         }
     }//GEN-LAST:event_lNameFieldFocusLost
 
     private void phoneNumberFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusGained
-        if (phoneNumberField.getText().equals("Phone Number")) {
-            phoneNumberField.setText("");
+        if (phoneNumberField.getText().equals(cust.getPhoneNumber())) {
+            phoneNumberField.setText("Phone Number");
         }
     }//GEN-LAST:event_phoneNumberFieldFocusGained
 
-    private void emailAddressFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailAddressFieldFocusGained
-        if (emailAddressField.getText().equals("Email Address")) {
-            emailAddressField.setText("");
-        }
-    }//GEN-LAST:event_emailAddressFieldFocusGained
-
     private void phoneNumberFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusLost
-        if (phoneNumberField.getText().isEmpty()) {
-            phoneNumberField.setText("Phone Number");
+        if (phoneNumberField.getText().isEmpty() || phoneNumberField.getText().equals("Phone Number")) {
+            phoneNumberField.setText(cust.getPhoneNumber());
         }
     }//GEN-LAST:event_phoneNumberFieldFocusLost
 
-    private void emailAddressFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailAddressFieldFocusLost
-        if (emailAddressField.getText().isEmpty()) {
-            emailAddressField.setText("Email Address");
-        }
-    }//GEN-LAST:event_emailAddressFieldFocusLost
-
     private void fNameEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusGained
-        if (fNameEmergencyField.getText().equals("Full Name")) {
-            fNameEmergencyField.setText("");
+        if (fNameEmergencyField.getText().equals(cust.getFullNameEmergency())) {
+            fNameEmergencyField.setText("Full Name");
         }
     }//GEN-LAST:event_fNameEmergencyFieldFocusGained
 
     private void phoneNumberEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusGained
-        if (phoneNumberEmergencyField.getText().equals("Phone Number")) {
-            phoneNumberEmergencyField.setText("");
+        if (phoneNumberEmergencyField.getText().equals(cust.getPhoneNumberEmergency())) {
+            phoneNumberEmergencyField.setText("Phone Number");
         }
     }//GEN-LAST:event_phoneNumberEmergencyFieldFocusGained
 
     private void fNameEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusLost
-         if (fNameEmergencyField.getText().isEmpty()) {
-            fNameEmergencyField.setText("Full Name");
+         if (fNameEmergencyField.getText().isEmpty() || fNameEmergencyField.getText().equals("Full Name")) {
+            fNameEmergencyField.setText(cust.getFullNameEmergency());
         }
     }//GEN-LAST:event_fNameEmergencyFieldFocusLost
 
     private void phoneNumberEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusLost
-        if (phoneNumberEmergencyField.getText().isEmpty()) {
-            phoneNumberEmergencyField.setText("Phone Number");
+        if (phoneNumberEmergencyField.getText().isEmpty() || phoneNumberEmergencyField.getText().equals("Phone Number")) {
+            phoneNumberEmergencyField.setText(cust.getPhoneNumberEmergency());
         }
     }//GEN-LAST:event_phoneNumberEmergencyFieldFocusLost
 
@@ -573,7 +573,7 @@ public class CustomerInformation extends javax.swing.JPanel {
         String relationship = relationshipListdown.getSelectedItem().toString();
         String[] tempArray = new String[100];
         
-        if(title.isEmpty() || passport.isEmpty() || fName.isEmpty() || lName.isEmpty() ||  nationality.isEmpty() || phoneNum.isEmpty() || dob == null || fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
+        if(fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
@@ -663,6 +663,17 @@ public class CustomerInformation extends javax.swing.JPanel {
                         relationship;
                         tempArray[currentIndex++] = updatedLine;
                         System.out.println("email is found");
+                        cust.setTitle(title);
+                        cust.setFName(fName);
+                        cust.setLName(lName);
+                        cust.setPassport(passport);
+                        cust.setNationality(nationality);
+                        cust.setPhoneNumber(phoneNum);
+                        cust.setDOB(dob);
+                        cust.setConfirmPass(confirmPass);
+                        cust.setFullNameEmergency(fNameEmergency);
+                        cust.setPhoneNumberEmergency(phoneNumberEmergency);
+                        cust.setRelationship(relationship);
                     }else{
                         tempArray[currentIndex++] = line;
                         System.out.println("email is not found");
@@ -731,6 +742,42 @@ public class CustomerInformation extends javax.swing.JPanel {
        // JOptionPane.showMessageDialog(this, "Email is not editable"); 
        // return;
     }//GEN-LAST:event_emailAddressFieldMouseClicked
+
+    private void nationalityListdownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nationalityListdownFocusGained
+        if (nationalityListdown.getSelectedItem().equals(cust.getNationality())) {
+            nationalityListdown.setSelectedItem(0);
+        }
+    }//GEN-LAST:event_nationalityListdownFocusGained
+
+    private void nationalityListdownFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nationalityListdownFocusLost
+        if (nationalityListdown.getSelectedItem().equals(0)) {
+            nationalityListdown.setSelectedItem(cust.getNationality());
+        }
+    }//GEN-LAST:event_nationalityListdownFocusLost
+
+    private void relationshipListdownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_relationshipListdownFocusGained
+        if (relationshipListdown.getSelectedItem().equals(cust.getRelationship())) {
+            relationshipListdown.setSelectedItem(0);
+        }
+    }//GEN-LAST:event_relationshipListdownFocusGained
+
+    private void relationshipListdownFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_relationshipListdownFocusLost
+        if (relationshipListdown.getSelectedItem().equals(0)) {
+            relationshipListdown.setSelectedItem(cust.getRelationship());
+        }
+    }//GEN-LAST:event_relationshipListdownFocusLost
+
+    private void titleListdownFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_titleListdownFocusGained
+        if (titleListdown.getSelectedItem().equals(cust.getTitle())) {
+            titleListdown.setSelectedItem(0);
+        }
+    }//GEN-LAST:event_titleListdownFocusGained
+
+    private void titleListdownFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_titleListdownFocusLost
+        if (titleListdown.getSelectedItem().equals(0)) {
+            titleListdown.setSelectedItem(cust.getTitle());
+        }
+    }//GEN-LAST:event_titleListdownFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

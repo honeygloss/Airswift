@@ -254,8 +254,6 @@
         <Property name="text" type="java.lang.String" value="Email Address"/>
       </Properties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailAddressFieldFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailAddressFieldFocusLost"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="emailAddressFieldMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailAddressFieldActionPerformed"/>
       </Events>
@@ -615,6 +613,10 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nationalityListdownFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nationalityListdownFocusLost"/>
+      </Events>
     </Component>
     <Component class="combo_suggestion.ComboBoxSuggestion" name="relationshipListdown">
       <Properties>
@@ -627,6 +629,10 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="relationshipListdownFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="relationshipListdownFocusLost"/>
+      </Events>
     </Component>
     <Component class="combo_suggestion.ComboBoxSuggestion" name="titleListdown">
       <Properties>
@@ -639,6 +645,10 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="titleListdownFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="titleListdownFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="check">
       <Properties>
