@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package airswift;
+package Login;
 
 import javax.swing.JComponent;
 import java.awt.Graphics;
@@ -21,13 +21,15 @@ import java.awt.Color;
 import java.awt.Shape;
 import javax.swing.SwingUtilities;
 import java.awt.geom.RoundRectangle2D;
-import Login.FancyBorderRadius;
-import Login.ShadowRenderer;
 
 
-public class Background extends JComponent {
+/**
+ *
+ * @author RAVEN
+ */
+public class BackgroundR extends JComponent {
 
-    public Component getBlur() {
+   public Component getBlur() {
         return blur;
     }
 
@@ -46,8 +48,8 @@ public class Background extends JComponent {
     private BufferedImage bufferedImage;
     private Component blur;
 
-    public Background() {
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\startup.jpg");
+    public BackgroundR() {
+        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\startup.jpg");
     }
 
     private void createImage() {

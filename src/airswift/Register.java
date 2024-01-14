@@ -4,6 +4,9 @@
  */
 package airswift;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
  
 
@@ -25,6 +29,15 @@ public class Register extends javax.swing.JFrame {
     //Customer register = new Customer();
     public Register() {
         initComponents();
+        try{
+        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Lyft _ Plane.png"));
+        this.setIconImage(icon);
+        this.setTitle("AirSwift");
+        this.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        this.setForeground(Color.black);
+        }catch (IOException e) {
+         e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
+        }
     }
 
     boolean isFound = false;
