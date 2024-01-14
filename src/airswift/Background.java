@@ -4,6 +4,8 @@
  */
 package airswift;
 
+import Login.FancyBorderRadius;
+import Login.ShadowRenderer;
 import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -21,8 +23,6 @@ import java.awt.Color;
 import java.awt.Shape;
 import javax.swing.SwingUtilities;
 import java.awt.geom.RoundRectangle2D;
-import airswift.FancyBorderRadius;
-import airswift.ShadowRenderer;
 
 
 public class Background extends JComponent {
@@ -47,7 +47,7 @@ public class Background extends JComponent {
     private Component blur;
 
     public Background() {
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\logo airswift.png");
+        image = new ImageIcon(getClass().getResource("/airswift/startup.jpg"));
     }
 
     private void createImage() {
@@ -60,10 +60,10 @@ public class Background extends JComponent {
                 g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                 Rectangle rec = getAutoSize(image);
                 g2.drawImage(((ImageIcon) image).getImage(), rec.x, rec.y, rec.width, rec.height, null);
-                if (blur != null) {
+                /*if (blur != null) {
                     createBlurImage(g2);
-                }
-              //createBlurImage(g2);
+                }*/
+              createBlurImage(g2);
                 g2.dispose();
             }
         }
@@ -95,7 +95,7 @@ public class Background extends JComponent {
 
     @Override
     protected void paintComponent(Graphics grphcs) {
-        if (bufferedImage != null) {
+       if (bufferedImage != null) {
             BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = img.createGraphics();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -105,7 +105,7 @@ public class Background extends JComponent {
             g2.dispose();
             grphcs.drawImage(img, 0, 0, null);
         }
-        //grphcs.drawImage(bufferedImage,0,0,null);
+        grphcs.drawImage(bufferedImage,0,0,null);
         super.paintComponent(grphcs);
     }
 

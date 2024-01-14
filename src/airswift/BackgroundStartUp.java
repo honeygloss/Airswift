@@ -4,11 +4,11 @@
  */
 package airswift;
 import javax.swing.JComponent;
+import Login.ShadowRenderer;
 import com.twelvemonkeys.image.ImageUtil;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Component;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -44,7 +44,7 @@ public class BackgroundStartUp extends JComponent {
     }
     
     public BackgroundStartUp(){
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png");
+        image = new ImageIcon(getClass().getResource("/airswift/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"));
     }
     
     private void createImage() {
@@ -57,10 +57,10 @@ public class BackgroundStartUp extends JComponent {
                 g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                 Rectangle rec = getAutoSize(image);
                 g2.drawImage(((ImageIcon) image).getImage(), rec.x, rec.y, rec.width, rec.height, null);
-                if (blur != null) {
+                /*if (blur != null) {
                     createBlurImage(g2);
-                }
-                //createBlurImage(g2);
+                }*/
+                createBlurImage(g2);
                 g2.dispose();
             }
         }
@@ -107,7 +107,7 @@ public class BackgroundStartUp extends JComponent {
                 repaint();
             }
         });
-        //createImage();
+       //createImage();
     }
     
     private Rectangle getAutoSize(Icon image) {

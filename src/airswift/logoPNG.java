@@ -24,7 +24,7 @@ public class logoPNG extends JComponent {
     
     public logoPNG() {
         
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\logo.png");
+        image = new ImageIcon(getClass().getResource("/Login/logo.png"));
     }
     
     private void createImage(){
