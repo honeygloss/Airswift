@@ -121,4 +121,8 @@ public class TextField extends JTextField {
         g2.dispose();
         super.paint(g);
     }
+
+    Object trim() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

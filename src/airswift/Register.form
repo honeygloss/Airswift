@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Container class="airswift.BackgroundR" name="backgroundR1">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="true"/>
-      </Layout>
-    </Container>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,7 +25,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="backgroundR" min="-2" max="-2" attributes="0"/>
+              <Component id="background1" min="-2" pref="812" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -40,125 +33,199 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="backgroundR" min="-2" max="-2" attributes="0"/>
+              <Component id="background1" min="-2" pref="489" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="airswift.BackgroundR" name="backgroundR">
+    <Container class="airswift.Background" name="background1">
       <Properties>
         <Property name="blur" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="panel"/>
+          <ComponentRef name="panel2"/>
         </Property>
       </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                  <Component id="panel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="170" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="panel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panel">
+        <Container class="javax.swing.JPanel" name="panel2">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="60" y="20" width="670" height="410"/>
+            </Constraint>
+          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="checkR" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtPassport" alignment="0" pref="177" max="32767" attributes="0"/>
-                                      <Component id="txtNationality" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtPassword" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtTitle" pref="169" max="32767" attributes="0"/>
-                                          <Component id="txtFirstName" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" pref="87" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtEmailAddress" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPhoneNumber" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtDOB" max="32767" attributes="0"/>
-                                  <Component id="txtConfirmPassword" pref="165" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel2" alignment="1" min="-2" pref="54" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                      <Component id="txtTitle" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="txtFirstName" min="-2" pref="143" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtNationality" min="-2" pref="138" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Component id="txtEmailAddress" min="-2" pref="122" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Component id="txtPassport" min="-2" pref="116" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtLastName" min="-2" pref="122" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="txtRegisterPassword" min="-2" pref="143" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="txtPhoneNumber" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="txtDOB" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="txtCPassword" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                              <Component id="cmdSignUp" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="144" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
+                              <Component id="cmdSignUp" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="176" max="32767" attributes="0"/>
+                      <EmptySpace pref="125" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmailAddress" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="70" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtEmailAddress" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="txtTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtFirstName" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtLastName" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="77" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtNationality" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPassport" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDOB" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPhoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNationality" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPhoneNumber" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="checkR" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtPassport" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDOB" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtConfirmPassword" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cmdSignUp" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdSignUp" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -168,85 +235,432 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
+                  <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                  <Color blue="20" green="0" red="80" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="SIGN UP"/>
               </Properties>
             </Component>
-            <Component class="airswift.TextField" name="txtEmailAddress">
+            <Component class="combo_suggestion.ComboBoxSuggestion" name="txtTitle">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Email Address"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailAddressActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="airswift.TextField" name="txtTitle">
-              <Properties>
-                <Property name="hint" type="java.lang.String" value="Title"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Mr."/>
+                    <StringItem index="1" value="Mrs."/>
+                    <StringItem index="2" value="Miss"/>
+                  </StringArray>
+                </Property>
+                <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTitleActionPerformed"/>
               </Events>
             </Component>
-            <Component class="airswift.TextField" name="txtFirstName">
+            <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Fisrt Name"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Title :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Email Address :"/>
+              </Properties>
+            </Component>
+            <Component class="airswift.TextField" name="txtEmailAddress">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFirstNameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailAddressActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Fisrt Name :"/>
+              </Properties>
+            </Component>
+            <Component class="airswift.TextField" name="txtFirstName">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Last Name      :"/>
+              </Properties>
             </Component>
             <Component class="airswift.TextField" name="txtLastName">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Last Name"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLastNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="combo_suggestion.ComboBoxSuggestion" name="txtNationality">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="190">
+                    <StringItem index="0" value="Afghan"/>
+                    <StringItem index="1" value="Albanian"/>
+                    <StringItem index="2" value="Algerian"/>
+                    <StringItem index="3" value="Andorran"/>
+                    <StringItem index="4" value="Angolan"/>
+                    <StringItem index="5" value="Antiguan"/>
+                    <StringItem index="6" value="Argentine"/>
+                    <StringItem index="7" value="Armenian"/>
+                    <StringItem index="8" value="Australian"/>
+                    <StringItem index="9" value="Austrian"/>
+                    <StringItem index="10" value="Azerbaijani"/>
+                    <StringItem index="11" value="Bahamian"/>
+                    <StringItem index="12" value="Bahraini"/>
+                    <StringItem index="13" value="Bangladeshi"/>
+                    <StringItem index="14" value="Barbadian"/>
+                    <StringItem index="15" value="Belarusian"/>
+                    <StringItem index="16" value="Belgian"/>
+                    <StringItem index="17" value="Belizean"/>
+                    <StringItem index="18" value="Beninese"/>
+                    <StringItem index="19" value="Bhutanese"/>
+                    <StringItem index="20" value="Bolivian"/>
+                    <StringItem index="21" value="Bosnian"/>
+                    <StringItem index="22" value="Brazilian"/>
+                    <StringItem index="23" value="Bruneian"/>
+                    <StringItem index="24" value="Bulgarian"/>
+                    <StringItem index="25" value="Burkinabe"/>
+                    <StringItem index="26" value="Burundian"/>
+                    <StringItem index="27" value="Cambodian"/>
+                    <StringItem index="28" value="Cameroonian"/>
+                    <StringItem index="29" value="Canadian"/>
+                    <StringItem index="30" value="Cape Verdean"/>
+                    <StringItem index="31" value="Central African"/>
+                    <StringItem index="32" value="Chadian"/>
+                    <StringItem index="33" value="Chilean"/>
+                    <StringItem index="34" value="Chinese"/>
+                    <StringItem index="35" value="Colombian"/>
+                    <StringItem index="36" value="Comoran"/>
+                    <StringItem index="37" value="Congolese"/>
+                    <StringItem index="38" value="Costa Rican"/>
+                    <StringItem index="39" value="Croatian"/>
+                    <StringItem index="40" value="Cuban"/>
+                    <StringItem index="41" value="Cypriot"/>
+                    <StringItem index="42" value="Czech"/>
+                    <StringItem index="43" value="Danish"/>
+                    <StringItem index="44" value="Djiboutian"/>
+                    <StringItem index="45" value="Dominican"/>
+                    <StringItem index="46" value="Dutch"/>
+                    <StringItem index="47" value="East Timorese (Timorese)"/>
+                    <StringItem index="48" value="Ecuadorean"/>
+                    <StringItem index="49" value="Egyptian"/>
+                    <StringItem index="50" value="Emirian"/>
+                    <StringItem index="51" value="Equatorial Guinean"/>
+                    <StringItem index="52" value="Eritrean"/>
+                    <StringItem index="53" value="Estonian"/>
+                    <StringItem index="54" value="Ethiopian"/>
+                    <StringItem index="55" value="Fijian"/>
+                    <StringItem index="56" value="Filipino"/>
+                    <StringItem index="57" value="Finnish"/>
+                    <StringItem index="58" value="French"/>
+                    <StringItem index="59" value="Gabonese"/>
+                    <StringItem index="60" value="Gambian"/>
+                    <StringItem index="61" value="Georgian"/>
+                    <StringItem index="62" value="German"/>
+                    <StringItem index="63" value="Ghanaian"/>
+                    <StringItem index="64" value="Greek"/>
+                    <StringItem index="65" value="Grenadian"/>
+                    <StringItem index="66" value="Guatemalan"/>
+                    <StringItem index="67" value="Guinea-Bissauan"/>
+                    <StringItem index="68" value="Guinean"/>
+                    <StringItem index="69" value="Guyanese"/>
+                    <StringItem index="70" value="Haitian"/>
+                    <StringItem index="71" value="Herzegovinian"/>
+                    <StringItem index="72" value="Honduran"/>
+                    <StringItem index="73" value="Hungarian"/>
+                    <StringItem index="74" value="I-Kiribati"/>
+                    <StringItem index="75" value="Icelander"/>
+                    <StringItem index="76" value="Indian"/>
+                    <StringItem index="77" value="Indonesian"/>
+                    <StringItem index="78" value="Iranian"/>
+                    <StringItem index="79" value="Iraqi"/>
+                    <StringItem index="80" value="Irish"/>
+                    <StringItem index="81" value="Israeli"/>
+                    <StringItem index="82" value="Italian"/>
+                    <StringItem index="83" value="Ivorian"/>
+                    <StringItem index="84" value="Jamaican"/>
+                    <StringItem index="85" value="Japanese"/>
+                    <StringItem index="86" value="Jordanian"/>
+                    <StringItem index="87" value="Kazakhstani"/>
+                    <StringItem index="88" value="Kenyan"/>
+                    <StringItem index="89" value="Kittian and Nevisian"/>
+                    <StringItem index="90" value="Kuwaiti"/>
+                    <StringItem index="91" value="Kyrgyz"/>
+                    <StringItem index="92" value="Laotian"/>
+                    <StringItem index="93" value="Latvian"/>
+                    <StringItem index="94" value="Lebanese"/>
+                    <StringItem index="95" value="Liberian"/>
+                    <StringItem index="96" value="Libyan"/>
+                    <StringItem index="97" value="Liechtensteiner"/>
+                    <StringItem index="98" value="Lithuanian"/>
+                    <StringItem index="99" value="Luxembourger"/>
+                    <StringItem index="100" value="Macedonian"/>
+                    <StringItem index="101" value="Malagasy"/>
+                    <StringItem index="102" value="Malawian"/>
+                    <StringItem index="103" value="Malaysian"/>
+                    <StringItem index="104" value="Maldivan"/>
+                    <StringItem index="105" value="Malian"/>
+                    <StringItem index="106" value="Maltese"/>
+                    <StringItem index="107" value="Marshallese"/>
+                    <StringItem index="108" value="Mauritanian"/>
+                    <StringItem index="109" value="Mauritian"/>
+                    <StringItem index="110" value="Mexican"/>
+                    <StringItem index="111" value="Micronesian"/>
+                    <StringItem index="112" value="Moldovan"/>
+                    <StringItem index="113" value="Monacan"/>
+                    <StringItem index="114" value="Mongolian"/>
+                    <StringItem index="115" value="Montenegrin"/>
+                    <StringItem index="116" value="Moroccan"/>
+                    <StringItem index="117" value="Mosotho"/>
+                    <StringItem index="118" value="Motswana"/>
+                    <StringItem index="119" value="Mozambican"/>
+                    <StringItem index="120" value="Namibian"/>
+                    <StringItem index="121" value="Nauruan"/>
+                    <StringItem index="122" value="Nepalese"/>
+                    <StringItem index="123" value="New Zealander"/>
+                    <StringItem index="124" value="Nicaraguan"/>
+                    <StringItem index="125" value="Nigerian"/>
+                    <StringItem index="126" value="Nigerien"/>
+                    <StringItem index="127" value="North Korean"/>
+                    <StringItem index="128" value="Northern Irish"/>
+                    <StringItem index="129" value="Norwegian"/>
+                    <StringItem index="130" value="Omani"/>
+                    <StringItem index="131" value="Pakistani"/>
+                    <StringItem index="132" value="Palauan"/>
+                    <StringItem index="133" value="Palestinian"/>
+                    <StringItem index="134" value="Panamanian"/>
+                    <StringItem index="135" value="Papua New Guinean"/>
+                    <StringItem index="136" value="Paraguayan"/>
+                    <StringItem index="137" value="Peruvian"/>
+                    <StringItem index="138" value="Polish"/>
+                    <StringItem index="139" value="Portuguese"/>
+                    <StringItem index="140" value="Qatari"/>
+                    <StringItem index="141" value="Romanian"/>
+                    <StringItem index="142" value="Russian"/>
+                    <StringItem index="143" value="Rwandan"/>
+                    <StringItem index="144" value="Saint Lucian"/>
+                    <StringItem index="145" value="Salvadoran"/>
+                    <StringItem index="146" value="Samoan"/>
+                    <StringItem index="147" value="San Marinese"/>
+                    <StringItem index="148" value="Sao Tomean"/>
+                    <StringItem index="149" value="Saudi"/>
+                    <StringItem index="150" value="Scottish"/>
+                    <StringItem index="151" value="Senegalese"/>
+                    <StringItem index="152" value="Serbian"/>
+                    <StringItem index="153" value="Seychellois"/>
+                    <StringItem index="154" value="Sierra Leonean"/>
+                    <StringItem index="155" value="Singaporean"/>
+                    <StringItem index="156" value="Slovakian"/>
+                    <StringItem index="157" value="Slovenian"/>
+                    <StringItem index="158" value="Solomon Islander"/>
+                    <StringItem index="159" value="Somali"/>
+                    <StringItem index="160" value="South African"/>
+                    <StringItem index="161" value="South Korean"/>
+                    <StringItem index="162" value="Spanish"/>
+                    <StringItem index="163" value="Sri Lankan"/>
+                    <StringItem index="164" value="Sudanese"/>
+                    <StringItem index="165" value="Surinamer"/>
+                    <StringItem index="166" value="Swazi"/>
+                    <StringItem index="167" value="Swedish"/>
+                    <StringItem index="168" value="Swiss"/>
+                    <StringItem index="169" value="Syrian"/>
+                    <StringItem index="170" value="Taiwanese"/>
+                    <StringItem index="171" value="Tajik"/>
+                    <StringItem index="172" value="Tanzanian"/>
+                    <StringItem index="173" value="Thai"/>
+                    <StringItem index="174" value="Togolese"/>
+                    <StringItem index="175" value="Tongan"/>
+                    <StringItem index="176" value="Trinidadian or Tobagonian"/>
+                    <StringItem index="177" value="Tunisian"/>
+                    <StringItem index="178" value="Turkish"/>
+                    <StringItem index="179" value="Tuvaluan"/>
+                    <StringItem index="180" value="Ugandan"/>
+                    <StringItem index="181" value="Ukrainian"/>
+                    <StringItem index="182" value="Uruguayan"/>
+                    <StringItem index="183" value="Uzbekistani"/>
+                    <StringItem index="184" value="Venezuelan"/>
+                    <StringItem index="185" value="Vietnamese"/>
+                    <StringItem index="186" value="Welsh"/>
+                    <StringItem index="187" value="Yemenite"/>
+                    <StringItem index="188" value="Zambian"/>
+                    <StringItem index="189" value="Zimbabwean"/>
+                  </StringArray>
+                </Property>
               </Properties>
             </Component>
-            <Component class="airswift.TextField" name="txtNationality">
+            <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Nationality"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nationality :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Phone Number :"/>
               </Properties>
             </Component>
             <Component class="airswift.TextField" name="txtPhoneNumber">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Phone Number"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneNumberActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Passport Number :"/>
               </Properties>
             </Component>
             <Component class="airswift.TextField" name="txtPassport">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Passport Number"/>
-              </Properties>
-            </Component>
-            <Component class="airswift.TextField" name="txtDOB">
-              <Properties>
-                <Property name="hint" type="java.lang.String" value="Day/Month/Year"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDOBActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPassportActionPerformed"/>
               </Events>
             </Component>
-            <Component class="airswift.PasswordField" name="txtPassword">
+            <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Password"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Date of birth :"/>
               </Properties>
             </Component>
-            <Component class="airswift.PasswordField" name="txtConfirmPassword">
+            <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="hint" type="java.lang.String" value="Confirm Password"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Confirm Password :"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtConfirmPasswordActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="airswift.Button" name="cmdSignUp">
+            <Component class="airswift.PasswordField" name="txtCPassword">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPasswordActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="txtPassword">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Password :"/>
+              </Properties>
+            </Component>
+            <Component class="airswift.PasswordField" name="txtRegisterPassword">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegisterPasswordActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="txtDOB">
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="show password"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkRActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="swing.ButtonGradient" name="cmdSignUp">
+              <Properties>
                 <Property name="text" type="java.lang.String" value="SIGN UP"/>
+                <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="20" green="0" red="80" type="rgb"/>
+                </Property>
+                <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[40, 40]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[40, 40]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdSignUpActionPerformed"/>

@@ -4,6 +4,15 @@
  */
 package airswift;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -15,6 +24,29 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+    }
+    boolean isFound = false;
+    void readFile(){
+        try{
+            FileReader fr = new FileReader("Login.txt");
+            java.util.Scanner scanner = new java.util.Scanner(fr);
+            while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            System.out.println(line); // You can modify this to do something with each line
+        }
+
+        scanner.close();
+        //fr.close();
+       
+        } catch(FileNotFoundException ex){
+            try{
+            FileWriter writer = new FileWriter("Login.txt",true);
+            } catch(IOException ex1){
+                Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        } 
+        
     }
 
     /**
@@ -31,7 +63,9 @@ public class Login extends javax.swing.JFrame {
         txtEmailAddress = new airswift.TextField();
         jLabel1 = new javax.swing.JLabel();
         txtPassword = new airswift.PasswordField();
-        cmdLogin = new airswift.Button();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cmdLogin = new swing.ButtonGradient();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -40,12 +74,14 @@ public class Login extends javax.swing.JFrame {
 
         panel.setOpaque(false);
 
+        txtEmailAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtEmailAddress.setHint("Email Address");
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setForeground(new java.awt.Color(128, 0, 32));
         jLabel1.setText("LOGIN");
 
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
         txtPassword.setHint("Password");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,7 +89,20 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel2.setText("Email Address:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel3.setText("Password :");
+
         cmdLogin.setText("LOGIN");
+        cmdLogin.setColor1(new java.awt.Color(128, 0, 32));
+        cmdLogin.setColor2(new java.awt.Color(102, 0, 0));
+        cmdLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmdLogin.setMaximumSize(new java.awt.Dimension(40, 40));
+        cmdLogin.setMinimumSize(new java.awt.Dimension(40, 40));
         cmdLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdLoginActionPerformed(evt);
@@ -70,14 +119,18 @@ public class Login extends javax.swing.JFrame {
                         .addGap(111, 111, 111)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(30, 30, 30)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(21, 21, 21)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
+                            .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addGap(140, 140, 140)
+                        .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,12 +138,16 @@ public class Login extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -100,7 +157,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(199, 199, 199)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +187,56 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        // TODO add your handling code here:
-        String user = txtEmailAddress.getText();
-        String pass = String.valueOf(txtPassword.getPassword());
+        String emailAddress = txtEmailAddress.getText();
+        String pass = txtPassword.getText();
+        String[] tempArray = new String[100];
+        
+        if(emailAddress.isEmpty() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill all fields"); 
+            return;
+        }
+        
+        try{
+            FileReader fr = new FileReader("UserRegister.txt");
+            
+            Scanner sc = new Scanner(fr);
+            String line;
+            String[] lineArr;
+            int currIn=0;
+            while(sc.hasNextLine()){
+                line = sc.nextLine();
+                lineArr = line.split(",");
+                if(lineArr[7].equals(emailAddress) & lineArr[8].equals(pass)){
+                    JOptionPane.showMessageDialog(null, "Login successfull");
+                    tempArray[currIn++]=line;
+                    break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
+                    tempArray[currIn++]=line;
+                }
+            }fr.close();
+        }
+        
+        catch(Exception e){
+            System.out.println(e.toString());
+        
+        }
+        
+        try {
+            FileWriter wr = new FileWriter("Login.txt",true);
+            wr.write(emailAddress + "," +pass);
+            wr.write(System.getProperty("line.separator"));
+            wr.close();
+            /*JOptionPane.showMessageDialog(null,"Success");
+            setVisible(false);
+            */
+        
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+
+        }
+       
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     /**
@@ -172,8 +276,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private airswift.Background background;
-    private airswift.Button cmdLogin;
+    private swing.ButtonGradient cmdLogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panel;
     private airswift.TextField txtEmailAddress;
     private airswift.PasswordField txtPassword;

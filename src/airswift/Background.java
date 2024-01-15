@@ -47,7 +47,7 @@ public class Background extends JComponent {
     private Component blur;
 
     public Background() {
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\startup.jpg");
+        image = new ImageIcon(getClass().getResource("/airswift/startup.jpg"));
     }
 
     private void createImage() {

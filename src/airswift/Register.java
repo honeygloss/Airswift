@@ -4,9 +4,6 @@
  */
 package airswift;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
  
 
@@ -29,15 +25,6 @@ public class Register extends javax.swing.JFrame {
     //Customer register = new Customer();
     public Register() {
         initComponents();
-        try{
-        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Lyft _ Plane.png"));
-        this.setIconImage(icon);
-        this.setTitle("AirSwift");
-        this.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        this.setForeground(Color.black);
-        }catch (IOException e) {
-         e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
-        }
     }
 
     boolean isFound = false;
@@ -94,9 +81,9 @@ public class Register extends javax.swing.JFrame {
         txtCPassword = new airswift.PasswordField();
         txtPassword = new javax.swing.JLabel();
         txtRegisterPassword = new airswift.PasswordField();
-        cmdSignUp = new airswift.Button();
         txtDOB = new com.toedter.calendar.JDateChooser();
         checkR = new javax.swing.JCheckBox();
+        cmdSignUp = new swing.ButtonGradient();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -106,7 +93,7 @@ public class Register extends javax.swing.JFrame {
         panel2.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(128, 0, 32));
         jLabel1.setText("SIGN UP");
 
         txtTitle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mr.", "Mrs.", "Miss" }));
@@ -118,11 +105,11 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel2.setForeground(new java.awt.Color(102, 0, 0));
         jLabel2.setText("Title :");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel3.setForeground(new java.awt.Color(102, 0, 0));
         jLabel3.setText("Email Address :");
 
         txtEmailAddress.setForeground(new java.awt.Color(0, 0, 0));
@@ -133,13 +120,13 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel4.setForeground(new java.awt.Color(102, 0, 0));
         jLabel4.setText("Fisrt Name :");
 
         txtFirstName.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel5.setForeground(new java.awt.Color(102, 0, 0));
         jLabel5.setText("Last Name      :");
 
         txtLastName.setForeground(new java.awt.Color(0, 0, 0));
@@ -152,11 +139,11 @@ public class Register extends javax.swing.JFrame {
         txtNationality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghan", "Albanian", "Algerian", "Andorran", "Angolan", "Antiguan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "Bruneian", "Bulgarian", "Burkinabe", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "East Timorese (Timorese)", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean" }));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel6.setForeground(new java.awt.Color(102, 0, 0));
         jLabel6.setText("Nationality :");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel7.setForeground(new java.awt.Color(102, 0, 0));
         jLabel7.setText("Phone Number :");
 
         txtPhoneNumber.setForeground(new java.awt.Color(0, 0, 0));
@@ -167,7 +154,7 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel8.setForeground(new java.awt.Color(102, 0, 0));
         jLabel8.setText("Passport Number :");
 
         txtPassport.setForeground(new java.awt.Color(0, 0, 0));
@@ -178,30 +165,28 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel9.setForeground(new java.awt.Color(102, 0, 0));
         jLabel9.setText("Date of birth :");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel10.setForeground(new java.awt.Color(102, 0, 0));
         jLabel10.setText("Confirm Password :");
 
         txtCPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtCPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPasswordActionPerformed(evt);
+            }
+        });
 
         txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(0, 153, 153));
+        txtPassword.setForeground(new java.awt.Color(102, 0, 0));
         txtPassword.setText("Password :");
 
         txtRegisterPassword.setForeground(new java.awt.Color(0, 0, 0));
         txtRegisterPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRegisterPasswordActionPerformed(evt);
-            }
-        });
-
-        cmdSignUp.setText("SIGN UP");
-        cmdSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdSignUpActionPerformed(evt);
             }
         });
 
@@ -212,10 +197,26 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        cmdSignUp.setText("SIGN UP");
+        cmdSignUp.setColor1(new java.awt.Color(128, 0, 32));
+        cmdSignUp.setColor2(new java.awt.Color(102, 0, 0));
+        cmdSignUp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmdSignUp.setMaximumSize(new java.awt.Dimension(40, 40));
+        cmdSignUp.setMinimumSize(new java.awt.Dimension(40, 40));
+        cmdSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSignUpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(checkR)
+                .addGap(109, 109, 109))
             .addGroup(panel2Layout.createSequentialGroup()
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel2Layout.createSequentialGroup()
@@ -266,7 +267,7 @@ public class Register extends javax.swing.JFrame {
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(35, 35, 35)
+                                        .addGap(37, 37, 37)
                                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(panel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
@@ -277,16 +278,12 @@ public class Register extends javax.swing.JFrame {
                                                 .addGap(10, 10, 10)
                                                 .addComponent(txtCPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
+                        .addGap(227, 227, 227)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(214, 214, 214)
+                        .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(checkR)
-                .addGap(109, 109, 109))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,8 +331,9 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(txtRegisterPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkR)
-                .addGap(24, 24, 24)
-                .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         background1.add(panel2);
@@ -366,6 +364,10 @@ public class Register extends javax.swing.JFrame {
 
     private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
         // TODO add your handling code here:
+        if (txtPhoneNumber == null ){
+            JOptionPane.showMessageDialog(this, "Fill in the phone number"); 
+            return;
+        }
     }//GEN-LAST:event_txtPhoneNumberActionPerformed
 
     private void txtPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassportActionPerformed
@@ -382,7 +384,25 @@ public class Register extends javax.swing.JFrame {
 
     private void txtRegisterPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegisterPasswordActionPerformed
         // TODO add your handling code here:
+        if (txtRegisterPassword == null ){
+            JOptionPane.showMessageDialog(this, "Fill in the password"); 
+            return;
+        }
+        if (txtRegisterPassword.getText().length()<8 ){
+            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
+            return;
+        }
     }//GEN-LAST:event_txtRegisterPasswordActionPerformed
+
+    private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed
+        if(checkR.isSelected()){
+            txtRegisterPassword.setEchoChar((char) 0);
+            txtCPassword.setEchoChar((char) 0);
+        }else{
+            txtRegisterPassword.setEchoChar('*');
+            txtCPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkRActionPerformed
 
     private void cmdSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSignUpActionPerformed
         // TODO add your handling code here:
@@ -398,6 +418,20 @@ public class Register extends javax.swing.JFrame {
         String pass = txtRegisterPassword.getText();
         String confirmPass = txtCPassword.getText();
         
+        if(!txtCPassword.getText().equals(txtRegisterPassword.getText())){
+            JOptionPane.showMessageDialog(this, "Confirm password is not same as Password"); 
+            return;
+        }
+        
+        if (txtRegisterPassword.getText().length()<8 ){
+            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
+            return;
+        }
+        if(title.isEmpty() || nationality.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()
+                || fName.isEmpty() || lName.isEmpty() ||passport.isEmpty() || DOB.isEmpty() || pass.isEmpty()|| confirmPass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill all fields"); 
+            return;
+        }
         try {
             FileWriter wr = new FileWriter("UserRegister.txt",true);
             wr.write(title + "," +
@@ -413,70 +447,23 @@ public class Register extends javax.swing.JFrame {
             wr.close();
             JOptionPane.showMessageDialog(null,"Success");
             setVisible(false);
-            new Register().setVisible(true);
+            
         
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error");
 
         }
-        /*try{
-            PrintWriter pw=new PrintWriter(writer);
-            try(FileWriter writer = new FileWriter("UserRegister.txt",true)){   
-                
-                Scanner in=new Scanner(System.in);
-                String line;
-                String[] lineArr;
-                
-                    lineArr = line.split(",");
-                    if(lineArr[7].equals(emailAddress)){
-                        
-                        System.out.println("email is found");
-                        title = in.nextLine();
-                        fName = in.nextLine;
-                        lName = in.nextLine();
-                        passport = in.nextLine();
-                        nationality = in.nextLine;
-                        phoneNumber = in.nextLine();
-                        DOB = in.nextDate;
-                        confirmPass = in.nextLine;
-        
-                        pw.print(
-                        title + "," +
-                        passport + "," +
-                        fName + "," +
-                        lName + "," +
-                        nationality + "," +
-                        phoneNumber + "," +
-                        DOB + "," +
-                        lineArr[7] + "," +
-                        confirmPass );
-                    }else{
-                        
-                        System.out.println("email is not found");
-                    } 
-                }
-                
-                pw.close();
-            }catch(Exception e){
-                System.out.println(e.toString());
-            }
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-        
-        new StartUp().setVisible(true);*/
+        new StartUp().setVisible(true);
     }//GEN-LAST:event_cmdSignUpActionPerformed
 
-    private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed
-        if(checkR.isSelected()){
-            txtRegisterPassword.setEchoChar((char) 0);
-            txtCPassword.setEchoChar((char) 0);
-        }else{
-            txtRegisterPassword.setEchoChar('*');
-            txtCPassword.setEchoChar('*');
+    private void txtCPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPasswordActionPerformed
+        // TODO add your handling code here:
+        if(!txtCPassword.getText().equals(txtRegisterPassword.getText())){
+            JOptionPane.showMessageDialog(this, "Confirm password is not same as Password"); 
+            return;
         }
-    }//GEN-LAST:event_checkRActionPerformed
+    }//GEN-LAST:event_txtCPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,6 +491,9 @@ public class Register extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -516,7 +506,7 @@ public class Register extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private airswift.Background background1;
     private javax.swing.JCheckBox checkR;
-    private airswift.Button cmdSignUp;
+    private swing.ButtonGradient cmdSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
