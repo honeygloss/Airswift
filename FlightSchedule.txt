@@ -1,1 +1,8 @@
-
+1000;AS 778;Kuala Lumpur ;Kerteh ;Sun Jan 21 16:43:14 MYT 2024;null;19:55;
+1001;AS 229;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;17:00;
+1002;AS 787;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;14:45;
+1003;AS 540;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;19:55;
+1004;AS 335;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;04:55;
+1005;AS 296;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;23:00;
+1006;AS 618;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;21:15;
+1007;AS 598;Long Seridan ;Kerteh ;Tue Jan 16 17:29:48 MYT 2024;null;12:05;

@@ -71,13 +71,14 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             randomNum = random.nextInt(10);
         }while(randomNum==0);
         
-        int indFTime[]=new int[randomNum], indFNum[]=new int[randomNum];
-        String flightName[]=new String[randomNum];
-        String flightTime[][]=new String[randomNum][2];
+        int indFTime[]=new int[2*randomNum], indFNum[]=new int[2*randomNum];
+        String flightName[]=new String[2*randomNum];
+        String flightTime[][]=new String[2*randomNum][2];
         int newValue;
         boolean isDuplicate;
-
-        for (int i = 0; i < randomNum; i++) {
+        
+        //  assign random value
+        for (int i = 0; i < 2*randomNum; i++) {
             do {
                 newValue = random.nextInt(10);
                 isDuplicate = false;
@@ -96,24 +97,18 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             }while(indFNum[i]<100);
         }
         
-        for(int i=0; i<randomNum; i++){
+        for(int i=0; i<2*randomNum; i++){
             flightName[i]="AS "+Integer.toString(indFNum[i]);
             for(int j=0; j<2; j++){
                 flightTime[i][j]=timeAvail[indFTime[i]][j];
             }
         }
-        
-        String seatName[] =new String[69];
-        boolean flagSeat[]= new boolean[69];
-        
         try {
-            int lineCount = (int) Files.lines(Paths.get("FlightSchedule.txt")).count();
-            int flightID=1000+lineCount;
+            
             FileWriter fr1 = new FileWriter("FlightSchedule.txt", true);        
             PrintWriter pr1 = new PrintWriter(fr1);
-            FileWriter fr2 = new FileWriter("AvailableSeat.txt", true);     
-            PrintWriter pr2 = new PrintWriter(fr2);
-
+            int lineCount = (int) Files.lines(Paths.get("FlightSchedule.txt")).count();
+            int flightID=1000+lineCount;
             FileReader read = new FileReader("FlightSchedule.txt");
             java.util.Scanner filein= new java.util.Scanner(read);
 
@@ -126,18 +121,17 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                 int idTemp = Integer.parseInt(st.nextToken());
                 String nameTemp= st.nextToken();
                 String departTemp = st.nextToken();
-                String returnTemp = st.nextToken();
                 SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy HH:mm:ss");
                 Date dateTemp = sdf.parse(st.nextToken());
                 String timeTemp = st.nextToken();
-
-                fstemp[t]=new FlightSchedule(idTemp, nameTemp,departTemp, returnTemp,dateTemp, timeTemp);
-
+                fstemp[t]=new FlightSchedule(idTemp, nameTemp,departTemp,dateTemp, timeTemp);
                 t++;
             }
-            boolean hasTicket=false;        // check if the schedule has already written in the file
+            
+            // check if the schedule has already existed (for DEPART)
+            boolean hasTicket=false;        
             for(int s=0; s<lineCount; s++){
-                if(book.getDepartDate().equals(fstemp[s].getDate()) && book.getDepartLong().equals(fstemp[s].getDestination()) && book.getReturnLong().equals(fstemp[s].getArrival())){
+                if(book.getDepartDate().equals(fstemp[s].getDate()) && book.getDepartLong().equals(fstemp[s].getDestination())){
                     hasTicket=true;
                     break;
                 }
@@ -145,100 +139,33 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             if(!hasTicket){
                 for(int i=0; i<randomNum; i++){
                     pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + book.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + flightTime[i][0]+ ";" + "\n");       // print flight schedule
-                    fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong() , book.getReturnLong(), book.getDepartDate(), flightTime[i][0]);
-                    int z=0;
-                    pr2.write(flightID + ";");
-                    for(int a=0; a<4; a++){   //z is the first index of BUSINESS seat ,y is the first index of ECONOMY seat  
-                        for(int j=0; j<6; j++){
-                            switch(j){
-                                case 0 :
-                                    seatName[z]=Integer.toString(a+1)+"A";
-                                    break;
-
-                                case 1 :
-                                    seatName[z]=Integer.toString(a+1)+"B";
-                                    break;
-
-
-                                case 2 :
-                                    seatName[z]=Integer.toString(a+1)+"C";
-                                    break;
-
-                                case 3 :
-                                    seatName[z]=Integer.toString(a+1)+"D";
-                                    break;
-                                    
-                                case 4 :
-                                    seatName[z]=Integer.toString(a+1)+"E";
-                                    break;
-                                    
-                                case 5 :
-                                    seatName[z]=Integer.toString(a+1)+"F";
-                                    break;
-
-                            }
-                            flagSeat[z]=true;
-                            pr2.write(seatName[z] + ";" + flagSeat[z] + ";");
-                            z++;
-                        }
-                    }
-                        
-                    for(int a=0; a<5; a++){
-                        for(int j=0; j<9; j++){
-                            switch(j){
-                                case 0 :
-                                    seatName[z]=Integer.toString(a+1)+"A";
-                                    break;
-
-                                case 1 :
-                                    seatName[z]=Integer.toString(a+1)+"B";
-                                    break;
-
-
-                                case 2 :
-                                    seatName[z]=Integer.toString(a+1)+"C";
-                                    break;
-
-                                case 3 :
-                                    seatName[z]=Integer.toString(a+1)+"D";
-                                    break;
-
-                                case 4 :
-                                    seatName[z]=Integer.toString(a+1)+"E";
-                                    break;
-
-                                case 5 :
-                                    seatName[z]=Integer.toString(a+1)+"F";
-                                    break;
-
-                                case 6 :
-                                    seatName[z]=Integer.toString(a+1)+"G";
-                                    break;
-
-                                case 7 :
-                                    seatName[z]=Integer.toString(a+1)+"H";
-                                    break;
-
-                                case 8 :
-                                    seatName[z]=Integer.toString(a+1)+"I";
-                                    break;
-                            }
-
-                            flagSeat[z]=true;
-                            pr2.write(seatName[z] + ";" + flagSeat[z] + ";");
-                            z++;
-                        }
-                    }
+                    fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getDepartDate(), flightTime[i][0]);
                     flightID++;
                     t++;
-                    pr2.write("\n");
+                    lineCount++;
                 }   
             }
-            pr1.close();
-            pr2.close();
-           
             
-
+            //  check if the schedule has already existed (for RETURN)
+            hasTicket=false;
+            for(int s=0; s<lineCount; s++){
+                if(book.getReturnDate().equals(fstemp[s].getDate()) && book.getReturnLong().equals(fstemp[s].getDestination())){
+                    hasTicket=true;
+                    break;
+                }
+            }
+            if(!hasTicket){
+                for(int i=randomNum; i<2*randomNum; i++){
+                    pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + book.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + flightTime[i][0]+ ";" + "\n");       // print flight schedule
+                    fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getReturnLong(), book.getReturnDate(), flightTime[i][0]);
+                    flightID++;
+                    t++;
+                    lineCount++;
+                }   
+            }
+            
+            pr1.close();
+        
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -251,17 +178,36 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         JButton[] buttons = new JButton[randomNum];
 
         for (int i = 0; i < randomNum; i++) {
-            buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
-            +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
-            + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
-            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
+            if(booking.getCabin().equalsIgnoreCase("Economy"))
+                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
+                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
+                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>------------------------------------------------------------------------------------------------------------------------<span style='font-size:16px;'><b>"
+                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
+                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
+                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
+            
+            else
+                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
+                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
+                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>------------------------------------------------------------------------------------------------------------------------<span style='font-size:16px;'><b>"
+                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
+                + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
+                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
           
             buttons[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
             buttons[i].setBackground(new Color(153,153,255));
             buttons[i].setForeground(new Color(102,102,102));
-            buttons[i].setPreferredSize(new Dimension(500, 100));
+            buttons[i].setPreferredSize(new Dimension(500, 300));
           
             gbcButtons.gridx = 0;
             gbcButtons.gridy = i;

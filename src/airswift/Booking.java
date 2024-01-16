@@ -1,8 +1,6 @@
 package airswift;
 
 import java.util.Date;
-
-
 public class Booking{ 
     private String email;
     private String departShort;
@@ -16,21 +14,8 @@ public class Booking{
     private String timeDepart[]=new String[2];
     private String timeReturn[]=new String[2];
     private String flightName;
+    private String flightID;
 
-    
-    public double calculatePayment(){
-        double price;
-        if(cabin.equalsIgnoreCase("Economy")){
-            price=100;
-        }
-        else
-            price=250;
-        
-        return price;
-        
-        
-    }
-    
     public String getEmail() {
         return email;
     }
@@ -127,7 +112,15 @@ public class Booking{
         this.flightName = flightName;
     }
 
-    public Booking(String email, String departShort, String departLong, String returnShort, String returnLong, Date departDate, Date returnDate, int passenger, String cabin, String flightName) {
+    public String getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(String flightID) {
+        this.flightID = flightID;
+    }
+
+    public Booking(String email, String departShort, String departLong, String returnShort, String returnLong, Date departDate, Date returnDate, int passenger, String cabin, String flightName, String flightID) {
         this.email = email;
         this.departShort = departShort;
         this.departLong = departLong;
@@ -138,7 +131,26 @@ public class Booking{
         this.passenger = passenger;
         this.cabin = cabin;
         this.flightName = flightName;
+        this.flightID = flightID;
     }
+
+    
+    public double calculatePayment(){
+        double price;
+        if(cabin.equalsIgnoreCase("Economy")){
+            price=100;
+        }
+        else
+            price=250;
+        
+        if(returnDate!=null)
+            price=price*2;
+        
+        return price*passenger;
+        
+        
+    }
+    
     
     public Booking(){
         

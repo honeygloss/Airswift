@@ -14,12 +14,16 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import javaswingdev.GradientDropdownMenu;
@@ -72,12 +76,12 @@ public class FlightBooking extends javax.swing.JPanel {
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
         departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
         
-        // assign time available
+        // Assign time available
         String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
                                     {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
                                     {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
         
-        // generate random number of available tickets
+        // Generate random number of available tickets
         Random random = new Random();
         int randomNum;
         do{
@@ -118,148 +122,60 @@ public class FlightBooking extends javax.swing.JPanel {
                 flightTime[i][j]=timeAvail[indFTime[i]][j];
             }
         }
-        
-        String seatName[] =new String[69];
-        boolean flagSeat[]= new boolean[69];
-        
         try {
-            int lineCount = (int) Files.lines(Paths.get("FlightSchedule.txt")).count();
-            int flightID=1000+lineCount;
-            FileWriter fr1 = new FileWriter("FlightSchedule.txt", true);        
-            PrintWriter pr1 = new PrintWriter(fr1);
-            
-            // HAURA BUAT
-            FileWriter fr2 = new FileWriter("AvailableSeat.txt", true);     
-            PrintWriter pr2 = new PrintWriter(fr2);
-            
-            FileReader read = new FileReader("FlightSchedule.txt");
-            Scanner filein= new Scanner(read);
+                Path filePath = Paths.get("FlightSchedule.txt");
 
-            FlightSchedule fstemp[]=new FlightSchedule[900];
-            int t = 0;
-            while(filein.hasNextLine()){        // assign all schedules in fstemp[] (for comparison)
-               
-                String line =filein.nextLine();
-                StringTokenizer st =new StringTokenizer(line, ";");
-                int idTemp = Integer.parseInt(st.nextToken());
-                String nameTemp= st.nextToken();
-                String departTemp = st.nextToken();
-                String returnTemp = st.nextToken();
-                SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy HH:mm:ss");
-                Date dateTemp = sdf.parse(st.nextToken());
-                String timeTemp = st.nextToken();
-
-                fstemp[t]=new FlightSchedule(idTemp, nameTemp,departTemp, returnTemp,dateTemp, timeTemp);
-
-                t++;
-            }
-            boolean hasTicket=false;        // check if the schedule has already written to the file
-            for(int s=0; s<lineCount; s++){
-                if(book.getDepartDate().equals(fstemp[s].getDate()) && book.getDepartLong().equals(fstemp[s].getDestination()) && book.getReturnLong().equals(fstemp[s].getArrival())){
-                    hasTicket=true;
-                    break;
+                // Check if the file exists, create it if it doesn't
+                if (!Files.exists(filePath)) {
+                    Files.createFile(filePath);
                 }
-            }
-            if(!hasTicket){
-                for(int i=0; i<randomNum; i++){
-                    pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + book.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + flightTime[i][0]+ ";" + "\n");       // print flight schedule
-                    fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong() , book.getReturnLong(), book.getDepartDate(), flightTime[i][0]);
-                    int z=0;
-                    pr2.write(flightID + ";");
-                    for(int a=0; a<4; a++){   //z is the first index of BUSINESS seat ,y is the first index of ECONOMY seat  
-                        for(int j=0; j<6; j++){
-                            switch(j){
-                                case 0 :
-                                    seatName[z]=Integer.toString(a+1)+"A";
-                                    break;
 
-                                case 1 :
-                                    seatName[z]=Integer.toString(a+1)+"B";
-                                    break;
-
-
-                                case 2 :
-                                    seatName[z]=Integer.toString(a+1)+"C";
-                                    break;
-
-                                case 3 :
-                                    seatName[z]=Integer.toString(a+1)+"D";
-                                    break;
-                                    
-                                case 4 :
-                                    seatName[z]=Integer.toString(a+1)+"E";
-                                    break;
-                                    
-                                case 5 :
-                                    seatName[z]=Integer.toString(a+1)+"F";
-                                    break;
-
-                            }
-                            flagSeat[z]=true;
-                            pr2.write(seatName[z] + ";" + flagSeat[z] + ";");
-                            z++;
-                        }
+                int lineCount = (int) Files.lines(Paths.get("FlightSchedule.txt")).count();
+                int flightID=1000+lineCount;
+                FlightSchedule fstemp[]=new FlightSchedule[900];
+                int t = 0;      //  the first index of the temporary flight schedule
+                try (Scanner filein = new Scanner(new FileReader("FlightSchedule.txt"))) {
+                    while(filein.hasNextLine()){        // assign all schedules in fstemp[] (for comparison)
+                        String line =filein.nextLine();
+                        StringTokenizer st =new StringTokenizer(line, ";");
+                        int idTemp = Integer.parseInt(st.nextToken());
+                        String nameTemp= st.nextToken();
+                        String departTemp = st.nextToken();
+                        String returnTemp = st.nextToken();
+                        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                        Date dateTemp = sdf.parse(st.nextToken());
+                        String timeTemp = st.nextToken();
+                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp);
+                        t++;
                     }
-                        
-                    for(int a=0; a<5; a++){
-                        for(int j=0; j<9; j++){
-                            switch(j){
-                                case 0 :
-                                    seatName[z]=Integer.toString(a+1)+"A";
-                                    break;
-
-                                case 1 :
-                                    seatName[z]=Integer.toString(a+1)+"B";
-                                    break;
-
-
-                                case 2 :
-                                    seatName[z]=Integer.toString(a+1)+"C";
-                                    break;
-
-                                case 3 :
-                                    seatName[z]=Integer.toString(a+1)+"D";
-                                    break;
-
-                                case 4 :
-                                    seatName[z]=Integer.toString(a+1)+"E";
-                                    break;
-
-                                case 5 :
-                                    seatName[z]=Integer.toString(a+1)+"F";
-                                    break;
-
-                                case 6 :
-                                    seatName[z]=Integer.toString(a+1)+"G";
-                                    break;
-
-                                case 7 :
-                                    seatName[z]=Integer.toString(a+1)+"H";
-                                    break;
-
-                                case 8 :
-                                    seatName[z]=Integer.toString(a+1)+"I";
-                                    break;
-                            }
-
-                            flagSeat[z]=true;
-                            pr2.write(seatName[z] + ";" + flagSeat[z] + ";");
-                            z++;
-                        }
+                }
+                boolean hasTicket=false;        // check if the schedule has already written to the file
+                for(int s=0; s<lineCount; s++){
+                    if(book.getDepartDate().equals(fstemp[s].getDate()) && book.getDepartLong().equals(fstemp[s].getDestination()) && booking.getReturnLong().equals(fstemp[s].getArrival()) ){
+                        hasTicket=true;
                     }
-                    flightID++;
-                    t++;
-                    pr2.write("\n");
-                }   
-            }
-            pr1.close();
-            pr2.close();
-           
-            
+                }
 
-        } catch (Exception e) {
-            System.out.println(e.toString());
+
+                if(!hasTicket){
+                    try (PrintWriter pr1 = new PrintWriter(new FileWriter("FlightSchedule.txt", true))) {
+                        for(int i=0; i<randomNum; i++){
+                            //  write the flight schedule to the file
+                            pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + booking.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + null + ";" + flightTime[i][0]+ ";" + "\n");       
+                            fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0]);
+                            flightID++;
+                            t++;     
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }    
+                }
+                
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
         }
+            
+        
         
         JPanel dynamicButtonsPanel = new JPanel();
         dynamicButtonsPanel.setLayout(new GridBagLayout());
@@ -325,8 +241,6 @@ public class FlightBooking extends javax.swing.JPanel {
         
         gbcDynamicButtons.weighty = 1.0; // Allow vertical expansion
         availTicket.add(dynamicButtonsPanel, gbcDynamicButtons);
-        
-        
         
     }
     
@@ -502,7 +416,7 @@ public class FlightBooking extends javax.swing.JPanel {
         bg.add(buttonGradient3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 80, 30));
 
         availTicket.setBackground(new java.awt.Color(204, 204, 255));
-        bg.add(availTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 220));
+        bg.add(availTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 900));
 
         add(bg, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
