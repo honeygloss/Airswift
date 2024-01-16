@@ -479,12 +479,15 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setReturnLong(toListdown.getSelectedItem().toString().substring(startIndex,lastIndex));
         book.setPassenger(Integer.parseInt(passengersListdown2.getSelectedItem().toString()));  
         book.setDepartDate(departDate.getDate());
-        book.setReturnDate(returnDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
-        /*if(returnCheckbox.isSelected())
+        /*if(returnCheckbox.isSelected()){
+            book.setReturnDate(returnDate.getDate());
             showForm(new FlightBookingTwoWay(menu, book));
-        else
-            showForm(new FlightBooking(menu, book));    */
+        }
+        else{
+            book.setReturnDate(null);
+            showForm(new FlightBooking(menu, book));
+        }*/
        showForm(new FlightSeat(book, menu));
  
     }//GEN-LAST:event_findaFlightButtonActionPerformed

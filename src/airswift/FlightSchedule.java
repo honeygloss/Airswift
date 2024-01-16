@@ -10,16 +10,6 @@ public class FlightSchedule {
     private Date date;
     private String flightTime;
 
-    public FlightSchedule(int flightScheduleID, String flightName, String destination, String arrival, Date date, String flightTime) {
-        this.flightScheduleID = flightScheduleID;
-        this.flightName = flightName;
-        this.destination = destination;
-        this.arrival = arrival;
-        this.date = date;
-        this.flightTime = flightTime;
-    }
-    
-
     public int getFlightScheduleID() {
         return flightScheduleID;
     }
@@ -68,4 +58,16 @@ public class FlightSchedule {
         this.flightTime = flightTime;
     }
 
+    public FlightSchedule(int flightScheduleID, String flightName, String destination, String arrival, Date date, String flightTime) {
+        this.flightScheduleID = flightScheduleID;
+        this.flightName = flightName;
+        this.destination = destination;
+        this.arrival = arrival;
+        this.date = date;
+        this.flightTime = flightTime;
+    }
+
+    
+
+    
 }

@@ -7,13 +7,16 @@ package airswift;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javaswingdev.GradientDropdownMenu;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,6 +28,7 @@ import javax.swing.JOptionPane;
 public class FlightSeat extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
+    private Image backgroundImage;
     //private AvailableSeat avail;
 
     public GradientDropdownMenu getGradientDropdownMenu() {
@@ -61,6 +65,9 @@ public class FlightSeat extends javax.swing.JPanel {
         book=booking;
         gradientDropdownMenu = menu;
         //this.avail = avail;
+        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\planeWindow.jpg");
+        backgroundImage = backgroundImageIcon.getImage();
+        
         
         if ("economy".equalsIgnoreCase(booking.getCabin())) {
             tabbedPane.setSelectedComponent(economySeat);
@@ -79,7 +86,12 @@ public class FlightSeat extends javax.swing.JPanel {
         });
         
     }
-
+      @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+    }
     
     public void setBooking(Booking book){
         this.book=book;
@@ -209,6 +221,7 @@ public class FlightSeat extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(204, 204, 255));
         bg.setForeground(new java.awt.Color(0, 102, 102));
+        bg.setOpaque(false);
         bg.setPreferredSize(new java.awt.Dimension(920, 551));
         bg.setLayout(null);
 
@@ -253,6 +266,7 @@ public class FlightSeat extends javax.swing.JPanel {
         jPanel3.setBounds(0, 460, 900, 70);
 
         busSeat.setBackground(new java.awt.Color(252, 223, 251));
+        busSeat.setOpaque(false);
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
@@ -737,6 +751,7 @@ public class FlightSeat extends javax.swing.JPanel {
         tabbedPane.addTab("tab2", busSeat);
 
         economySeat.setBackground(new java.awt.Color(252, 223, 251));
+        economySeat.setOpaque(false);
 
         jSeparator3.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
