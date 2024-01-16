@@ -454,7 +454,7 @@ public class Register extends javax.swing.JFrame {
         String DOB = sdf.format(txtDOB.getDate());
         String pass = txtRegisterPassword.getText();
         String confirmPass = txtCPassword.getText();
-        
+        int currentIndex=0;
         
         EmailValidation emailValidation = new EmailValidation();
         String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -509,6 +509,21 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error");
 
         }
+        
+        
+        Customer cust = new Customer();
+        for (int i=0; i<currentIndex ;i++){
+        cust.setTitle(title) ;
+        cust.setPassport(passport);
+        cust.setFName(fName);
+        cust.setLName(lName);
+        cust.setNationality(nationality);
+        cust.setPhoneNumber(phoneNumber);
+        cust.setDOB(DOB);
+        cust.setEmailAddress(emailAddress);
+        cust.setConfirmPass(confirmPass);
+        }
+        
         new StartUp().setVisible(true);
     }//GEN-LAST:event_cmdSignUpActionPerformed
 
