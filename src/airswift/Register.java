@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
+
  
 
 /**
@@ -44,12 +46,47 @@ public class Register extends javax.swing.JFrame {
             try{
             FileWriter writer = new FileWriter("UserRegister.txt",true);
             } catch(IOException ex1){
-                Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         } 
-        
     }
+    
+    public class EmailValidation {
+
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return Pattern.compile(emailRegex).matcher(email).matches();
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        String email1 = "user@example.com";
+        String email2 = "invalid_email";
+
+        System.out.println(email1 + " is valid: " + isValidEmail(email1));
+        System.out.println(email2 + " is valid: " + isValidEmail(email2));
+    }
+}
+    public class PassportValidation {
+
+    public static boolean isValidPassportNumber(String passportNumber) {
+        // Adjust the regular expression based on the passport number format
+        String passportRegex = "^[A-Za-z0-9]{6,20}$";
+
+        return Pattern.compile(passportRegex).matcher(passportNumber).matches();
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        String validPassport = "AB123456";
+        String invalidPassport = "InvalidPassport123";
+
+        System.out.println("Is " + validPassport + " a valid passport number? " + isValidPassportNumber(validPassport));
+        System.out.println("Is " + invalidPassport + " a valid passport number? " + isValidPassportNumber(invalidPassport));
+    }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,6 +174,11 @@ public class Register extends javax.swing.JFrame {
         });
 
         txtNationality.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Afghan", "Albanian", "Algerian", "Andorran", "Angolan", "Antiguan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "Bruneian", "Bulgarian", "Burkinabe", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "East Timorese (Timorese)", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean" }));
+        txtNationality.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNationalityActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 0, 0));
@@ -258,15 +300,15 @@ public class Register extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(panel2Layout.createSequentialGroup()
                                                 .addComponent(txtPassword)
-                                                .addGap(10, 10, 10)
+                                                .addGap(18, 18, 18)
                                                 .addComponent(txtRegisterPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(panel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(37, 37, 37)
                                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(panel2Layout.createSequentialGroup()
@@ -295,7 +337,7 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,10 +406,7 @@ public class Register extends javax.swing.JFrame {
 
     private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
         // TODO add your handling code here:
-        if (txtPhoneNumber == null ){
-            JOptionPane.showMessageDialog(this, "Fill in the phone number"); 
-            return;
-        }
+        
     }//GEN-LAST:event_txtPhoneNumberActionPerformed
 
     private void txtPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassportActionPerformed
@@ -376,6 +415,11 @@ public class Register extends javax.swing.JFrame {
 
     private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
         // TODO add your handling code here:
+/*String emailAddress = txtEmailAddress.getText();
+        public static boolean patternMatches(String emailAddress,String regexPattern){
+         return Pattern.compie(regexPattern).matches(emailAAddress).matches();
+
+}*/
     }//GEN-LAST:event_txtEmailAddressActionPerformed
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
@@ -384,14 +428,7 @@ public class Register extends javax.swing.JFrame {
 
     private void txtRegisterPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegisterPasswordActionPerformed
         // TODO add your handling code here:
-        if (txtRegisterPassword == null ){
-            JOptionPane.showMessageDialog(this, "Fill in the password"); 
-            return;
-        }
-        if (txtRegisterPassword.getText().length()<8 ){
-            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
-            return;
-        }
+        
     }//GEN-LAST:event_txtRegisterPasswordActionPerformed
 
     private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed
@@ -417,6 +454,24 @@ public class Register extends javax.swing.JFrame {
         String DOB = sdf.format(txtDOB.getDate());
         String pass = txtRegisterPassword.getText();
         String confirmPass = txtCPassword.getText();
+        int currentIndex=0;
+        
+        EmailValidation emailValidation = new EmailValidation();
+        String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        boolean isValidEmail = emailValidation.isValidEmail(email);
+        if(!txtEmailAddress.getText().equals(isValidEmail)){
+            JOptionPane.showMessageDialog(this, "Email is not valid"); 
+            return;
+        }
+        
+        
+        PassportValidation passportValidation = new PassportValidation();
+        String passportNumber = "AB123456";
+        boolean isValidPassport = passportValidation.isValidPassportNumber(passportNumber);
+        if(!txtPassport.getText().equals(isValidPassport)){
+            JOptionPane.showMessageDialog(this, "Passport number is not valid"); 
+            return;
+        }
         
         if(!txtCPassword.getText().equals(txtRegisterPassword.getText())){
             JOptionPane.showMessageDialog(this, "Confirm password is not same as Password"); 
@@ -428,7 +483,7 @@ public class Register extends javax.swing.JFrame {
             return;
         }
         if(title.isEmpty() || nationality.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()
-                || fName.isEmpty() || lName.isEmpty() ||passport.isEmpty() || DOB.isEmpty() || pass.isEmpty()|| confirmPass.isEmpty()){
+           || fName.isEmpty() || lName.isEmpty() ||passport.isEmpty() || DOB.isEmpty() || pass.isEmpty()|| confirmPass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
@@ -454,16 +509,32 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error");
 
         }
+        
+        
+        Customer cust = new Customer();
+        for (int i=0; i<currentIndex ;i++){
+        cust.setTitle(title) ;
+        cust.setPassport(passport);
+        cust.setFName(fName);
+        cust.setLName(lName);
+        cust.setNationality(nationality);
+        cust.setPhoneNumber(phoneNumber);
+        cust.setDOB(DOB);
+        cust.setEmailAddress(emailAddress);
+        cust.setConfirmPass(confirmPass);
+        }
+        
         new StartUp().setVisible(true);
     }//GEN-LAST:event_cmdSignUpActionPerformed
 
     private void txtCPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPasswordActionPerformed
         // TODO add your handling code here:
-        if(!txtCPassword.getText().equals(txtRegisterPassword.getText())){
-            JOptionPane.showMessageDialog(this, "Confirm password is not same as Password"); 
-            return;
-        }
+        
     }//GEN-LAST:event_txtCPasswordActionPerformed
+
+    private void txtNationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNationalityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNationalityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -531,3 +602,4 @@ public class Register extends javax.swing.JFrame {
     private combo_suggestion.ComboBoxSuggestion txtTitle;
     // End of variables declaration//GEN-END:variables
 }
+   

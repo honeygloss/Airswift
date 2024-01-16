@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,13 +43,29 @@ public class Login extends javax.swing.JFrame {
             try{
             FileWriter writer = new FileWriter("Login.txt",true);
             } catch(IOException ex1){
-                Logger.getLogger(CustomerInformation.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         } 
         
     }
 
+    public class EmailValidation {
+
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return Pattern.compile(emailRegex).matcher(email).matches();
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        String email1 = "user@example.com";
+        String email2 = "invalid_email";
+
+        System.out.println(email1 + " is valid: " + isValidEmail(email1));
+        System.out.println(email2 + " is valid: " + isValidEmail(email2));
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -191,6 +208,14 @@ public class Login extends javax.swing.JFrame {
         String pass = txtPassword.getText();
         String[] tempArray = new String[100];
         
+        EmailValidation emailValidation = new EmailValidation();
+        String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        boolean isValidEmail = emailValidation.isValidEmail(email);
+        if(!txtEmailAddress.getText().equals(isValidEmail)){
+            JOptionPane.showMessageDialog(this, "Email is not valid"); 
+            return;
+        }
+        
         if(emailAddress.isEmpty() || pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
@@ -209,6 +234,18 @@ public class Login extends javax.swing.JFrame {
                 if(lineArr[7].equals(emailAddress) & lineArr[8].equals(pass)){
                     JOptionPane.showMessageDialog(null, "Login successfull");
                     tempArray[currIn++]=line;
+                    
+                    try {
+                        FileWriter wr = new FileWriter("Login.txt",true);
+                        wr.write(emailAddress + " , " +pass);
+                        wr.write(System.getProperty("line.separator"));
+                        wr.close();
+            
+                    }
+                    catch(Exception e){
+                        System.out.println(e.toString());
+
+                    }
                     break;
                 }else{
                     JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
@@ -222,20 +259,17 @@ public class Login extends javax.swing.JFrame {
         
         }
         
-        try {
+        /*try {
             FileWriter wr = new FileWriter("Login.txt",true);
             wr.write(emailAddress + "," +pass);
             wr.write(System.getProperty("line.separator"));
             wr.close();
-            /*JOptionPane.showMessageDialog(null,"Success");
-            setVisible(false);
-            */
-        
+            
         }
         catch(Exception e){
             System.out.println(e.toString());
 
-        }
+        }*/
        
     }//GEN-LAST:event_cmdLoginActionPerformed
 
