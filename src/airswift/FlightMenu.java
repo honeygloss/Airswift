@@ -43,7 +43,7 @@ public class FlightMenu extends javax.swing.JFrame {
     public FlightMenu() {
         initComponents();
         try{
-        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Lyft _ Plane.png"));
+        Image icon = ImageIO.read(new File("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Lyft _ Plane.png"));
         this.setIconImage(icon);
         this.setTitle("AirSwift");
         this.setFont(new java.awt.Font("Segoe UI", 1, 12));
@@ -109,7 +109,10 @@ public class FlightMenu extends javax.swing.JFrame {
             ((FlightBooking) com).setGradientDropdownMenu(menu);
         }
         else if(com instanceof FlightSeat){
-            ((FlightSeat) com).setGradientDropDownMenu(menu);
+            ((FlightSeat) com).setGradientDropdownMenu(menu);
+        }
+        else if(com instanceof FlightBookingTwoWay){
+            ((FlightBookingTwoWay) com).setGradientDropdownMenu(menu);
         }
     }
     private void createBookingButtons() {
@@ -478,39 +481,11 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setDepartDate(departDate.getDate());
         book.setReturnDate(returnDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
-        
-        FlightBooking flightBookingPanel = new FlightBooking(menu, book);
-        flightBookingPanel.departShort.setText(book.getDepartShort());
-        flightBookingPanel.departLong.setText(book.getDepartLong().toUpperCase());
-        flightBookingPanel.returnShort.setText(book.getReturnShort());
-        flightBookingPanel.returnLong.setText(book.getReturnLong().toUpperCase());
-       
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
-        flightBookingPanel.departDate.setText(dateFormat1.format(book.getDepartDate()));
-        flightBookingPanel.returnDate.setText(dateFormat1.format(book.getReturnDate()));
-        String passString = ""+book.getPassenger();
-        flightBookingPanel.passenger.setText(passString);
-        SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
-        flightBookingPanel.departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
-        //  SimpleDateFormat dateFormat3 = new SimpleDateFormat("dd MMM");
-        /*SimpleDateFormat dateFormat4 = new SimpleDateFormat("EEE");
-        flightBookingPanel.departButton.setText(dateFormat3.format(book.getDepartDate()));
-        
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(book.getDepartDate());
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
-        flightBookingPanel.departButtonMin1.setText(dateFormat3.format(calendar.getTime()));
-        calendar.setTime(book.getDepartDate());
-        calendar.add(Calendar.DAY_OF_MONTH, -2);
-        flightBookingPanel.departButtonMin2.setText(dateFormat3.format(calendar.getTime()));
-        calendar.setTime(book.getDepartDate());
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        flightBookingPanel.departButtonAdd1.setText(dateFormat3.format(calendar.getTime()));
-        calendar.setTime(book.getDepartDate());
-        calendar.add(Calendar.DAY_OF_MONTH, 2);
-        flightBookingPanel.departButtonAdd2.setText(dateFormat3.format(calendar.getTime()));        */
-      
-       showForm(flightBookingPanel);
+        /*if(returnCheckbox.isSelected())
+            showForm(new FlightBookingTwoWay(menu, book));
+        else
+            showForm(new FlightBooking(menu, book));    */
+       showForm(new FlightSeat(book, menu));
  
     }//GEN-LAST:event_findaFlightButtonActionPerformed
 

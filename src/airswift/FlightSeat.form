@@ -19,7 +19,9 @@
     <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,18,0,0,3,-124"/>
   </AuxValues>
 
-  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="true"/>
+  </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="bg">
       <Properties>
@@ -34,8 +36,8 @@
         </Property>
       </Properties>
       <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Center"/>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="900" height="530"/>
         </Constraint>
       </Constraints>
 
@@ -147,7 +149,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JTabbedPane" name="tabbedPane">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="320" y="-40" width="590" height="510"/>
@@ -200,45 +202,45 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="myButton21" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton7" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton13" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4A" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2A" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_0_1A" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3A" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="myButton2" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton8" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton14" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton20" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="myButton3" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton9" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton15" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton16" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2C" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3C" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4C" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="myButton5" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton10" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton17" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton22" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1D" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2D" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4D" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3D" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="myButton4" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton11" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton18" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton23" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2E" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4E" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3E" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="myButton6" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton12" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton19" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="myButton24" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1F" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_2F" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_4F" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_3F" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -273,19 +275,19 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="myButton13" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="button_3A" min="-2" pref="41" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="myButton1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton2" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="button_2" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="myButton3" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton5" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton4" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton6" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_3" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1D" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1F" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_0_1A" min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
@@ -297,12 +299,12 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="myButton8" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton7" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton9" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton10" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton11" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton12" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2B" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2A" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2C" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2D" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2E" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_2F" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -315,17 +317,17 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="myButton14" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton22" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton23" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
-                                                      <Component id="myButton24" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_3B" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_3D" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_3E" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                                      <Component id="button_3F" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="myButton15" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="button_3C" min="-2" pref="41" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -338,12 +340,12 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="myButton17" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton16" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton18" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton19" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton20" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="myButton21" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4D" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4C" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4E" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4F" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4B" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_4A" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -434,11 +436,8 @@
                     <Property name="text" type="java.lang.String" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton1">
+                <Component class="airswift.MyButton" name="button_0_1A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -458,14 +457,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_0_1AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton2">
+                <Component class="airswift.MyButton" name="button_2">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -485,11 +481,8 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton3">
+                <Component class="airswift.MyButton" name="button_3">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -509,14 +502,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton4">
+                <Component class="airswift.MyButton" name="button_4">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -536,14 +526,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton5">
+                <Component class="airswift.MyButton" name="button_1D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -563,14 +550,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_1DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton6">
+                <Component class="airswift.MyButton" name="button_1F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -590,14 +574,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_1FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton7">
+                <Component class="airswift.MyButton" name="button_2A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -617,14 +598,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton8">
+                <Component class="airswift.MyButton" name="button_2B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -644,14 +622,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton8ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton9">
+                <Component class="airswift.MyButton" name="button_2C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -671,14 +646,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton9ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton10">
+                <Component class="airswift.MyButton" name="button_2D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -698,14 +670,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton10ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton11">
+                <Component class="airswift.MyButton" name="button_2E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -725,14 +694,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton11ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton12">
+                <Component class="airswift.MyButton" name="button_2F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -752,14 +718,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_2FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton13">
+                <Component class="airswift.MyButton" name="button_3A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -779,14 +742,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton13ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton14">
+                <Component class="airswift.MyButton" name="button_3B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -806,14 +766,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton14ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton15">
+                <Component class="airswift.MyButton" name="button_3C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -833,14 +790,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton15ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton16">
+                <Component class="airswift.MyButton" name="button_4C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -860,14 +814,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton16ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton17">
+                <Component class="airswift.MyButton" name="button_4D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -887,14 +838,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton17ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton18">
+                <Component class="airswift.MyButton" name="button_4E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -914,14 +862,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton18ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton19">
+                <Component class="airswift.MyButton" name="button_4F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -941,14 +886,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton19ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton20">
+                <Component class="airswift.MyButton" name="button_4B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -968,14 +910,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton20ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton21">
+                <Component class="airswift.MyButton" name="button_4A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -995,14 +934,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton21ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton22">
+                <Component class="airswift.MyButton" name="button_3D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1022,14 +958,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton22ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton23">
+                <Component class="airswift.MyButton" name="button_3E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1049,14 +982,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton23ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton24">
+                <Component class="airswift.MyButton" name="button_3F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1076,7 +1006,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton24ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3FActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator5">
@@ -1105,169 +1035,165 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel15" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel14" min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel18" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel19" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jSeparator3" min="-2" pref="139" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="jSeparator6" min="-2" pref="166" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel14" min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jSeparator3" min="-2" pref="139" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          <Component id="jSeparator6" min="-2" pref="166" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton25" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton26" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton27" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton52" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton53" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton54" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton63" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton65" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton87" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton28" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton29" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton30" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton66" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton67" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton68" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="1" attributes="0">
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="myButton55" min="-2" pref="33" max="-2" attributes="0"/>
-                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  <Component id="myButton56" min="-2" pref="33" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="myButton77" min="-2" pref="33" max="-2" attributes="0"/>
-                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  <Component id="myButton76" min="-2" pref="33" max="-2" attributes="0"/>
-                                                              </Group>
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="myButton84" min="-2" pref="33" max="-2" attributes="0"/>
-                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  <Component id="myButton83" min="-2" pref="33" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="myButton75" min="-2" pref="33" max="-2" attributes="0"/>
-                                                              <Component id="myButton57" min="-2" pref="33" max="-2" attributes="0"/>
-                                                              <Component id="myButton82" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="button2_24" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_25" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_26" min="-2" pref="33" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton61" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton64" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="myButton62" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton85" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="button2_2A" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="myButton78" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="myButton86" min="-2" pref="33" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="button2_2B" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_2C" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="button2_5A" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_5B" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_5C" min="-2" pref="33" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="myButton72" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="button2_27" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="myButton73" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1E" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="myButton74" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1F" min="-2" pref="33" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="myButton58" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="myButton31" min="-2" pref="33" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="button2_5D" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="myButton32" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                                          <Component id="myButton33" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="myButton59" min="-2" pref="33" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton60" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="button2_5E" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_5F" min="-2" pref="33" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="1" attributes="0">
                                                       <Group type="102" attributes="0">
-                                                          <Component id="myButton81" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <Component id="button2_2D" min="-2" pref="33" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton79" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <Component id="button2_2E" min="-2" pref="33" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" attributes="0">
-                                                          <Component id="myButton69" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <Component id="button2_3D" min="-2" pref="33" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="myButton70" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <Component id="button2_3E" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="button2_4D" min="-2" pref="33" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="button2_4E" min="-2" pref="33" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="myButton71" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="myButton80" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <Component id="button2_3F" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <Component id="button2_2F" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <Component id="button2_4F" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="button2_3A" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_3B" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="button2_4A" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_4B" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="button2_3C" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="button2_4C" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="button2_3G" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="button2_3H" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="button2_3I" min="-2" pref="33" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="button2_2G" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="button2_1G" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="button2_1H" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                  <Component id="button2_1I" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="button2_2H" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_2I" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="button2_4G" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_4H" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="button2_5G" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="button2_5H" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="button2_5I" min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Component id="button2_4I" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="34" max="32767" attributes="0"/>
@@ -1290,81 +1216,76 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="myButton25" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton26" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton27" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton28" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton29" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton30" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton31" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton32" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="myButton33" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="button2_24" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_25" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_26" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_27" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1E" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1F" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1G" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1H" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1I" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="myButton52" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton53" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton54" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton55" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton56" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton57" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton58" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton59" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton60" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="button2_2A" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2B" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2C" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2D" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2E" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2F" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2G" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2H" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_2I" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="button2_3A" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3B" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3G" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3H" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3I" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3F" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3E" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3D" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_3C" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="button2_4A" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4H" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4I" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4G" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4F" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4E" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4D" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4B" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="button2_4C" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabel18" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                              <Component id="myButton61" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton64" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton72" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton73" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton74" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton75" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton76" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton77" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton78" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="myButton62" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton79" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton80" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton81" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton82" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton83" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton84" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton85" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton86" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="myButton63" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton65" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton66" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton67" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton68" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton69" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton70" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton71" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="myButton87" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5A" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5B" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5D" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5E" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5F" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5G" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5H" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5I" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_5C" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
@@ -1402,11 +1323,8 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton25">
+                <Component class="airswift.MyButton" name="button2_24">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1426,14 +1344,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton25ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_24ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton26">
+                <Component class="airswift.MyButton" name="button2_25">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1453,14 +1368,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton26ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_25ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton27">
+                <Component class="airswift.MyButton" name="button2_26">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1480,14 +1392,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton27ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_26ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton28">
+                <Component class="airswift.MyButton" name="button2_27">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1507,14 +1416,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton28ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_27ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton29">
+                <Component class="airswift.MyButton" name="button2_1E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1534,14 +1440,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton29ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton30">
+                <Component class="airswift.MyButton" name="button2_1F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1561,14 +1464,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton30ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton31">
+                <Component class="airswift.MyButton" name="button2_1G">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1588,14 +1488,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton31ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1GActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton32">
+                <Component class="airswift.MyButton" name="button2_1H">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1615,14 +1512,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton32ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1HActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton33">
+                <Component class="airswift.MyButton" name="button2_1I">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1642,14 +1536,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton33ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1IActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton52">
+                <Component class="airswift.MyButton" name="button2_2A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1669,14 +1560,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton52ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton53">
+                <Component class="airswift.MyButton" name="button2_2B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1696,14 +1584,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton53ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton54">
+                <Component class="airswift.MyButton" name="button2_2C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1723,14 +1608,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton54ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton55">
+                <Component class="airswift.MyButton" name="button2_2D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1750,14 +1632,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton55ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton56">
+                <Component class="airswift.MyButton" name="button2_2E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1777,14 +1656,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton56ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton57">
+                <Component class="airswift.MyButton" name="button2_2F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1804,14 +1680,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton57ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton58">
+                <Component class="airswift.MyButton" name="button2_2G">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1831,14 +1704,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton58ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2GActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton59">
+                <Component class="airswift.MyButton" name="button2_2H">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1858,14 +1728,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton59ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2HActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton60">
+                <Component class="airswift.MyButton" name="button2_2I">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1885,7 +1752,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton60ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_2IActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -1957,11 +1824,8 @@
                     <Property name="text" type="java.lang.String" value="5"/>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton61">
+                <Component class="airswift.MyButton" name="button2_3A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -1981,14 +1845,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton61ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton62">
+                <Component class="airswift.MyButton" name="button2_4A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2008,14 +1869,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton62ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton63">
+                <Component class="airswift.MyButton" name="button2_5A">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2035,14 +1893,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton63ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton64">
+                <Component class="airswift.MyButton" name="button2_3B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2062,14 +1917,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton64ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton65">
+                <Component class="airswift.MyButton" name="button2_5B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2089,14 +1941,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton65ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton66">
+                <Component class="airswift.MyButton" name="button2_5D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2116,14 +1965,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton66ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton67">
+                <Component class="airswift.MyButton" name="button2_5E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2143,14 +1989,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton67ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton68">
+                <Component class="airswift.MyButton" name="button2_5F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2170,14 +2013,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton68ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton69">
+                <Component class="airswift.MyButton" name="button2_5G">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2197,14 +2037,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton69ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5GActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton70">
+                <Component class="airswift.MyButton" name="button2_5H">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2224,14 +2061,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton70ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5HActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton71">
+                <Component class="airswift.MyButton" name="button2_5I">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2251,14 +2085,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton71ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5IActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton72">
+                <Component class="airswift.MyButton" name="button2_3G">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2278,14 +2109,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton72ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3GActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton73">
+                <Component class="airswift.MyButton" name="button2_3H">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2305,14 +2133,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton73ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3HActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton74">
+                <Component class="airswift.MyButton" name="button2_3I">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2332,14 +2157,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton74ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3IActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton75">
+                <Component class="airswift.MyButton" name="button2_3F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2359,14 +2181,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton75ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton76">
+                <Component class="airswift.MyButton" name="button2_3E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2386,14 +2205,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton76ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton77">
+                <Component class="airswift.MyButton" name="button2_3D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2413,14 +2229,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton77ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton78">
+                <Component class="airswift.MyButton" name="button2_3C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2440,14 +2253,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton78ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_3CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton79">
+                <Component class="airswift.MyButton" name="button2_4H">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2467,14 +2277,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton79ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4HActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton80">
+                <Component class="airswift.MyButton" name="button2_4I">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2494,14 +2301,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton80ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4IActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton81">
+                <Component class="airswift.MyButton" name="button2_4G">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2521,14 +2325,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton81ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4GActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton82">
+                <Component class="airswift.MyButton" name="button2_4F">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2548,14 +2349,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton82ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4FActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton83">
+                <Component class="airswift.MyButton" name="button2_4E">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2575,14 +2373,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton83ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4EActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton84">
+                <Component class="airswift.MyButton" name="button2_4D">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2602,14 +2397,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton84ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4DActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton85">
+                <Component class="airswift.MyButton" name="button2_4B">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2629,14 +2421,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton85ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton86">
+                <Component class="airswift.MyButton" name="button2_4C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2656,14 +2445,11 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton86ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_4CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="myButton87">
+                <Component class="airswift.MyButton" name="button2_5C">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e4" green="85" red="cc" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -2683,7 +2469,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton87ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_5CActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2829,6 +2615,7 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seatInputMousePressed"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seatInputActionPerformed"/>
               </Events>
             </Component>

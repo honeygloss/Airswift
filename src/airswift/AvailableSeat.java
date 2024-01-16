@@ -2,8 +2,12 @@ package airswift;
 
 public class AvailableSeat {
     private int flightScheduleID;
-    private String seatName[];
-    private boolean flag[];
+    private String seatName[]=new String[69];
+    private boolean flag[]=new boolean[69];
+
+    public AvailableSeat(int flightScheduleID) {
+        this.flightScheduleID = flightScheduleID;
+    }
 
     public int getFlightScheduleID() {
         return flightScheduleID;
@@ -28,5 +32,15 @@ public class AvailableSeat {
     public void setFlag(boolean[] flag) {
         this.flag = flag;
     }
+    
+    public void setSeatNameAtIndex(int index, String value) {
+        if (index >= 0 && index < seatName.length) {
+            seatName[index] = value;
+        } else {
+            System.out.println("Invalid index");
+        }
+    }
+
+   
     
 }

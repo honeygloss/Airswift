@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.StringTokenizer;
 import javaswingdev.GradientDropdownMenu;
@@ -44,6 +45,20 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         
         initComponents();
         
+        departShort.setText(book.getDepartShort());
+        departLong.setText(book.getDepartLong().toUpperCase());
+        returnShort.setText(book.getReturnShort());
+        returnLong.setText(book.getReturnLong().toUpperCase());
+       
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
+        departDate.setText(dateFormat1.format(book.getDepartDate()));
+        returnDate.setText(dateFormat1.format(book.getReturnDate()));
+        
+        
+        String passString = ""+book.getPassenger();
+        passenger.setText(passString);
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
+        departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
         
         
         String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 

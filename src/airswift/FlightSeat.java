@@ -9,6 +9,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javaswingdev.GradientDropdownMenu;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,13 +25,14 @@ import javax.swing.JOptionPane;
 public class FlightSeat extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
+    //private AvailableSeat avail;
 
-    public GradientDropdownMenu getgradientDropdownMenu() {
+    public GradientDropdownMenu getGradientDropdownMenu() {
         return gradientDropdownMenu;
     }
 
-    public void setGradientDropDownMenu(GradientDropdownMenu menu) {
-        gradientDropdownMenu = menu;
+    public void setGradientDropdownMenu(GradientDropdownMenu gradientDropdownMenu) {
+        this.gradientDropdownMenu = gradientDropdownMenu;
     }
 
     public Booking getBook() {
@@ -37,26 +42,41 @@ public class FlightSeat extends javax.swing.JPanel {
     public void setBook(Booking book) {
         this.book = book;
     }
+
+    /*public AvailableSeat getAvail() {
+        return avail;
+    }
+
+    public void setAvail(AvailableSeat avail) {
+        this.avail = avail;
+    }       */
+
     
     /**
      * Creates new form FlightSeat
      * @param book
      */
-    public FlightSeat(Booking booking, GradientDropdownMenu menu) {
+    public FlightSeat(Booking booking, GradientDropdownMenu menu /*AvailableSeat avail*/) {
         initComponents();
         book=booking;
         gradientDropdownMenu = menu;
-        for(int i=0; i<booking.getPassenger(); i++){
-            
-            
-        }
-        if(book.getCabin().equalsIgnoreCase("Economy")){
-            economySeat.setVisible(true);
-        }
-        else{
-            busSeat.setVisible(true);
+        //this.avail = avail;
+        
+        if ("economy".equalsIgnoreCase(booking.getCabin())) {
+            tabbedPane.setSelectedComponent(economySeat);
+        } else if ("business".equalsIgnoreCase(booking.getCabin())) {
+            tabbedPane.setSelectedComponent(busSeat);
         }
         
+        MyButton buttons[]= new MyButton[69];
+        buttons[0]=button_0_1A;
+        buttons[0].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    // Change the background color when the mouse is pressed
+                    buttons[0].setBackground(Color.BLUE);
+                }
+        });
         
     }
 
@@ -85,7 +105,7 @@ public class FlightSeat extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPane = new javax.swing.JTabbedPane();
         busSeat = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
@@ -94,86 +114,86 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        myButton1 = new airswift.MyButton();
-        myButton2 = new airswift.MyButton();
-        myButton3 = new airswift.MyButton();
-        myButton4 = new airswift.MyButton();
-        myButton5 = new airswift.MyButton();
-        myButton6 = new airswift.MyButton();
-        myButton7 = new airswift.MyButton();
-        myButton8 = new airswift.MyButton();
-        myButton9 = new airswift.MyButton();
-        myButton10 = new airswift.MyButton();
-        myButton11 = new airswift.MyButton();
-        myButton12 = new airswift.MyButton();
-        myButton13 = new airswift.MyButton();
-        myButton14 = new airswift.MyButton();
-        myButton15 = new airswift.MyButton();
-        myButton16 = new airswift.MyButton();
-        myButton17 = new airswift.MyButton();
-        myButton18 = new airswift.MyButton();
-        myButton19 = new airswift.MyButton();
-        myButton20 = new airswift.MyButton();
-        myButton21 = new airswift.MyButton();
-        myButton22 = new airswift.MyButton();
-        myButton23 = new airswift.MyButton();
-        myButton24 = new airswift.MyButton();
+        button_0_1A = new airswift.MyButton();
+        button_2 = new airswift.MyButton();
+        button_3 = new airswift.MyButton();
+        button_4 = new airswift.MyButton();
+        button_1D = new airswift.MyButton();
+        button_1F = new airswift.MyButton();
+        button_2A = new airswift.MyButton();
+        button_2B = new airswift.MyButton();
+        button_2C = new airswift.MyButton();
+        button_2D = new airswift.MyButton();
+        button_2E = new airswift.MyButton();
+        button_2F = new airswift.MyButton();
+        button_3A = new airswift.MyButton();
+        button_3B = new airswift.MyButton();
+        button_3C = new airswift.MyButton();
+        button_4C = new airswift.MyButton();
+        button_4D = new airswift.MyButton();
+        button_4E = new airswift.MyButton();
+        button_4F = new airswift.MyButton();
+        button_4B = new airswift.MyButton();
+        button_4A = new airswift.MyButton();
+        button_3D = new airswift.MyButton();
+        button_3E = new airswift.MyButton();
+        button_3F = new airswift.MyButton();
         jSeparator5 = new javax.swing.JSeparator();
         economySeat = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        myButton25 = new airswift.MyButton();
-        myButton26 = new airswift.MyButton();
-        myButton27 = new airswift.MyButton();
-        myButton28 = new airswift.MyButton();
-        myButton29 = new airswift.MyButton();
-        myButton30 = new airswift.MyButton();
-        myButton31 = new airswift.MyButton();
-        myButton32 = new airswift.MyButton();
-        myButton33 = new airswift.MyButton();
-        myButton52 = new airswift.MyButton();
-        myButton53 = new airswift.MyButton();
-        myButton54 = new airswift.MyButton();
-        myButton55 = new airswift.MyButton();
-        myButton56 = new airswift.MyButton();
-        myButton57 = new airswift.MyButton();
-        myButton58 = new airswift.MyButton();
-        myButton59 = new airswift.MyButton();
-        myButton60 = new airswift.MyButton();
+        button2_24 = new airswift.MyButton();
+        button2_25 = new airswift.MyButton();
+        button2_26 = new airswift.MyButton();
+        button2_27 = new airswift.MyButton();
+        button2_1E = new airswift.MyButton();
+        button2_1F = new airswift.MyButton();
+        button2_1G = new airswift.MyButton();
+        button2_1H = new airswift.MyButton();
+        button2_1I = new airswift.MyButton();
+        button2_2A = new airswift.MyButton();
+        button2_2B = new airswift.MyButton();
+        button2_2C = new airswift.MyButton();
+        button2_2D = new airswift.MyButton();
+        button2_2E = new airswift.MyButton();
+        button2_2F = new airswift.MyButton();
+        button2_2G = new airswift.MyButton();
+        button2_2H = new airswift.MyButton();
+        button2_2I = new airswift.MyButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        myButton61 = new airswift.MyButton();
-        myButton62 = new airswift.MyButton();
-        myButton63 = new airswift.MyButton();
-        myButton64 = new airswift.MyButton();
-        myButton65 = new airswift.MyButton();
-        myButton66 = new airswift.MyButton();
-        myButton67 = new airswift.MyButton();
-        myButton68 = new airswift.MyButton();
-        myButton69 = new airswift.MyButton();
-        myButton70 = new airswift.MyButton();
-        myButton71 = new airswift.MyButton();
-        myButton72 = new airswift.MyButton();
-        myButton73 = new airswift.MyButton();
-        myButton74 = new airswift.MyButton();
-        myButton75 = new airswift.MyButton();
-        myButton76 = new airswift.MyButton();
-        myButton77 = new airswift.MyButton();
-        myButton78 = new airswift.MyButton();
-        myButton79 = new airswift.MyButton();
-        myButton80 = new airswift.MyButton();
-        myButton81 = new airswift.MyButton();
-        myButton82 = new airswift.MyButton();
-        myButton83 = new airswift.MyButton();
-        myButton84 = new airswift.MyButton();
-        myButton85 = new airswift.MyButton();
-        myButton86 = new airswift.MyButton();
-        myButton87 = new airswift.MyButton();
+        button2_3A = new airswift.MyButton();
+        button2_4A = new airswift.MyButton();
+        button2_5A = new airswift.MyButton();
+        button2_3B = new airswift.MyButton();
+        button2_5B = new airswift.MyButton();
+        button2_5D = new airswift.MyButton();
+        button2_5E = new airswift.MyButton();
+        button2_5F = new airswift.MyButton();
+        button2_5G = new airswift.MyButton();
+        button2_5H = new airswift.MyButton();
+        button2_5I = new airswift.MyButton();
+        button2_3G = new airswift.MyButton();
+        button2_3H = new airswift.MyButton();
+        button2_3I = new airswift.MyButton();
+        button2_3F = new airswift.MyButton();
+        button2_3E = new airswift.MyButton();
+        button2_3D = new airswift.MyButton();
+        button2_3C = new airswift.MyButton();
+        button2_4H = new airswift.MyButton();
+        button2_4I = new airswift.MyButton();
+        button2_4G = new airswift.MyButton();
+        button2_4F = new airswift.MyButton();
+        button2_4E = new airswift.MyButton();
+        button2_4D = new airswift.MyButton();
+        button2_4B = new airswift.MyButton();
+        button2_4C = new airswift.MyButton();
+        button2_5C = new airswift.MyButton();
         passengerDets = new airswift.RoundedPanel();
         jLabel7 = new javax.swing.JLabel();
         pass = new javax.swing.JLabel();
@@ -185,7 +205,7 @@ public class FlightSeat extends javax.swing.JPanel {
         lNameInput = new airswift.FTextField();
 
         setPreferredSize(new java.awt.Dimension(900, 530));
-        setLayout(new java.awt.BorderLayout());
+        setLayout(null);
 
         bg.setBackground(new java.awt.Color(204, 204, 255));
         bg.setForeground(new java.awt.Color(0, 102, 102));
@@ -264,334 +284,310 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(102, 0, 102));
         jLabel6.setText("4");
 
-        myButton1.setBackground(new java.awt.Color(204, 133, 228));
-        myButton1.setBorder(null);
-        myButton1.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton1.setBorderPainted(false);
-        myButton1.setColor(new java.awt.Color(204, 0, 204));
-        myButton1.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton1.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton1.setRadius(50);
-        myButton1.addActionListener(new java.awt.event.ActionListener() {
+        button_0_1A.setBorder(null);
+        button_0_1A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_0_1A.setBorderPainted(false);
+        button_0_1A.setColor(new java.awt.Color(204, 0, 204));
+        button_0_1A.setColorClick(new java.awt.Color(204, 204, 204));
+        button_0_1A.setColorOver(new java.awt.Color(204, 204, 255));
+        button_0_1A.setRadius(50);
+        button_0_1A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton1ActionPerformed(evt);
+                button_0_1AActionPerformed(evt);
             }
         });
 
-        myButton2.setBackground(new java.awt.Color(204, 133, 228));
-        myButton2.setBorder(null);
-        myButton2.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton2.setBorderPainted(false);
-        myButton2.setColor(new java.awt.Color(204, 0, 204));
-        myButton2.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton2.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton2.setRadius(50);
+        button_2.setBorder(null);
+        button_2.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2.setBorderPainted(false);
+        button_2.setColor(new java.awt.Color(204, 0, 204));
+        button_2.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2.setRadius(50);
 
-        myButton3.setBackground(new java.awt.Color(204, 133, 228));
-        myButton3.setBorder(null);
-        myButton3.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton3.setBorderPainted(false);
-        myButton3.setColor(new java.awt.Color(204, 0, 204));
-        myButton3.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton3.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton3.setRadius(50);
-        myButton3.addActionListener(new java.awt.event.ActionListener() {
+        button_3.setBorder(null);
+        button_3.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3.setBorderPainted(false);
+        button_3.setColor(new java.awt.Color(204, 0, 204));
+        button_3.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3.setRadius(50);
+        button_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton3ActionPerformed(evt);
+                button_3ActionPerformed(evt);
             }
         });
 
-        myButton4.setBackground(new java.awt.Color(204, 133, 228));
-        myButton4.setBorder(null);
-        myButton4.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton4.setBorderPainted(false);
-        myButton4.setColor(new java.awt.Color(204, 0, 204));
-        myButton4.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton4.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton4.setRadius(50);
-        myButton4.addActionListener(new java.awt.event.ActionListener() {
+        button_4.setBorder(null);
+        button_4.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4.setBorderPainted(false);
+        button_4.setColor(new java.awt.Color(204, 0, 204));
+        button_4.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4.setRadius(50);
+        button_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton4ActionPerformed(evt);
+                button_4ActionPerformed(evt);
             }
         });
 
-        myButton5.setBackground(new java.awt.Color(204, 133, 228));
-        myButton5.setBorder(null);
-        myButton5.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton5.setBorderPainted(false);
-        myButton5.setColor(new java.awt.Color(204, 0, 204));
-        myButton5.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton5.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton5.setRadius(50);
-        myButton5.addActionListener(new java.awt.event.ActionListener() {
+        button_1D.setBorder(null);
+        button_1D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1D.setBorderPainted(false);
+        button_1D.setColor(new java.awt.Color(204, 0, 204));
+        button_1D.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1D.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1D.setRadius(50);
+        button_1D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton5ActionPerformed(evt);
+                button_1DActionPerformed(evt);
             }
         });
 
-        myButton6.setBackground(new java.awt.Color(204, 133, 228));
-        myButton6.setBorder(null);
-        myButton6.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton6.setBorderPainted(false);
-        myButton6.setColor(new java.awt.Color(204, 0, 204));
-        myButton6.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton6.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton6.setRadius(50);
-        myButton6.addActionListener(new java.awt.event.ActionListener() {
+        button_1F.setBorder(null);
+        button_1F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1F.setBorderPainted(false);
+        button_1F.setColor(new java.awt.Color(204, 0, 204));
+        button_1F.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1F.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1F.setRadius(50);
+        button_1F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton6ActionPerformed(evt);
+                button_1FActionPerformed(evt);
             }
         });
 
-        myButton7.setBackground(new java.awt.Color(204, 133, 228));
-        myButton7.setBorder(null);
-        myButton7.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton7.setBorderPainted(false);
-        myButton7.setColor(new java.awt.Color(204, 0, 204));
-        myButton7.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton7.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton7.setRadius(50);
-        myButton7.addActionListener(new java.awt.event.ActionListener() {
+        button_2A.setBorder(null);
+        button_2A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2A.setBorderPainted(false);
+        button_2A.setColor(new java.awt.Color(204, 0, 204));
+        button_2A.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2A.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2A.setRadius(50);
+        button_2A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton7ActionPerformed(evt);
+                button_2AActionPerformed(evt);
             }
         });
 
-        myButton8.setBackground(new java.awt.Color(204, 133, 228));
-        myButton8.setBorder(null);
-        myButton8.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton8.setBorderPainted(false);
-        myButton8.setColor(new java.awt.Color(204, 0, 204));
-        myButton8.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton8.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton8.setRadius(50);
-        myButton8.addActionListener(new java.awt.event.ActionListener() {
+        button_2B.setBorder(null);
+        button_2B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2B.setBorderPainted(false);
+        button_2B.setColor(new java.awt.Color(204, 0, 204));
+        button_2B.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2B.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2B.setRadius(50);
+        button_2B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton8ActionPerformed(evt);
+                button_2BActionPerformed(evt);
             }
         });
 
-        myButton9.setBackground(new java.awt.Color(204, 133, 228));
-        myButton9.setBorder(null);
-        myButton9.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton9.setBorderPainted(false);
-        myButton9.setColor(new java.awt.Color(204, 0, 204));
-        myButton9.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton9.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton9.setRadius(50);
-        myButton9.addActionListener(new java.awt.event.ActionListener() {
+        button_2C.setBorder(null);
+        button_2C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2C.setBorderPainted(false);
+        button_2C.setColor(new java.awt.Color(204, 0, 204));
+        button_2C.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2C.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2C.setRadius(50);
+        button_2C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton9ActionPerformed(evt);
+                button_2CActionPerformed(evt);
             }
         });
 
-        myButton10.setBackground(new java.awt.Color(204, 133, 228));
-        myButton10.setBorder(null);
-        myButton10.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton10.setBorderPainted(false);
-        myButton10.setColor(new java.awt.Color(204, 0, 204));
-        myButton10.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton10.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton10.setRadius(50);
-        myButton10.addActionListener(new java.awt.event.ActionListener() {
+        button_2D.setBorder(null);
+        button_2D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2D.setBorderPainted(false);
+        button_2D.setColor(new java.awt.Color(204, 0, 204));
+        button_2D.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2D.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2D.setRadius(50);
+        button_2D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton10ActionPerformed(evt);
+                button_2DActionPerformed(evt);
             }
         });
 
-        myButton11.setBackground(new java.awt.Color(204, 133, 228));
-        myButton11.setBorder(null);
-        myButton11.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton11.setBorderPainted(false);
-        myButton11.setColor(new java.awt.Color(204, 0, 204));
-        myButton11.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton11.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton11.setRadius(50);
-        myButton11.addActionListener(new java.awt.event.ActionListener() {
+        button_2E.setBorder(null);
+        button_2E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2E.setBorderPainted(false);
+        button_2E.setColor(new java.awt.Color(204, 0, 204));
+        button_2E.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2E.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2E.setRadius(50);
+        button_2E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton11ActionPerformed(evt);
+                button_2EActionPerformed(evt);
             }
         });
 
-        myButton12.setBackground(new java.awt.Color(204, 133, 228));
-        myButton12.setBorder(null);
-        myButton12.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton12.setBorderPainted(false);
-        myButton12.setColor(new java.awt.Color(204, 0, 204));
-        myButton12.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton12.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton12.setRadius(50);
-        myButton12.addActionListener(new java.awt.event.ActionListener() {
+        button_2F.setBorder(null);
+        button_2F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_2F.setBorderPainted(false);
+        button_2F.setColor(new java.awt.Color(204, 0, 204));
+        button_2F.setColorClick(new java.awt.Color(204, 204, 204));
+        button_2F.setColorOver(new java.awt.Color(204, 204, 255));
+        button_2F.setRadius(50);
+        button_2F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton12ActionPerformed(evt);
+                button_2FActionPerformed(evt);
             }
         });
 
-        myButton13.setBackground(new java.awt.Color(204, 133, 228));
-        myButton13.setBorder(null);
-        myButton13.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton13.setBorderPainted(false);
-        myButton13.setColor(new java.awt.Color(204, 0, 204));
-        myButton13.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton13.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton13.setRadius(50);
-        myButton13.addActionListener(new java.awt.event.ActionListener() {
+        button_3A.setBorder(null);
+        button_3A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3A.setBorderPainted(false);
+        button_3A.setColor(new java.awt.Color(204, 0, 204));
+        button_3A.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3A.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3A.setRadius(50);
+        button_3A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton13ActionPerformed(evt);
+                button_3AActionPerformed(evt);
             }
         });
 
-        myButton14.setBackground(new java.awt.Color(204, 133, 228));
-        myButton14.setBorder(null);
-        myButton14.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton14.setBorderPainted(false);
-        myButton14.setColor(new java.awt.Color(204, 0, 204));
-        myButton14.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton14.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton14.setRadius(50);
-        myButton14.addActionListener(new java.awt.event.ActionListener() {
+        button_3B.setBorder(null);
+        button_3B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3B.setBorderPainted(false);
+        button_3B.setColor(new java.awt.Color(204, 0, 204));
+        button_3B.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3B.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3B.setRadius(50);
+        button_3B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton14ActionPerformed(evt);
+                button_3BActionPerformed(evt);
             }
         });
 
-        myButton15.setBackground(new java.awt.Color(204, 133, 228));
-        myButton15.setBorder(null);
-        myButton15.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton15.setBorderPainted(false);
-        myButton15.setColor(new java.awt.Color(204, 0, 204));
-        myButton15.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton15.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton15.setRadius(50);
-        myButton15.addActionListener(new java.awt.event.ActionListener() {
+        button_3C.setBorder(null);
+        button_3C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3C.setBorderPainted(false);
+        button_3C.setColor(new java.awt.Color(204, 0, 204));
+        button_3C.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3C.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3C.setRadius(50);
+        button_3C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton15ActionPerformed(evt);
+                button_3CActionPerformed(evt);
             }
         });
 
-        myButton16.setBackground(new java.awt.Color(204, 133, 228));
-        myButton16.setBorder(null);
-        myButton16.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton16.setBorderPainted(false);
-        myButton16.setColor(new java.awt.Color(204, 0, 204));
-        myButton16.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton16.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton16.setRadius(50);
-        myButton16.addActionListener(new java.awt.event.ActionListener() {
+        button_4C.setBorder(null);
+        button_4C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4C.setBorderPainted(false);
+        button_4C.setColor(new java.awt.Color(204, 0, 204));
+        button_4C.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4C.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4C.setRadius(50);
+        button_4C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton16ActionPerformed(evt);
+                button_4CActionPerformed(evt);
             }
         });
 
-        myButton17.setBackground(new java.awt.Color(204, 133, 228));
-        myButton17.setBorder(null);
-        myButton17.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton17.setBorderPainted(false);
-        myButton17.setColor(new java.awt.Color(204, 0, 204));
-        myButton17.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton17.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton17.setRadius(50);
-        myButton17.addActionListener(new java.awt.event.ActionListener() {
+        button_4D.setBorder(null);
+        button_4D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4D.setBorderPainted(false);
+        button_4D.setColor(new java.awt.Color(204, 0, 204));
+        button_4D.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4D.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4D.setRadius(50);
+        button_4D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton17ActionPerformed(evt);
+                button_4DActionPerformed(evt);
             }
         });
 
-        myButton18.setBackground(new java.awt.Color(204, 133, 228));
-        myButton18.setBorder(null);
-        myButton18.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton18.setBorderPainted(false);
-        myButton18.setColor(new java.awt.Color(204, 0, 204));
-        myButton18.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton18.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton18.setRadius(50);
-        myButton18.addActionListener(new java.awt.event.ActionListener() {
+        button_4E.setBorder(null);
+        button_4E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4E.setBorderPainted(false);
+        button_4E.setColor(new java.awt.Color(204, 0, 204));
+        button_4E.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4E.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4E.setRadius(50);
+        button_4E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton18ActionPerformed(evt);
+                button_4EActionPerformed(evt);
             }
         });
 
-        myButton19.setBackground(new java.awt.Color(204, 133, 228));
-        myButton19.setBorder(null);
-        myButton19.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton19.setBorderPainted(false);
-        myButton19.setColor(new java.awt.Color(204, 0, 204));
-        myButton19.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton19.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton19.setRadius(50);
-        myButton19.addActionListener(new java.awt.event.ActionListener() {
+        button_4F.setBorder(null);
+        button_4F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4F.setBorderPainted(false);
+        button_4F.setColor(new java.awt.Color(204, 0, 204));
+        button_4F.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4F.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4F.setRadius(50);
+        button_4F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton19ActionPerformed(evt);
+                button_4FActionPerformed(evt);
             }
         });
 
-        myButton20.setBackground(new java.awt.Color(204, 133, 228));
-        myButton20.setBorder(null);
-        myButton20.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton20.setBorderPainted(false);
-        myButton20.setColor(new java.awt.Color(204, 0, 204));
-        myButton20.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton20.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton20.setRadius(50);
-        myButton20.addActionListener(new java.awt.event.ActionListener() {
+        button_4B.setBorder(null);
+        button_4B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4B.setBorderPainted(false);
+        button_4B.setColor(new java.awt.Color(204, 0, 204));
+        button_4B.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4B.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4B.setRadius(50);
+        button_4B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton20ActionPerformed(evt);
+                button_4BActionPerformed(evt);
             }
         });
 
-        myButton21.setBackground(new java.awt.Color(204, 133, 228));
-        myButton21.setBorder(null);
-        myButton21.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton21.setBorderPainted(false);
-        myButton21.setColor(new java.awt.Color(204, 0, 204));
-        myButton21.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton21.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton21.setRadius(50);
-        myButton21.addActionListener(new java.awt.event.ActionListener() {
+        button_4A.setBorder(null);
+        button_4A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_4A.setBorderPainted(false);
+        button_4A.setColor(new java.awt.Color(204, 0, 204));
+        button_4A.setColorClick(new java.awt.Color(204, 204, 204));
+        button_4A.setColorOver(new java.awt.Color(204, 204, 255));
+        button_4A.setRadius(50);
+        button_4A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton21ActionPerformed(evt);
+                button_4AActionPerformed(evt);
             }
         });
 
-        myButton22.setBackground(new java.awt.Color(204, 133, 228));
-        myButton22.setBorder(null);
-        myButton22.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton22.setBorderPainted(false);
-        myButton22.setColor(new java.awt.Color(204, 0, 204));
-        myButton22.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton22.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton22.setRadius(50);
-        myButton22.addActionListener(new java.awt.event.ActionListener() {
+        button_3D.setBorder(null);
+        button_3D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3D.setBorderPainted(false);
+        button_3D.setColor(new java.awt.Color(204, 0, 204));
+        button_3D.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3D.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3D.setRadius(50);
+        button_3D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton22ActionPerformed(evt);
+                button_3DActionPerformed(evt);
             }
         });
 
-        myButton23.setBackground(new java.awt.Color(204, 133, 228));
-        myButton23.setBorder(null);
-        myButton23.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton23.setBorderPainted(false);
-        myButton23.setColor(new java.awt.Color(204, 0, 204));
-        myButton23.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton23.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton23.setRadius(50);
-        myButton23.addActionListener(new java.awt.event.ActionListener() {
+        button_3E.setBorder(null);
+        button_3E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3E.setBorderPainted(false);
+        button_3E.setColor(new java.awt.Color(204, 0, 204));
+        button_3E.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3E.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3E.setRadius(50);
+        button_3E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton23ActionPerformed(evt);
+                button_3EActionPerformed(evt);
             }
         });
 
-        myButton24.setBackground(new java.awt.Color(204, 133, 228));
-        myButton24.setBorder(null);
-        myButton24.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton24.setBorderPainted(false);
-        myButton24.setColor(new java.awt.Color(204, 0, 204));
-        myButton24.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton24.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton24.setRadius(50);
-        myButton24.addActionListener(new java.awt.event.ActionListener() {
+        button_3F.setBorder(null);
+        button_3F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_3F.setBorderPainted(false);
+        button_3F.setColor(new java.awt.Color(204, 0, 204));
+        button_3F.setColorClick(new java.awt.Color(204, 204, 204));
+        button_3F.setColorOver(new java.awt.Color(204, 204, 255));
+        button_3F.setRadius(50);
+        button_3F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton24ActionPerformed(evt);
+                button_3FActionPerformed(evt);
             }
         });
 
@@ -623,40 +619,40 @@ public class FlightSeat extends javax.swing.JPanel {
                     .addGroup(busSeatLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(myButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_4A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_0_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(myButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(myButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(myButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_1D, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2D, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4D, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3D, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(myButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(myButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(button_1F, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_2F, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4F, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_3F, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         busSeatLayout.setVerticalGroup(
@@ -680,18 +676,18 @@ public class FlightSeat extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(34, 34, 34)
                 .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(myButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(busSeatLayout.createSequentialGroup()
-                        .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button_2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(busSeatLayout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel3))
-                            .addComponent(myButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1D, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1F, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_0_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(busSeatLayout.createSequentialGroup()
                                 .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,12 +697,12 @@ public class FlightSeat extends javax.swing.JPanel {
                                     .addGroup(busSeatLayout.createSequentialGroup()
                                         .addGap(26, 26, 26)
                                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(myButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(button_2B, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_2C, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_2D, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_2E, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_2F, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(busSeatLayout.createSequentialGroup()
                                         .addGap(34, 34, 34)
@@ -715,13 +711,13 @@ public class FlightSeat extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, busSeatLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(myButton14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(button_3B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_3D, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_3E, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button_3F, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(busSeatLayout.createSequentialGroup()
                                 .addGap(88, 88, 88)
-                                .addComponent(myButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(button_3C, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(busSeatLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -729,16 +725,16 @@ public class FlightSeat extends javax.swing.JPanel {
                     .addGroup(busSeatLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(myButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(button_4D, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4C, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4E, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4F, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4B, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_4A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(75, 75, 75))
         );
 
-        jTabbedPane1.addTab("tab2", busSeat);
+        tabbedPane.addTab("tab2", busSeat);
 
         economySeat.setBackground(new java.awt.Color(252, 223, 251));
 
@@ -753,255 +749,237 @@ public class FlightSeat extends javax.swing.JPanel {
 
         jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
 
-        myButton25.setBackground(new java.awt.Color(204, 133, 228));
-        myButton25.setBorder(null);
-        myButton25.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton25.setBorderPainted(false);
-        myButton25.setColor(new java.awt.Color(204, 0, 204));
-        myButton25.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton25.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton25.setRadius(50);
-        myButton25.addActionListener(new java.awt.event.ActionListener() {
+        button2_24.setBorder(null);
+        button2_24.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_24.setBorderPainted(false);
+        button2_24.setColor(new java.awt.Color(204, 0, 204));
+        button2_24.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_24.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_24.setRadius(50);
+        button2_24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton25ActionPerformed(evt);
+                button2_24ActionPerformed(evt);
             }
         });
 
-        myButton26.setBackground(new java.awt.Color(204, 133, 228));
-        myButton26.setBorder(null);
-        myButton26.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton26.setBorderPainted(false);
-        myButton26.setColor(new java.awt.Color(204, 0, 204));
-        myButton26.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton26.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton26.setRadius(50);
-        myButton26.addActionListener(new java.awt.event.ActionListener() {
+        button2_25.setBorder(null);
+        button2_25.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_25.setBorderPainted(false);
+        button2_25.setColor(new java.awt.Color(204, 0, 204));
+        button2_25.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_25.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_25.setRadius(50);
+        button2_25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton26ActionPerformed(evt);
+                button2_25ActionPerformed(evt);
             }
         });
 
-        myButton27.setBackground(new java.awt.Color(204, 133, 228));
-        myButton27.setBorder(null);
-        myButton27.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton27.setBorderPainted(false);
-        myButton27.setColor(new java.awt.Color(204, 0, 204));
-        myButton27.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton27.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton27.setRadius(50);
-        myButton27.addActionListener(new java.awt.event.ActionListener() {
+        button2_26.setBorder(null);
+        button2_26.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_26.setBorderPainted(false);
+        button2_26.setColor(new java.awt.Color(204, 0, 204));
+        button2_26.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_26.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_26.setRadius(50);
+        button2_26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton27ActionPerformed(evt);
+                button2_26ActionPerformed(evt);
             }
         });
 
-        myButton28.setBackground(new java.awt.Color(204, 133, 228));
-        myButton28.setBorder(null);
-        myButton28.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton28.setBorderPainted(false);
-        myButton28.setColor(new java.awt.Color(204, 0, 204));
-        myButton28.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton28.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton28.setRadius(50);
-        myButton28.addActionListener(new java.awt.event.ActionListener() {
+        button2_27.setBorder(null);
+        button2_27.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_27.setBorderPainted(false);
+        button2_27.setColor(new java.awt.Color(204, 0, 204));
+        button2_27.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_27.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_27.setRadius(50);
+        button2_27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton28ActionPerformed(evt);
+                button2_27ActionPerformed(evt);
             }
         });
 
-        myButton29.setBackground(new java.awt.Color(204, 133, 228));
-        myButton29.setBorder(null);
-        myButton29.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton29.setBorderPainted(false);
-        myButton29.setColor(new java.awt.Color(204, 0, 204));
-        myButton29.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton29.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton29.setRadius(50);
-        myButton29.addActionListener(new java.awt.event.ActionListener() {
+        button2_1E.setBorder(null);
+        button2_1E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1E.setBorderPainted(false);
+        button2_1E.setColor(new java.awt.Color(204, 0, 204));
+        button2_1E.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1E.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1E.setRadius(50);
+        button2_1E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton29ActionPerformed(evt);
+                button2_1EActionPerformed(evt);
             }
         });
 
-        myButton30.setBackground(new java.awt.Color(204, 133, 228));
-        myButton30.setBorder(null);
-        myButton30.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton30.setBorderPainted(false);
-        myButton30.setColor(new java.awt.Color(204, 0, 204));
-        myButton30.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton30.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton30.setRadius(50);
-        myButton30.addActionListener(new java.awt.event.ActionListener() {
+        button2_1F.setBorder(null);
+        button2_1F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1F.setBorderPainted(false);
+        button2_1F.setColor(new java.awt.Color(204, 0, 204));
+        button2_1F.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1F.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1F.setRadius(50);
+        button2_1F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton30ActionPerformed(evt);
+                button2_1FActionPerformed(evt);
             }
         });
 
-        myButton31.setBackground(new java.awt.Color(204, 133, 228));
-        myButton31.setBorder(null);
-        myButton31.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton31.setBorderPainted(false);
-        myButton31.setColor(new java.awt.Color(204, 0, 204));
-        myButton31.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton31.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton31.setRadius(50);
-        myButton31.addActionListener(new java.awt.event.ActionListener() {
+        button2_1G.setBorder(null);
+        button2_1G.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1G.setBorderPainted(false);
+        button2_1G.setColor(new java.awt.Color(204, 0, 204));
+        button2_1G.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1G.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1G.setRadius(50);
+        button2_1G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton31ActionPerformed(evt);
+                button2_1GActionPerformed(evt);
             }
         });
 
-        myButton32.setBackground(new java.awt.Color(204, 133, 228));
-        myButton32.setBorder(null);
-        myButton32.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton32.setBorderPainted(false);
-        myButton32.setColor(new java.awt.Color(204, 0, 204));
-        myButton32.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton32.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton32.setRadius(50);
-        myButton32.addActionListener(new java.awt.event.ActionListener() {
+        button2_1H.setBorder(null);
+        button2_1H.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1H.setBorderPainted(false);
+        button2_1H.setColor(new java.awt.Color(204, 0, 204));
+        button2_1H.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1H.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1H.setRadius(50);
+        button2_1H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton32ActionPerformed(evt);
+                button2_1HActionPerformed(evt);
             }
         });
 
-        myButton33.setBackground(new java.awt.Color(204, 133, 228));
-        myButton33.setBorder(null);
-        myButton33.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton33.setBorderPainted(false);
-        myButton33.setColor(new java.awt.Color(204, 0, 204));
-        myButton33.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton33.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton33.setRadius(50);
-        myButton33.addActionListener(new java.awt.event.ActionListener() {
+        button2_1I.setBorder(null);
+        button2_1I.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1I.setBorderPainted(false);
+        button2_1I.setColor(new java.awt.Color(204, 0, 204));
+        button2_1I.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1I.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1I.setRadius(50);
+        button2_1I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton33ActionPerformed(evt);
+                button2_1IActionPerformed(evt);
             }
         });
 
-        myButton52.setBackground(new java.awt.Color(204, 133, 228));
-        myButton52.setBorder(null);
-        myButton52.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton52.setBorderPainted(false);
-        myButton52.setColor(new java.awt.Color(204, 0, 204));
-        myButton52.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton52.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton52.setRadius(50);
-        myButton52.addActionListener(new java.awt.event.ActionListener() {
+        button2_2A.setBorder(null);
+        button2_2A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2A.setBorderPainted(false);
+        button2_2A.setColor(new java.awt.Color(204, 0, 204));
+        button2_2A.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2A.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2A.setRadius(50);
+        button2_2A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton52ActionPerformed(evt);
+                button2_2AActionPerformed(evt);
             }
         });
 
-        myButton53.setBackground(new java.awt.Color(204, 133, 228));
-        myButton53.setBorder(null);
-        myButton53.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton53.setBorderPainted(false);
-        myButton53.setColor(new java.awt.Color(204, 0, 204));
-        myButton53.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton53.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton53.setRadius(50);
-        myButton53.addActionListener(new java.awt.event.ActionListener() {
+        button2_2B.setBorder(null);
+        button2_2B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2B.setBorderPainted(false);
+        button2_2B.setColor(new java.awt.Color(204, 0, 204));
+        button2_2B.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2B.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2B.setRadius(50);
+        button2_2B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton53ActionPerformed(evt);
+                button2_2BActionPerformed(evt);
             }
         });
 
-        myButton54.setBackground(new java.awt.Color(204, 133, 228));
-        myButton54.setBorder(null);
-        myButton54.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton54.setBorderPainted(false);
-        myButton54.setColor(new java.awt.Color(204, 0, 204));
-        myButton54.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton54.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton54.setRadius(50);
-        myButton54.addActionListener(new java.awt.event.ActionListener() {
+        button2_2C.setBorder(null);
+        button2_2C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2C.setBorderPainted(false);
+        button2_2C.setColor(new java.awt.Color(204, 0, 204));
+        button2_2C.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2C.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2C.setRadius(50);
+        button2_2C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton54ActionPerformed(evt);
+                button2_2CActionPerformed(evt);
             }
         });
 
-        myButton55.setBackground(new java.awt.Color(204, 133, 228));
-        myButton55.setBorder(null);
-        myButton55.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton55.setBorderPainted(false);
-        myButton55.setColor(new java.awt.Color(204, 0, 204));
-        myButton55.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton55.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton55.setRadius(50);
-        myButton55.addActionListener(new java.awt.event.ActionListener() {
+        button2_2D.setBorder(null);
+        button2_2D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2D.setBorderPainted(false);
+        button2_2D.setColor(new java.awt.Color(204, 0, 204));
+        button2_2D.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2D.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2D.setRadius(50);
+        button2_2D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton55ActionPerformed(evt);
+                button2_2DActionPerformed(evt);
             }
         });
 
-        myButton56.setBackground(new java.awt.Color(204, 133, 228));
-        myButton56.setBorder(null);
-        myButton56.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton56.setBorderPainted(false);
-        myButton56.setColor(new java.awt.Color(204, 0, 204));
-        myButton56.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton56.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton56.setRadius(50);
-        myButton56.addActionListener(new java.awt.event.ActionListener() {
+        button2_2E.setBorder(null);
+        button2_2E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2E.setBorderPainted(false);
+        button2_2E.setColor(new java.awt.Color(204, 0, 204));
+        button2_2E.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2E.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2E.setRadius(50);
+        button2_2E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton56ActionPerformed(evt);
+                button2_2EActionPerformed(evt);
             }
         });
 
-        myButton57.setBackground(new java.awt.Color(204, 133, 228));
-        myButton57.setBorder(null);
-        myButton57.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton57.setBorderPainted(false);
-        myButton57.setColor(new java.awt.Color(204, 0, 204));
-        myButton57.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton57.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton57.setRadius(50);
-        myButton57.addActionListener(new java.awt.event.ActionListener() {
+        button2_2F.setBorder(null);
+        button2_2F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2F.setBorderPainted(false);
+        button2_2F.setColor(new java.awt.Color(204, 0, 204));
+        button2_2F.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2F.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2F.setRadius(50);
+        button2_2F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton57ActionPerformed(evt);
+                button2_2FActionPerformed(evt);
             }
         });
 
-        myButton58.setBackground(new java.awt.Color(204, 133, 228));
-        myButton58.setBorder(null);
-        myButton58.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton58.setBorderPainted(false);
-        myButton58.setColor(new java.awt.Color(204, 0, 204));
-        myButton58.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton58.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton58.setRadius(50);
-        myButton58.addActionListener(new java.awt.event.ActionListener() {
+        button2_2G.setBorder(null);
+        button2_2G.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2G.setBorderPainted(false);
+        button2_2G.setColor(new java.awt.Color(204, 0, 204));
+        button2_2G.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2G.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2G.setRadius(50);
+        button2_2G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton58ActionPerformed(evt);
+                button2_2GActionPerformed(evt);
             }
         });
 
-        myButton59.setBackground(new java.awt.Color(204, 133, 228));
-        myButton59.setBorder(null);
-        myButton59.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton59.setBorderPainted(false);
-        myButton59.setColor(new java.awt.Color(204, 0, 204));
-        myButton59.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton59.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton59.setRadius(50);
-        myButton59.addActionListener(new java.awt.event.ActionListener() {
+        button2_2H.setBorder(null);
+        button2_2H.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2H.setBorderPainted(false);
+        button2_2H.setColor(new java.awt.Color(204, 0, 204));
+        button2_2H.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2H.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2H.setRadius(50);
+        button2_2H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton59ActionPerformed(evt);
+                button2_2HActionPerformed(evt);
             }
         });
 
-        myButton60.setBackground(new java.awt.Color(204, 133, 228));
-        myButton60.setBorder(null);
-        myButton60.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton60.setBorderPainted(false);
-        myButton60.setColor(new java.awt.Color(204, 0, 204));
-        myButton60.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton60.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton60.setRadius(50);
-        myButton60.addActionListener(new java.awt.event.ActionListener() {
+        button2_2I.setBorder(null);
+        button2_2I.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_2I.setBorderPainted(false);
+        button2_2I.setColor(new java.awt.Color(204, 0, 204));
+        button2_2I.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_2I.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_2I.setRadius(50);
+        button2_2I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton60ActionPerformed(evt);
+                button2_2IActionPerformed(evt);
             }
         });
 
@@ -1030,381 +1008,354 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel19.setForeground(new java.awt.Color(102, 0, 102));
         jLabel19.setText("5");
 
-        myButton61.setBackground(new java.awt.Color(204, 133, 228));
-        myButton61.setBorder(null);
-        myButton61.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton61.setBorderPainted(false);
-        myButton61.setColor(new java.awt.Color(204, 0, 204));
-        myButton61.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton61.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton61.setRadius(50);
-        myButton61.addActionListener(new java.awt.event.ActionListener() {
+        button2_3A.setBorder(null);
+        button2_3A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3A.setBorderPainted(false);
+        button2_3A.setColor(new java.awt.Color(204, 0, 204));
+        button2_3A.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3A.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3A.setRadius(50);
+        button2_3A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton61ActionPerformed(evt);
+                button2_3AActionPerformed(evt);
             }
         });
 
-        myButton62.setBackground(new java.awt.Color(204, 133, 228));
-        myButton62.setBorder(null);
-        myButton62.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton62.setBorderPainted(false);
-        myButton62.setColor(new java.awt.Color(204, 0, 204));
-        myButton62.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton62.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton62.setRadius(50);
-        myButton62.addActionListener(new java.awt.event.ActionListener() {
+        button2_4A.setBorder(null);
+        button2_4A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4A.setBorderPainted(false);
+        button2_4A.setColor(new java.awt.Color(204, 0, 204));
+        button2_4A.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4A.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4A.setRadius(50);
+        button2_4A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton62ActionPerformed(evt);
+                button2_4AActionPerformed(evt);
             }
         });
 
-        myButton63.setBackground(new java.awt.Color(204, 133, 228));
-        myButton63.setBorder(null);
-        myButton63.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton63.setBorderPainted(false);
-        myButton63.setColor(new java.awt.Color(204, 0, 204));
-        myButton63.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton63.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton63.setRadius(50);
-        myButton63.addActionListener(new java.awt.event.ActionListener() {
+        button2_5A.setBorder(null);
+        button2_5A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5A.setBorderPainted(false);
+        button2_5A.setColor(new java.awt.Color(204, 0, 204));
+        button2_5A.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5A.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5A.setRadius(50);
+        button2_5A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton63ActionPerformed(evt);
+                button2_5AActionPerformed(evt);
             }
         });
 
-        myButton64.setBackground(new java.awt.Color(204, 133, 228));
-        myButton64.setBorder(null);
-        myButton64.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton64.setBorderPainted(false);
-        myButton64.setColor(new java.awt.Color(204, 0, 204));
-        myButton64.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton64.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton64.setRadius(50);
-        myButton64.addActionListener(new java.awt.event.ActionListener() {
+        button2_3B.setBorder(null);
+        button2_3B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3B.setBorderPainted(false);
+        button2_3B.setColor(new java.awt.Color(204, 0, 204));
+        button2_3B.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3B.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3B.setRadius(50);
+        button2_3B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton64ActionPerformed(evt);
+                button2_3BActionPerformed(evt);
             }
         });
 
-        myButton65.setBackground(new java.awt.Color(204, 133, 228));
-        myButton65.setBorder(null);
-        myButton65.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton65.setBorderPainted(false);
-        myButton65.setColor(new java.awt.Color(204, 0, 204));
-        myButton65.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton65.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton65.setRadius(50);
-        myButton65.addActionListener(new java.awt.event.ActionListener() {
+        button2_5B.setBorder(null);
+        button2_5B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5B.setBorderPainted(false);
+        button2_5B.setColor(new java.awt.Color(204, 0, 204));
+        button2_5B.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5B.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5B.setRadius(50);
+        button2_5B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton65ActionPerformed(evt);
+                button2_5BActionPerformed(evt);
             }
         });
 
-        myButton66.setBackground(new java.awt.Color(204, 133, 228));
-        myButton66.setBorder(null);
-        myButton66.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton66.setBorderPainted(false);
-        myButton66.setColor(new java.awt.Color(204, 0, 204));
-        myButton66.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton66.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton66.setRadius(50);
-        myButton66.addActionListener(new java.awt.event.ActionListener() {
+        button2_5D.setBorder(null);
+        button2_5D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5D.setBorderPainted(false);
+        button2_5D.setColor(new java.awt.Color(204, 0, 204));
+        button2_5D.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5D.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5D.setRadius(50);
+        button2_5D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton66ActionPerformed(evt);
+                button2_5DActionPerformed(evt);
             }
         });
 
-        myButton67.setBackground(new java.awt.Color(204, 133, 228));
-        myButton67.setBorder(null);
-        myButton67.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton67.setBorderPainted(false);
-        myButton67.setColor(new java.awt.Color(204, 0, 204));
-        myButton67.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton67.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton67.setRadius(50);
-        myButton67.addActionListener(new java.awt.event.ActionListener() {
+        button2_5E.setBorder(null);
+        button2_5E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5E.setBorderPainted(false);
+        button2_5E.setColor(new java.awt.Color(204, 0, 204));
+        button2_5E.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5E.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5E.setRadius(50);
+        button2_5E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton67ActionPerformed(evt);
+                button2_5EActionPerformed(evt);
             }
         });
 
-        myButton68.setBackground(new java.awt.Color(204, 133, 228));
-        myButton68.setBorder(null);
-        myButton68.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton68.setBorderPainted(false);
-        myButton68.setColor(new java.awt.Color(204, 0, 204));
-        myButton68.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton68.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton68.setRadius(50);
-        myButton68.addActionListener(new java.awt.event.ActionListener() {
+        button2_5F.setBorder(null);
+        button2_5F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5F.setBorderPainted(false);
+        button2_5F.setColor(new java.awt.Color(204, 0, 204));
+        button2_5F.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5F.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5F.setRadius(50);
+        button2_5F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton68ActionPerformed(evt);
+                button2_5FActionPerformed(evt);
             }
         });
 
-        myButton69.setBackground(new java.awt.Color(204, 133, 228));
-        myButton69.setBorder(null);
-        myButton69.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton69.setBorderPainted(false);
-        myButton69.setColor(new java.awt.Color(204, 0, 204));
-        myButton69.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton69.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton69.setRadius(50);
-        myButton69.addActionListener(new java.awt.event.ActionListener() {
+        button2_5G.setBorder(null);
+        button2_5G.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5G.setBorderPainted(false);
+        button2_5G.setColor(new java.awt.Color(204, 0, 204));
+        button2_5G.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5G.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5G.setRadius(50);
+        button2_5G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton69ActionPerformed(evt);
+                button2_5GActionPerformed(evt);
             }
         });
 
-        myButton70.setBackground(new java.awt.Color(204, 133, 228));
-        myButton70.setBorder(null);
-        myButton70.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton70.setBorderPainted(false);
-        myButton70.setColor(new java.awt.Color(204, 0, 204));
-        myButton70.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton70.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton70.setRadius(50);
-        myButton70.addActionListener(new java.awt.event.ActionListener() {
+        button2_5H.setBorder(null);
+        button2_5H.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5H.setBorderPainted(false);
+        button2_5H.setColor(new java.awt.Color(204, 0, 204));
+        button2_5H.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5H.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5H.setRadius(50);
+        button2_5H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton70ActionPerformed(evt);
+                button2_5HActionPerformed(evt);
             }
         });
 
-        myButton71.setBackground(new java.awt.Color(204, 133, 228));
-        myButton71.setBorder(null);
-        myButton71.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton71.setBorderPainted(false);
-        myButton71.setColor(new java.awt.Color(204, 0, 204));
-        myButton71.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton71.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton71.setRadius(50);
-        myButton71.addActionListener(new java.awt.event.ActionListener() {
+        button2_5I.setBorder(null);
+        button2_5I.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5I.setBorderPainted(false);
+        button2_5I.setColor(new java.awt.Color(204, 0, 204));
+        button2_5I.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5I.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5I.setRadius(50);
+        button2_5I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton71ActionPerformed(evt);
+                button2_5IActionPerformed(evt);
             }
         });
 
-        myButton72.setBackground(new java.awt.Color(204, 133, 228));
-        myButton72.setBorder(null);
-        myButton72.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton72.setBorderPainted(false);
-        myButton72.setColor(new java.awt.Color(204, 0, 204));
-        myButton72.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton72.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton72.setRadius(50);
-        myButton72.addActionListener(new java.awt.event.ActionListener() {
+        button2_3G.setBorder(null);
+        button2_3G.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3G.setBorderPainted(false);
+        button2_3G.setColor(new java.awt.Color(204, 0, 204));
+        button2_3G.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3G.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3G.setRadius(50);
+        button2_3G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton72ActionPerformed(evt);
+                button2_3GActionPerformed(evt);
             }
         });
 
-        myButton73.setBackground(new java.awt.Color(204, 133, 228));
-        myButton73.setBorder(null);
-        myButton73.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton73.setBorderPainted(false);
-        myButton73.setColor(new java.awt.Color(204, 0, 204));
-        myButton73.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton73.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton73.setRadius(50);
-        myButton73.addActionListener(new java.awt.event.ActionListener() {
+        button2_3H.setBorder(null);
+        button2_3H.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3H.setBorderPainted(false);
+        button2_3H.setColor(new java.awt.Color(204, 0, 204));
+        button2_3H.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3H.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3H.setRadius(50);
+        button2_3H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton73ActionPerformed(evt);
+                button2_3HActionPerformed(evt);
             }
         });
 
-        myButton74.setBackground(new java.awt.Color(204, 133, 228));
-        myButton74.setBorder(null);
-        myButton74.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton74.setBorderPainted(false);
-        myButton74.setColor(new java.awt.Color(204, 0, 204));
-        myButton74.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton74.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton74.setRadius(50);
-        myButton74.addActionListener(new java.awt.event.ActionListener() {
+        button2_3I.setBorder(null);
+        button2_3I.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3I.setBorderPainted(false);
+        button2_3I.setColor(new java.awt.Color(204, 0, 204));
+        button2_3I.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3I.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3I.setRadius(50);
+        button2_3I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton74ActionPerformed(evt);
+                button2_3IActionPerformed(evt);
             }
         });
 
-        myButton75.setBackground(new java.awt.Color(204, 133, 228));
-        myButton75.setBorder(null);
-        myButton75.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton75.setBorderPainted(false);
-        myButton75.setColor(new java.awt.Color(204, 0, 204));
-        myButton75.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton75.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton75.setRadius(50);
-        myButton75.addActionListener(new java.awt.event.ActionListener() {
+        button2_3F.setBorder(null);
+        button2_3F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3F.setBorderPainted(false);
+        button2_3F.setColor(new java.awt.Color(204, 0, 204));
+        button2_3F.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3F.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3F.setRadius(50);
+        button2_3F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton75ActionPerformed(evt);
+                button2_3FActionPerformed(evt);
             }
         });
 
-        myButton76.setBackground(new java.awt.Color(204, 133, 228));
-        myButton76.setBorder(null);
-        myButton76.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton76.setBorderPainted(false);
-        myButton76.setColor(new java.awt.Color(204, 0, 204));
-        myButton76.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton76.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton76.setRadius(50);
-        myButton76.addActionListener(new java.awt.event.ActionListener() {
+        button2_3E.setBorder(null);
+        button2_3E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3E.setBorderPainted(false);
+        button2_3E.setColor(new java.awt.Color(204, 0, 204));
+        button2_3E.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3E.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3E.setRadius(50);
+        button2_3E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton76ActionPerformed(evt);
+                button2_3EActionPerformed(evt);
             }
         });
 
-        myButton77.setBackground(new java.awt.Color(204, 133, 228));
-        myButton77.setBorder(null);
-        myButton77.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton77.setBorderPainted(false);
-        myButton77.setColor(new java.awt.Color(204, 0, 204));
-        myButton77.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton77.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton77.setRadius(50);
-        myButton77.addActionListener(new java.awt.event.ActionListener() {
+        button2_3D.setBorder(null);
+        button2_3D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3D.setBorderPainted(false);
+        button2_3D.setColor(new java.awt.Color(204, 0, 204));
+        button2_3D.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3D.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3D.setRadius(50);
+        button2_3D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton77ActionPerformed(evt);
+                button2_3DActionPerformed(evt);
             }
         });
 
-        myButton78.setBackground(new java.awt.Color(204, 133, 228));
-        myButton78.setBorder(null);
-        myButton78.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton78.setBorderPainted(false);
-        myButton78.setColor(new java.awt.Color(204, 0, 204));
-        myButton78.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton78.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton78.setRadius(50);
-        myButton78.addActionListener(new java.awt.event.ActionListener() {
+        button2_3C.setBorder(null);
+        button2_3C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_3C.setBorderPainted(false);
+        button2_3C.setColor(new java.awt.Color(204, 0, 204));
+        button2_3C.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_3C.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_3C.setRadius(50);
+        button2_3C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton78ActionPerformed(evt);
+                button2_3CActionPerformed(evt);
             }
         });
 
-        myButton79.setBackground(new java.awt.Color(204, 133, 228));
-        myButton79.setBorder(null);
-        myButton79.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton79.setBorderPainted(false);
-        myButton79.setColor(new java.awt.Color(204, 0, 204));
-        myButton79.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton79.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton79.setRadius(50);
-        myButton79.addActionListener(new java.awt.event.ActionListener() {
+        button2_4H.setBorder(null);
+        button2_4H.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4H.setBorderPainted(false);
+        button2_4H.setColor(new java.awt.Color(204, 0, 204));
+        button2_4H.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4H.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4H.setRadius(50);
+        button2_4H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton79ActionPerformed(evt);
+                button2_4HActionPerformed(evt);
             }
         });
 
-        myButton80.setBackground(new java.awt.Color(204, 133, 228));
-        myButton80.setBorder(null);
-        myButton80.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton80.setBorderPainted(false);
-        myButton80.setColor(new java.awt.Color(204, 0, 204));
-        myButton80.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton80.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton80.setRadius(50);
-        myButton80.addActionListener(new java.awt.event.ActionListener() {
+        button2_4I.setBorder(null);
+        button2_4I.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4I.setBorderPainted(false);
+        button2_4I.setColor(new java.awt.Color(204, 0, 204));
+        button2_4I.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4I.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4I.setRadius(50);
+        button2_4I.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton80ActionPerformed(evt);
+                button2_4IActionPerformed(evt);
             }
         });
 
-        myButton81.setBackground(new java.awt.Color(204, 133, 228));
-        myButton81.setBorder(null);
-        myButton81.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton81.setBorderPainted(false);
-        myButton81.setColor(new java.awt.Color(204, 0, 204));
-        myButton81.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton81.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton81.setRadius(50);
-        myButton81.addActionListener(new java.awt.event.ActionListener() {
+        button2_4G.setBorder(null);
+        button2_4G.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4G.setBorderPainted(false);
+        button2_4G.setColor(new java.awt.Color(204, 0, 204));
+        button2_4G.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4G.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4G.setRadius(50);
+        button2_4G.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton81ActionPerformed(evt);
+                button2_4GActionPerformed(evt);
             }
         });
 
-        myButton82.setBackground(new java.awt.Color(204, 133, 228));
-        myButton82.setBorder(null);
-        myButton82.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton82.setBorderPainted(false);
-        myButton82.setColor(new java.awt.Color(204, 0, 204));
-        myButton82.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton82.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton82.setRadius(50);
-        myButton82.addActionListener(new java.awt.event.ActionListener() {
+        button2_4F.setBorder(null);
+        button2_4F.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4F.setBorderPainted(false);
+        button2_4F.setColor(new java.awt.Color(204, 0, 204));
+        button2_4F.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4F.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4F.setRadius(50);
+        button2_4F.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton82ActionPerformed(evt);
+                button2_4FActionPerformed(evt);
             }
         });
 
-        myButton83.setBackground(new java.awt.Color(204, 133, 228));
-        myButton83.setBorder(null);
-        myButton83.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton83.setBorderPainted(false);
-        myButton83.setColor(new java.awt.Color(204, 0, 204));
-        myButton83.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton83.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton83.setRadius(50);
-        myButton83.addActionListener(new java.awt.event.ActionListener() {
+        button2_4E.setBorder(null);
+        button2_4E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4E.setBorderPainted(false);
+        button2_4E.setColor(new java.awt.Color(204, 0, 204));
+        button2_4E.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4E.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4E.setRadius(50);
+        button2_4E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton83ActionPerformed(evt);
+                button2_4EActionPerformed(evt);
             }
         });
 
-        myButton84.setBackground(new java.awt.Color(204, 133, 228));
-        myButton84.setBorder(null);
-        myButton84.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton84.setBorderPainted(false);
-        myButton84.setColor(new java.awt.Color(204, 0, 204));
-        myButton84.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton84.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton84.setRadius(50);
-        myButton84.addActionListener(new java.awt.event.ActionListener() {
+        button2_4D.setBorder(null);
+        button2_4D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4D.setBorderPainted(false);
+        button2_4D.setColor(new java.awt.Color(204, 0, 204));
+        button2_4D.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4D.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4D.setRadius(50);
+        button2_4D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton84ActionPerformed(evt);
+                button2_4DActionPerformed(evt);
             }
         });
 
-        myButton85.setBackground(new java.awt.Color(204, 133, 228));
-        myButton85.setBorder(null);
-        myButton85.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton85.setBorderPainted(false);
-        myButton85.setColor(new java.awt.Color(204, 0, 204));
-        myButton85.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton85.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton85.setRadius(50);
-        myButton85.addActionListener(new java.awt.event.ActionListener() {
+        button2_4B.setBorder(null);
+        button2_4B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4B.setBorderPainted(false);
+        button2_4B.setColor(new java.awt.Color(204, 0, 204));
+        button2_4B.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4B.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4B.setRadius(50);
+        button2_4B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton85ActionPerformed(evt);
+                button2_4BActionPerformed(evt);
             }
         });
 
-        myButton86.setBackground(new java.awt.Color(204, 133, 228));
-        myButton86.setBorder(null);
-        myButton86.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton86.setBorderPainted(false);
-        myButton86.setColor(new java.awt.Color(204, 0, 204));
-        myButton86.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton86.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton86.setRadius(50);
-        myButton86.addActionListener(new java.awt.event.ActionListener() {
+        button2_4C.setBorder(null);
+        button2_4C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_4C.setBorderPainted(false);
+        button2_4C.setColor(new java.awt.Color(204, 0, 204));
+        button2_4C.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_4C.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_4C.setRadius(50);
+        button2_4C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton86ActionPerformed(evt);
+                button2_4CActionPerformed(evt);
             }
         });
 
-        myButton87.setBackground(new java.awt.Color(204, 133, 228));
-        myButton87.setBorder(null);
-        myButton87.setBorderColor(new java.awt.Color(204, 133, 228));
-        myButton87.setBorderPainted(false);
-        myButton87.setColor(new java.awt.Color(204, 0, 204));
-        myButton87.setColorClick(new java.awt.Color(204, 204, 204));
-        myButton87.setColorOver(new java.awt.Color(204, 204, 255));
-        myButton87.setRadius(50);
-        myButton87.addActionListener(new java.awt.event.ActionListener() {
+        button2_5C.setBorder(null);
+        button2_5C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_5C.setBorderPainted(false);
+        button2_5C.setColor(new java.awt.Color(204, 0, 204));
+        button2_5C.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_5C.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_5C.setRadius(50);
+        button2_5C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton87ActionPerformed(evt);
+                button2_5CActionPerformed(evt);
             }
         });
 
@@ -1414,130 +1365,128 @@ public class FlightSeat extends javax.swing.JPanel {
             economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(economySeatLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
+                    .addGroup(economySeatLayout.createSequentialGroup()
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(economySeatLayout.createSequentialGroup()
                         .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))
-                        .addGap(33, 33, 33)
-                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(economySeatLayout.createSequentialGroup()
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(economySeatLayout.createSequentialGroup()
                                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton52, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton53, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton54, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton63, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton65, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton87, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(39, 39, 39)
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton66, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton67, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton68, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(economySeatLayout.createSequentialGroup()
-                                                        .addComponent(myButton55, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(myButton56, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(economySeatLayout.createSequentialGroup()
-                                                        .addComponent(myButton77, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(myButton76, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(economySeatLayout.createSequentialGroup()
-                                                        .addComponent(myButton84, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(myButton83, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(myButton75, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(myButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(myButton82, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton61, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton64, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton62, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton85, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(button2_24, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(myButton78, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton86, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(41, 41, 41)
+                                        .addComponent(button2_25, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_26, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_2B, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_2C, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_5A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_5B, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_5C, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(39, 39, 39)
                                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addComponent(myButton72, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2_27, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(myButton73, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(myButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(button2_1F, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(myButton58, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(button2_5D, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton59, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(myButton60, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(button2_5E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_5F, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(economySeatLayout.createSequentialGroup()
                                         .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton81, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(button2_2D, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(myButton79, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(button2_2E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(economySeatLayout.createSequentialGroup()
-                                                .addComponent(myButton69, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(button2_3D, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(myButton70, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(button2_3E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(economySeatLayout.createSequentialGroup()
+                                                .addComponent(button2_4D, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(button2_4E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(myButton71, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(myButton80, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(button2_3F, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button2_2F, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(button2_4F, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(economySeatLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel16)))))
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_3B, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_4A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_4B, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(button2_3C, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(button2_4C, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(41, 41, 41)
+                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(economySeatLayout.createSequentialGroup()
+                                .addComponent(button2_3G, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(button2_3H, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(button2_3I, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(economySeatLayout.createSequentialGroup()
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(button2_2G, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(button2_1G, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_1H, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_1I, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_2H, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_2I, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(economySeatLayout.createSequentialGroup()
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_4G, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_4H, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(economySeatLayout.createSequentialGroup()
+                                        .addComponent(button2_5G, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(button2_5H, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(button2_5I, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(button2_4I, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(economySeatLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel16)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         economySeatLayout.setVerticalGroup(
@@ -1552,81 +1501,77 @@ public class FlightSeat extends javax.swing.JPanel {
                         .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(economySeatLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel16)
-                        .addGap(13, 13, 13)
-                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(myButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(economySeatLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addGap(13, 13, 13)
+                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(button2_24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1H, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1I, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addGap(30, 30, 30)
                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(myButton52, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton53, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton54, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton55, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton56, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton58, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton59, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton60, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(33, 33, 33)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, economySeatLayout.createSequentialGroup()
+                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button2_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2B, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2C, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2H, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_2I, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(33, 33, 33)
+                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button2_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3B, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3H, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3I, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_3C, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(29, 29, 29)
+                        .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button2_4A, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4H, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4I, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4B, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2_4C, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(34, 34, 34)
                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(myButton61, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton64, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton72, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton73, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton74, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton75, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton76, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton77, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton78, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel18)
-                .addGap(2, 2, 2)
-                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(myButton62, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton79, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton80, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton81, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton82, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton83, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton84, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton85, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton86, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(myButton63, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton65, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton66, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton67, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton68, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton69, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton70, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton71, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton87, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button2_5A, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5B, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5H, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5I, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_5C, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(44, 44, 44))
         );
 
-        jTabbedPane1.addTab("tab2", economySeat);
+        tabbedPane.addTab("tab2", economySeat);
 
-        bg.add(jTabbedPane1);
-        jTabbedPane1.setBounds(320, -40, 590, 510);
+        bg.add(tabbedPane);
+        tabbedPane.setBounds(320, -40, 590, 510);
 
         passengerDets.setBackground(new java.awt.Color(252, 223, 251));
         passengerDets.setRoundBottomLeft(50);
@@ -1660,6 +1605,11 @@ public class FlightSeat extends javax.swing.JPanel {
         seatInput.setForeground(new java.awt.Color(102, 102, 102));
         seatInput.setFillColor(new java.awt.Color(204, 204, 204));
         seatInput.setLineColor(new java.awt.Color(204, 204, 204));
+        seatInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                seatInputMousePressed(evt);
+            }
+        });
         seatInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seatInputActionPerformed(evt);
@@ -1720,7 +1670,8 @@ public class FlightSeat extends javax.swing.JPanel {
         bg.add(passengerDets);
         passengerDets.setBounds(10, 70, 300, 370);
 
-        add(bg, java.awt.BorderLayout.CENTER);
+        add(bg);
+        bg.setBounds(0, 0, 900, 530);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1735,287 +1686,365 @@ public class FlightSeat extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
+    private void button_0_1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_0_1AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton1ActionPerformed
+        
+        
+    }//GEN-LAST:event_button_0_1AActionPerformed
 
-    private void myButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton3ActionPerformed
+    private void button_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton3ActionPerformed
+    }//GEN-LAST:event_button_3ActionPerformed
 
-    private void myButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton4ActionPerformed
+    private void button_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton4ActionPerformed
+    }//GEN-LAST:event_button_4ActionPerformed
 
-    private void myButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton5ActionPerformed
+    private void button_1DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton5ActionPerformed
+    }//GEN-LAST:event_button_1DActionPerformed
 
-    private void myButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton6ActionPerformed
+    private void button_1FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton6ActionPerformed
+    }//GEN-LAST:event_button_1FActionPerformed
 
-    private void myButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton7ActionPerformed
+    private void button_2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton7ActionPerformed
+    }//GEN-LAST:event_button_2AActionPerformed
 
-    private void myButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton8ActionPerformed
+    private void button_2BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton8ActionPerformed
+    }//GEN-LAST:event_button_2BActionPerformed
 
-    private void myButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton9ActionPerformed
+    private void button_2CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton9ActionPerformed
+    }//GEN-LAST:event_button_2CActionPerformed
 
-    private void myButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton10ActionPerformed
+    private void button_2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton10ActionPerformed
+    }//GEN-LAST:event_button_2DActionPerformed
 
-    private void myButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton11ActionPerformed
+    private void button_2EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton11ActionPerformed
+    }//GEN-LAST:event_button_2EActionPerformed
 
-    private void myButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton12ActionPerformed
+    private void button_2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_2FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton12ActionPerformed
+    }//GEN-LAST:event_button_2FActionPerformed
 
-    private void myButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton13ActionPerformed
+    private void button_3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton13ActionPerformed
+    }//GEN-LAST:event_button_3AActionPerformed
 
-    private void myButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton14ActionPerformed
+    private void button_3BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton14ActionPerformed
+    }//GEN-LAST:event_button_3BActionPerformed
 
-    private void myButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton15ActionPerformed
+    private void button_3CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton15ActionPerformed
+    }//GEN-LAST:event_button_3CActionPerformed
 
-    private void myButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton16ActionPerformed
+    private void button_4CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton16ActionPerformed
+    }//GEN-LAST:event_button_4CActionPerformed
 
-    private void myButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton17ActionPerformed
+    private void button_4DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton17ActionPerformed
+    }//GEN-LAST:event_button_4DActionPerformed
 
-    private void myButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton18ActionPerformed
+    private void button_4EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton18ActionPerformed
+    }//GEN-LAST:event_button_4EActionPerformed
 
-    private void myButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton19ActionPerformed
+    private void button_4FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton19ActionPerformed
+    }//GEN-LAST:event_button_4FActionPerformed
 
-    private void myButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton20ActionPerformed
+    private void button_4BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton20ActionPerformed
+    }//GEN-LAST:event_button_4BActionPerformed
 
-    private void myButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton21ActionPerformed
+    private void button_4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton21ActionPerformed
+    }//GEN-LAST:event_button_4AActionPerformed
 
-    private void myButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton22ActionPerformed
+    private void button_3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton22ActionPerformed
+    }//GEN-LAST:event_button_3DActionPerformed
 
-    private void myButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton23ActionPerformed
+    private void button_3EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton23ActionPerformed
+    }//GEN-LAST:event_button_3EActionPerformed
 
-    private void myButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton24ActionPerformed
+    private void button_3FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton24ActionPerformed
+    }//GEN-LAST:event_button_3FActionPerformed
 
     private void seatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatInputActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Seat must be selected");
+        
     }//GEN-LAST:event_seatInputActionPerformed
 
-    private void myButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton25ActionPerformed
+    private void button2_24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_24ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton25ActionPerformed
+    }//GEN-LAST:event_button2_24ActionPerformed
 
-    private void myButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton26ActionPerformed
+    private void button2_25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_25ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton26ActionPerformed
+    }//GEN-LAST:event_button2_25ActionPerformed
 
-    private void myButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton27ActionPerformed
+    private void button2_26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_26ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton27ActionPerformed
+    }//GEN-LAST:event_button2_26ActionPerformed
 
-    private void myButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton28ActionPerformed
+    private void button2_27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_27ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton28ActionPerformed
+    }//GEN-LAST:event_button2_27ActionPerformed
 
-    private void myButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton29ActionPerformed
+    private void button2_1EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton29ActionPerformed
+    }//GEN-LAST:event_button2_1EActionPerformed
 
-    private void myButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton30ActionPerformed
+    private void button2_1FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton30ActionPerformed
+    }//GEN-LAST:event_button2_1FActionPerformed
 
-    private void myButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton31ActionPerformed
+    private void button2_1GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1GActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton31ActionPerformed
+    }//GEN-LAST:event_button2_1GActionPerformed
 
-    private void myButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton32ActionPerformed
+    private void button2_1HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton32ActionPerformed
+    }//GEN-LAST:event_button2_1HActionPerformed
 
-    private void myButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton33ActionPerformed
+    private void button2_1IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1IActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton33ActionPerformed
+    }//GEN-LAST:event_button2_1IActionPerformed
 
-    private void myButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton52ActionPerformed
+    private void button2_2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton52ActionPerformed
+    }//GEN-LAST:event_button2_2AActionPerformed
 
-    private void myButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton53ActionPerformed
+    private void button2_2BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton53ActionPerformed
+    }//GEN-LAST:event_button2_2BActionPerformed
 
-    private void myButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton54ActionPerformed
+    private void button2_2CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton54ActionPerformed
+    }//GEN-LAST:event_button2_2CActionPerformed
 
-    private void myButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton55ActionPerformed
+    private void button2_2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton55ActionPerformed
+    }//GEN-LAST:event_button2_2DActionPerformed
 
-    private void myButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton56ActionPerformed
+    private void button2_2EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton56ActionPerformed
+    }//GEN-LAST:event_button2_2EActionPerformed
 
-    private void myButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton57ActionPerformed
+    private void button2_2FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton57ActionPerformed
+    }//GEN-LAST:event_button2_2FActionPerformed
 
-    private void myButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton58ActionPerformed
+    private void button2_2GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2GActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton58ActionPerformed
+    }//GEN-LAST:event_button2_2GActionPerformed
 
-    private void myButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton59ActionPerformed
+    private void button2_2HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton59ActionPerformed
+    }//GEN-LAST:event_button2_2HActionPerformed
 
-    private void myButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton60ActionPerformed
+    private void button2_2IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_2IActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton60ActionPerformed
+    }//GEN-LAST:event_button2_2IActionPerformed
 
-    private void myButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton61ActionPerformed
+    private void button2_3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton61ActionPerformed
+    }//GEN-LAST:event_button2_3AActionPerformed
 
-    private void myButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton62ActionPerformed
+    private void button2_4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton62ActionPerformed
+    }//GEN-LAST:event_button2_4AActionPerformed
 
-    private void myButton63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton63ActionPerformed
+    private void button2_5AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton63ActionPerformed
+    }//GEN-LAST:event_button2_5AActionPerformed
 
-    private void myButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton64ActionPerformed
+    private void button2_3BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton64ActionPerformed
+    }//GEN-LAST:event_button2_3BActionPerformed
 
-    private void myButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton65ActionPerformed
+    private void button2_5BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton65ActionPerformed
+    }//GEN-LAST:event_button2_5BActionPerformed
 
-    private void myButton66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton66ActionPerformed
+    private void button2_5DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton66ActionPerformed
+    }//GEN-LAST:event_button2_5DActionPerformed
 
-    private void myButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton67ActionPerformed
+    private void button2_5EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton67ActionPerformed
+    }//GEN-LAST:event_button2_5EActionPerformed
 
-    private void myButton68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton68ActionPerformed
+    private void button2_5FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton68ActionPerformed
+    }//GEN-LAST:event_button2_5FActionPerformed
 
-    private void myButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton69ActionPerformed
+    private void button2_5GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5GActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton69ActionPerformed
+    }//GEN-LAST:event_button2_5GActionPerformed
 
-    private void myButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton70ActionPerformed
+    private void button2_5HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton70ActionPerformed
+    }//GEN-LAST:event_button2_5HActionPerformed
 
-    private void myButton71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton71ActionPerformed
+    private void button2_5IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5IActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton71ActionPerformed
+    }//GEN-LAST:event_button2_5IActionPerformed
 
-    private void myButton72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton72ActionPerformed
+    private void button2_3GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3GActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton72ActionPerformed
+    }//GEN-LAST:event_button2_3GActionPerformed
 
-    private void myButton73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton73ActionPerformed
+    private void button2_3HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton73ActionPerformed
+    }//GEN-LAST:event_button2_3HActionPerformed
 
-    private void myButton74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton74ActionPerformed
+    private void button2_3IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3IActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton74ActionPerformed
+    }//GEN-LAST:event_button2_3IActionPerformed
 
-    private void myButton75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton75ActionPerformed
+    private void button2_3FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton75ActionPerformed
+    }//GEN-LAST:event_button2_3FActionPerformed
 
-    private void myButton76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton76ActionPerformed
+    private void button2_3EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton76ActionPerformed
+    }//GEN-LAST:event_button2_3EActionPerformed
 
-    private void myButton77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton77ActionPerformed
+    private void button2_3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton77ActionPerformed
+    }//GEN-LAST:event_button2_3DActionPerformed
 
-    private void myButton78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton78ActionPerformed
+    private void button2_3CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_3CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton78ActionPerformed
+    }//GEN-LAST:event_button2_3CActionPerformed
 
-    private void myButton79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton79ActionPerformed
+    private void button2_4HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton79ActionPerformed
+    }//GEN-LAST:event_button2_4HActionPerformed
 
-    private void myButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton80ActionPerformed
+    private void button2_4IActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4IActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton80ActionPerformed
+    }//GEN-LAST:event_button2_4IActionPerformed
 
-    private void myButton81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton81ActionPerformed
+    private void button2_4GActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4GActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton81ActionPerformed
+    }//GEN-LAST:event_button2_4GActionPerformed
 
-    private void myButton82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton82ActionPerformed
+    private void button2_4FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4FActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton82ActionPerformed
+    }//GEN-LAST:event_button2_4FActionPerformed
 
-    private void myButton83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton83ActionPerformed
+    private void button2_4EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton83ActionPerformed
+    }//GEN-LAST:event_button2_4EActionPerformed
 
-    private void myButton84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton84ActionPerformed
+    private void button2_4DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton84ActionPerformed
+    }//GEN-LAST:event_button2_4DActionPerformed
 
-    private void myButton85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton85ActionPerformed
+    private void button2_4BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton85ActionPerformed
+    }//GEN-LAST:event_button2_4BActionPerformed
 
-    private void myButton86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton86ActionPerformed
+    private void button2_4CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_4CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton86ActionPerformed
+    }//GEN-LAST:event_button2_4CActionPerformed
 
-    private void myButton87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton87ActionPerformed
+    private void button2_5CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_5CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myButton87ActionPerformed
+    }//GEN-LAST:event_button2_5CActionPerformed
+
+    private void seatInputMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seatInputMousePressed
+        JOptionPane.showMessageDialog(
+                this,
+                "Please click the buttons to set the seat information.");
+        return;
+    }//GEN-LAST:event_seatInputMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JPanel busSeat;
+    private airswift.MyButton button2_1E;
+    private airswift.MyButton button2_1F;
+    private airswift.MyButton button2_1G;
+    private airswift.MyButton button2_1H;
+    private airswift.MyButton button2_1I;
+    private airswift.MyButton button2_24;
+    private airswift.MyButton button2_25;
+    private airswift.MyButton button2_26;
+    private airswift.MyButton button2_27;
+    private airswift.MyButton button2_2A;
+    private airswift.MyButton button2_2B;
+    private airswift.MyButton button2_2C;
+    private airswift.MyButton button2_2D;
+    private airswift.MyButton button2_2E;
+    private airswift.MyButton button2_2F;
+    private airswift.MyButton button2_2G;
+    private airswift.MyButton button2_2H;
+    private airswift.MyButton button2_2I;
+    private airswift.MyButton button2_3A;
+    private airswift.MyButton button2_3B;
+    private airswift.MyButton button2_3C;
+    private airswift.MyButton button2_3D;
+    private airswift.MyButton button2_3E;
+    private airswift.MyButton button2_3F;
+    private airswift.MyButton button2_3G;
+    private airswift.MyButton button2_3H;
+    private airswift.MyButton button2_3I;
+    private airswift.MyButton button2_4A;
+    private airswift.MyButton button2_4B;
+    private airswift.MyButton button2_4C;
+    private airswift.MyButton button2_4D;
+    private airswift.MyButton button2_4E;
+    private airswift.MyButton button2_4F;
+    private airswift.MyButton button2_4G;
+    private airswift.MyButton button2_4H;
+    private airswift.MyButton button2_4I;
+    private airswift.MyButton button2_5A;
+    private airswift.MyButton button2_5B;
+    private airswift.MyButton button2_5C;
+    private airswift.MyButton button2_5D;
+    private airswift.MyButton button2_5E;
+    private airswift.MyButton button2_5F;
+    private airswift.MyButton button2_5G;
+    private airswift.MyButton button2_5H;
+    private airswift.MyButton button2_5I;
+    private airswift.MyButton button_0_1A;
+    private airswift.MyButton button_1D;
+    private airswift.MyButton button_1F;
+    private airswift.MyButton button_2;
+    private airswift.MyButton button_2A;
+    private airswift.MyButton button_2B;
+    private airswift.MyButton button_2C;
+    private airswift.MyButton button_2D;
+    private airswift.MyButton button_2E;
+    private airswift.MyButton button_2F;
+    private airswift.MyButton button_3;
+    private airswift.MyButton button_3A;
+    private airswift.MyButton button_3B;
+    private airswift.MyButton button_3C;
+    private airswift.MyButton button_3D;
+    private airswift.MyButton button_3E;
+    private airswift.MyButton button_3F;
+    private airswift.MyButton button_4;
+    private airswift.MyButton button_4A;
+    private airswift.MyButton button_4B;
+    private airswift.MyButton button_4C;
+    private airswift.MyButton button_4D;
+    private airswift.MyButton button_4E;
+    private airswift.MyButton button_4F;
     private javax.swing.JPanel economySeat;
     private airswift.FTextField fNameInput;
     private javax.swing.JButton jButton1;
@@ -2044,79 +2073,12 @@ public class FlightSeat extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private airswift.FTextField lNameInput;
-    private airswift.MyButton myButton1;
-    private airswift.MyButton myButton10;
-    private airswift.MyButton myButton11;
-    private airswift.MyButton myButton12;
-    private airswift.MyButton myButton13;
-    private airswift.MyButton myButton14;
-    private airswift.MyButton myButton15;
-    private airswift.MyButton myButton16;
-    private airswift.MyButton myButton17;
-    private airswift.MyButton myButton18;
-    private airswift.MyButton myButton19;
-    private airswift.MyButton myButton2;
-    private airswift.MyButton myButton20;
-    private airswift.MyButton myButton21;
-    private airswift.MyButton myButton22;
-    private airswift.MyButton myButton23;
-    private airswift.MyButton myButton24;
-    private airswift.MyButton myButton25;
-    private airswift.MyButton myButton26;
-    private airswift.MyButton myButton27;
-    private airswift.MyButton myButton28;
-    private airswift.MyButton myButton29;
-    private airswift.MyButton myButton3;
-    private airswift.MyButton myButton30;
-    private airswift.MyButton myButton31;
-    private airswift.MyButton myButton32;
-    private airswift.MyButton myButton33;
-    private airswift.MyButton myButton4;
-    private airswift.MyButton myButton5;
-    private airswift.MyButton myButton52;
-    private airswift.MyButton myButton53;
-    private airswift.MyButton myButton54;
-    private airswift.MyButton myButton55;
-    private airswift.MyButton myButton56;
-    private airswift.MyButton myButton57;
-    private airswift.MyButton myButton58;
-    private airswift.MyButton myButton59;
-    private airswift.MyButton myButton6;
-    private airswift.MyButton myButton60;
-    private airswift.MyButton myButton61;
-    private airswift.MyButton myButton62;
-    private airswift.MyButton myButton63;
-    private airswift.MyButton myButton64;
-    private airswift.MyButton myButton65;
-    private airswift.MyButton myButton66;
-    private airswift.MyButton myButton67;
-    private airswift.MyButton myButton68;
-    private airswift.MyButton myButton69;
-    private airswift.MyButton myButton7;
-    private airswift.MyButton myButton70;
-    private airswift.MyButton myButton71;
-    private airswift.MyButton myButton72;
-    private airswift.MyButton myButton73;
-    private airswift.MyButton myButton74;
-    private airswift.MyButton myButton75;
-    private airswift.MyButton myButton76;
-    private airswift.MyButton myButton77;
-    private airswift.MyButton myButton78;
-    private airswift.MyButton myButton79;
-    private airswift.MyButton myButton8;
-    private airswift.MyButton myButton80;
-    private airswift.MyButton myButton81;
-    private airswift.MyButton myButton82;
-    private airswift.MyButton myButton83;
-    private airswift.MyButton myButton84;
-    private airswift.MyButton myButton85;
-    private airswift.MyButton myButton86;
-    private airswift.MyButton myButton87;
-    private airswift.MyButton myButton9;
     private javax.swing.JLabel pass;
     private airswift.RoundedPanel passengerDets;
     private airswift.FTextField seatInput;
+    private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
+
+    
 }

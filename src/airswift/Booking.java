@@ -4,6 +4,7 @@ import java.util.Date;
 
 
 public class Booking{ 
+    private String email;
     private String departShort;
     private String departLong;
     private String returnShort;
@@ -12,10 +13,30 @@ public class Booking{
     private Date returnDate;
     private int passenger;
     private String cabin;
+    private String timeDepart[]=new String[2];
+    private String timeReturn[]=new String[2];
+    private String flightName;
 
-    @Override
-    public String toString() {
-        return "Booking{" + "departShort=" + departShort + ", departLong=" + departLong + ", returnShort=" + returnShort + ", returnLong=" + returnLong + ", departDate=" + departDate + ", returnDate=" + returnDate + ", passenger=" + passenger + ", cabin=" + cabin + '}';
+    
+    public double calculatePayment(){
+        double price;
+        if(cabin.equalsIgnoreCase("Economy")){
+            price=100;
+        }
+        else
+            price=250;
+        
+        return price;
+        
+        
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDepartShort() {
@@ -82,18 +103,45 @@ public class Booking{
         this.cabin = cabin;
     }
 
-    
-    public Booking(){
+    public String[] getTimeDepart() {
+        return timeDepart;
+    }
+
+    public void setTimeDepart(String[] timeDepart) {
+        this.timeDepart = timeDepart;
+    }
+
+    public String[] getTimeReturn() {
+        return timeReturn;
+    }
+
+    public void setTimeReturn(String[] timeReturn) {
+        this.timeReturn = timeReturn;
+    }
+
+    public String getFlightName() {
+        return flightName;
+    }
+
+    public void setFlightName(String flightName) {
+        this.flightName = flightName;
+    }
+
+    public Booking(String email, String departShort, String departLong, String returnShort, String returnLong, Date departDate, Date returnDate, int passenger, String cabin, String flightName) {
+        this.email = email;
+        this.departShort = departShort;
+        this.departLong = departLong;
+        this.returnShort = returnShort;
+        this.returnLong = returnLong;
+        this.departDate = departDate;
+        this.returnDate = returnDate;
+        this.passenger = passenger;
+        this.cabin = cabin;
+        this.flightName = flightName;
     }
     
-    public Booking(String dShort, String dLong, String rShort, String rLong, Date dDate, Date rDate, int pass){
-        departShort=dShort;
-        departLong=dLong;
-        returnShort=rShort;
-        returnLong=rLong;
-        departDate=dDate;
-        returnDate=rDate;
-        passenger=pass;
+    public Booking(){
+        
     }
 
     

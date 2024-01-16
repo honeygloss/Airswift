@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import javaswingdev.GradientDropdownMenu;
 import java.util.Scanner;
@@ -59,12 +60,24 @@ public class FlightBooking extends javax.swing.JPanel {
         
         initComponents();
         
+        // display booking information
+        departShort.setText(book.getDepartShort());
+        departLong.setText(book.getDepartLong().toUpperCase());
+        returnShort.setText(book.getReturnShort());
+        returnLong.setText(book.getReturnLong().toUpperCase());
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
+        departDate.setText(dateFormat1.format(book.getDepartDate()));
+        String passString = ""+book.getPassenger();
+        passenger.setText(passString);
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
+        departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
         
-        
+        // assign time available
         String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
                                     {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
                                     {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
         
+        // generate random number of available tickets
         Random random = new Random();
         int randomNum;
         do{
@@ -76,7 +89,9 @@ public class FlightBooking extends javax.swing.JPanel {
         String flightTime[][]=new String[randomNum][2];
         int newValue;
         boolean isDuplicate;
-
+        
+        
+        // generate random index for randomNum tickets
         for (int i = 0; i < randomNum; i++) {
             do {
                 newValue = random.nextInt(10);
@@ -96,6 +111,7 @@ public class FlightBooking extends javax.swing.JPanel {
             }while(indFNum[i]<100);
         }
         
+        // create flight name
         for(int i=0; i<randomNum; i++){
             flightName[i]="AS "+Integer.toString(indFNum[i]);
             for(int j=0; j<2; j++){
@@ -111,9 +127,11 @@ public class FlightBooking extends javax.swing.JPanel {
             int flightID=1000+lineCount;
             FileWriter fr1 = new FileWriter("FlightSchedule.txt", true);        
             PrintWriter pr1 = new PrintWriter(fr1);
+            
+            // HAURA BUAT
             FileWriter fr2 = new FileWriter("AvailableSeat.txt", true);     
             PrintWriter pr2 = new PrintWriter(fr2);
-
+            
             FileReader read = new FileReader("FlightSchedule.txt");
             Scanner filein= new Scanner(read);
 
@@ -135,7 +153,7 @@ public class FlightBooking extends javax.swing.JPanel {
 
                 t++;
             }
-            boolean hasTicket=false;        // check if the schedule has already written in the file
+            boolean hasTicket=false;        // check if the schedule has already written to the file
             for(int s=0; s<lineCount; s++){
                 if(book.getDepartDate().equals(fstemp[s].getDate()) && book.getDepartLong().equals(fstemp[s].getDestination()) && book.getReturnLong().equals(fstemp[s].getArrival())){
                     hasTicket=true;
@@ -307,6 +325,9 @@ public class FlightBooking extends javax.swing.JPanel {
         
         gbcDynamicButtons.weighty = 1.0; // Allow vertical expansion
         availTicket.add(dynamicButtonsPanel, gbcDynamicButtons);
+        
+        
+        
     }
     
     public void setGradientDropdownMenu(GradientDropdownMenu menu) {
@@ -333,13 +354,10 @@ public class FlightBooking extends javax.swing.JPanel {
         returnLong = new javax.swing.JLabel();
         departLabel = new javax.swing.JLabel();
         departDate = new javax.swing.JLabel();
-        returnLabel = new javax.swing.JLabel();
-        returnDate = new javax.swing.JLabel();
-        passengerLabel = new javax.swing.JLabel();
         passenger = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
+        passengerLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         departDateDis = new javax.swing.JLabel();
@@ -348,12 +366,13 @@ public class FlightBooking extends javax.swing.JPanel {
         availTicket = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(854, 551));
+        setPreferredSize(new java.awt.Dimension(900, 530));
         setLayout(new java.awt.BorderLayout());
 
         bg.setBackground(new java.awt.Color(204, 204, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        bg.setPreferredSize(new java.awt.Dimension(920, 551));
+        bg.setMinimumSize(new java.awt.Dimension(900, 530));
+        bg.setPreferredSize(new java.awt.Dimension(900, 530));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -401,25 +420,10 @@ public class FlightBooking extends javax.swing.JPanel {
         departDate.setText("jLabel2");
         findAflight.add(departDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 80, -1));
 
-        returnLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        returnLabel.setForeground(new java.awt.Color(0, 0, 0));
-        returnLabel.setText("Return");
-        findAflight.add(returnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
-
-        returnDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        returnDate.setForeground(new java.awt.Color(102, 102, 102));
-        returnDate.setText("jLabel1");
-        findAflight.add(returnDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 80, -1));
-
-        passengerLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        passengerLabel.setForeground(new java.awt.Color(0, 0, 0));
-        passengerLabel.setText("Passenger");
-        findAflight.add(passengerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 69, -1));
-
         passenger.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         passenger.setForeground(new java.awt.Color(102, 102, 102));
         passenger.setText("jLabel1");
-        findAflight.add(passenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 30, -1));
+        findAflight.add(passenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 30, -1));
 
         jSeparator1.setBackground(new java.awt.Color(102, 0, 102));
         jSeparator1.setForeground(new java.awt.Color(102, 0, 102));
@@ -431,12 +435,12 @@ public class FlightBooking extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         findAflight.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 10, 80));
 
-        jSeparator3.setBackground(new java.awt.Color(102, 0, 102));
-        jSeparator3.setForeground(new java.awt.Color(102, 0, 102));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        findAflight.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 10, 80));
+        passengerLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        passengerLabel.setForeground(new java.awt.Color(0, 0, 0));
+        passengerLabel.setText("Passenger");
+        findAflight.add(passengerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 69, -1));
 
-        bg.add(findAflight, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 600, 100));
+        bg.add(findAflight, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 80, 490, 100));
 
         backButton.setBackground(new java.awt.Color(102, 0, 102));
         backButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -467,7 +471,7 @@ public class FlightBooking extends javax.swing.JPanel {
         departDateDis.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(departDateDis, java.awt.BorderLayout.CENTER);
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 185, 280, 50));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 185, 280, 50));
 
         buttonGradient2.setBackground(new java.awt.Color(204, 0, 153));
         buttonGradient2.setBorder(null);
@@ -540,11 +544,8 @@ public class FlightBooking extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     public javax.swing.JLabel passenger;
     public javax.swing.JLabel passengerLabel;
-    public javax.swing.JLabel returnDate;
-    public javax.swing.JLabel returnLabel;
     public javax.swing.JLabel returnLong;
     public javax.swing.JLabel returnShort;
     // End of variables declaration//GEN-END:variables
