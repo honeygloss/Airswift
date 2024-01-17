@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.util.regex.Pattern;
+import java.io.BufferedReader;
 
  
 
@@ -50,6 +51,23 @@ public class Register extends javax.swing.JFrame {
             }
         
         } 
+    }
+    
+    
+    public boolean emailExists(String email) {
+        try (BufferedReader br = new BufferedReader(new FileReader("UserRegister.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                // Assuming email is the seventh field
+                if (fields.length >= 7 && fields[7].equals(email)) {
+                    return true; // Email exists
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false; // Email doesn't exist
     }
     
     
@@ -421,9 +439,15 @@ public class Register extends javax.swing.JFrame {
         String pass = txtRegisterPassword.getText();
         String confirmPass = txtCPassword.getText();
         int currentIndex=0;
-      
+        
+        
         if(!txtEmailAddress.getText().contains("@") && !txtEmailAddress.getText().contains(".com")){
             JOptionPane.showMessageDialog(this, "Email is not valid"); 
+            return;
+        }
+        
+        if (emailExists(txtEmailAddress.getText())) {
+            JOptionPane.showMessageDialog(this, "Email is already exist"); 
             return;
         }
         
@@ -505,6 +529,7 @@ public class Register extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

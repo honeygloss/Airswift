@@ -67,6 +67,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmdLogin = new swing.ButtonGradient();
+        checkR = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -110,6 +111,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        checkR.setText("show password");
+        checkR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -132,6 +140,10 @@ public class Login extends javax.swing.JFrame {
                         .addGap(140, 140, 140)
                         .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(checkR)
+                .addGap(34, 34, 34))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +158,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -238,45 +252,56 @@ public class Login extends javax.swing.JFrame {
         
         // ... (previous code)
 
-try {
-    FileReader fr = new FileReader("UserRegister.txt");
+    try {
+        FileReader fr = new FileReader("UserRegister.txt");
 
-    Scanner sc = new Scanner(fr);
-    String line;
-    String[] lineArr;
-    int currIn = 0;
-    boolean loginSuccessful = false;
+        Scanner sc = new Scanner(fr);
+        String line;
+        String[] lineArr;
+        int currIn = 0;
+        boolean loginSuccessful = false;
 
-    while (sc.hasNextLine()) {
-        line = sc.nextLine();
-        lineArr = line.split(",");
+        while (sc.hasNextLine()) {
+            line = sc.nextLine();
+            lineArr = line.split(",");
 
         // Adjust the indices based on your data structure
-        if (lineArr.length >= 9 && lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
-            JOptionPane.showMessageDialog(null, "Login successful");
-            tempArray[currIn++] = line;
-            loginSuccessful = true;
-            break;
-        } else {
-            tempArray[currIn++] = line;
-        }
-    }
-    fr.close();
+            if (lineArr.length >= 9 && lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
+                JOptionPane.showMessageDialog(null, "Login successful");
+                tempArray[currIn++] = line;
+                loginSuccessful = true;
+            
+                try {
+                        FileWriter wr = new FileWriter("Login.txt",true);
+                        wr.write(emailAddress + " , " +pass);
+                        wr.write(System.getProperty("line.separator"));
+                        wr.close();
+            
+                    }
+                    catch(Exception e){
+                        System.out.println(e.toString());
+
+                    }
+                  break;
+            }   else {
+                     tempArray[currIn++] = line;
+            }
+        }   
+        fr.close();
 
     // Move the incorrect message outside the loop
-    if (!loginSuccessful) {
-        JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
-        return;
-    }
+        if (!loginSuccessful) {
+            JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
+            
+        }
 
     // Additional actions if login is successful can be added here.
 
-} catch (Exception e) {
-    e.printStackTrace();
-}
-
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
         
-        try {
+        /*try {
             FileWriter wr = new FileWriter("Login.txt",true);
             wr.write(emailAddress + "," +pass);
             wr.write(System.getProperty("line.separator"));
@@ -286,9 +311,18 @@ try {
         catch(Exception e){
             System.out.println(e.toString());
 
-        }
+        }*/
        
     }//GEN-LAST:event_cmdLoginActionPerformed
+
+    private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed
+        if(checkR.isSelected()){
+            txtPassword.setEchoChar((char) 0);
+            
+        }else{
+            txtPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +361,7 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private airswift.Background background;
+    private javax.swing.JCheckBox checkR;
     private swing.ButtonGradient cmdLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
