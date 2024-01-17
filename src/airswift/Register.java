@@ -52,40 +52,6 @@ public class Register extends javax.swing.JFrame {
         } 
     }
     
-    public class EmailValidation {
-
-    public static boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        return Pattern.compile(emailRegex).matcher(email).matches();
-    }
-
-    public static void main(String[] args) {
-        // Example usage:
-        String email1 = "user@example.com";
-        String email2 = "invalid_email";
-
-        System.out.println(email1 + " is valid: " + isValidEmail(email1));
-        System.out.println(email2 + " is valid: " + isValidEmail(email2));
-    }
-}
-    public class PassportValidation {
-
-    public static boolean isValidPassportNumber(String passportNumber) {
-        // Adjust the regular expression based on the passport number format
-        String passportRegex = "^[A-Za-z0-9]{6,20}$";
-
-        return Pattern.compile(passportRegex).matcher(passportNumber).matches();
-    }
-
-    public static void main(String[] args) {
-        // Example usage:
-        String validPassport = "AB123456";
-        String invalidPassport = "InvalidPassport123";
-
-        System.out.println("Is " + validPassport + " a valid passport number? " + isValidPassportNumber(validPassport));
-        System.out.println("Is " + invalidPassport + " a valid passport number? " + isValidPassportNumber(invalidPassport));
-    }
-}
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -455,20 +421,13 @@ public class Register extends javax.swing.JFrame {
         String pass = txtRegisterPassword.getText();
         String confirmPass = txtCPassword.getText();
         int currentIndex=0;
-        
-        EmailValidation emailValidation = new EmailValidation();
-        String email = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        boolean isValidEmail = emailValidation.isValidEmail(email);
-        if(!txtEmailAddress.getText().equals(isValidEmail)){
+      
+        if(!txtEmailAddress.getText().contains("@") && !txtEmailAddress.getText().contains(".com")){
             JOptionPane.showMessageDialog(this, "Email is not valid"); 
             return;
         }
         
-        
-        PassportValidation passportValidation = new PassportValidation();
-        String passportNumber = "AB123456";
-        boolean isValidPassport = passportValidation.isValidPassportNumber(passportNumber);
-        if(!txtPassport.getText().equals(isValidPassport)){
+        if(!(txtPassport.getText().length()<8)){
             JOptionPane.showMessageDialog(this, "Passport number is not valid"); 
             return;
         }
