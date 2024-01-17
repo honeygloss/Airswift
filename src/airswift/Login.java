@@ -197,7 +197,7 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         
-        try{
+        /*try{
             FileReader fr = new FileReader("UserRegister.txt");
             
             Scanner sc = new Scanner(fr);
@@ -234,9 +234,49 @@ public class Login extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e.toString());
         
-        }
+        }*/
         
-        /*try {
+        // ... (previous code)
+
+try {
+    FileReader fr = new FileReader("UserRegister.txt");
+
+    Scanner sc = new Scanner(fr);
+    String line;
+    String[] lineArr;
+    int currIn = 0;
+    boolean loginSuccessful = false;
+
+    while (sc.hasNextLine()) {
+        line = sc.nextLine();
+        lineArr = line.split(",");
+
+        // Adjust the indices based on your data structure
+        if (lineArr.length >= 9 && lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
+            JOptionPane.showMessageDialog(null, "Login successful");
+            tempArray[currIn++] = line;
+            loginSuccessful = true;
+            break;
+        } else {
+            tempArray[currIn++] = line;
+        }
+    }
+    fr.close();
+
+    // Move the incorrect message outside the loop
+    if (!loginSuccessful) {
+        JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
+        return;
+    }
+
+    // Additional actions if login is successful can be added here.
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+        
+        try {
             FileWriter wr = new FileWriter("Login.txt",true);
             wr.write(emailAddress + "," +pass);
             wr.write(System.getProperty("line.separator"));
@@ -246,7 +286,7 @@ public class Login extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e.toString());
 
-        }*/
+        }
        
     }//GEN-LAST:event_cmdLoginActionPerformed
 

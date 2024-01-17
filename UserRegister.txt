@@ -6,3 +6,4 @@ Mr.,A78965432,ADAM,MOHAMMAD,Singaporean,65123456789,14-08-2007,adam@gmail.com,12
 Miss,1234567,aisyah,maisarah,Afghan,01133032904,20-01-2019,aisyahm@gmail.com,jaja1234
 Miss,1234567,aisyah,maisarah,Afghan,01133032904,14-01-2018,aisyahm@gmail.com,jaja1234
 Miss,1234567,aisyah,maisarah,Afghan,01133032904,19-01-2020,aisyahm@gmail.com,jaja1234
+Miss,1234567,Sakinah,Saleh,Malaysian,0103052065,22-01-2003,adlina123@gmail.com,Adlina123

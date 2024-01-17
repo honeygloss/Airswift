@@ -482,6 +482,7 @@ public class Register extends javax.swing.JFrame {
         cust.setEmailAddress(emailAddress);
         cust.setConfirmPass(confirmPass);
         }
+        currentIndex++;
         
         new StartUp().setVisible(true);
     }//GEN-LAST:event_cmdSignUpActionPerformed
