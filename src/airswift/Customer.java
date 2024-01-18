@@ -42,7 +42,7 @@ class Customer {
     
     Customer(String data) {
         String[] dataArr = data.split(" ");
-        if (dataArr.length >= 13) {
+        if (dataArr.length >= 12) {
         this.title = dataArr[0];
         this.passport = dataArr[1];
         this.fName = dataArr[2];

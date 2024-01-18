@@ -20,7 +20,7 @@ public class StartUp extends javax.swing.JFrame {
      */
     public StartUp() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
     }
 

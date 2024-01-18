@@ -216,6 +216,8 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        txtDOB.setDateFormatString("dd-MM-yyyy");
+
         checkR.setText("show password");
         checkR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,7 +472,8 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
-        try {
+       
+        try { 
             FileWriter wr = new FileWriter("UserRegister.txt",true);
             wr.write(title + "," +
                      passport + "," +

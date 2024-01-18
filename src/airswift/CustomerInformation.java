@@ -49,12 +49,17 @@ public class CustomerInformation extends javax.swing.JPanel {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dobString = cust.getDOB(); // Assuming cust.getDOB() returns a string
         try {
-            Date dobDate = sdf.parse(dobString);
-            dobField.setDate(dobDate);
-        } catch (ParseException ex) {
-            // Handle parsing exception, if needed
-            ex.printStackTrace();
-        }
+    if (dobString != null) {
+        Date dobDate = sdf.parse(dobString);
+        dobField.setDate(dobDate); // Assuming dobField is your JDateChooser
+    } else {
+        // Handle the case where dobString is null
+        // You can set a default date or take appropriate action
+    }
+} catch (ParseException ex) {
+    // Handle parsing exception, if needed
+    ex.printStackTrace();
+}
     }
     
     @Override
@@ -593,14 +598,14 @@ public class CustomerInformation extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Change Password is not the same as confirm Password"); 
             return;
         }
-        if(!phoneNumberField.getText().matches("\\d+")){
+        /*if(!phoneNumberField.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
             return;
         }
         if(!phoneNumberEmergencyField.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
             return;
-        }
+        }*/
         /*
         try {
                 FileReader fr = new FileReader("Customer.txt");
@@ -655,7 +660,8 @@ public class CustomerInformation extends javax.swing.JPanel {
                     lineArr = line.split(",");
                     if(lineArr[7].equals(cust.getEmailAddress())){
                         String updatedLine =
-                        title + "," +
+                        
+                        /*title + "," +
                         passport + "," +
                         fName + "," +
                         lName + "," +
@@ -663,13 +669,13 @@ public class CustomerInformation extends javax.swing.JPanel {
                         phoneNum + "," +
                         dob + "," +
                         lineArr[7] + "," +
-                        changePass + "," +
                         confirmPass + "," +
                         fNameEmergency + "," +   
                         phoneNumberEmergency + "," +
                         relationship;
                         tempArray[currentIndex++] = updatedLine;
                         System.out.println("email is found");
+                        System.out.println(fName);
                         cust.setTitle(title);
                         cust.setFName(fName);
                         cust.setLName(lName);
@@ -681,6 +687,9 @@ public class CustomerInformation extends javax.swing.JPanel {
                         cust.setFullNameEmergency(fNameEmergency);
                         cust.setPhoneNumberEmergency(phoneNumberEmergency);
                         cust.setRelationship(relationship);
+                        System.out.println(fName);*/
+                        JOptionPane.showMessageDialog(this, "updated"); 
+                        return;
                     }else{
                         tempArray[currentIndex++] = line;
                         System.out.println("email is not found");
@@ -704,11 +713,8 @@ public class CustomerInformation extends javax.swing.JPanel {
         } catch(Exception e){
             System.out.println(e.toString());
         }
-        for (int i = 0; i < currentIndex; i++){
-            System.out.print(tempArray[i]);
-            System.out.print("\n");
-        }
-        
+        for (int i = 0; i < currentIndex; i++)
+            System.out.println(tempArray[i]);
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void confirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusGained
