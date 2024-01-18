@@ -197,8 +197,6 @@
         <Property name="text" type="java.lang.String" value="Passport Number"/>
       </Properties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passportFieldFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passportFieldFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passportFieldActionPerformed"/>
       </Events>
     </Component>
@@ -206,19 +204,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="First Name"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameFieldFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fNameFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="lNameField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Last Name"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lNameFieldFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lNameFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="nationalityLabel">
       <Properties>
@@ -232,10 +222,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Phone Number"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberFieldFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneNumberFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="dobLabel">
       <Properties>
@@ -649,6 +635,7 @@
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="titleListdownFocusGained"/>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="titleListdownFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="titleListdownActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="check">

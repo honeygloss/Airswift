@@ -452,6 +452,10 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Email is already exist"); 
             return;
         }
+        if(!phoneNumber.matches("\\d+")){
+            JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
+            return;
+        }
         
         if(!(txtPassport.getText().length()<8)){
             JOptionPane.showMessageDialog(this, "Passport number is not valid"); 
@@ -493,22 +497,7 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error");
 
         }
-        
-        
-        Customer cust = new Customer();
-        for (int i=0; i<currentIndex ;i++){
-        cust.setTitle(title) ;
-        cust.setPassport(passport);
-        cust.setFName(fName);
-        cust.setLName(lName);
-        cust.setNationality(nationality);
-        cust.setPhoneNumber(phoneNumber);
-        cust.setDOB(DOB);
-        cust.setEmailAddress(emailAddress);
-        cust.setConfirmPass(confirmPass);
-        }
-        currentIndex++;
-        
+                
         new StartUp().setVisible(true);
     }//GEN-LAST:event_cmdSignUpActionPerformed
 

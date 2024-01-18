@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -134,14 +135,6 @@ public class CustomerInformation extends javax.swing.JPanel {
         pInformationText1.setText("Personal Information");
 
         passportField.setText("Passport Number");
-        passportField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passportFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passportFieldFocusLost(evt);
-            }
-        });
         passportField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passportFieldActionPerformed(evt);
@@ -149,37 +142,13 @@ public class CustomerInformation extends javax.swing.JPanel {
         });
 
         fNameField.setText("First Name");
-        fNameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fNameFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fNameFieldFocusLost(evt);
-            }
-        });
 
         lNameField.setText("Last Name");
-        lNameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                lNameFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                lNameFieldFocusLost(evt);
-            }
-        });
 
         nationalityLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         nationalityLabel.setText("Nationality");
 
         phoneNumberField.setText("Phone Number");
-        phoneNumberField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                phoneNumberFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                phoneNumberFieldFocusLost(evt);
-            }
-        });
 
         dobLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         dobLabel.setText("Date of Birth");
@@ -336,6 +305,11 @@ public class CustomerInformation extends javax.swing.JPanel {
                 titleListdownFocusLost(evt);
             }
         });
+        titleListdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleListdownActionPerformed(evt);
+            }
+        });
 
         check.setText("show password");
         check.addActionListener(new java.awt.event.ActionListener() {
@@ -480,63 +454,15 @@ public class CustomerInformation extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmPassFieldActionPerformed
 
-    private void fNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusGained
-        if (fNameField.getText().equals(cust.getFName())) {
-            fNameField.setText("First Name");
-        }
-    }//GEN-LAST:event_fNameFieldFocusGained
-
-    private void fNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameFieldFocusLost
-        if (fNameField.getText().isEmpty() || fNameField.getText().equals("First Name")) {
-            fNameField.setText(cust.getFName());
-        }
-    }//GEN-LAST:event_fNameFieldFocusLost
-
-    private void passportFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusGained
-        if (passportField.getText().equals(cust.getPassport())) {
-            passportField.setText("Passport Number");
-        }
-    }//GEN-LAST:event_passportFieldFocusGained
-
-    private void passportFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passportFieldFocusLost
-         if (passportField.getText().isEmpty() || passportField.getText().equals("Passport Number")) {
-            passportField.setText(cust.getPassport());
-        }
-    }//GEN-LAST:event_passportFieldFocusLost
-
-    private void lNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusGained
-        if (lNameField.getText().equals(cust.getLName())) {
-            lNameField.setText("Last Name");
-        }
-    }//GEN-LAST:event_lNameFieldFocusGained
-
-    private void lNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lNameFieldFocusLost
-        if (lNameField.getText().isEmpty() || lNameField.getText().equals("Last Name")) {
-            lNameField.setText(cust.getLName());
-        }
-    }//GEN-LAST:event_lNameFieldFocusLost
-
-    private void phoneNumberFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusGained
-        if (phoneNumberField.getText().equals(cust.getPhoneNumber())) {
-            phoneNumberField.setText("Phone Number");
-        }
-    }//GEN-LAST:event_phoneNumberFieldFocusGained
-
-    private void phoneNumberFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberFieldFocusLost
-        if (phoneNumberField.getText().isEmpty() || phoneNumberField.getText().equals("Phone Number")) {
-            phoneNumberField.setText(cust.getPhoneNumber());
-        }
-    }//GEN-LAST:event_phoneNumberFieldFocusLost
-
     private void fNameEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusGained
         if (fNameEmergencyField.getText().equals(cust.getFullNameEmergency())) {
-            fNameEmergencyField.setText("Full Name");
+            fNameEmergencyField.setText(" ");
         }
     }//GEN-LAST:event_fNameEmergencyFieldFocusGained
 
     private void phoneNumberEmergencyFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusGained
         if (phoneNumberEmergencyField.getText().equals(cust.getPhoneNumberEmergency())) {
-            phoneNumberEmergencyField.setText("Phone Number");
+            phoneNumberEmergencyField.setText(" ");
         }
     }//GEN-LAST:event_phoneNumberEmergencyFieldFocusGained
 
@@ -570,7 +496,7 @@ public class CustomerInformation extends javax.swing.JPanel {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         int currentIndex=0;
-        String title = nationalityListdown.getSelectedItem().toString();
+        String title = titleListdown.getSelectedItem().toString();
         String passport = passportField.getText();
         String fName = fNameField.getText();
         String lName = lNameField.getText();
@@ -583,7 +509,6 @@ public class CustomerInformation extends javax.swing.JPanel {
         String fNameEmergency = fNameEmergencyField.getText();
         String phoneNumberEmergency =  phoneNumberEmergencyField.getText();
         String relationship = relationshipListdown.getSelectedItem().toString();
-        String[] tempArray = new String[100];
         
         if(fNameEmergency.isEmpty() || phoneNumberEmergency.isEmpty() || relationship.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
@@ -598,58 +523,16 @@ public class CustomerInformation extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Change Password is not the same as confirm Password"); 
             return;
         }
-        /*if(!phoneNumberField.getText().matches("\\d+")){
+        if(!phoneNumberField.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
             return;
         }
         if(!phoneNumberEmergencyField.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
             return;
-        }*/
-        /*
-        try {
-                FileReader fr = new FileReader("Customer.txt");
-                BufferedReader br = new BufferedReader(fr);
-                String data;
-                Customer cust;
-                Locale.setDefault(Locale.ENGLISH);
-                titleField.setSelectedItem("");
-                        fNameField.setText("");
-                        lNameField.setText("");
-                        nationalityField.setSelectedItem("");
-                        phoneNumberField.setText("");
-                       
-                        changePassField.setText("") ;
-                        confirmPassField.setText("");
-                        fNameEmergencyField.setText("") ;  
-                        phoneNumberEmergencyField.setText("");
-                        relationshipListdown.setSelectedItem("");
-                while ((data = br.readLine()) != null) {
-                    cust = new Customer(data);
-                    if (cust.getEmailAddress().equals(search_email)) {
-                        isFound = true;
-                        titleField.setSelectedItem(cust.getTitle());
-                        fNameField.setText(cust.getFName());
-                        lNameField.setText(cust.getLName());
-                        nationalityField.setSelectedItem(cust.getNationality());
-                        phoneNumberField.setText(cust.getPhoneNumber());
-                        
-                        
-                        changePassField.setText(cust.getChangePass()) ;
-                        confirmPassField.setText(cust.getConfirmPass());
-                        fNameEmergencyField.setText(cust.getFullNameEmergency()) ;  
-                        phoneNumberEmergencyField.setText(cust.getPhoneNumberEmergency());
-                        relationshipListdown.setSelectedItem(cust.getRelationship());
-                        return;
-                    }
-                }
-                JOptionPane.showMessageDialog(this, "user not found");
-        } catch (FileNotFoundException ex) {
-
-        } catch (IOException ex) {
-
         }
-        */
+        String[] tempArray1 = new String[100];
+        boolean emailFound = false;
         try{
             try(FileReader fr = new FileReader("UserRegister.txt")){        
                 Scanner reader = new Scanner(fr);
@@ -660,8 +543,7 @@ public class CustomerInformation extends javax.swing.JPanel {
                     lineArr = line.split(",");
                     if(lineArr[7].equals(cust.getEmailAddress())){
                         String updatedLine =
-                        
-                        /*title + "," +
+                        title + "," +
                         passport + "," +
                         fName + "," +
                         lName + "," +
@@ -670,12 +552,12 @@ public class CustomerInformation extends javax.swing.JPanel {
                         dob + "," +
                         lineArr[7] + "," +
                         confirmPass + "," +
-                        fNameEmergency + "," +   
+                        fNameEmergency + "," +
                         phoneNumberEmergency + "," +
                         relationship;
-                        tempArray[currentIndex++] = updatedLine;
+                        tempArray1[currentIndex] = updatedLine;
+                        System.out.println(tempArray1[currentIndex]);
                         System.out.println("email is found");
-                        System.out.println(fName);
                         cust.setTitle(title);
                         cust.setFName(fName);
                         cust.setLName(lName);
@@ -687,15 +569,17 @@ public class CustomerInformation extends javax.swing.JPanel {
                         cust.setFullNameEmergency(fNameEmergency);
                         cust.setPhoneNumberEmergency(phoneNumberEmergency);
                         cust.setRelationship(relationship);
-                        System.out.println(fName);*/
                         JOptionPane.showMessageDialog(this, "updated"); 
-                        return;
+                        emailFound = true;  // Set the flag to true
+                        break;  // Exit the loop since the email is found
                     }else{
-                        tempArray[currentIndex++] = line;
+                        tempArray1[currentIndex] = line;
+                        System.out.println(tempArray1[currentIndex]);
+                        System.out.println(currentIndex);
+                        currentIndex++;
                         System.out.println("email is not found");
                     } 
                 }
-                
                 fr.close();
             }catch(Exception e){
                 System.out.println(e.toString());
@@ -703,18 +587,29 @@ public class CustomerInformation extends javax.swing.JPanel {
         }catch(Exception e){
             System.out.println(e.toString());
         }
+        if(emailFound){
+            for (int i = 0; i < currentIndex; i++) {
+            System.out.println("Updated Line " + (i + 1) + ": " + tempArray1[i]);
+            }
+        }
         try{ 
             try(PrintWriter pw = new PrintWriter("UserRegister.txt")){
-                for (int i = 0; i < currentIndex; i++)
-                    pw.println(tempArray[i]);
+                for (int i = 0; i < currentIndex+1; i++){
+                    pw.println(tempArray1[i]);
+                    
+                }
             }catch(Exception e){
-                System.out.println(e.toString());
+                System.out.println("error");
+                e.printStackTrace();
+                
             }
-        } catch(Exception e){
-            System.out.println(e.toString());
+        }catch(Exception e){
+            System.out.println("error2");
+            e.printStackTrace();
         }
-        for (int i = 0; i < currentIndex; i++)
-            System.out.println(tempArray[i]);
+        
+       
+
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void confirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusGained
@@ -795,6 +690,10 @@ public class CustomerInformation extends javax.swing.JPanel {
     private void passportFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passportFieldActionPerformed
         passportField.setText(cust.getPassport());
     }//GEN-LAST:event_passportFieldActionPerformed
+
+    private void titleListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleListdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleListdownActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
