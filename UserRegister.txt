@@ -3,10 +3,5 @@ Miss,10302010,Ad,Saleh,Malaysian,0103022022,01-01-2002,ad@gmail.com,12345678
 Mr.,908898787,Sana,Evan,Afghan,,02-01-2000,sana@gmail.com,12345678
 Mr.,A12345678,DINA,AMIN,Indonesian,,03-01-2024,diam@gmail.com,12345678
 Mr.,A78965432,ADAM,MOHAMMAD,Singaporean,65123456789,14-08-2007,adam@gmail.com,12341234
-Miss,1234567,aisyah,maisarah,Afghan,01133032904,20-01-2019,aisyahm@gmail.com,jaja1234
-Miss,1234567,aisyah,maisarah,Afghan,01133032904,14-01-2018,aisyahm@gmail.com,jaja1234
-Miss,1234567,aisyah,maisarah,Afghan,01133032904,19-01-2020,aisyahm@gmail.com,jaja1234
-Miss,1234567,Sakinah,Saleh,Malaysian,0103052065,22-01-2003,adlina123@gmail.com,Adlina123
-Miss,1223344,Maisarah,Saleh,Afghan,0102003041,27-01-2000,aisyahm@gmail.com,jaja1234
-Miss,1234567,Aisyah,Maisarah,Malaysian,1234567890,25-01-2003,aisyahm@gmail.com,jaja1234
-Miss,1234567,Adlina,Sakinah,Malaysian,0103052065,09-01-2000,adlina@gmail.com,12345678
+Miss,1234567,aisyah,maisarah,Malaysian,01133032904,20-01-2019,aisyahm@gmail.com,jaja1234
+

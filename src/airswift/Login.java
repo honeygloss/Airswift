@@ -253,42 +253,38 @@ public class Login extends javax.swing.JFrame {
         // ... (previous code)
 
     try {
+        Customer cust = new Customer();
+        CustomerInformation customerInfoPanel = new CustomerInformation(cust);
+        FlightMenu flightMenu = new FlightMenu(cust);
         FileReader fr = new FileReader("UserRegister.txt");
-
         Scanner sc = new Scanner(fr);
         String line;
         String[] lineArr;
         int currIn = 0;
         boolean loginSuccessful = false;
-
         while (sc.hasNextLine()) {
             line = sc.nextLine();
             lineArr = line.split(",");
-
-        // Adjust the indices based on your data structure
-            if (lineArr.length >= 9 && lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
-                JOptionPane.showMessageDialog(null, "Login successful");
+            if (lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
                 tempArray[currIn++] = line;
                 loginSuccessful = true;
-            
-                try {
-                        FileWriter wr = new FileWriter("Login.txt",true);
-                        wr.write(emailAddress + " , " +pass);
-                        wr.write(System.getProperty("line.separator"));
-                        wr.close();
-            
-                    }
-                    catch(Exception e){
-                        System.out.println(e.toString());
-
-                    }
+                cust.setTitle(lineArr[0]) ;
+                cust.setPassport(lineArr[1]);
+                cust.setFName(lineArr[2]);
+                cust.setLName(lineArr[3]);
+                cust.setNationality(lineArr[4]);
+                cust.setPhoneNumber(lineArr[5]);
+                cust.setDOB(lineArr[6]);
+                cust.setEmailAddress(lineArr[7]);
+                new FlightMenu(cust).setVisible(true);
+                dispose();
                   break;
             }   else {
                      tempArray[currIn++] = line;
             }
         }   
         fr.close();
-
+        System.out.println(cust.getEmailAddress());
     // Move the incorrect message outside the loop
         if (!loginSuccessful) {
             JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");

@@ -11,11 +11,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaswingdev.GradientDropdownMenu;
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -26,15 +29,16 @@ import javax.swing.JOptionPane;
 public class CustomerInformation extends javax.swing.JPanel {
    private GradientDropdownMenu menu;
    private Image backgroundImage;
-   Customer cust = new Customer();
+   private Customer cust;
     /**
      * Creates new form CustomerInformation1
      */
-    public CustomerInformation() {
+    public CustomerInformation(Customer cust) {
         initComponents();
-        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Flight window.jpeg");
+        this.cust = cust;
+        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Flight window.jpeg");
         backgroundImage = backgroundImageIcon.getImage();
-       /*
+        titleListdown.setSelectedItem(cust.getTitle());
         emailAddressField.setText(cust.getEmailAddress());
         emailAddressField.setEditable(false);
         nationalityListdown.setSelectedItem(cust.getNationality());
@@ -44,14 +48,13 @@ public class CustomerInformation extends javax.swing.JPanel {
         phoneNumberField.setText(cust.getPhoneNumber());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dobString = cust.getDOB(); // Assuming cust.getDOB() returns a string
-        Date dobDate;
-
         try {
-             dobDate = sdf.parse(dobString);
-                    dobField.setDate(dobDate);
-        } catch (ParseException e) {
-             // Handle the parse exception appropriately
-            }*/
+            Date dobDate = sdf.parse(dobString);
+            dobField.setDate(dobDate);
+        } catch (ParseException ex) {
+            // Handle parsing exception, if needed
+            ex.printStackTrace();
+        }
     }
     
     @Override
@@ -132,6 +135,11 @@ public class CustomerInformation extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 passportFieldFocusLost(evt);
+            }
+        });
+        passportField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passportFieldActionPerformed(evt);
             }
         });
 
@@ -557,7 +565,6 @@ public class CustomerInformation extends javax.swing.JPanel {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         int currentIndex=0;
-        String search_email = emailAddressField.getText();
         String title = nationalityListdown.getSelectedItem().toString();
         String passport = passportField.getText();
         String fName = fNameField.getText();
@@ -639,14 +646,14 @@ public class CustomerInformation extends javax.swing.JPanel {
         }
         */
         try{
-            try(FileReader fr = new FileReader("Customer.txt")){        
+            try(FileReader fr = new FileReader("UserRegister.txt")){        
                 Scanner reader = new Scanner(fr);
                 String line;
                 String[] lineArr;
                 while(reader.hasNextLine()){
                     line = reader.nextLine();
                     lineArr = line.split(",");
-                    if(lineArr[7].equals(search_email)){
+                    if(lineArr[7].equals(cust.getEmailAddress())){
                         String updatedLine =
                         title + "," +
                         passport + "," +
@@ -688,7 +695,7 @@ public class CustomerInformation extends javax.swing.JPanel {
             System.out.println(e.toString());
         }
         try{ 
-            try(PrintWriter pw = new PrintWriter("Customer.txt")){
+            try(PrintWriter pw = new PrintWriter("UserRegister.txt")){
                 for (int i = 0; i < currentIndex; i++)
                     pw.println(tempArray[i]);
             }catch(Exception e){
@@ -778,6 +785,10 @@ public class CustomerInformation extends javax.swing.JPanel {
             titleListdown.setSelectedItem(cust.getTitle());
         }
     }//GEN-LAST:event_titleListdownFocusLost
+
+    private void passportFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passportFieldActionPerformed
+        passportField.setText(cust.getPassport());
+    }//GEN-LAST:event_passportFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

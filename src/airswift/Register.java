@@ -485,8 +485,6 @@ public class Register extends javax.swing.JFrame {
             wr.close();
             JOptionPane.showMessageDialog(null,"Success");
             setVisible(false);
-            
-        
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error");

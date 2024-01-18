@@ -37,11 +37,13 @@ public class FlightMenu extends javax.swing.JFrame {
     private JButton[] bookingButtons; // Array to store dynamically created buttons
     private int numberOfBookings;
     private boolean buttonsCreated = false;
+    private Customer cust;
     /**
      * Creates new form FlightMenu1
      */
-    public FlightMenu() {
+    public FlightMenu(Customer cust) {
         initComponents();
+        this.cust = cust;
         try{
         Image icon = ImageIO.read(new File("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Lyft _ Plane.png"));
         this.setIconImage(icon);
@@ -85,7 +87,7 @@ public class FlightMenu extends javax.swing.JFrame {
            public void selected(int index, int subIndex, boolean menuItem){
                if(menuItem){
                  if(index == 1){
-                    showForm(new CustomerInformation());    
+                    showForm(new CustomerInformation(cust));    
                  }
                  if(index == 0){
                     initComponents();  
@@ -156,7 +158,6 @@ public class FlightMenu extends javax.swing.JFrame {
     }
     
     private int getNumberOfBookings() {
-        Customer cust = new Customer();
         int count=0;
         try (FileReader fr = new FileReader("Transaction.txt");
         Scanner sc = new Scanner(fr)) {
@@ -165,7 +166,7 @@ public class FlightMenu extends javax.swing.JFrame {
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 lineArr = line.split("\n");
-                if (lineArr[0].equals("aisyahmsupian@gmail.com")) {
+                if (lineArr[0].equals(cust.getEmailAddress())) {
                     count++;
                 }
             }
@@ -559,11 +560,11 @@ public class FlightMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        final Customer cust = new Customer();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FlightMenu().setVisible(true);
+                new FlightMenu(cust).setVisible(true);
                 
             }
         });
