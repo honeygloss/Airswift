@@ -276,9 +276,14 @@ public class Login extends javax.swing.JFrame {
                 cust.setPhoneNumber(lineArr[5]);
                 cust.setDOB(lineArr[6]);
                 cust.setEmailAddress(lineArr[7]);
+                cust.setConfirmPass(pass);
+                cust.setFullNameEmergency(lineArr[9]);
+                cust.setPhoneNumberEmergency(lineArr[10]);
+                cust.setRelationship(lineArr[11]);
+                
                 new FlightMenu(cust).setVisible(true);
                 dispose();
-                  break;
+                break;
             }   else {
                      tempArray[currIn++] = line;
             }

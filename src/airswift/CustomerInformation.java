@@ -31,6 +31,7 @@ public class CustomerInformation extends javax.swing.JPanel {
    private GradientDropdownMenu menu;
    private Image backgroundImage;
    private Customer cust;
+   boolean entered = false;
     /**
      * Creates new form CustomerInformation1
      */
@@ -47,6 +48,11 @@ public class CustomerInformation extends javax.swing.JPanel {
         fNameField.setText(cust.getFName());
         lNameField.setText(cust.getLName());
         phoneNumberField.setText(cust.getPhoneNumber());
+        fNameEmergencyField.setText(cust.getFullNameEmergency());
+        phoneNumberEmergencyField.setText(cust.getPhoneNumberEmergency());
+        relationshipListdown.setSelectedItem(cust.getRelationship());
+        confirmPassField.setText(cust.getConfirmPass());
+        changePassField.setText(cust.getConfirmPass());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dobString = cust.getDOB(); // Assuming cust.getDOB() returns a string
         try {
@@ -182,6 +188,11 @@ public class CustomerInformation extends javax.swing.JPanel {
         changePassField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 changePassFieldMousePressed(evt);
+            }
+        });
+        changePassField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePassFieldActionPerformed(evt);
             }
         });
 
@@ -449,7 +460,7 @@ public class CustomerInformation extends javax.swing.JPanel {
                 .addGap(84, 84, 84))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void confirmPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPassFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmPassFieldActionPerformed
@@ -467,13 +478,13 @@ public class CustomerInformation extends javax.swing.JPanel {
     }//GEN-LAST:event_phoneNumberEmergencyFieldFocusGained
 
     private void fNameEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fNameEmergencyFieldFocusLost
-         if (fNameEmergencyField.getText().isEmpty() || fNameEmergencyField.getText().equals("Full Name")) {
+         if (fNameEmergencyField.getText().isEmpty()) {
             fNameEmergencyField.setText(cust.getFullNameEmergency());
         }
     }//GEN-LAST:event_fNameEmergencyFieldFocusLost
 
     private void phoneNumberEmergencyFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNumberEmergencyFieldFocusLost
-        if (phoneNumberEmergencyField.getText().isEmpty() || phoneNumberEmergencyField.getText().equals("Phone Number")) {
+        if (phoneNumberEmergencyField.getText().isEmpty()) {
             phoneNumberEmergencyField.setText(cust.getPhoneNumberEmergency());
         }
     }//GEN-LAST:event_phoneNumberEmergencyFieldFocusLost
@@ -483,14 +494,14 @@ public class CustomerInformation extends javax.swing.JPanel {
     }//GEN-LAST:event_fNameEmergencyFieldActionPerformed
 
     private void changePassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_changePassFieldFocusGained
-        if (changePassField.getText().equals("jPasswordField2")) {
+        if (changePassField.getText().equals(cust.getConfirmPass())) {
             changePassField.setText("");
         }
     }//GEN-LAST:event_changePassFieldFocusGained
 
     private void changePassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_changePassFieldFocusLost
         if (changePassField.getText().isEmpty()) {
-            changePassField.setText("jPasswordField2");
+            changePassField.setText(cust.getConfirmPass());
         }
     }//GEN-LAST:event_changePassFieldFocusLost
 
@@ -514,15 +525,16 @@ public class CustomerInformation extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
-        
-        if(changePassField.getText().length()<8){
-            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
+         if (changePass.isEmpty() && confirmPass.isEmpty()) {
+        // Password fields are empty, do not update password
+        } else if (!changePass.equals(confirmPass)) {
+            JOptionPane.showMessageDialog(this, "Change Password is not the same as confirm Password");
+            return;
+        } else if (changePass.length() < 8) {
+            JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer");
             return;
         }
-        if(!changePassField.getText().equals(confirmPassField.getText())){
-            JOptionPane.showMessageDialog(this, "Change Password is not the same as confirm Password"); 
-            return;
-        }
+
         if(!phoneNumberField.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this, "Phone number is not valid"); 
             return;
@@ -551,7 +563,7 @@ public class CustomerInformation extends javax.swing.JPanel {
                         phoneNum + "," +
                         dob + "," +
                         lineArr[7] + "," +
-                        confirmPass + "," +
+                        (changePass.isEmpty() ? lineArr[8] : confirmPass) + "," +
                         fNameEmergency + "," +
                         phoneNumberEmergency + "," +
                         relationship;
@@ -565,12 +577,13 @@ public class CustomerInformation extends javax.swing.JPanel {
                         cust.setNationality(nationality);
                         cust.setPhoneNumber(phoneNum);
                         cust.setDOB(dob);
-                        cust.setConfirmPass(confirmPass);
+                        cust.setConfirmPass(changePass.isEmpty() ? lineArr[8] : confirmPass);
                         cust.setFullNameEmergency(fNameEmergency);
                         cust.setPhoneNumberEmergency(phoneNumberEmergency);
                         cust.setRelationship(relationship);
                         JOptionPane.showMessageDialog(this, "updated"); 
                         emailFound = true;  // Set the flag to true
+                        entered = true;
                         break;  // Exit the loop since the email is found
                     }else{
                         tempArray1[currentIndex] = line;
@@ -607,20 +620,20 @@ public class CustomerInformation extends javax.swing.JPanel {
             System.out.println("error2");
             e.printStackTrace();
         }
-        
+        new FlightMenu(cust).setVisible(true);
        
 
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void confirmPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusGained
-        if (confirmPassField.getText().equals("jPasswordField2")) {
+        if (confirmPassField.getText().equals(cust.getConfirmPass())) {
             confirmPassField.setText("");
-        }
+        }   
     }//GEN-LAST:event_confirmPassFieldFocusGained
 
     private void confirmPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFieldFocusLost
         if (confirmPassField.getText().isEmpty()) {
-            confirmPassField.setText("jPasswordField2");
+            confirmPassField.setText(cust.getConfirmPass());
         }
     }//GEN-LAST:event_confirmPassFieldFocusLost
 
@@ -694,6 +707,10 @@ public class CustomerInformation extends javax.swing.JPanel {
     private void titleListdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleListdownActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titleListdownActionPerformed
+
+    private void changePassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassFieldActionPerformed
+        
+    }//GEN-LAST:event_changePassFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

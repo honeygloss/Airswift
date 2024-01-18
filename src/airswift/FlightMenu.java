@@ -90,7 +90,7 @@ public class FlightMenu extends javax.swing.JFrame {
                     showForm(new CustomerInformation(cust));    
                  }
                  if(index == 0){
-                    initComponents();  
+                    initComponents();
                }if( index == 2) {
                    new StartUp().setVisible(true);
                    dispose();     
