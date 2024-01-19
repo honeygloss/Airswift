@@ -1,107 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package airswift;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javaswingdev.GradientDropdownMenu;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author zamhu
+ * @author user
  */
-public class FlightSeat extends javax.swing.JPanel {
-    private GradientDropdownMenu gradientDropdownMenu;
-    private Booking book;
-    private Image backgroundImage;
-    //private AvailableSeat avail;
+public class FlightSeat2 extends javax.swing.JFrame {
 
-    public GradientDropdownMenu getGradientDropdownMenu() {
-        return gradientDropdownMenu;
-    }
-
-    public void setGradientDropdownMenu(GradientDropdownMenu gradientDropdownMenu) {
-        this.gradientDropdownMenu = gradientDropdownMenu;
-    }
-
-    public Booking getBook() {
-        return book;
-    }
-
-    public void setBook(Booking book) {
-        this.book = book;
-    }
-
-    /*public AvailableSeat getAvail() {
-        return avail;
-    }
-
-    public void setAvail(AvailableSeat avail) {
-        this.avail = avail;
-    }       */
-
-    //hey assamualaikum
-    
     /**
-     * Creates new form FlightSeat
-     * @param book
+     * Creates new form FlightSeat2
      */
-    public FlightSeat(Booking booking, GradientDropdownMenu menu /*AvailableSeat avail*/) {
+    public FlightSeat2() {
         initComponents();
-        book=booking;
-        gradientDropdownMenu = menu;
-        //this.avail = avail;
-        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\planeWindow.jpg");
-        backgroundImage = backgroundImageIcon.getImage();
-        
-        
-        if ("economy".equalsIgnoreCase(booking.getCabin())) {
-            tabbedPane.setSelectedComponent(economySeat);
-        } else if ("business".equalsIgnoreCase(booking.getCabin())) {
-            tabbedPane.setSelectedComponent(busSeat);
-        }
-        
-        MyButton buttons[]= new MyButton[69];
-        buttons[0]=button_0_1A;
-        buttons[0].addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    // Change the background color when the mouse is pressed
-                    buttons[0].setBackground(Color.BLUE);
-                }
-        });
-        
     }
-      @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        // Draw the background image
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-    }
-    
-    public void setBooking(Booking book){
-        this.book=book;
-    }
-    public Booking getBooking(){
-        return book;
-    }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,7 +26,6 @@ public class FlightSeat extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -217,14 +130,7 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         lNameInput = new airswift.FTextField();
 
-        setPreferredSize(new java.awt.Dimension(900, 530));
-        setLayout(null);
-
-        bg.setBackground(new java.awt.Color(204, 204, 255));
-        bg.setForeground(new java.awt.Color(0, 102, 102));
-        bg.setOpaque(false);
-        bg.setPreferredSize(new java.awt.Dimension(920, 551));
-        bg.setLayout(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
@@ -260,9 +166,6 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Economy");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
-
-        bg.add(jPanel3);
-        jPanel3.setBounds(0, 460, 900, 70);
 
         busSeat.setBackground(new java.awt.Color(252, 223, 251));
         busSeat.setOpaque(false);
@@ -1582,9 +1485,6 @@ public class FlightSeat extends javax.swing.JPanel {
 
         tabbedPane.addTab("tab2", economySeat);
 
-        bg.add(tabbedPane);
-        tabbedPane.setBounds(320, -40, 590, 510);
-
         passengerDets.setBackground(new java.awt.Color(252, 223, 251));
         passengerDets.setRoundBottomLeft(50);
         passengerDets.setRoundBottomRight(50);
@@ -1679,29 +1579,58 @@ public class FlightSeat extends javax.swing.JPanel {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        bg.add(passengerDets);
-        passengerDets.setBounds(10, 70, 300, 370);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(passengerDets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(110, 110, 110)
+                            .addComponent(passengerDets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(500, 500, 500)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        add(bg);
-        bg.setBounds(0, 0, 900, 530);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if(fNameInput==null || lNameInput==null)
-            JOptionPane.showMessageDialog(this, "Please complete your personal details");
-        if(seatInput==null)
-            JOptionPane.showMessageDialog(this, "Please select your flight seat");
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(fNameInput==null || lNameInput==null)
+        JOptionPane.showMessageDialog(this, "Please complete your personal details");
+        if(seatInput==null)
+        JOptionPane.showMessageDialog(this, "Please select your flight seat");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void button_0_1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_0_1AActionPerformed
         // TODO add your handling code here:
-        
-        
+
     }//GEN-LAST:event_button_0_1AActionPerformed
 
     private void button_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3ActionPerformed
@@ -1791,11 +1720,6 @@ public class FlightSeat extends javax.swing.JPanel {
     private void button_3FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3FActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button_3FActionPerformed
-
-    private void seatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatInputActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_seatInputActionPerformed
 
     private void button2_24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_24ActionPerformed
         // TODO add your handling code here:
@@ -1979,14 +1903,52 @@ public class FlightSeat extends javax.swing.JPanel {
 
     private void seatInputMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seatInputMousePressed
         JOptionPane.showMessageDialog(
-                this,
-                "Please click the buttons to set the seat information.");
+            this,
+            "Please click the buttons to set the seat information.");
         return;
     }//GEN-LAST:event_seatInputMousePressed
 
+    private void seatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatInputActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_seatInputActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlightSeat2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlightSeat2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlightSeat2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlightSeat2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FlightSeat2().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bg;
     private javax.swing.JPanel busSeat;
     private airswift.MyButton button2_1E;
     private airswift.MyButton button2_1F;
@@ -2091,6 +2053,4 @@ public class FlightSeat extends javax.swing.JPanel {
     private airswift.FTextField seatInput;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
-
-    
 }
