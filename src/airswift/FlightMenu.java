@@ -53,7 +53,7 @@ public class FlightMenu extends javax.swing.JFrame {
         }catch (IOException e) {
          e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
         }
-        setResizable(false);
+        setResizable(true);
         Date min = new Date();
         
         departDate.setMinSelectableDate(min);
@@ -110,9 +110,9 @@ public class FlightMenu extends javax.swing.JFrame {
         if (com instanceof FlightBooking) {
             ((FlightBooking) com).setGradientDropdownMenu(menu);
         }
-        else if(com instanceof FlightSeat){
+        /*else if(com instanceof FlightSeat){
             ((FlightSeat) com).setGradientDropdownMenu(menu);
-        }
+        }   */
         else if(com instanceof FlightBookingTwoWay){
             ((FlightBookingTwoWay) com).setGradientDropdownMenu(menu);
         }
@@ -481,15 +481,15 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setPassenger(Integer.parseInt(passengersListdown2.getSelectedItem().toString()));  
         book.setDepartDate(departDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
-        /*if(returnCheckbox.isSelected()){
+        if(returnCheckbox.isSelected()){
             book.setReturnDate(returnDate.getDate());
             showForm(new FlightBookingTwoWay(menu, book));
         }
         else{
             book.setReturnDate(null);
             showForm(new FlightBooking(menu, book));
-        }*/
-       showForm(new FlightSeat(book, menu));
+        }
+       //showForm(new FlightSeat(book, menu));
  
     }//GEN-LAST:event_findaFlightButtonActionPerformed
 

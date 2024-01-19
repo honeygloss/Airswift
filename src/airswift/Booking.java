@@ -147,10 +147,7 @@ public class Booking{
             price=price*2;
         
         return price*passenger;
-        
-        
     }
-    
     
     public Booking(){
         

@@ -8,11 +8,33 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MyButton extends JButton {
+    
+    private boolean over;
+    private Color color;
+    private Color colorOver;
+    private Color colorClick;
+    private Color borderColor;
+    private int radius = 0;
+    private boolean clicked=false;
+    private static MyButton lastClickedButton = null;
+   
+    
+    public void setClicked(boolean clicked) {
+       this.clicked = clicked;
+        setBackground(clicked ? Color.GRAY : color);
+    }
+
+    public boolean isClicked() {
+        return clicked;
+    }
+    
 
     public boolean isOver() {
         return over;
@@ -65,7 +87,7 @@ public class MyButton extends JButton {
 
     public MyButton() {
         //  Init Color
-
+       
         setColor(Color.WHITE);
         colorOver = new Color(179, 250, 160);
         colorClick = new Color(152, 184, 144);
@@ -75,39 +97,45 @@ public class MyButton extends JButton {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent me) {
-                setBackground(colorOver);
-                over = true;
+                if (!clicked) {
+                    setBackground(colorOver);
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent me) {
-                setBackground(color);
-                over = false;
+                if (!clicked) {
+                    setBackground(color);
+                }
 
             }
 
             @Override
             public void mousePressed(MouseEvent me) {
+                clicked = !clicked;
                 setBackground(colorClick);
+                
+                if (clicked) {
+                // If this button is clicked, reset the color of the last clicked button
+                    if (lastClickedButton != null && lastClickedButton != MyButton.this) {
+                        lastClickedButton.setClicked(false);
+                    }
+                    lastClickedButton = MyButton.this;
+                }
+                
             }
 
             @Override
             public void mouseReleased(MouseEvent me) {
-                if (over) {
+                if (!clicked) {
                     setBackground(colorOver);
-                } else {
-                    setBackground(color);
                 }
             }
+            
         });
     }
 
-    private boolean over;
-    private Color color;
-    private Color colorOver;
-    private Color colorClick;
-    private Color borderColor;
-    private int radius = 0;
+    
 
     @Override
     protected void paintComponent(Graphics grphcs) {
