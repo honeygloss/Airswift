@@ -4,6 +4,8 @@
  */
 package airswift;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -20,12 +22,14 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
     }
+
     boolean isFound = false;
     void readFile(){
         try{

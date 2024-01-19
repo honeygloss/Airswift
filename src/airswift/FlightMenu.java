@@ -326,7 +326,7 @@ public class FlightMenu extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(classCabinListdown, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(returnDateLabel)
                             .addComponent(findaFlightButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
@@ -344,7 +344,7 @@ public class FlightMenu extends javax.swing.JFrame {
                                     .addComponent(departDateLabel)
                                     .addComponent(departDate, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                                 .addComponent(returnCheckbox, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(142, 142, 142))))))
         );
@@ -390,7 +390,6 @@ public class FlightMenu extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         myBookingTab.addTab("MY BOOKING", jPanel3);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
