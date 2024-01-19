@@ -30,6 +30,7 @@ public class Register extends javax.swing.JFrame {
         initComponents();
     }
 
+    //To create file UserRegister.txt
     boolean isFound = false;
     void readFile(){
         try{
@@ -41,7 +42,7 @@ public class Register extends javax.swing.JFrame {
         }
 
         scanner.close();
-        //fr.close();
+        
        
         } catch(FileNotFoundException ex){
             try{
@@ -53,7 +54,7 @@ public class Register extends javax.swing.JFrame {
         } 
     }
     
-    
+    //To check if email registered has been register before  
     public boolean emailExists(String email) {
         try (BufferedReader br = new BufferedReader(new FileReader("UserRegister.txt"))) {
             String line;
@@ -442,12 +443,13 @@ public class Register extends javax.swing.JFrame {
         String confirmPass = txtCPassword.getText();
         int currentIndex=0;
         
-        
+        //constraint for email address
         if(!txtEmailAddress.getText().contains("@") && !txtEmailAddress.getText().contains(".com")){
             JOptionPane.showMessageDialog(this, "Email is not valid"); 
             return;
         }
         
+        //check the email address exist in 
         if (emailExists(txtEmailAddress.getText())) {
             JOptionPane.showMessageDialog(this, "Email is already exist"); 
             return;

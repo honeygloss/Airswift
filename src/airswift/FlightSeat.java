@@ -55,6 +55,7 @@ public class FlightSeat extends javax.swing.JPanel {
         this.avail = avail;
     }       */
 
+    //hey assamualaikum
     
     /**
      * Creates new form FlightSeat
