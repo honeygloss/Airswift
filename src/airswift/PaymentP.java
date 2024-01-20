@@ -37,8 +37,13 @@ public class PaymentP extends javax.swing.JPanel {
         book = booking;
         //availableS = availableSeat;  
         
+        // Add this before setting the text
+        System.out.println("Payment Value: " + book.calculatePayment());
+
         TotPayment = new javax.swing.JLabel();
-        TotPayment.setText(String.valueOf((float) book.calculatePayment()));
+        TotPayment.setText(String.valueOf(book.calculatePayment()));
+
+
 
     }
     
@@ -209,6 +214,9 @@ public class PaymentP extends javax.swing.JPanel {
             }
         });
 
+        TotPayment.setMaximumSize(new java.awt.Dimension(90, 20));
+        TotPayment.setMinimumSize(new java.awt.Dimension(90, 20));
+
         eDMonth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
 
         eDYear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
@@ -249,17 +257,17 @@ public class PaymentP extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(EmailAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CardholderNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 29, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(TotPayment))
+                                .addGap(184, 184, 184)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(425, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TotPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(28, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConfirmPaymentButton)
@@ -297,21 +305,20 @@ public class PaymentP extends javax.swing.JPanel {
                                 .addComponent(PhoneNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(SecurityCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TotPayment)
-                            .addComponent(jLabel6))
-                        .addGap(87, 87, 87))
+                        .addComponent(jLabel6)
+                        .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TotPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ConfirmPaymentButton)
                             .addComponent(CancelButton))
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(78, 78, 78))))
+                        .addGap(20, 20, 20))))
         );
 
         CardType.getAccessibleContext().setAccessibleName("");
@@ -330,7 +337,7 @@ public class PaymentP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +358,7 @@ public class PaymentP extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +407,7 @@ public class PaymentP extends javax.swing.JPanel {
         String timeDepartF9 = String.format("%s:%s", timeDepart[0], timeDepart[1]);
         String[] timeReturn = book.getTimeReturn();
         String timeReturnF10 = String.format("%s:%s", timeReturn[0], timeReturn[1]);
-        //String seatNames11 = availableS.getSeatName();
+        String seatNames11 = availableS.getSeatName();
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();
@@ -412,6 +419,7 @@ public class PaymentP extends javax.swing.JPanel {
         String cType19 = (String) CardType.getSelectedItem();
         
         String flightName20 = book.getFlightName();
+        String cabin21 = book.getCabin();
         
         if (PhoneNumberField.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill in the phone number");
@@ -459,7 +467,7 @@ public class PaymentP extends javax.swing.JPanel {
                 returnDate8,
                 timeDepartF9,
                 timeReturnF10,
-                //seatNames11,
+                seatNames11,
                 chName12,
                 eAddress13,
                 pNumber14,
@@ -467,7 +475,9 @@ public class PaymentP extends javax.swing.JPanel {
                 sCode16,
                 String.valueOf(Month17),
                 String.valueOf(Year18),
-                cType19
+                cType19,
+                flightName20,
+                cabin21   
             };
 
             // Convert the array to a CSV string and write to the file

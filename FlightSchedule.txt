@@ -249,3 +249,10 @@
 1248;AS 446;Kuala Lumpur ;Kota Bharu ;Sat Jan 20 16:25:08 MYT 2024;null;09:15;
 1249;AS 642;Kuala Lumpur ;Kuala Terengganu ;Sat Jan 20 16:36:22 MYT 2024;null;02:00;
 1250;AS 111;Kuala Lumpur ;Kuala Terengganu ;Sat Jan 20 16:36:22 MYT 2024;null;23:00;
+1251;AS 951;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;12:05;
+1252;AS 550;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;17:00;
+1253;AS 243;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;23:00;
+1254;AS 950;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;02:00;
+1255;AS 478;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;07:05;
+1256;AS 377;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;21:15;
+1257;AS 956;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;19:55;
