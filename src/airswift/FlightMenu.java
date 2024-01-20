@@ -310,6 +310,11 @@ public class FlightMenu extends javax.swing.JFrame {
                 returnCheckboxItemStateChanged(evt);
             }
         });
+        returnCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnCheckboxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -532,6 +537,10 @@ public class FlightMenu extends javax.swing.JFrame {
          returnDateLabel.setVisible(true);
          returnDate.setEnabled(returnCheckbox.isSelected());
     }//GEN-LAST:event_returnCheckboxItemStateChanged
+
+    private void returnCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnCheckboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_returnCheckboxActionPerformed
 
     /**
      * @param args the command line arguments

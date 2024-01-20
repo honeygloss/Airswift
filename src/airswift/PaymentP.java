@@ -30,12 +30,12 @@ public class PaymentP extends javax.swing.JPanel {
     /**
      * Creates new form PaymentP
      */
-    public PaymentP(Booking booking/*, AvailableSeat availableSeat*/) {
+    public PaymentP(Booking booking, AvailableSeat availableSeat) {
         initComponents();
         cust = new Customer();
 
         book = booking;
-        //availableS = availableSeat;  
+        availableS = availableSeat;  
         
         // Add this before setting the text
         System.out.println("Payment Value: " + book.calculatePayment());
@@ -404,10 +404,15 @@ public class PaymentP extends javax.swing.JPanel {
                 returnDate8 = dateFormat2.format(book.getReturnDate()).toUpperCase();
             }
         String[] timeDepart = book.getTimeDepart();
-        String timeDepartF9 = String.format("%s:%s", timeDepart[0], timeDepart[1]);
         String[] timeReturn = book.getTimeReturn();
-        String timeReturnF10 = String.format("%s:%s", timeReturn[0], timeReturn[1]);
-        String seatNames11 = availableS.getSeatName();
+
+        String timeDepart9 = (timeDepart != null && timeDepart.length > 0) ? timeDepart[0] : "";
+        String timeDepart22 = (timeDepart != null && timeDepart.length > 1) ? timeDepart[1] : "";
+        String timeReturn10 = (timeReturn != null && timeReturn.length > 0) ? timeReturn[0] : "";
+        String timeReturn23 = (timeReturn != null && timeReturn.length > 1) ? timeReturn[1] : "";
+
+        //String seatNames11 = availableS.getSeatName();
+        String seatNames11 = (availableS != null && availableS.getSeatName() != null) ? availableS.getSeatName() : "";
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();
@@ -453,7 +458,6 @@ public class PaymentP extends javax.swing.JPanel {
         
         try {
             FileWriter wr = new FileWriter("Transaction.txt", true);
-
             // Save payment information as an array
             String[] paymentInfo = {
                 custEmailAdress0,
@@ -464,10 +468,10 @@ public class PaymentP extends javax.swing.JPanel {
                 returnLong5,
                 passString6,
                 departDate7,
-                returnDate8,
-                timeDepartF9,
-                timeReturnF10,
-                seatNames11,
+                returnDate8 != null ? seatNames11 : "" ,
+                timeDepart9, 
+                timeReturn10 != null ? seatNames11 : "" ,
+                seatNames11 != null ? seatNames11 : "" ,// If null, set as empty string
                 chName12,
                 eAddress13,
                 pNumber14,
@@ -477,21 +481,23 @@ public class PaymentP extends javax.swing.JPanel {
                 String.valueOf(Year18),
                 cType19,
                 flightName20,
-                cabin21   
+                cabin21,
+                timeDepart22,
+                timeReturn23 != null ? seatNames11 : "" 
             };
 
             // Convert the array to a CSV string and write to the file
-            String paymentInfoCSV = String.join(",", paymentInfo);
-            wr.write(paymentInfoCSV);
-            wr.write(System.getProperty("line.separator"));
+             String paymentInfoCSV = String.join(",", paymentInfo);
+        wr.write(paymentInfoCSV);
+        wr.write(System.getProperty("line.separator"));
 
-            wr.close();
-            JOptionPane.showMessageDialog(null, "Success");
-            setVisible(false);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
-        new Receipt().setVisible(true);
+        wr.close();
+        JOptionPane.showMessageDialog(null, "Success");
+        setVisible(false);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error");
+    }
+    new Receipt().setVisible(true);
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
 

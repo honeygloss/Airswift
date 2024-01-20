@@ -17,6 +17,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import airswift.TransactionDisplay;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javax.swing.table.TableColumnModel;
 
 
 
@@ -42,114 +46,61 @@ public class Receipt extends javax.swing.JFrame {
        
     }
 
-    /*boolean isFound = false;
-    void readFile() {
-        try {
-            FileReader fr = new FileReader("Transaction.txt");
-            BufferedReader br = new BufferedReader(fr);
-
-            // Read each line from the file
-            String line;
-            if ((line = br.readLine()) != null) {
-                // Split the line into an array of elements (assuming comma as delimiter)
-                String[] elements = line.split(",");
-
-                // Check if the array has at least four elements
-                if (elements.length >= 4) {
-                    // Assign elements to relevant components
-                    DepartDate.setText(elements[7]); 
-                    ArrivalDate.setText(elements[8]); 
-                    TimeDepart.setText(elements[9]);      
-                    TimeArrival.setText(elements[10]); 
-
-                    // Populate the JTable (assuming indices 4-8 for jTable1)
-                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                    model.addRow(new Object[]{elements[4], elements[5], elements[6], elements[7], elements[8]});
-
-                    isFound = true;
-                } else {
-                    // Handle the case where the line does not have enough elements
-                    isFound = false;
-                }
-            }
-
-            br.close();
-        } catch (IOException ex) {
-            // Handle IOException
-            Logger.getLogger(Receipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }*/
      public void displayTransactions() {
         List<String[]> transactions = getTransactions();
         TransactionDisplay transactionDisplay = new TransactionDisplay();
         transactionDisplay.displayTransactions(transactions, jPanel2, table);
     }
-    
-    private List<String[]> getTransactions() {
-        // Sample implementation
-        return List.of(
-                new String[]{"", "Flight123", "", "DepartCity", "", "", "", "2024-01-20", "", "10:00 AM", "", "First Class", "", "", "", "", "", "", "", "", "", "A1"},
-                new String[]{"", "Flight123", "", "", "", "ReturnCity", "", "", "2024-01-22", "", "02:00 PM", "", "First Class", "", "", "", "", "", "", "", "", "A2"}
-        );
-    }    
+     
+   private List<String[]> getTransactions() {
+    try {
+        // Read all lines from the file
+        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+
+        // Process each line and split it into an array
+        return lines.stream()
+            .map(line -> line.split(","))
+            .toList();
+    } catch (IOException e) {
+        e.printStackTrace(); // Handle the exception appropriately
+        return List.of(); // Return an empty list in case of an error
+    }
+}
     
     private void initializeTable() {
         table = new JTable(new DefaultTableModel());
-        jScrollPane = new JScrollPane(table);
+    jScrollPane = new JScrollPane(table);
 
-        // Set columns for the table
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.addColumn("Departure | Arrival");
-        model.addColumn("Flight ID");
-        model.addColumn("Route");
-        model.addColumn("Seat Class");
+    // Set columns for the table
+    DefaultTableModel model = (DefaultTableModel) table.getModel();
+    model.addColumn("Departure | Arrival");
+    model.addColumn("Flight ID");
+    model.addColumn("Route");
+    model.addColumn("Seat Class");
 
-        // Set the layout for jPanel2
-        jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
-        );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-    }
-
-    /*public void displayTransactions(List<String[]> transactions) {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0);  // Clear existing rows
-
-        for (String[] transaction : transactions) {
-            // Extract required information
-            String departDate7 = transaction[7];
-            String timeDepartF9 = transaction[9];
-            String flightID1 = transaction[1];
-            String departLong3 = transaction[3];
-            String cabin21 = transaction[21];
-            String seatNames11 = transaction[11];
-
-            // Add a new row to the table
-            model.addRow(new Object[]{departDate7 + " | " + timeDepartF9, flightID1, departLong3, cabin21 + " | " + seatNames11});
-
-            // Check if return information is present
-            if (transaction.length > 8 && transaction[8] != null) {
-                String returnDate8 = transaction[8];
-                String timeReturnF10 = transaction[10];
-                String returnLong5 = transaction[5];
-
-                // Add another row for return information
-                model.addRow(new Object[]{returnDate8 + " | " + timeReturnF10, flightID1, returnLong5, cabin21 + " | " + seatNames11});
-            }
-        }
-    }*/
+    // Set preferred column widths
+    TableColumnModel columnModel = table.getColumnModel();
+    columnModel.getColumn(3).setPreferredWidth(100);
+    columnModel.getColumn(2).setPreferredWidth(200); // Route column width
+    columnModel.getColumn(1).setPreferredWidth(50);  // Flight ID column width
+    columnModel.getColumn(0).setPreferredWidth(150);
+    // Set the layout for jPanel2
+    jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20))
+    );
+    jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );    }
     
         // Additional components and layout code
         // ...
@@ -235,7 +186,7 @@ public class Receipt extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addContainerGap())
