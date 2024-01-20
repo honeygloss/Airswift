@@ -25,20 +25,14 @@ public class PaymentP extends javax.swing.JPanel {
     /**
      * Creates new form PaymentP
      */
-    public PaymentP(Booking booking/*, AvailableSeat availableSeat*/) {
+    public PaymentP(Booking booking) {
         initComponents();
-        cust = new Customer();
+        //cust = new Customer();
 
         book = booking;
-        //availableS = availableSeat;  
-        
-        // Add this before setting the text
-        System.out.println("Payment Value: " + book.calculatePayment());
-
-        TotPayment = new javax.swing.JLabel();
-        TotPayment.setText(String.valueOf(book.calculatePayment()));
-
-
+        //availableS = new AvailableSeat();
+  
+        TotPayment.setText(String.valueOf(booking.calculatePayment()));
 
     }
     
@@ -406,8 +400,7 @@ public class PaymentP extends javax.swing.JPanel {
         String timeReturn10 = (timeReturn != null && timeReturn.length > 0) ? timeReturn[0] : "";
         String timeReturn23 = (timeReturn != null && timeReturn.length > 1) ? timeReturn[1] : "";
 
-        //String seatNames11 = availableS.getSeatName();
-        String seatNames11 = (availableS != null && availableS.getSeatName() != null) ? availableS.getSeatName() : "";
+        String seatNames11 = (availableS != null && availableS.getSeatName() != null) ? String.join(", ", availableS.getSeatName()): "";
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();
