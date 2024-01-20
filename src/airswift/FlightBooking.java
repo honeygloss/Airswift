@@ -190,7 +190,8 @@ public class FlightBooking extends javax.swing.JPanel {
         
         JPanel dynamicButtonsPanel = new JPanel();
         dynamicButtonsPanel.setBackground(new Color(0,0,0));
-        dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+        //dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+        dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
         dynamicButtonsPanel.repaint();      
@@ -226,6 +227,7 @@ public class FlightBooking extends javax.swing.JPanel {
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
         scrollPane.setBounds(0, 260, 900,210);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll
         add(scrollPane);
           
     }
