@@ -7,6 +7,7 @@ package airswift;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -36,10 +37,12 @@ import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import net.miginfocom.swing.MigLayout;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
@@ -61,13 +64,6 @@ public class FlightBooking extends javax.swing.JPanel {
     /**
      * Creates new form FlightBooking
      */
-    
-    public FlightBooking(){
-        initComponents();
-
-        
-    }
-    
     /**
      *
      * @param menu
@@ -272,7 +268,12 @@ public class FlightBooking extends javax.swing.JPanel {
                     String message = "Please select a flight before continuing.";
                     JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
                 }
-                showForm(new PaymentP(book, menu));
+                 SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                showPaymentPanel();
+            }
+        });
             }
         });
         
@@ -285,17 +286,34 @@ public class FlightBooking extends javax.swing.JPanel {
         add(scrollPane);
     }
     
-    public void showForm(Component com) {
-        bg.removeAll();
-        bg.setLayout(new BorderLayout());
-        bg.add(com);
-        bg.repaint();
-        bg.revalidate();
-        if (com instanceof PaymentP) {
-            ((PaymentP) com).setGradientDropdownMenu(book, menu);
+    public void showPaymentPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        PaymentP paymentPanel = new PaymentP(book);
+
+        // Set booking information for paymentPanel
+        paymentPanel.setBookingInformation(book);
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (menu != null) {
+            menu.setVisible(false);
         }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(paymentPanel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
     }
-    
+    }
         
         public void setBooking(Booking booking){
         book = booking;
@@ -523,7 +541,10 @@ public class FlightBooking extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonPropertyChange
 
     private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
+         FlightBooking flightBookingPanel = new FlightBooking(menu, book);
 
+    // Simply call the showPaymentPanel method without passing any arguments
+    flightBookingPanel.showPaymentPanel();
        // TODO add your handling code here:
         
     }//GEN-LAST:event_continueButtActionPerformed
@@ -555,6 +576,19 @@ public class FlightBooking extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     void setGradientDropdownMenu(GradientDropdownMenu menu) {
+        this.menu = menu;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setDefaultCloseOperation(int EXIT_ON_CLOSE) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setLocationRelativeTo(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private Container getContentPane() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
