@@ -6,12 +6,14 @@ package airswift;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import static java.awt.SystemColor.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
@@ -268,6 +270,7 @@ public class FlightBooking extends javax.swing.JPanel {
                     String message = "Please select a flight before continuing.";
                     JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
                 }
+                showForm(new PaymentP(menu, book));
             }
         });
         
@@ -281,9 +284,17 @@ public class FlightBooking extends javax.swing.JPanel {
           
     }
     
-    public void setGradientDropdownMenu(GradientDropdownMenu menu) {
-        this.gradientDropdownMenu = menu;
+    public void showForm(Component com) {
+        bg.removeAll();
+        bg.setLayout(new BorderLayout());
+        bg.add(com);
+        bg.repaint();
+        bg.revalidate();
+        if (com instanceof PaymentP) {
+            ((PaymentP) com).setGradientDropdownMenu(menu);
+        }
     }
+    
     public void setBooking(Booking booking){
         book = booking;
     }
@@ -539,4 +550,8 @@ public class FlightBooking extends javax.swing.JPanel {
     public javax.swing.JLabel returnLong;
     public javax.swing.JLabel returnShort;
     // End of variables declaration//GEN-END:variables
+
+    void setGradientDropdownMenu(GradientDropdownMenu menu) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
