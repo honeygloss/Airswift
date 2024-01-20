@@ -71,7 +71,8 @@ public class FlightSeat extends javax.swing.JPanel {
                                 button2_3E, button2_3F, button2_3G, button2_3H, button2_3I, button2_4A, button2_4B, button2_4C, button2_4D, button2_4E, button2_4F, button2_4G, button2_4H, button2_4I, button2_5A, button2_5B, button2_5C, button2_5D, button2_5E, button2_5F, button2_5G, button2_5H, button2_5I};
         
         int z=0;        //  the first index of the seat 
-        for(int a=0; a<4; a++){   //z is the first index of BUSINESS seat ,y is the first index of ECONOMY seat   
+        //  BUSINESS seat
+        for(int a=0; a<4; a++){    
             for(int j=0; j<6; j++){ 
                 switch(j){ 
                     case 0 : 
@@ -104,7 +105,7 @@ public class FlightSeat extends javax.swing.JPanel {
                 z++; 
             } 
         } 
-        
+        //  ECONOMY seat
         for(int a=0; a<5; a++){ 
             for(int j=0; j<9; j++){ 
                 switch(j){ 
@@ -152,8 +153,8 @@ public class FlightSeat extends javax.swing.JPanel {
         }
         //JLabel dynamicSeat[]= new JLabel[69];
         for (int i = 0; i < buttons.length; i++) {
-            
-            
+            availableSeat.setSeatName(seatName[i], i);
+            availableSeat.setSeatFlag(flagSeat[i], i);
             final int index = i; // need to make a final variable for use inside the ActionListener
             buttons[i].addActionListener(new ActionListener() {
                 @Override
@@ -198,6 +199,8 @@ public class FlightSeat extends javax.swing.JPanel {
                 // Reset the appearance of the selected seat button
                 if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
                     buttons[selectedSeatIndex].setBackground(new Color(153, 153, 255));
+                    book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                    availableSeat.setSeatFlag(false, selectedSeatIndex);
                 }
                 
                 currentCustomerIndex++;
@@ -247,7 +250,7 @@ public class FlightSeat extends javax.swing.JPanel {
     public void showPaymentPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        PaymentP paymentPanel = new PaymentP(book);
+        PaymentP paymentPanel = new PaymentP(book, availableSeat);
 
         // Set booking information for paymentPanel
         paymentPanel.setBookingInformation(book);
