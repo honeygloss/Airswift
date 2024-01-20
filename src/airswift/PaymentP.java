@@ -30,12 +30,12 @@ public class PaymentP extends javax.swing.JPanel {
     /**
      * Creates new form PaymentP
      */
-    public PaymentP(Booking booking, AvailableSeat availableSeat) {
+    public PaymentP(Booking booking/*, AvailableSeat availableSeat*/) {
         initComponents();
         cust = new Customer();
 
         book = booking;
-        availableS = availableSeat;  
+        //availableS = availableSeat;  
         
         // Add this before setting the text
         System.out.println("Payment Value: " + book.calculatePayment());
@@ -497,7 +497,7 @@ public class PaymentP extends javax.swing.JPanel {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error");
     }
-    new Receipt().setVisible(true);
+    new Receipt(cust).setVisible(true);
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
 

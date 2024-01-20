@@ -14,14 +14,14 @@ import java.util.HashSet;
  * @author 60111
  */
 public class TransactionDisplay {
-    public void displayTransactions(List<String[]> transactions, JPanel panel, JTable table) {
+     public void displayTransactions(List<String[]> transactions, JPanel jPanel2, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);  // Clear existing rows
 
         Set<String> uniqueEntries = new HashSet<>();
 
         for (String[] transaction : transactions) {
-            if (transaction.length >= 22) {
+            if (transaction.length >= 24) {
                 String departDate7 = transaction[7];
                 String timeDepartF9 = transaction[9];
                 String flightID1 = transaction[1];

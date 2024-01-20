@@ -481,4 +481,8 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
     public javax.swing.JLabel returnLong;
     public javax.swing.JLabel returnShort;
     // End of variables declaration//GEN-END:variables
+
+    void refreshContent() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

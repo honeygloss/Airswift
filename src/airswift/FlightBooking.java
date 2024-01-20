@@ -289,7 +289,7 @@ public class FlightBooking extends javax.swing.JPanel {
     public void showPaymentPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        PaymentP paymentPanel = new PaymentP(book);
+        PaymentP paymentPanel = new PaymentP(book); //nnt bila letak dekat flightseat kena ada parameter availableseat sbb PaymentP ada parameter book and seat
 
         // Set booking information for paymentPanel
         paymentPanel.setBookingInformation(book);
@@ -589,6 +589,10 @@ public class FlightBooking extends javax.swing.JPanel {
     }
 
     private Container getContentPane() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void refreshContent() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
