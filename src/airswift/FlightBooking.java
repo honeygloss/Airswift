@@ -13,7 +13,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import static java.awt.SystemColor.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
@@ -33,12 +32,15 @@ import java.util.Random;
 import javaswingdev.GradientDropdownMenu;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import javaswingdev.GradientDropdownMenu;
+import javaswingdev.MenuEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import net.miginfocom.swing.MigLayout;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
@@ -47,7 +49,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  */
 public class FlightBooking extends javax.swing.JPanel {
     private int randomNum;
-    private GradientDropdownMenu gradientDropdownMenu;
+    private GradientDropdownMenu menu;
+    private Customer cust;
     private Booking book;
     private int selectedFlightIndex =-1;
     private String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
@@ -62,6 +65,7 @@ public class FlightBooking extends javax.swing.JPanel {
     public FlightBooking(){
         initComponents();
 
+        
     }
     
     /**
@@ -70,9 +74,7 @@ public class FlightBooking extends javax.swing.JPanel {
      * @param booking
      */
     public FlightBooking(GradientDropdownMenu menu, Booking booking) {
-        this.gradientDropdownMenu = menu;
         book = booking;
-        
         initComponents();
         
         
@@ -270,7 +272,7 @@ public class FlightBooking extends javax.swing.JPanel {
                     String message = "Please select a flight before continuing.";
                     JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
                 }
-                showForm(new PaymentP(menu, book));
+                showForm(new PaymentP(book, menu));
             }
         });
         
@@ -281,7 +283,6 @@ public class FlightBooking extends javax.swing.JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll
         //scrollPane.getVerticalScrollBar().setUnitIncrement(16);  // Adjust the value as needed
         add(scrollPane);
-          
     }
     
     public void showForm(Component com) {
@@ -291,11 +292,12 @@ public class FlightBooking extends javax.swing.JPanel {
         bg.repaint();
         bg.revalidate();
         if (com instanceof PaymentP) {
-            ((PaymentP) com).setGradientDropdownMenu(menu);
+            ((PaymentP) com).setGradientDropdownMenu(book, menu);
         }
     }
     
-    public void setBooking(Booking booking){
+        
+        public void setBooking(Booking booking){
         book = booking;
     }
     /**
@@ -521,7 +523,8 @@ public class FlightBooking extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonPropertyChange
 
     private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
-        // TODO add your handling code here:
+
+       // TODO add your handling code here:
         
     }//GEN-LAST:event_continueButtActionPerformed
 
@@ -554,4 +557,5 @@ public class FlightBooking extends javax.swing.JPanel {
     void setGradientDropdownMenu(GradientDropdownMenu menu) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

@@ -26,32 +26,20 @@ import javax.swing.JOptionPane;
  */
 public class PaymentP extends javax.swing.JPanel {
     private Booking book;
-    private AvailableSeat availableS;
+    //private AvailableSeat availableS;
     private Customer cust;
     private GradientDropdownMenu gradientDropdownMenu;
-
-    PaymentP(GradientDropdownMenu menu, Booking book) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public GradientDropdownMenu getGradientDropdownMenu() {
-        return gradientDropdownMenu;
-    }
-
-    public void setGradientDropdownMenu(GradientDropdownMenu gradientDropdownMenu) {
-        this.gradientDropdownMenu = gradientDropdownMenu;
-    }
     
     /**
      * Creates new form PaymentP
      */
-    public PaymentP(Booking booking, AvailableSeat availableSeat, GradientDropdownMenu menu) {
+    public PaymentP(Booking booking, /*AvailableSeat availableSeat,*/ GradientDropdownMenu menu) {
         initComponents();
         cust = new Customer();
         gradientDropdownMenu = menu;
 
         book = booking;
-        availableS = availableSeat;  
+        //availableS = availableSeat;  
         
         jLabel6 = new javax.swing.JLabel();
         jLabel6.setText(String.valueOf((float) book.calculatePayment()));
@@ -398,32 +386,34 @@ public class PaymentP extends javax.swing.JPanel {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
-        String custEmailAdress = cust.getEmailAddress();
-        
-        String chName = CardholderNameField.getText();
-        String eAddress = EmailAddressField.getText();
-        String pNumber = PhoneNumberField.getText();
-        String cNumber = CardNumberField.getText();
-        String sCode = SecurityCodeField.getText();
-        int Month = eDMonth.getMonth(); 
-        int Year = eDYear.getYear();
-        String cType = (String) CardType.getSelectedItem();
+        String custEmailAdress0 = book.getEmail();
 
-        String flightID = book.getFlightID();
-        String departShort = book.getDepartShort();
-        String departLong = book.getDepartLong().toUpperCase();
-        String returnShort = book.getReturnShort();
-        String returnLong = book.getReturnLong().toUpperCase();
-        String passString = ""+book.getPassenger();
+        String flightID1 = book.getFlightID();
+        String departShort2 = book.getDepartShort();
+        String departLong3 = book.getDepartLong().toUpperCase();
+        String returnShort4 = book.getReturnShort();
+        String returnLong5= book.getReturnLong().toUpperCase();
+        String passString6 = ""+book.getPassenger();
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
-        String departDate = dateFormat1.format(book.getDepartDate());
+        String departDate7 = dateFormat1.format(book.getDepartDate());
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
-        String departDateDis = dateFormat2.format(book.getDepartDate()).toUpperCase();
+        String returnDate8 = dateFormat2.format(book.getReturnDate()).toUpperCase();
         String[] timeDepart = book.getTimeDepart();
-        String timeDepartF = String.format("%s:%s", timeDepart[0], timeDepart[1]);
+        String timeDepartF9 = String.format("%s:%s", timeDepart[0], timeDepart[1]);
         String[] timeReturn = book.getTimeReturn();
-        String timeReturnF = String.format("%s:%s", timeReturn[0], timeReturn[1]);
-        String seatNames = availableS.getSeatName();
+        String timeReturnF10 = String.format("%s:%s", timeReturn[0], timeReturn[1]);
+        //String seatNames11 = availableS.getSeatName();
+ 
+        String chName12 = CardholderNameField.getText();
+        String eAddress13 = EmailAddressField.getText();
+        String pNumber14 = PhoneNumberField.getText();
+        String cNumber15 = CardNumberField.getText();
+        String sCode16 = SecurityCodeField.getText();
+        int Month17 = eDMonth.getMonth(); 
+        int Year18 = eDYear.getYear();
+        String cType19 = (String) CardType.getSelectedItem();
+        
+        String flightName20 = book.getFlightName();
         
         if (PhoneNumberField.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill in the phone number");
@@ -460,26 +450,26 @@ public class PaymentP extends javax.swing.JPanel {
 
             // Save payment information as an array
             String[] paymentInfo = {
-                custEmailAdress,
-                flightID,
-                departShort,
-                departLong,
-                returnShort,
-                returnLong,
-                passString,
-                departDate,
-                departDateDis,
-                timeDepartF,
-                timeReturnF,
-                seatNames,
-                chName,
-                eAddress,
-                pNumber,
-                cNumber,
-                sCode,
-                String.valueOf(Month),
-                String.valueOf(Year),
-                cType
+                custEmailAdress0,
+                flightID1,
+                departShort2,
+                departLong3,
+                returnShort4,
+                returnLong5,
+                passString6,
+                departDate7,
+                returnDate8,
+                timeDepartF9,
+                timeReturnF10,
+                //seatNames11,
+                chName12,
+                eAddress13,
+                pNumber14,
+                cNumber15,
+                sCode16,
+                String.valueOf(Month17),
+                String.valueOf(Year18),
+                cType19
             };
 
             // Convert the array to a CSV string and write to the file
@@ -504,9 +494,7 @@ public class PaymentP extends javax.swing.JPanel {
     private void CardholderNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CardholderNameFieldActionPerformed
         
     }//GEN-LAST:event_CardholderNameFieldActionPerformed
-
-     
-     
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton CancelButton;
@@ -532,7 +520,8 @@ public class PaymentP extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
-    void setGradientDropdownMenu(SystemColor menu) {
+    void setGradientDropdownMenu(Booking book, GradientDropdownMenu menu) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }
