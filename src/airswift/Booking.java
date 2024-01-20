@@ -15,6 +15,19 @@ public class Booking{
     private String timeReturn[]=new String[2];
     private String flightName;
     private String flightID;
+    private String passFirstName[]= new String[passenger];
+    private String passLastName[]= new String[passenger];
+    private String seatName[] = new String[passenger];
+
+    
+
+    public String[] getSeatName() {
+        return seatName;
+    }
+
+    public void setSeatName(String[] seatName) {
+        this.seatName = seatName;
+    }
 
     @Override
     public String toString() {
@@ -173,10 +186,40 @@ public class Booking{
             System.out.println("Invalid index for timeAvail array.");
         }
     }
+    public void setPassengerFirstName(String firstName, int index) {
+        if (index >= 0 && index < passenger) {
+            passFirstName[index] = firstName;
+        } else {
+            // Handle the case where the index is out of bounds
+            System.out.println("Invalid index for passFirstName array.");
+        }
+    }
+    
+    public void setPassengerLastName(String lastName, int index) {
+        if (index >= 0 && index < passenger) {
+            passLastName[index] = lastName;
+        } else {
+            // Handle the case where the index is out of bounds
+            System.out.println("Invalid index for passFirstName array.");
+        }
+    }
+    
+    public void setPassengerSeat(String seatName, int index) {
+        if (index >= 0 && index < passenger) {
+            this.seatName[index] = seatName;
+        } else {
+            // Handle the case where the index is out of bounds
+            System.out.println("Invalid index for passFirstName array.");
+        }
+    }
+    
     
     public Booking(){
         
     }
+    
+    
+    
 
     
 }

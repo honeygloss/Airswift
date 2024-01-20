@@ -620,7 +620,7 @@ public class CustomerInformation extends javax.swing.JPanel {
             System.out.println("error2");
             e.printStackTrace();
         }
-        new FlightMenu(/*cust*/).setVisible(true);
+        new FlightMenu(cust).setVisible(true);
        
 
     }//GEN-LAST:event_updateButtonActionPerformed

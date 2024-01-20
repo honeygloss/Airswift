@@ -4,7 +4,6 @@
  */
 package airswift;
 
-import java.awt.SystemColor;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,11 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-
-
-
 
 /**
  *

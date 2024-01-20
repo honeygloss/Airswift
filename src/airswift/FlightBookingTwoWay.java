@@ -6,10 +6,13 @@ package airswift;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,8 +29,10 @@ import java.util.StringTokenizer;
 import javaswingdev.GradientDropdownMenu;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -36,7 +41,11 @@ import javax.swing.JScrollPane;
 public class FlightBookingTwoWay extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
-  
+    private int selectedFlightIndex =-1;
+    private String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
+                                    {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
+                                    {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
+  private int randomNum;
     /**
      * Creates new form FlightBookingTwoWay
      */
@@ -66,13 +75,9 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
         departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
         
-        
-        String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
-                                    {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
-                                    {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
-        
+      
         Random random = new Random();
-        int randomNum;
+        
         do{
             randomNum = random.nextInt(10);
         }while(randomNum==0);
@@ -83,8 +88,8 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         int newValue;
         boolean isDuplicate;
         
-        //  assign random value
-        for (int i = 0; i < 2*randomNum; i++) {
+        //  assign random value (DEPART)
+        for (int i = 0; i < randomNum; i++) {
             do {
                 newValue = random.nextInt(10);
                 isDuplicate = false;
@@ -103,12 +108,34 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             }while(indFNum[i]<100);
         }
         
+        //  assign random value (RETURN)
+        for (int i = randomNum; i < 2*randomNum; i++) {
+            do {
+                newValue = random.nextInt(10);
+                isDuplicate = false;
+
+                for (int j = 0; j < i; j++) {
+                    if (indFTime[j] == newValue) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+            } while (isDuplicate);
+
+            indFTime[i] = newValue;
+            do{
+                indFNum[i]=random.nextInt(1000);
+            }while(indFNum[i]<100);
+        }
+        
+        //  assign flight name randomly for BOTH depart and return
         for(int i=0; i<2*randomNum; i++){
             flightName[i]="AS "+Integer.toString(indFNum[i]);
             for(int j=0; j<2; j++){
                 flightTime[i][j]=timeAvail[indFTime[i]][j];
             }
         }
+        
         try {
                 Path filePath = Paths.get("FlightSchedule.txt");
 
@@ -209,7 +236,69 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             buttons[i].setPreferredSize(new Dimension(500, 500));
             
             dynamicButtonsPanel.add(buttons[i]);
+            
+            final int index = i; // need to make a final variable for use inside the ActionListener
+            final int finalRandomNum = randomNum;
+
+            buttons[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Handle the button click event
+                    // You can store the selected index or perform other actions here
+                    selectedFlightIndex = index;
+
+                    // Optionally, you can change the appearance of the selected button
+                    buttons[index].setBackground(new Color(102,0,102));
+
+                    // Optionally, reset the appearance of other buttons
+                    for (int j = 0; j < finalRandomNum; j++) {
+                        if (j != index) {
+                            buttons[j].setBackground(new Color(153, 153, 255));
+                        }
+                    }
+                }
+            });
         }
+            final int finalRandomNum = randomNum;
+
+            continueButt.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Handle the continuation of the booking process
+                    // Save the selected flight information to the Booking class
+                    if (selectedFlightIndex >= 0 && selectedFlightIndex < finalRandomNum) {
+                        book.setDepartTimeFromTimeAvail(selectedFlightIndex, timeAvail);
+                        book.setReturnTimeFromTimeAvail(selectedFlightIndex, timeAvail);
+                        book.setFlightName(flightName, selectedFlightIndex);
+                        System.out.println(book);
+                        SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            showSeatPanel();
+                        }
+                    });
+
+                    } else {
+                        // Handle the case where no flight is selected
+                        String message = "Please select a flight before continuing.";
+                        JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                }
+            });
+            backButt.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            showSeatPanel();
+                        }
+                    });
+                }
+            });
+
+        
         
         //Create a JScrollPane and add your main panel to it
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
@@ -220,13 +309,38 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
 
     }
     
+    public void showSeatPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        FlightSeat seatPanel = new FlightSeat(book,gradientDropdownMenu);
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (gradientDropdownMenu != null) {
+            gradientDropdownMenu.setVisible(false);
+        }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(seatPanel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
+    }
+    }
+    
     public void setGradientDropdownMenu(GradientDropdownMenu menu) {
         this.gradientDropdownMenu = menu;
     }
     public void setBooking(Booking booking){
         book = booking;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,11 +367,10 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        backButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         departDateDis = new javax.swing.JLabel();
-        buttonGradient2 = new airswift.ButtonGradient();
-        buttonGradient3 = new airswift.ButtonGradient();
+        continueButt = new airswift.ButtonGradient();
+        backButt = new airswift.ButtonGradient();
 
         setPreferredSize(new java.awt.Dimension(900, 530));
 
@@ -353,22 +466,6 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
 
         bg.add(findAflight, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 600, 100));
 
-        backButton.setBackground(new java.awt.Color(102, 0, 102));
-        backButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        backButton.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                backButtonPropertyChange(evt);
-            }
-        });
-        bg.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 600, -1, -1));
-
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setToolTipText("");
         jPanel2.setAutoscrolls(true);
@@ -384,33 +481,33 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
 
         bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 185, 280, 50));
 
-        buttonGradient2.setBackground(new java.awt.Color(204, 0, 153));
-        buttonGradient2.setBorder(null);
-        buttonGradient2.setForeground(new java.awt.Color(204, 204, 204));
-        buttonGradient2.setText("Continue");
-        buttonGradient2.setColor1(new java.awt.Color(102, 0, 102));
-        buttonGradient2.setColor2(new java.awt.Color(102, 0, 102));
-        buttonGradient2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        buttonGradient2.addActionListener(new java.awt.event.ActionListener() {
+        continueButt.setBackground(new java.awt.Color(204, 0, 153));
+        continueButt.setBorder(null);
+        continueButt.setForeground(new java.awt.Color(204, 204, 204));
+        continueButt.setText("Continue");
+        continueButt.setColor1(new java.awt.Color(102, 0, 102));
+        continueButt.setColor2(new java.awt.Color(102, 0, 102));
+        continueButt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        continueButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGradient2ActionPerformed(evt);
+                continueButtActionPerformed(evt);
             }
         });
-        bg.add(buttonGradient2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 490, 80, 30));
+        bg.add(continueButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 490, 80, 30));
 
-        buttonGradient3.setBackground(new java.awt.Color(204, 0, 153));
-        buttonGradient3.setBorder(null);
-        buttonGradient3.setForeground(new java.awt.Color(102, 102, 102));
-        buttonGradient3.setText("Back");
-        buttonGradient3.setColor1(new java.awt.Color(204, 204, 204));
-        buttonGradient3.setColor2(new java.awt.Color(204, 204, 204));
-        buttonGradient3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        buttonGradient3.addActionListener(new java.awt.event.ActionListener() {
+        backButt.setBackground(new java.awt.Color(204, 0, 153));
+        backButt.setBorder(null);
+        backButt.setForeground(new java.awt.Color(102, 102, 102));
+        backButt.setText("Back");
+        backButt.setColor1(new java.awt.Color(204, 204, 204));
+        backButt.setColor2(new java.awt.Color(204, 204, 204));
+        backButt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        backButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGradient3ActionPerformed(evt);
+                backButtActionPerformed(evt);
             }
         });
-        bg.add(buttonGradient3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 80, 30));
+        bg.add(backButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 80, 30));
 
         jPanel1.add(bg, java.awt.BorderLayout.CENTER);
 
@@ -436,18 +533,6 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        Customer cust= new Customer();
-        //new FlightMenu(cust).showForm(new FlightSeat(book, gradientDropdownMenu));
-
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void backButtonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_backButtonPropertyChange
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_backButtonPropertyChange
-
     private void buttonGradient2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGradient2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonGradient2ActionPerformed
@@ -456,12 +541,19 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonGradient3ActionPerformed
 
+    private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_continueButtActionPerformed
+
+    private void backButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private airswift.ButtonGradient backButt;
     private javax.swing.JPanel bg;
-    private airswift.ButtonGradient buttonGradient2;
-    private airswift.ButtonGradient buttonGradient3;
+    private airswift.ButtonGradient continueButt;
     public javax.swing.JLabel departDate;
     public javax.swing.JLabel departDateDis;
     public javax.swing.JLabel departLabel;

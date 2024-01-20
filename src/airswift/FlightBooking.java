@@ -283,7 +283,7 @@ public class FlightBooking extends javax.swing.JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        showMenuPanel();
+                        //showMenuPanel();
                     }
                 });
             }
@@ -324,10 +324,10 @@ public class FlightBooking extends javax.swing.JPanel {
     }
     }
     
-    public void showMenuPanel() {
+    /*public void showMenuPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        FlightMenu menuPanel = new FlightMenu();
+        //FlightMenu menuPanel = new FlightMenu();
 
         // Get the parent container of the current FlightBooking panel
         Container parent = this.getParent();
@@ -348,7 +348,7 @@ public class FlightBooking extends javax.swing.JPanel {
         ex.printStackTrace(); // Print the exception for debugging
         System.err.println("Error creating or displaying PaymentP panel.");
     }
-    }
+    }       */
         
         public void setBooking(Booking booking){
         book = booking;

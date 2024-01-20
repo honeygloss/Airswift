@@ -6,20 +6,12 @@ package airswift;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javaswingdev.GradientDropdownMenu;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -34,8 +26,10 @@ public class FlightSeat extends javax.swing.JPanel {
     private int selectedSeatIndex =-1;
     private boolean flagSeat[]= new boolean[69];
     private String seatName[]=new String[69];
+    private int currentCustomerIndex = 0;
+    private AvailableSeat availableSeat;
     
-
+    
     public GradientDropdownMenu getGradientDropdownMenu() {
         return gradientDropdownMenu;
     }
@@ -158,11 +152,7 @@ public class FlightSeat extends javax.swing.JPanel {
         }
         //JLabel dynamicSeat[]= new JLabel[69];
         for (int i = 0; i < buttons.length; i++) {
-            /*dynamicSeat[i] = new JLabel();
-            buttons[i].setName(seatName[i]);
-            dynamicSeat[i].setLocation(110, 20);
-            dynamicSeat[i].setFont(new Font("Segoe UI", Font.BOLD, 15));
-            dynamicSeat[i].setForeground(Color.white);     */ 
+            
             
             final int index = i; // need to make a final variable for use inside the ActionListener
             buttons[i].addActionListener(new ActionListener() {
@@ -172,16 +162,8 @@ public class FlightSeat extends javax.swing.JPanel {
                     // You can store the selected index or perform other actions here
                     selectedSeatIndex = index;
                     seat.setText(seatName[selectedSeatIndex]);
+                    seatInput.setText(seatName[selectedSeatIndex]);
 
-                    /* Optionally, you can change the appearance of the selected button
-                    buttons[index].setBackground(new Color(102,0,102));     
-
-                    // Optionally, reset the appearance of other buttons
-                    for (int j = 0; j < index; j++) {
-                        if (j != index) {
-                            buttons[j].setBackground(new Color(153, 153, 255));
-                        }
-                    }       */
                 }
             });
         }
@@ -204,12 +186,30 @@ public class FlightSeat extends javax.swing.JPanel {
                     String message = "Please select a seat before continuing.";
                     JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
                 }
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        showPaymentPanel();
-                    }
-                });
+                book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
+                book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
+                book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+
+                // Clear the input fields
+                fNameInput.setText("");
+                lNameInput.setText("");
+                seatInput.setText("");
+                
+                // Reset the appearance of the selected seat button
+                if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                    buttons[selectedSeatIndex].setBackground(new Color(153, 153, 255));
+                }
+                
+                currentCustomerIndex++;
+                
+                if (currentCustomerIndex >= book.getPassenger()) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            showPaymentPanel();
+                        }
+                    });
+                }
             }
                  
         });
