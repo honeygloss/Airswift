@@ -256,3 +256,18 @@
 1255;AS 478;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;07:05;
 1256;AS 377;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;21:15;
 1257;AS 956;Kuala Lumpur ;Kota Bharu ;Sun Jan 21 00:01:25 MYT 2024;null;19:55;
+1258;AS 582;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;21:15;
+1259;AS 100;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;07:05;
+1260;AS 258;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;19:55;
+1261;AS 329;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;23:00;
+1262;AS 716;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;09:15;
+1263;AS 724;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;17:00;
+1264;AS 211;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;12:05;
+1265;AS 148;Kuala Lumpur ;Penang ;Wed Jan 24 00:39:46 MYT 2024;null;14:45;
+1266;AS 701;Alor Setar ;Kuala Lumpur ;Wed Jan 24 00:41:45 MYT 2024;null;09:15;
+1267;AS 947;Alor Setar ;Kuala Lumpur ;Wed Jan 24 00:41:45 MYT 2024;null;17:00;
+1268;AS 406;Alor Setar ;Kuala Lumpur ;Wed Jan 24 00:41:45 MYT 2024;null;14:45;
+1269;AS 704;Alor Setar ;Kuala Lumpur ;Wed Jan 24 00:41:45 MYT 2024;null;04:55;
+1270;AS 158;Alor Setar ;Kuala Lumpur ;Wed Jan 24 00:41:45 MYT 2024;null;19:55;
+1271;AS 657;Sibu ;Johor Bahru ;Thu Jan 25 01:24:41 MYT 2024;null;21:15;
+1272;AS 928;Penang ;Kuala Lumpur ;Fri Jan 26 02:46:09 MYT 2024;null;12:05;

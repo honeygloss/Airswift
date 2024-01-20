@@ -20,8 +20,15 @@ import airswift.TransactionDisplay;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import javax.swing.table.TableColumnModel;
-import java.util.Arrays;
+import java.util.Collections;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.List;
+
+
 
 
 
@@ -38,6 +45,7 @@ public class Receipt extends javax.swing.JFrame {
     private Customer cust;  
     private List<String[]> transactions;  // Maintain a list of transactions
     private int currentTransactionIndex;
+    private TransactionDisplay transactionDisplay;
     /**
      * Creates new form Receipt
      */
@@ -47,39 +55,38 @@ public class Receipt extends javax.swing.JFrame {
         initializeTable();
         displayTransactions(); 
         this.cust = cust;
-
-       transactions = getTransactionsForEmail(this.cust.getEmailAddress());
+        
+       CustomerName.setText(cust.getFName() + " " + cust.getLName());
+       transactions = getTransactionsForEmail(cust.getEmailAddress());
        currentTransactionIndex = 0;  // Start with the first transaction
 
         displayTransactions(); 
     }
 
      public void displayTransactions() {
-        if (transactions.isEmpty()) {
-            // Handle case where no transactions are found for the email
-            return;
-        }
+       if (transactions == null || transactions.isEmpty()) {
+        // Handle case where no transactions are found for the email
+        return;
+    }
 
-        // Display the current transaction
-        TransactionDisplay transactionDisplay = new TransactionDisplay();
-        String[] transactionArray = transactions.get(currentTransactionIndex);
-        transactionDisplay.displayTransactions(Arrays.asList(transactions.get(currentTransactionIndex)), jPanel2, table);
+    // Display the current transaction
+    TransactionDisplay transactionDisplay = new TransactionDisplay();
+    String[] transactionArray = transactions.get(currentTransactionIndex);
+    transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
+
     }
      
-   private List<String[]> getTransactions() {
-    // Read all lines from the file
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
-
-            // Filter transactions based on email
-            return lines.stream()
+   private List<String[]> getTransactionsForEmail(String emailAddress) {
+    try {
+        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+        return lines.stream()
                 .map(line -> line.split(","))
-                .filter(transaction -> transaction.length > 0 && transaction[0].equals(this.cust.getEmailAddress()))
+                .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
                 .toList();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return List.of();
-        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        return List.of();
+    }
 }
     
     private void initializeTable() {
@@ -89,7 +96,7 @@ public class Receipt extends javax.swing.JFrame {
     // Set columns for the table
     DefaultTableModel model = (DefaultTableModel) table.getModel();
     model.addColumn("Departure | Arrival");
-    model.addColumn("Flight ID");
+    model.addColumn("Flight Name");
     model.addColumn("Route");
     model.addColumn("Seat Class");
 
@@ -131,7 +138,7 @@ public class Receipt extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Receipt = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        CustomerName = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -150,7 +157,7 @@ public class Receipt extends javax.swing.JFrame {
         Receipt.setBackground(new java.awt.Color(255, 255, 255));
         Receipt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setText("jLabel2");
+        CustomerName.setText("jLabel2");
 
         jLabel9.setText("| Passenger Name");
 
@@ -188,7 +195,7 @@ public class Receipt extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(ReceiptLayout.createSequentialGroup()
                         .addGroup(ReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 338, Short.MAX_VALUE))))
         );
@@ -198,7 +205,7 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(20, 20, 20)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,20 +359,27 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void NextTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextTicketActionPerformed
-        // Handle "NextTicket" button click
+        if (transactions != null && !transactions.isEmpty()) {
         currentTransactionIndex++;
-        
+
         // Check if there is another transaction with the same email
         if (currentTransactionIndex < transactions.size()) {
             // Display the next transaction
             TransactionDisplay transactionDisplay = new TransactionDisplay();
-            transactionDisplay.displayTransactions(List.of(transactions.get(currentTransactionIndex)), jPanel2, table);
+            String[] nextTransaction = transactions.get(currentTransactionIndex);
+
+            // Create a new ArrayList and add the nextTransaction directly
+            List<String[]> transactionList = new ArrayList<>();
+            transactionList.add(nextTransaction);
+
+            transactionDisplay.displayTransactions(transactionList, jPanel2, table);
         } else {
             // No more transactions, you can handle this case or reset the index
             // For simplicity, let's reset the index to 0
             currentTransactionIndex = 0;
             // Alternatively, you can disable the "NextTicket" button when there are no more transactions
-        }// TODO add your handling code here:
+        }
+    }
     }//GEN-LAST:event_NextTicketActionPerformed
 
     /**
@@ -404,6 +418,7 @@ public class Receipt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CustomerName;
     private javax.swing.JButton NextTicket;
     private javax.swing.JPanel Receipt;
     private javax.swing.JButton jButton1;
@@ -411,15 +426,10 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
-    private List<String[]> getTransactionsForEmail(String emailAddress) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

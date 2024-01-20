@@ -5,6 +5,7 @@
 package airswift;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -20,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -29,7 +31,10 @@ public class FlightSeat extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
     private Image backgroundImage;
-    //private AvailableSeat avail;
+    private int selectedSeatIndex =-1;
+    private boolean flagSeat[]= new boolean[69];
+    private String seatName[]=new String[69];
+    
 
     public GradientDropdownMenu getGradientDropdownMenu() {
         return gradientDropdownMenu;
@@ -47,15 +52,6 @@ public class FlightSeat extends javax.swing.JPanel {
         this.book = book;
     }
 
-    /*public AvailableSeat getAvail() {
-        return avail;
-    }
-
-    public void setAvail(AvailableSeat avail) {
-        this.avail = avail;
-    }       */
-
-    
     /**
      * Creates new form FlightSeat
      * @param book
@@ -75,17 +71,260 @@ public class FlightSeat extends javax.swing.JPanel {
             tabbedPane.setSelectedComponent(busSeat);
         }
         
-        MyButton buttons[]= new MyButton[69];
-        buttons[0]=button_0_1A;
-        buttons[0].addMouseListener(new MouseAdapter() {
+         //  Seat buttons
+        MyButton buttons[]= {button_1A, button_1B, button_1C, button_1D, button_1E, button_1F, button_2A, button_2B, button_2C, button_2D, button_2E, button_2F, button_3A, button_3B, button_3C, button_3D, button_3E, button_3F,button_4A, button_4B, button_4C, button_4D, button_4E, button_4F,
+                                button2_1A, button2_1B, button2_1C, button2_1D, button2_1E,button2_1F, button2_1G, button2_1H, button2_1I, button2_2A, button2_2B, button2_2C, button2_2D, button2_2E, button2_2F, button2_2G, button2_2H, button2_2I, button2_3A, button2_3B, button2_3C, button2_3D, 
+                                button2_3E, button2_3F, button2_3G, button2_3H, button2_3I, button2_4A, button2_4B, button2_4C, button2_4D, button2_4E, button2_4F, button2_4G, button2_4H, button2_4I, button2_5A, button2_5B, button2_5C, button2_5D, button2_5E, button2_5F, button2_5G, button2_5H, button2_5I};
+        
+        int z=0;        //  the first index of the seat 
+        for(int a=0; a<4; a++){   //z is the first index of BUSINESS seat ,y is the first index of ECONOMY seat   
+            for(int j=0; j<6; j++){ 
+                switch(j){ 
+                    case 0 : 
+                        seatName[z]=Integer.toString(a+1)+"A"; 
+                        break; 
+
+                    case 1 : 
+                        seatName[z]=Integer.toString(a+1)+"B"; 
+                        break; 
+
+
+                    case 2 : 
+                        seatName[z]=Integer.toString(a+1)+"C"; 
+                        break; 
+
+                    case 3 : 
+                        seatName[z]=Integer.toString(a+1)+"D"; 
+                        break; 
+
+                    case 4 : 
+                        seatName[z]=Integer.toString(a+1)+"E"; 
+                        break; 
+
+                    case 5 : 
+                        seatName[z]=Integer.toString(a+1)+"F"; 
+                        break; 
+
+                } 
+                flagSeat[z]=true;
+                z++; 
+            } 
+        } 
+        
+        for(int a=0; a<5; a++){ 
+            for(int j=0; j<9; j++){ 
+                switch(j){ 
+                    case 0 : 
+                        seatName[z]=Integer.toString(a+1)+"A"; 
+                        break; 
+
+                    case 1 : 
+                        seatName[z]=Integer.toString(a+1)+"B"; 
+                        break; 
+
+
+                    case 2 : 
+                        seatName[z]=Integer.toString(a+1)+"C"; 
+                        break; 
+
+                    case 3 : 
+                        seatName[z]=Integer.toString(a+1)+"D"; 
+                        break; 
+
+                    case 4 : 
+                        seatName[z]=Integer.toString(a+1)+"E"; 
+                        break; 
+
+                    case 5 : 
+                        seatName[z]=Integer.toString(a+1)+"F"; 
+                        break; 
+
+                    case 6 : 
+                        seatName[z]=Integer.toString(a+1)+"G"; 
+                        break; 
+
+                    case 7 : 
+                        seatName[z]=Integer.toString(a+1)+"H"; 
+                        break; 
+
+                    case 8 : 
+                        seatName[z]=Integer.toString(a+1)+"I"; 
+                        break; 
+                } 
+
+                flagSeat[z]=true; 
+                z++; 
+            } 
+        }
+        //JLabel dynamicSeat[]= new JLabel[69];
+        for (int i = 0; i < buttons.length; i++) {
+            /*dynamicSeat[i] = new JLabel();
+            buttons[i].setName(seatName[i]);
+            dynamicSeat[i].setLocation(110, 20);
+            dynamicSeat[i].setFont(new Font("Segoe UI", Font.BOLD, 15));
+            dynamicSeat[i].setForeground(Color.white);     */ 
+            
+            final int index = i; // need to make a final variable for use inside the ActionListener
+            buttons[i].addActionListener(new ActionListener() {
                 @Override
-                public void mousePressed(MouseEvent e) {
-                    // Change the background color when the mouse is pressed
-                    buttons[0].setBackground(Color.BLUE);
+                public void actionPerformed(ActionEvent e) {
+                    // Handle the button click event
+                    // You can store the selected index or perform other actions here
+                    selectedSeatIndex = index;
+                    seat.setText(seatName[selectedSeatIndex]);
+
+                    /* Optionally, you can change the appearance of the selected button
+                    buttons[index].setBackground(new Color(102,0,102));     
+
+                    // Optionally, reset the appearance of other buttons
+                    for (int j = 0; j < index; j++) {
+                        if (j != index) {
+                            buttons[j].setBackground(new Color(153, 153, 255));
+                        }
+                    }       */
                 }
+            });
+        }
+        //If user click continue button
+        continueButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle the continuation of the booking process
+                // Save the selected flight information to the Booking class
+                if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                    
+                    
+                }
+                if(fNameInput==null || lNameInput==null){
+                    String message = "Please complete your personal details.";
+                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(selectedSeatIndex==-1){
+                    // Handle the case where no flight is selected
+                    String message = "Please select a seat before continuing.";
+                    JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+                }
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showPaymentPanel();
+                    }
+                });
+            }
+                 
         });
         
+        backButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle the continuation of the booking process
+                // Save the selected flight information to the Booking class
+                if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                    
+                    
+                }
+                if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {                    String message = "Please complete your personal details.";
+                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
+                }
+                else if(selectedSeatIndex==-1){
+                    // Handle the case where no flight is selected
+                    String message = "Please select a seat before continuing.";
+                    JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+                }
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showPaymentPanel();
+                    }
+                });
+            }
+                 
+        });
+            
     }
+    
+    //  after flight seat page --> payment page
+    public void showPaymentPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        PaymentP paymentPanel = new PaymentP(book);
+
+        // Set booking information for paymentPanel
+        paymentPanel.setBookingInformation(book);
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (gradientDropdownMenu != null) {
+            gradientDropdownMenu.setVisible(false);
+        }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(paymentPanel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
+    }
+    }
+    
+    public void showBookingPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        FlightBooking bookPanel = new FlightBooking(gradientDropdownMenu,book);
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (gradientDropdownMenu != null) {
+            gradientDropdownMenu.setVisible(false);
+        }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(bookPanel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
+    }
+    }
+    
+    public void showBookingTwoWayPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        FlightBookingTwoWay book2Panel = new FlightBookingTwoWay(gradientDropdownMenu,book);
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (gradientDropdownMenu != null) {
+            gradientDropdownMenu.setVisible(false);
+        }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(book2Panel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
+    }
+    }
+    
       @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -112,11 +351,12 @@ public class FlightSeat extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        seatDisplay = new javax.swing.JPanel();
+        backButt = new javax.swing.JButton();
+        continueButt = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        seat = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
         busSeat = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -126,10 +366,10 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        button_0_1A = new airswift.MyButton();
-        button_2 = new airswift.MyButton();
-        button_3 = new airswift.MyButton();
-        button_4 = new airswift.MyButton();
+        button_1A = new airswift.MyButton();
+        button_1B = new airswift.MyButton();
+        button_1C = new airswift.MyButton();
+        button_1E = new airswift.MyButton();
         button_1D = new airswift.MyButton();
         button_1F = new airswift.MyButton();
         button_2A = new airswift.MyButton();
@@ -155,10 +395,10 @@ public class FlightSeat extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        button2_24 = new airswift.MyButton();
-        button2_25 = new airswift.MyButton();
-        button2_26 = new airswift.MyButton();
-        button2_27 = new airswift.MyButton();
+        button2_1A = new airswift.MyButton();
+        button2_1B = new airswift.MyButton();
+        button2_1C = new airswift.MyButton();
+        button2_1D = new airswift.MyButton();
         button2_1E = new airswift.MyButton();
         button2_1F = new airswift.MyButton();
         button2_1G = new airswift.MyButton();
@@ -225,45 +465,50 @@ public class FlightSeat extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(920, 551));
         bg.setLayout(null);
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
-        jPanel3.setPreferredSize(new java.awt.Dimension(612, 90));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        seatDisplay.setBackground(new java.awt.Color(153, 153, 255));
+        seatDisplay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
+        seatDisplay.setPreferredSize(new java.awt.Dimension(612, 90));
+        seatDisplay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButt.setBackground(new java.awt.Color(255, 255, 255));
+        backButt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        backButt.setForeground(new java.awt.Color(0, 0, 0));
+        backButt.setText("Back");
+        backButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, -1));
+        seatDisplay.add(backButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("Continue");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        continueButt.setBackground(new java.awt.Color(204, 204, 255));
+        continueButt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        continueButt.setForeground(new java.awt.Color(51, 51, 51));
+        continueButt.setText("Continue");
+        continueButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                continueButtActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("jLabel11");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        seatDisplay.add(continueButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Economy");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        seatDisplay.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        bg.add(jPanel3);
-        jPanel3.setBounds(0, 460, 900, 70);
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Seat");
+        seatDisplay.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        seat.setBackground(new java.awt.Color(255, 255, 255));
+        seat.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        seat.setForeground(new java.awt.Color(255, 255, 255));
+        seatDisplay.add(seat, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 20, 40, 20));
+
+        bg.add(seatDisplay);
+        seatDisplay.setBounds(0, 460, 900, 70);
 
         busSeat.setBackground(new java.awt.Color(252, 223, 251));
         busSeat.setOpaque(false);
@@ -298,50 +543,50 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(102, 0, 102));
         jLabel6.setText("4");
 
-        button_0_1A.setBorder(null);
-        button_0_1A.setBorderColor(new java.awt.Color(204, 133, 228));
-        button_0_1A.setBorderPainted(false);
-        button_0_1A.setColor(new java.awt.Color(204, 0, 204));
-        button_0_1A.setColorClick(new java.awt.Color(204, 204, 204));
-        button_0_1A.setColorOver(new java.awt.Color(204, 204, 255));
-        button_0_1A.setRadius(50);
-        button_0_1A.addActionListener(new java.awt.event.ActionListener() {
+        button_1A.setBorder(null);
+        button_1A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1A.setBorderPainted(false);
+        button_1A.setColor(new java.awt.Color(204, 0, 204));
+        button_1A.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1A.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1A.setRadius(50);
+        button_1A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_0_1AActionPerformed(evt);
+                button_1AActionPerformed(evt);
             }
         });
 
-        button_2.setBorder(null);
-        button_2.setBorderColor(new java.awt.Color(204, 133, 228));
-        button_2.setBorderPainted(false);
-        button_2.setColor(new java.awt.Color(204, 0, 204));
-        button_2.setColorClick(new java.awt.Color(204, 204, 204));
-        button_2.setColorOver(new java.awt.Color(204, 204, 255));
-        button_2.setRadius(50);
+        button_1B.setBorder(null);
+        button_1B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1B.setBorderPainted(false);
+        button_1B.setColor(new java.awt.Color(204, 0, 204));
+        button_1B.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1B.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1B.setRadius(50);
 
-        button_3.setBorder(null);
-        button_3.setBorderColor(new java.awt.Color(204, 133, 228));
-        button_3.setBorderPainted(false);
-        button_3.setColor(new java.awt.Color(204, 0, 204));
-        button_3.setColorClick(new java.awt.Color(204, 204, 204));
-        button_3.setColorOver(new java.awt.Color(204, 204, 255));
-        button_3.setRadius(50);
-        button_3.addActionListener(new java.awt.event.ActionListener() {
+        button_1C.setBorder(null);
+        button_1C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1C.setBorderPainted(false);
+        button_1C.setColor(new java.awt.Color(204, 0, 204));
+        button_1C.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1C.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1C.setRadius(50);
+        button_1C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_3ActionPerformed(evt);
+                button_1CActionPerformed(evt);
             }
         });
 
-        button_4.setBorder(null);
-        button_4.setBorderColor(new java.awt.Color(204, 133, 228));
-        button_4.setBorderPainted(false);
-        button_4.setColor(new java.awt.Color(204, 0, 204));
-        button_4.setColorClick(new java.awt.Color(204, 204, 204));
-        button_4.setColorOver(new java.awt.Color(204, 204, 255));
-        button_4.setRadius(50);
-        button_4.addActionListener(new java.awt.event.ActionListener() {
+        button_1E.setBorder(null);
+        button_1E.setBorderColor(new java.awt.Color(204, 133, 228));
+        button_1E.setBorderPainted(false);
+        button_1E.setColor(new java.awt.Color(204, 0, 204));
+        button_1E.setColorClick(new java.awt.Color(204, 204, 204));
+        button_1E.setColorOver(new java.awt.Color(204, 204, 255));
+        button_1E.setRadius(50);
+        button_1E.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_4ActionPerformed(evt);
+                button_1EActionPerformed(evt);
             }
         });
 
@@ -635,17 +880,17 @@ public class FlightSeat extends javax.swing.JPanel {
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(button_4A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_0_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button_2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_2B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_3B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_4B, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(button_3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_2C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_3C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_4C, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -657,7 +902,7 @@ public class FlightSeat extends javax.swing.JPanel {
                             .addComponent(button_3D, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(button_4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_2E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_4E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_3E, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -693,15 +938,15 @@ public class FlightSeat extends javax.swing.JPanel {
                     .addComponent(button_3A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(busSeatLayout.createSequentialGroup()
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button_2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1B, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(busSeatLayout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel3))
-                            .addComponent(button_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1C, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_1D, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button_1F, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_0_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(button_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(busSeatLayout.createSequentialGroup()
                                 .addGroup(busSeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,55 +1009,55 @@ public class FlightSeat extends javax.swing.JPanel {
 
         jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
 
-        button2_24.setBorder(null);
-        button2_24.setBorderColor(new java.awt.Color(204, 133, 228));
-        button2_24.setBorderPainted(false);
-        button2_24.setColor(new java.awt.Color(204, 0, 204));
-        button2_24.setColorClick(new java.awt.Color(204, 204, 204));
-        button2_24.setColorOver(new java.awt.Color(204, 204, 255));
-        button2_24.setRadius(50);
-        button2_24.addActionListener(new java.awt.event.ActionListener() {
+        button2_1A.setBorder(null);
+        button2_1A.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1A.setBorderPainted(false);
+        button2_1A.setColor(new java.awt.Color(204, 0, 204));
+        button2_1A.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1A.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1A.setRadius(50);
+        button2_1A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2_24ActionPerformed(evt);
+                button2_1AActionPerformed(evt);
             }
         });
 
-        button2_25.setBorder(null);
-        button2_25.setBorderColor(new java.awt.Color(204, 133, 228));
-        button2_25.setBorderPainted(false);
-        button2_25.setColor(new java.awt.Color(204, 0, 204));
-        button2_25.setColorClick(new java.awt.Color(204, 204, 204));
-        button2_25.setColorOver(new java.awt.Color(204, 204, 255));
-        button2_25.setRadius(50);
-        button2_25.addActionListener(new java.awt.event.ActionListener() {
+        button2_1B.setBorder(null);
+        button2_1B.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1B.setBorderPainted(false);
+        button2_1B.setColor(new java.awt.Color(204, 0, 204));
+        button2_1B.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1B.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1B.setRadius(50);
+        button2_1B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2_25ActionPerformed(evt);
+                button2_1BActionPerformed(evt);
             }
         });
 
-        button2_26.setBorder(null);
-        button2_26.setBorderColor(new java.awt.Color(204, 133, 228));
-        button2_26.setBorderPainted(false);
-        button2_26.setColor(new java.awt.Color(204, 0, 204));
-        button2_26.setColorClick(new java.awt.Color(204, 204, 204));
-        button2_26.setColorOver(new java.awt.Color(204, 204, 255));
-        button2_26.setRadius(50);
-        button2_26.addActionListener(new java.awt.event.ActionListener() {
+        button2_1C.setBorder(null);
+        button2_1C.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1C.setBorderPainted(false);
+        button2_1C.setColor(new java.awt.Color(204, 0, 204));
+        button2_1C.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1C.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1C.setRadius(50);
+        button2_1C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2_26ActionPerformed(evt);
+                button2_1CActionPerformed(evt);
             }
         });
 
-        button2_27.setBorder(null);
-        button2_27.setBorderColor(new java.awt.Color(204, 133, 228));
-        button2_27.setBorderPainted(false);
-        button2_27.setColor(new java.awt.Color(204, 0, 204));
-        button2_27.setColorClick(new java.awt.Color(204, 204, 204));
-        button2_27.setColorOver(new java.awt.Color(204, 204, 255));
-        button2_27.setRadius(50);
-        button2_27.addActionListener(new java.awt.event.ActionListener() {
+        button2_1D.setBorder(null);
+        button2_1D.setBorderColor(new java.awt.Color(204, 133, 228));
+        button2_1D.setBorderPainted(false);
+        button2_1D.setColor(new java.awt.Color(204, 0, 204));
+        button2_1D.setColorClick(new java.awt.Color(204, 204, 204));
+        button2_1D.setColorOver(new java.awt.Color(204, 204, 255));
+        button2_1D.setRadius(50);
+        button2_1D.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2_27ActionPerformed(evt);
+                button2_1DActionPerformed(evt);
             }
         });
 
@@ -1399,11 +1644,11 @@ public class FlightSeat extends javax.swing.JPanel {
                             .addGroup(economySeatLayout.createSequentialGroup()
                                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addComponent(button2_24, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(button2_25, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2_1B, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(button2_26, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(button2_1C, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(economySeatLayout.createSequentialGroup()
                                         .addComponent(button2_2A, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -1419,7 +1664,7 @@ public class FlightSeat extends javax.swing.JPanel {
                                 .addGap(39, 39, 39)
                                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(economySeatLayout.createSequentialGroup()
-                                        .addComponent(button2_27, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(button2_1D, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(button2_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -1520,10 +1765,10 @@ public class FlightSeat extends javax.swing.JPanel {
                 .addComponent(jLabel16)
                 .addGap(13, 13, 13)
                 .addGroup(economySeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button2_24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2_25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2_26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2_27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1A, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1B, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1C, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button2_1D, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button2_1E, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button2_1F, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button2_1G, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1588,7 +1833,7 @@ public class FlightSeat extends javax.swing.JPanel {
         bg.add(tabbedPane);
         tabbedPane.setBounds(320, -40, 590, 510);
 
-        passengerDets.setBackground(new java.awt.Color(252, 223, 251));
+        passengerDets.setBackground(new java.awt.Color(227, 227, 254));
         passengerDets.setRoundBottomLeft(50);
         passengerDets.setRoundBottomRight(50);
         passengerDets.setRoundTopLeft(50);
@@ -1608,7 +1853,7 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel8.setText("First Name");
 
         fNameInput.setBorder(null);
-        fNameInput.setForeground(new java.awt.Color(102, 102, 102));
+        fNameInput.setForeground(new java.awt.Color(255, 255, 255));
         fNameInput.setFillColor(new java.awt.Color(204, 204, 204));
         fNameInput.setLineColor(new java.awt.Color(204, 204, 204));
 
@@ -1683,37 +1928,38 @@ public class FlightSeat extends javax.swing.JPanel {
         );
 
         bg.add(passengerDets);
-        passengerDets.setBounds(10, 70, 300, 370);
+        passengerDets.setBounds(20, 70, 300, 370);
 
         add(bg);
         bg.setBounds(0, 0, 900, 530);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
         // TODO add your handling code here:
-        if(fNameInput==null || lNameInput==null)
-            JOptionPane.showMessageDialog(this, "Please complete your personal details");
-        if(seatInput==null)
-            JOptionPane.showMessageDialog(this, "Please select your flight seat");
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_continueButtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(book.getReturnDate()==null)
+            showBookingPanel();
+        else
+            showBookingTwoWayPanel();
+    }//GEN-LAST:event_backButtActionPerformed
 
-    private void button_0_1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_0_1AActionPerformed
+    private void button_1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1AActionPerformed
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_button_0_1AActionPerformed
+    }//GEN-LAST:event_button_1AActionPerformed
 
-    private void button_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_3ActionPerformed
+    private void button_1CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button_3ActionPerformed
+    }//GEN-LAST:event_button_1CActionPerformed
 
-    private void button_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_4ActionPerformed
+    private void button_1EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1EActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button_4ActionPerformed
+    }//GEN-LAST:event_button_1EActionPerformed
 
     private void button_1DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1DActionPerformed
         // TODO add your handling code here:
@@ -1800,21 +2046,21 @@ public class FlightSeat extends javax.swing.JPanel {
         
     }//GEN-LAST:event_seatInputActionPerformed
 
-    private void button2_24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_24ActionPerformed
+    private void button2_1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1AActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button2_24ActionPerformed
+    }//GEN-LAST:event_button2_1AActionPerformed
 
-    private void button2_25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_25ActionPerformed
+    private void button2_1BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1BActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button2_25ActionPerformed
+    }//GEN-LAST:event_button2_1BActionPerformed
 
-    private void button2_26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_26ActionPerformed
+    private void button2_1CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button2_26ActionPerformed
+    }//GEN-LAST:event_button2_1CActionPerformed
 
-    private void button2_27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_27ActionPerformed
+    private void button2_1DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1DActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button2_27ActionPerformed
+    }//GEN-LAST:event_button2_1DActionPerformed
 
     private void button2_1EActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2_1EActionPerformed
         // TODO add your handling code here:
@@ -1989,17 +2235,18 @@ public class FlightSeat extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButt;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel busSeat;
+    private airswift.MyButton button2_1A;
+    private airswift.MyButton button2_1B;
+    private airswift.MyButton button2_1C;
+    private airswift.MyButton button2_1D;
     private airswift.MyButton button2_1E;
     private airswift.MyButton button2_1F;
     private airswift.MyButton button2_1G;
     private airswift.MyButton button2_1H;
     private airswift.MyButton button2_1I;
-    private airswift.MyButton button2_24;
-    private airswift.MyButton button2_25;
-    private airswift.MyButton button2_26;
-    private airswift.MyButton button2_27;
     private airswift.MyButton button2_2A;
     private airswift.MyButton button2_2B;
     private airswift.MyButton button2_2C;
@@ -2036,37 +2283,35 @@ public class FlightSeat extends javax.swing.JPanel {
     private airswift.MyButton button2_5G;
     private airswift.MyButton button2_5H;
     private airswift.MyButton button2_5I;
-    private airswift.MyButton button_0_1A;
+    private airswift.MyButton button_1A;
+    private airswift.MyButton button_1B;
+    private airswift.MyButton button_1C;
     private airswift.MyButton button_1D;
+    private airswift.MyButton button_1E;
     private airswift.MyButton button_1F;
-    private airswift.MyButton button_2;
     private airswift.MyButton button_2A;
     private airswift.MyButton button_2B;
     private airswift.MyButton button_2C;
     private airswift.MyButton button_2D;
     private airswift.MyButton button_2E;
     private airswift.MyButton button_2F;
-    private airswift.MyButton button_3;
     private airswift.MyButton button_3A;
     private airswift.MyButton button_3B;
     private airswift.MyButton button_3C;
     private airswift.MyButton button_3D;
     private airswift.MyButton button_3E;
     private airswift.MyButton button_3F;
-    private airswift.MyButton button_4;
     private airswift.MyButton button_4A;
     private airswift.MyButton button_4B;
     private airswift.MyButton button_4C;
     private airswift.MyButton button_4D;
     private airswift.MyButton button_4E;
     private airswift.MyButton button_4F;
+    private javax.swing.JButton continueButt;
     private javax.swing.JPanel economySeat;
     private airswift.FTextField fNameInput;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -2076,6 +2321,7 @@ public class FlightSeat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2083,7 +2329,6 @@ public class FlightSeat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
@@ -2091,6 +2336,8 @@ public class FlightSeat extends javax.swing.JPanel {
     private airswift.FTextField lNameInput;
     private javax.swing.JLabel pass;
     private airswift.RoundedPanel passengerDets;
+    private javax.swing.JLabel seat;
+    private javax.swing.JPanel seatDisplay;
     private airswift.FTextField seatInput;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables

@@ -24,7 +24,7 @@ public class TransactionDisplay {
             if (transaction.length >= 24) {
                 String departDate7 = transaction[7];
                 String timeDepartF9 = transaction[9];
-                String flightID1 = transaction[1];
+                String flightName20 = transaction[20];
                 String departLong3 = transaction[3];
                 String returnLong5 = transaction[5];
                 String cabin21 = transaction[21];
@@ -43,16 +43,16 @@ public class TransactionDisplay {
                 }
 
                 // Concatenate data for both rows
-                String row1Data = departDate7 + timeDepartF9 + flightID1 + departLong3 + returnLong5 + cabin21 + seatNames11;
-                String row2Data = returnDate8 + timeReturnF10 + flightID1 + returnLong5 + departLong3 + cabin21 + seatNames11;
+                String row1Data = departDate7 + timeDepartF9 + flightName20 + departLong3 + returnLong5 + cabin21 + seatNames11;
+                String row2Data = returnDate8 + timeReturnF10 + flightName20 + returnLong5 + departLong3 + cabin21 + seatNames11;
 
                 // Check for duplicates before adding to the table
                 if (uniqueEntries.add(row1Data)) {
-                    model.addRow(new Object[]{departDate7 + " " + timeDepartF9 + " | " + timeDepart22, flightID1, departLong3 + " ---> " + returnLong5, cabin21 + " | " + seatNames11});
+                    model.addRow(new Object[]{departDate7 + " " + timeDepartF9 + " | " + timeDepart22, flightName20, departLong3 + " ---> " + returnLong5, cabin21 + " | " + seatNames11});
                 }
 
                 if (!returnDate8.isEmpty() && uniqueEntries.add(row2Data)) {
-                    model.addRow(new Object[]{returnDate8 + " " + timeReturnF10 + " | " + timeReturn23, flightID1, returnLong5 + " ---> " + departLong3, cabin21 + " | " + seatNames11});
+                    model.addRow(new Object[]{returnDate8 + " " + timeReturnF10 + " | " + timeReturn23, flightName20, returnLong5 + " ---> " + departLong3, cabin21 + " | " + seatNames11});
                 }
             }
         }
