@@ -46,7 +46,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="seatDisplay">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -72,7 +72,7 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="backButt">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -86,15 +86,15 @@
                 <Property name="text" type="java.lang.String" value="Back"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="700" y="30" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="700" y="20" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="continueButt">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -108,27 +108,11 @@
                 <Property name="text" type="java.lang.String" value="Continue"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continueButtActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="800" y="30" width="-1" height="-1"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="jLabel11"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="70" y="20" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="800" y="20" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -145,6 +129,40 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="70" y="40" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel20">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Seat"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="70" y="20" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="seat">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="107" y="20" width="40" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -206,19 +224,19 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="button_4A" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_2A" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="button_0_1A" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1A" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_3A" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="button_2" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_2B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_3B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_4B" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="button_3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1C" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_2C" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_3C" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_4C" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
@@ -232,7 +250,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="button_4" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="button_1E" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_2E" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_4E" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="button_3E" min="-2" pref="42" max="-2" attributes="0"/>
@@ -280,16 +298,16 @@
                               <Component id="button_3A" min="-2" pref="41" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="button_2" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1B" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="button_3" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1C" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
                                       <Component id="button_1D" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="button_4" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1E" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                       <Component id="button_1F" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="button_0_1A" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="button_1A" min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
@@ -438,7 +456,7 @@
                     <Property name="text" type="java.lang.String" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="button_0_1A">
+                <Component class="airswift.MyButton" name="button_1A">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -459,10 +477,10 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_0_1AActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_1AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="button_2">
+                <Component class="airswift.MyButton" name="button_1B">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -483,7 +501,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="button_3">
+                <Component class="airswift.MyButton" name="button_1C">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -504,10 +522,10 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_1CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="button_4">
+                <Component class="airswift.MyButton" name="button_1E">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -528,7 +546,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_1EActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="airswift.MyButton" name="button_1D">
@@ -1061,11 +1079,11 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="button2_24" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1A" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="button2_25" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1B" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="button2_26" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1C" min="-2" pref="33" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="button2_2A" min="-2" pref="33" max="-2" attributes="0"/>
@@ -1085,7 +1103,7 @@
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="button2_27" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="button2_1D" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="button2_1E" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1223,10 +1241,10 @@
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="button2_24" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="button2_25" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="button2_26" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="button2_27" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1A" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1B" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1C" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="button2_1D" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="button2_1E" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="button2_1F" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="button2_1G" min="-2" pref="30" max="-2" attributes="0"/>
@@ -1326,7 +1344,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="airswift.MyButton" name="button2_24">
+                <Component class="airswift.MyButton" name="button2_1A">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1347,10 +1365,10 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_24ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1AActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="button2_25">
+                <Component class="airswift.MyButton" name="button2_1B">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1371,10 +1389,10 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_25ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1BActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="button2_26">
+                <Component class="airswift.MyButton" name="button2_1C">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1395,10 +1413,10 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_26ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1CActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="airswift.MyButton" name="button2_27">
+                <Component class="airswift.MyButton" name="button2_1D">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -1419,7 +1437,7 @@
                     <Property name="radius" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_27ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2_1DActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="airswift.MyButton" name="button2_1E">
@@ -2482,7 +2500,7 @@
         <Container class="airswift.RoundedPanel" name="passengerDets">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fb" green="df" red="fc" type="rgb"/>
+              <Color blue="fe" green="e3" red="e3" type="rgb"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="50"/>
             <Property name="roundBottomRight" type="int" value="50"/>
@@ -2491,7 +2509,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="70" width="300" height="370"/>
+              <AbsoluteConstraints x="20" y="70" width="300" height="370"/>
             </Constraint>
           </Constraints>
 
@@ -2583,7 +2601,7 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="66" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="fillColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>

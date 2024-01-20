@@ -194,13 +194,13 @@ public class FlightBooking extends javax.swing.JPanel {
         
         
         JPanel dynamicButtonsPanel = new JPanel();
-        dynamicButtonsPanel.setBackground(new Color(0,0,0));
+        dynamicButtonsPanel.setBackground(new Color(153, 153, 255));
         //dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
         dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
-        dynamicButtonsPanel.revalidate();
-        dynamicButtonsPanel.repaint();      
+        /*dynamicButtonsPanel.revalidate();
+        dynamicButtonsPanel.repaint();      */
 
 
         JButton[] buttons = new JButton[randomNum];
@@ -262,18 +262,30 @@ public class FlightBooking extends javax.swing.JPanel {
                     book.setReturnTimeFromTimeAvail(selectedFlightIndex, timeAvail);
                     book.setFlightName(flightName, selectedFlightIndex);
                     System.out.println(book);
+                    SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showSeatPanel();
+                    }
+                });
                     
                 } else {
                     // Handle the case where no flight is selected
                     String message = "Please select a flight before continuing.";
                     JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
                 }
-                 SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                showPaymentPanel();
+                
             }
         });
+        backButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showMenuPanel();
+                    }
+                });
             }
         });
         
@@ -286,13 +298,10 @@ public class FlightBooking extends javax.swing.JPanel {
         add(scrollPane);
     }
     
-    public void showPaymentPanel() {
+    public void showSeatPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        PaymentP paymentPanel = new PaymentP(book);
-
-        // Set booking information for paymentPanel
-        paymentPanel.setBookingInformation(book);
+        FlightSeat seatPanel = new FlightSeat(book,menu);
 
         // Get the parent container of the current FlightBooking panel
         Container parent = this.getParent();
@@ -305,7 +314,33 @@ public class FlightBooking extends javax.swing.JPanel {
         // Replace the current FlightBooking panel with the PaymentP panel
         if (parent != null) {
             parent.remove(this);
-            parent.add(paymentPanel);
+            parent.add(seatPanel);
+            parent.revalidate();
+            parent.repaint();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Print the exception for debugging
+        System.err.println("Error creating or displaying PaymentP panel.");
+    }
+    }
+    
+    public void showMenuPanel() {
+    try {
+        // Assuming paymentPanel is an instance of the PaymentP class
+        FlightMenu menuPanel = new FlightMenu();
+
+        // Get the parent container of the current FlightBooking panel
+        Container parent = this.getParent();
+
+        // Hide the menu before replacing the current panel
+        if (menu != null) {
+            menu.setVisible(false);
+        }
+
+        // Replace the current FlightBooking panel with the PaymentP panel
+        if (parent != null) {
+            parent.remove(this);
+            parent.add(menuPanel);
             parent.revalidate();
             parent.repaint();
         }
@@ -340,11 +375,10 @@ public class FlightBooking extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         passengerLabel = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         departDateDis = new javax.swing.JLabel();
         continueButt = new airswift.ButtonGradient();
-        buttonGradient3 = new airswift.ButtonGradient();
+        backButt = new airswift.ButtonGradient();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(900, 530));
@@ -366,7 +400,6 @@ public class FlightBooking extends javax.swing.JPanel {
         add(findAflight, java.awt.BorderLayout.CENTER);
 
         departShort.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        departShort.setForeground(new java.awt.Color(0, 0, 0));
         departShort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         departShort.setText("jLabel1");
         findAflight.add(departShort, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 20, 45, -1));
@@ -378,7 +411,6 @@ public class FlightBooking extends javax.swing.JPanel {
         findAflight.add(departLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 100, -1));
 
         returnShort.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        returnShort.setForeground(new java.awt.Color(0, 0, 0));
         returnShort.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         returnShort.setText("jLabel1");
         findAflight.add(returnShort, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 20, 45, -1));
@@ -390,7 +422,6 @@ public class FlightBooking extends javax.swing.JPanel {
         findAflight.add(returnLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 100, -1));
 
         departLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        departLabel.setForeground(new java.awt.Color(0, 0, 0));
         departLabel.setText("Depart");
         findAflight.add(departLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
@@ -415,24 +446,8 @@ public class FlightBooking extends javax.swing.JPanel {
         findAflight.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 10, 80));
 
         passengerLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        passengerLabel.setForeground(new java.awt.Color(0, 0, 0));
         passengerLabel.setText("Passenger");
         findAflight.add(passengerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 69, -1));
-
-        backButton.setBackground(new java.awt.Color(102, 0, 102));
-        backButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        backButton.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                backButtonPropertyChange(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setToolTipText("");
@@ -460,16 +475,16 @@ public class FlightBooking extends javax.swing.JPanel {
             }
         });
 
-        buttonGradient3.setBackground(new java.awt.Color(204, 0, 153));
-        buttonGradient3.setBorder(null);
-        buttonGradient3.setForeground(new java.awt.Color(102, 102, 102));
-        buttonGradient3.setText("Back");
-        buttonGradient3.setColor1(new java.awt.Color(204, 204, 204));
-        buttonGradient3.setColor2(new java.awt.Color(204, 204, 204));
-        buttonGradient3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        buttonGradient3.addActionListener(new java.awt.event.ActionListener() {
+        backButt.setBackground(new java.awt.Color(204, 0, 153));
+        backButt.setBorder(null);
+        backButt.setForeground(new java.awt.Color(102, 102, 102));
+        backButt.setText("Back");
+        backButt.setColor1(new java.awt.Color(204, 204, 204));
+        backButt.setColor2(new java.awt.Color(204, 204, 204));
+        backButt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        backButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGradient3ActionPerformed(evt);
+                backButtActionPerformed(evt);
             }
         });
 
@@ -490,12 +505,9 @@ public class FlightBooking extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(buttonGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backButt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(660, 660, 660)
-                        .addComponent(continueButt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(backButton)))
+                        .addComponent(continueButt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
@@ -509,10 +521,9 @@ public class FlightBooking extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(234, 234, 234)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(continueButt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
-                .addComponent(backButton))
+                .addGap(103, 103, 103))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -527,37 +538,20 @@ public class FlightBooking extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        Customer cust = new Customer();
-        //new FlightMenu(cust).showForm(new FlightSeat(book, gradientDropdownMenu));
-       
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void backButtonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_backButtonPropertyChange
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_backButtonPropertyChange
-
     private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
-         FlightBooking flightBookingPanel = new FlightBooking(menu, book);
-
-    // Simply call the showPaymentPanel method without passing any arguments
-    flightBookingPanel.showPaymentPanel();
+         
        // TODO add your handling code here:
         
     }//GEN-LAST:event_continueButtActionPerformed
 
-    private void buttonGradient3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGradient3ActionPerformed
+    private void backButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonGradient3ActionPerformed
+    }//GEN-LAST:event_backButtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private airswift.ButtonGradient backButt;
     private javax.swing.JPanel bg;
-    private airswift.ButtonGradient buttonGradient3;
     private airswift.ButtonGradient continueButt;
     public javax.swing.JLabel departDate;
     public javax.swing.JLabel departDateDis;
