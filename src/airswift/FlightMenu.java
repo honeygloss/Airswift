@@ -480,6 +480,7 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setPassenger(Integer.parseInt(passengersListdown2.getSelectedItem().toString()));  
         book.setDepartDate(departDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
+        book.setEmail(cust.getEmailAddress());
         if(returnCheckbox.isSelected()){
             book.setReturnDate(returnDate.getDate());
             showForm(new FlightBookingTwoWay(menu, book));

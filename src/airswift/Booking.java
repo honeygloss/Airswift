@@ -16,6 +16,11 @@ public class Booking{
     private String flightName;
     private String flightID;
 
+    @Override
+    public String toString() {
+        return "Booking{" + "email=" + email + ", departShort=" + departShort + ", departLong=" + departLong + ", returnShort=" + returnShort + ", returnLong=" + returnLong + ", departDate=" + departDate + ", returnDate=" + returnDate + ", passenger=" + passenger + ", cabin=" + cabin + ", timeDepart=" + timeDepart + ", timeReturn=" + timeReturn + ", flightName=" + flightName + ", flightID=" + flightID + '}';
+    }
+
     public String getEmail() {
         return email;
     }
@@ -108,8 +113,8 @@ public class Booking{
         return flightName;
     }
 
-    public void setFlightName(String flightName) {
-        this.flightName = flightName;
+    public void setFlightName(String []flightName, int selectedIndex) {
+        this.flightName = flightName[selectedIndex];
     }
 
     public String getFlightID() {
@@ -147,6 +152,26 @@ public class Booking{
             price=price*2;
         
         return price*passenger;
+    }
+    
+    public void setDepartTimeFromTimeAvail(int index, String[][] timeAvail) {
+        if (index >= 0 && index < timeAvail.length) {
+            timeDepart[0] = timeAvail[index][0];
+            timeDepart[1] = timeAvail[index][1];
+        } else {
+            // Handle the case where the index is out of bounds
+            System.out.println("Invalid index for timeAvail array.");
+        }
+    }
+    
+    public void setReturnTimeFromTimeAvail(int index, String[][] timeAvail) {
+        if (index >= 0 && index < timeAvail.length) {
+            timeReturn[0] = timeAvail[index][0];
+            timeReturn[1] = timeAvail[index][1];
+        } else {
+            // Handle the case where the index is out of bounds
+            System.out.println("Invalid index for timeAvail array.");
+        }
     }
     
     public Booking(){

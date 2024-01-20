@@ -33,6 +33,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -43,10 +44,15 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  * @author ASUS
  */
 public class FlightBooking extends javax.swing.JPanel {
+    private int randomNum;
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
+    private int selectedFlightIndex =-1;
+    private String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
+                                    {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
+                                    {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
     
-   
+
     /**
      * Creates new form FlightBooking
      */
@@ -67,6 +73,7 @@ public class FlightBooking extends javax.swing.JPanel {
         
         initComponents();
         
+        
         // Display booking information selected in the Flight Menu
         departShort.setText(book.getDepartShort());
         departLong.setText(book.getDepartLong().toUpperCase());
@@ -80,20 +87,18 @@ public class FlightBooking extends javax.swing.JPanel {
         departDateDis.setText(dateFormat2.format(book.getDepartDate()).toUpperCase());
         
         // Assign time available
-        String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
-                                    {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
-                                    {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
+        
         
         // Generate random number of available tickets
         Random random = new Random();
-        int randomNum;
+        
         do{
             randomNum = random.nextInt(10);
         }while(randomNum==0);
         
         int indFTime[]=new int[randomNum], indFNum[]=new int[randomNum];
-        String flightName[]=new String[randomNum];
         String flightTime[][]=new String[randomNum][2];
+        String flightName[]=new String[randomNum];
         int newValue;
         boolean isDuplicate;
         
@@ -194,6 +199,7 @@ public class FlightBooking extends javax.swing.JPanel {
         dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
+        dynamicButtonsPanel.revalidate();
         dynamicButtonsPanel.repaint();      
 
 
@@ -201,14 +207,14 @@ public class FlightBooking extends javax.swing.JPanel {
 
         for (int i = 0; i < randomNum; i++) {
             if(booking.getCabin().equalsIgnoreCase("Economy"))
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
             else
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
@@ -217,17 +223,60 @@ public class FlightBooking extends javax.swing.JPanel {
           
             buttons[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
             buttons[i].setBackground(new Color(153,153,255));
-            buttons[i].setForeground(new Color(102,102,102));
-            buttons[i].setPreferredSize(new Dimension(500, 100));
+            buttons[i].setForeground(new Color(204,204,255));
+            buttons[i].setPreferredSize(new Dimension(200, 100));
           
             dynamicButtonsPanel.add(buttons[i]);
-        }       
+            
+            final int index = i; // need to make a final variable for use inside the ActionListener
+            final int finalRandomNum = randomNum;
+
+            buttons[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Handle the button click event
+                    // You can store the selected index or perform other actions here
+                    selectedFlightIndex = index;
+
+                    // Optionally, you can change the appearance of the selected button
+                    buttons[index].setBackground(new Color(102,0,102));
+
+                    // Optionally, reset the appearance of other buttons
+                    for (int j = 0; j < finalRandomNum; j++) {
+                        if (j != index) {
+                            buttons[j].setBackground(new Color(153, 153, 255));
+                        }
+                    }
+                }
+            });
+        }
+        final int finalRandomNum = randomNum;
+        
+        continueButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle the continuation of the booking process
+                // Save the selected flight information to the Booking class
+                if (selectedFlightIndex >= 0 && selectedFlightIndex < finalRandomNum) {
+                    book.setDepartTimeFromTimeAvail(selectedFlightIndex, timeAvail);
+                    book.setReturnTimeFromTimeAvail(selectedFlightIndex, timeAvail);
+                    book.setFlightName(flightName, selectedFlightIndex);
+                    System.out.println(book);
+                    
+                } else {
+                    // Handle the case where no flight is selected
+                    String message = "Please select a flight before continuing.";
+                    JOptionPane.showMessageDialog(null, message, "No Flight Selected", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
         
         //Create a JScrollPane and add your main panel to it
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
         scrollPane.setBounds(0, 260, 900,210);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll
+        //scrollPane.getVerticalScrollBar().setUnitIncrement(16);  // Adjust the value as needed
         add(scrollPane);
           
     }

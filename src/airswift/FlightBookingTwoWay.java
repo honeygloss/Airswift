@@ -24,6 +24,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.StringTokenizer;
 import javaswingdev.GradientDropdownMenu;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -35,6 +36,7 @@ import javax.swing.JScrollPane;
 public class FlightBookingTwoWay extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
     private Booking book;
+  
     /**
      * Creates new form FlightBookingTwoWay
      */
@@ -45,6 +47,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
     public FlightBookingTwoWay(GradientDropdownMenu menu, Booking booking) {
         this.gradientDropdownMenu = menu;
         book = booking;
+       
         
         initComponents();
         
@@ -164,34 +167,37 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         }
         
         JPanel dynamicButtonsPanel = new JPanel();
-        dynamicButtonsPanel.setLayout(new GridBagLayout());
-        dynamicButtonsPanel.setBackground(new Color(204,204,255));
-        GridBagConstraints gbcButtons = new GridBagConstraints();
+        dynamicButtonsPanel.setBackground(new Color(0,0,0));
+        //dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+        dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
+        dynamicButtonsPanel.setBounds(0, 260, 900, 530);
+        dynamicButtonsPanel.setVisible(true);
+        dynamicButtonsPanel.repaint(); 
 
         JButton[] buttons = new JButton[randomNum];
 
         for (int i = 0; i < randomNum; i++) {
             if(booking.getCabin().equalsIgnoreCase("Economy"))
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<span style='font-size:16px;'><b>"
-                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<br><span style='font-size:16px;'><b>"
+                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
             
             else
-                buttons[i] = new JButton("<html><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<span style='font-size:16px;'><b>"
-                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
+                + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<br><span style='font-size:16px;'><b>"
+                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -200,46 +206,18 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             buttons[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
             buttons[i].setBackground(new Color(153,153,255));
             buttons[i].setForeground(new Color(102,102,102));
-            buttons[i].setPreferredSize(new Dimension(500, 300));
-          
-            gbcButtons.gridx = 0;
-            gbcButtons.gridy = i;
-            gbcButtons.anchor = GridBagConstraints.CENTER;  
-            gbcButtons.weightx = 1.0; // Adjust weightx to allocate additional horizontal space
-            gbcButtons.fill = GridBagConstraints.HORIZONTAL; // Fill horizontally
-            dynamicButtonsPanel.add(buttons[i], gbcButtons);
+            buttons[i].setPreferredSize(new Dimension(500, 500));
+            
+            dynamicButtonsPanel.add(buttons[i]);
         }
         
-        // Create a JScrollPane and add your main panel to it
+        //Create a JScrollPane and add your main panel to it
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
+        scrollPane.setBounds(0, 260, 900,210);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-        scrollPane.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 0));
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll
+        add(scrollPane);
 
-        
-        // Set up layout for your main panel
-        setLayout(new BorderLayout());
-        // Create a container panel to hold your other components and the JScrollPane
-        JPanel containerPanel = new JPanel(new BorderLayout());
-        containerPanel.add(bg, BorderLayout.NORTH);  // Assuming your other components are in 'bg'
-        
-         // Add the JScrollPane to the container panel
-        containerPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // Add the container panel to the main panel
-        add(containerPanel, BorderLayout.CENTER);
-        
-        
-        // Add the panel with dynamic buttons to the main panel
-        GridBagConstraints gbcDynamicButtons = new GridBagConstraints();
-        gbcDynamicButtons.gridx = 0;
-        gbcDynamicButtons.gridy = 1;
-        gbcDynamicButtons.anchor = GridBagConstraints.SOUTH; 
-        
-        gbcDynamicButtons.weighty = 1.0; // Allow vertical expansion
-        //availTicket.add(dynamicButtonsPanel, gbcDynamicButtons);
-    
-    
     }
     
     public void setGradientDropdownMenu(GradientDropdownMenu menu) {
