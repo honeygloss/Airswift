@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import airswift.FlightMenu;
 
 /**
  *
@@ -28,31 +29,28 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        readFile();
     }
 
-    boolean isFound = false;
-    void readFile(){
-        try{
-            FileReader fr = new FileReader("Login.txt");
-            java.util.Scanner scanner = new java.util.Scanner(fr);
-            while (scanner.hasNextLine()) {
+    void readFile() {
+    try {
+        FileReader fr = new FileReader("UserRegister.txt");
+        java.util.Scanner scanner = new java.util.Scanner(fr);
+        while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             System.out.println(line); // You can modify this to do something with each line
         }
 
         scanner.close();
-        //fr.close();
-       
-        } catch(FileNotFoundException ex){
-            try{
-            FileWriter writer = new FileWriter("Login.txt",true);
-            } catch(IOException ex1){
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-        } 
-        
+        // fr.close(); // You don't need to close the FileReader here
+
+    } catch (FileNotFoundException ex) {
+        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
+
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +70,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmdLogin = new swing.ButtonGradient();
         checkR = new javax.swing.JCheckBox();
+        cmdSignUp = new swing.ButtonGradient();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -122,6 +121,18 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        cmdSignUp.setText("SIGN UP");
+        cmdSignUp.setColor1(new java.awt.Color(128, 0, 32));
+        cmdSignUp.setColor2(new java.awt.Color(102, 0, 0));
+        cmdSignUp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmdSignUp.setMaximumSize(new java.awt.Dimension(40, 40));
+        cmdSignUp.setMinimumSize(new java.awt.Dimension(40, 40));
+        cmdSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSignUpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -141,7 +152,9 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(140, 140, 140)
+                        .addGap(82, 82, 82)
+                        .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
@@ -164,8 +177,10 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkR)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 19, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -210,89 +225,51 @@ public class Login extends javax.swing.JFrame {
         String pass = txtPassword.getText();
         String[] tempArray = new String[100];
         
+        //Constraint for user to fill all required information to login
         if(emailAddress.isEmpty() || pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }
         
-        /*try{
-            FileReader fr = new FileReader("UserRegister.txt");
-            
-            Scanner sc = new Scanner(fr);
-            String line;
-            String[] lineArr;
-            int currIn=0;
-            while(sc.hasNextLine()){
-                line = sc.nextLine();
-                lineArr = line.split(",");
-                if(lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)){
-                    JOptionPane.showMessageDialog(null, "Login successfull");
-                    tempArray[currIn++]=line;
-                    
-                    try {
-                        FileWriter wr = new FileWriter("Login.txt",true);
-                        wr.write(emailAddress + " , " +pass);
-                        wr.write(System.getProperty("line.separator"));
-                        wr.close();
-            
-                    }
-                    catch(Exception e){
-                        System.out.println(e.toString());
-
-                    }
-                    break;
-                }else{
-                    JOptionPane.showMessageDialog(null, "Incorrect Email Address or Password");
-                    tempArray[currIn++]=line;
-                    return;
-                }
-            }fr.close();
-        }
-        
-        catch(Exception e){
-            System.out.println(e.toString());
-        
-        }*/
-        
-        // ... (previous code)
 
     try {
         Customer cust = new Customer();
         CustomerInformation customerInfoPanel = new CustomerInformation(cust);
         FlightMenu flightMenu = new FlightMenu(cust);
-        FileReader fr = new FileReader("UserRegister.txt");
-        Scanner sc = new Scanner(fr);
-        String line;
-        String[] lineArr;
-        int currIn = 0;
-        boolean loginSuccessful = false;
-        while (sc.hasNextLine()) {
-            line = sc.nextLine();
-            lineArr = line.split(",");
-            if (lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
-                tempArray[currIn++] = line;
-                loginSuccessful = true;
-                cust.setTitle(lineArr[0]) ;
-                cust.setPassport(lineArr[1]);
-                cust.setFName(lineArr[2]);
-                cust.setLName(lineArr[3]);
-                cust.setNationality(lineArr[4]);
-                cust.setPhoneNumber(lineArr[5]);
-                cust.setDOB(lineArr[6]);
-                cust.setEmailAddress(lineArr[7]);
-                cust.setConfirmPass(pass);
-                cust.setFullNameEmergency(lineArr[9]);
-                cust.setPhoneNumberEmergency(lineArr[10]);
-                cust.setRelationship(lineArr[11]);
-                
-                new FlightMenu(cust).setVisible(true);
-                dispose();
-                break;
-            }   else {
-                     tempArray[currIn++] = line;
+        boolean loginSuccessful;
+            try (FileReader fileRead = new FileReader("UserRegister.txt")) {
+                Scanner sc = new Scanner(fileRead);
+                String line;
+                String[] lineArr;
+                int currIn = 0;
+                loginSuccessful = false;
+                while (sc.hasNextLine()) {
+                    line = sc.nextLine();
+                    lineArr = line.split(",");
+                    if (lineArr[7].equals(emailAddress) && lineArr[8].equals(pass)) {
+                        tempArray[currIn++] = line;
+                        loginSuccessful = true;
+                        cust.setTitle(lineArr[0]) ;
+                        cust.setPassport(lineArr[1]);
+                        cust.setFName(lineArr[2]);
+                        cust.setLName(lineArr[3]);
+                        cust.setNationality(lineArr[4]);
+                        cust.setPhoneNumber(lineArr[5]);
+                        cust.setDOB(lineArr[6]);
+                        cust.setEmailAddress(lineArr[7]);
+                        cust.setConfirmPass(pass);
+                        cust.setFullNameEmergency(lineArr[9]);
+                        cust.setPhoneNumberEmergency(lineArr[10]);
+                        cust.setRelationship(lineArr[11]);
+                        
+                        new FlightMenu(cust).setVisible(true);
+                        dispose();
+                        break;
+                    }   else {
+                        tempArray[currIn++] = line;
+                    }
+                }   
             }
-        }   
-        fr.close();
         System.out.println(cust.getEmailAddress());
     // Move the incorrect message outside the loop
         if (!loginSuccessful) {
@@ -302,21 +279,11 @@ public class Login extends javax.swing.JFrame {
 
     // Additional actions if login is successful can be added here.
 
-        } catch (Exception e) {
-                e.printStackTrace();
+        } catch (IOException e) {
+                System.out.println(e.toString());
         }
         
-        /*try {
-            FileWriter wr = new FileWriter("Login.txt",true);
-            wr.write(emailAddress + "," +pass);
-            wr.write(System.getProperty("line.separator"));
-            wr.close();
-            
-        }
-        catch(Exception e){
-            System.out.println(e.toString());
-
-        }*/
+        
        
     }//GEN-LAST:event_cmdLoginActionPerformed
 
@@ -328,6 +295,11 @@ public class Login extends javax.swing.JFrame {
             txtPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_checkRActionPerformed
+
+    private void cmdSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSignUpActionPerformed
+        // TODO add your handling code here:
+        new Register().setVisible(true);
+    }//GEN-LAST:event_cmdSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +340,7 @@ public class Login extends javax.swing.JFrame {
     private airswift.Background background;
     private javax.swing.JCheckBox checkR;
     private swing.ButtonGradient cmdLogin;
+    private swing.ButtonGradient cmdSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

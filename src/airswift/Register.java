@@ -402,11 +402,6 @@ public class Register extends javax.swing.JFrame {
 
     private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
         // TODO add your handling code here:
-/*String emailAddress = txtEmailAddress.getText();
-        public static boolean patternMatches(String emailAddress,String regexPattern){
-         return Pattern.compie(regexPattern).matches(emailAAddress).matches();
-
-}*/
     }//GEN-LAST:event_txtEmailAddressActionPerformed
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
