@@ -21,16 +21,19 @@ import javax.swing.JOptionPane;
 public class PaymentP extends javax.swing.JPanel {
     private Booking book;
     private AvailableSeat availableS;
-    private Customer customer;
+    private Customer cust;  
     /**
      * Creates new form PaymentP
      */
     public PaymentP(Booking booking) {
         initComponents();
-        this.book = booking;
-         // Initialize the customer object
+        //cust = new Customer();
 
-        TotPayment.setText("RM" + String.valueOf(booking.calculatePayment()));
+        book = booking;
+        //availableS = new AvailableSeat();
+  
+        TotPayment.setText("RM"+String.valueOf(booking.calculatePayment()));
+
     }
     
     boolean isFound = false;
@@ -371,7 +374,8 @@ public class PaymentP extends javax.swing.JPanel {
     }//GEN-LAST:event_CardNumberFieldActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        new FlightMenu(customer).setVisible(true);
+        Customer cust = null;
+        new FlightMenu(cust).setVisible(true);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
@@ -398,28 +402,7 @@ public class PaymentP extends javax.swing.JPanel {
         String timeReturn10 = (timeReturn != null && timeReturn.length > 0) ? timeReturn[0] : "";
         String timeReturn23 = (timeReturn != null && timeReturn.length > 1) ? timeReturn[1] : "";
 
-        StringBuilder namesBuilder = new StringBuilder();
-
-        for (int i = 0; i < book.getPassFirstName().length; i++) {
-            String fullName = book.getPassFirstName()[i] + " " + book.getPassLastName()[i];
-            namesBuilder.append(fullName);
-
-            // Add a new line if it's not the last name in the array
-            if (i < book.getPassFirstName().length - 1) {
-                namesBuilder.append("\n");
-            }
-        }
-
-        String Name24 = namesBuilder.toString();
-        
-        String[] seatNames = new String[10];  // Initialize with the appropriate size
-
-        for (int i = 0; i < seatNames.length; i++) {
-            seatNames[i] = (book.getSeatName()[i] != null) ? String.join(", ", book.getSeatName()[i]) : "";
-            }
-        // Concatenate seat names with " | " separator
-            String seatName11 = String.join(" | ", seatNames);
-
+        String seatNames11 = (availableS != null && availableS.getSeatName() != null) ? String.join(", ", availableS.getSeatName()): "";
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();
@@ -475,10 +458,10 @@ public class PaymentP extends javax.swing.JPanel {
                 returnLong5,
                 passString6,
                 departDate7,
-                returnDate8 != null ? returnDate8 : "" ,
+                returnDate8 != null ? seatNames11 : "" ,
                 timeDepart9, 
-                timeReturn10 != null ? timeReturn10 : "" ,
-                seatName11,// If null, set as empty string
+                timeReturn10 != null ? seatNames11 : "" ,
+                seatNames11 != null ? seatNames11 : "" ,// If null, set as empty string
                 chName12,
                 eAddress13,
                 pNumber14,
@@ -490,8 +473,7 @@ public class PaymentP extends javax.swing.JPanel {
                 flightName20,
                 cabin21,
                 timeDepart22,
-                timeReturn23 != null ? timeReturn23: "" ,
-                Name24
+                timeReturn23 != null ? seatNames11 : "" 
             };
 
             // Convert the array to a CSV string and write to the file
@@ -506,7 +488,6 @@ public class PaymentP extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Error");
     }
     new Receipt(book).setVisible(true);
-
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
 
@@ -546,5 +527,4 @@ public class PaymentP extends javax.swing.JPanel {
     void setBookingInformation(Booking book) {
         this.book = book;
     }
-    
 }
