@@ -50,13 +50,6 @@ public class PaymentP extends javax.swing.JPanel {
         
         }
     }
-    
-    public boolean isValidPhoneNumberFormat(String phoneNumber) {
-        // Match the format +1 123-456-7890 or +12 123-456-7890 or +123 123-456-7890
-        // or 1-123-456-7890 or 12-123-456-7890 or 123-123-456-7890 or 1234567890
-        String regex = "\\+?\\d{0,3}[-\\s]?\\d{1,3}[-\\s]?\\d{3,}";
-        return phoneNumber.matches(regex);
-    }
 
     private String arrayToString(Object[] array) {
         if (array == null || array.length == 0) {
@@ -319,9 +312,9 @@ public class PaymentP extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -334,14 +327,12 @@ public class PaymentP extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)))
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -416,35 +407,24 @@ public class PaymentP extends javax.swing.JPanel {
         String flightName20 = book.getFlightName();
         String cabin21 = book.getCabin();
         
-        if (PhoneNumberField.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fill in the phone number");
-            return;
-        }
         // Check if the phone number matches the desired format
-        if (!isValidPhoneNumberFormat(PhoneNumberField.getText())) {
-            JOptionPane.showMessageDialog(this, "Invalid phone number format");
-        return;
-        }
-        
-        if (SecurityCodeField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fill in the security code");
-        return;
-        }
-        
-        if (CardNumberField.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill in Credit Card Number");
-            return;
-        }
-        
-        if (CardholderNameField.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill in the Card Holder Name");
-            return;
-        }
-        
-        if(!EmailAddressField.getText().contains("@") && !EmailAddressField.getText().contains(".com")){
-            JOptionPane.showMessageDialog(this, "Email is not valid"); 
-            return;
-        }
+    if (!pNumber14.matches("\\d+")){
+        JOptionPane.showMessageDialog(this, "Invalid phone number format");
+    return;
+    }   
+
+    // Check for valid email format
+    if (!eAddress13.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+        JOptionPane.showMessageDialog(this, "Invalid email format"); 
+    return;
+    }
+
+    // Check for empty fields
+    if (pNumber14.isEmpty() || (SecurityCodeField.getText() == null || SecurityCodeField.getText().trim().isEmpty())|| 
+    (CardNumberField.getText() == null || CardNumberField.getText().trim().isEmpty()) || chName12.isEmpty() || eAddress13.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please fill in all fields"); 
+    return;
+}
         
         try {
             FileWriter wr = new FileWriter("Transaction.txt", true);
