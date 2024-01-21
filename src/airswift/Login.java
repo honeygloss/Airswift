@@ -23,7 +23,6 @@ import airswift.FlightMenu;
  */
 public class Login extends javax.swing.JFrame {
 
-
     /**
      * Creates new form Login
      */
@@ -48,10 +47,6 @@ public class Login extends javax.swing.JFrame {
         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
-
-        
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +65,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmdLogin = new swing.ButtonGradient();
         checkR = new javax.swing.JCheckBox();
-        cmdSignUp = new swing.ButtonGradient();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -121,18 +115,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        cmdSignUp.setText("SIGN UP");
-        cmdSignUp.setColor1(new java.awt.Color(128, 0, 32));
-        cmdSignUp.setColor2(new java.awt.Color(102, 0, 0));
-        cmdSignUp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmdSignUp.setMaximumSize(new java.awt.Dimension(40, 40));
-        cmdSignUp.setMinimumSize(new java.awt.Dimension(40, 40));
-        cmdSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdSignUpActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -152,15 +134,13 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(140, 140, 140)
                         .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(checkR)
-                .addGap(34, 34, 34))
+                .addComponent(checkR, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,12 +155,10 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkR)
-                .addGap(18, 19, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(cmdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -283,11 +261,11 @@ public class Login extends javax.swing.JFrame {
                 System.out.println(e.toString());
         }
         
-        
        
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     private void checkRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRActionPerformed
+        // TODO add your handling code here:
         if(checkR.isSelected()){
             txtPassword.setEchoChar((char) 0);
             
@@ -295,11 +273,6 @@ public class Login extends javax.swing.JFrame {
             txtPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_checkRActionPerformed
-
-    private void cmdSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSignUpActionPerformed
-        // TODO add your handling code here:
-        new Register().setVisible(true);
-    }//GEN-LAST:event_cmdSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,7 +313,6 @@ public class Login extends javax.swing.JFrame {
     private airswift.Background background;
     private javax.swing.JCheckBox checkR;
     private swing.ButtonGradient cmdLogin;
-    private swing.ButtonGradient cmdSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

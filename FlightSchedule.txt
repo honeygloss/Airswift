@@ -467,3 +467,13 @@
 1466;AS 459;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;12:05;
 1467;AS 812;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;09:15;
 1468;AS 697;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;19:55;
+1469;AS 785;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;07:05;
+1470;AS 516;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;17:00;
+1471;AS 633;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;02:00;
+1472;AS 738;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;14:45;
+1473;AS 233;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;04:55;
+1474;AS 782;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;12:05;
+1475;AS 449;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;21:15;
+1476;AS 762;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;07:05;
+1477;AS 660;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;23:00;
+1478;AS 843;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;14:45;

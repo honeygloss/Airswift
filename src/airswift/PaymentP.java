@@ -378,7 +378,7 @@ public class PaymentP extends javax.swing.JPanel {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
-        String custEmailAdress0 = book.getEmail();
+        String custEmailAdress0 = cust.getEmailAddress();
 
         String flightID1 = book.getFlightID();
         String departShort2 = book.getDepartShort();
@@ -401,7 +401,28 @@ public class PaymentP extends javax.swing.JPanel {
         String timeReturn10 = (timeReturn != null && timeReturn.length > 0) ? timeReturn[0] : "";
         String timeReturn23 = (timeReturn != null && timeReturn.length > 1) ? timeReturn[1] : "";
 
-        String seatNames11 = (availableS != null && availableS.getSeatName() != null) ? String.join(", ", availableS.getSeatName()): "";
+        StringBuilder namesBuilder = new StringBuilder();
+
+        for (int i = 0; i < book.getPassFirstName().length; i++) {
+            String fullName = book.getPassFirstName()[i] + " " + book.getPassLastName()[i];
+            namesBuilder.append(fullName);
+
+            // Add a new line if it's not the last name in the array
+            if (i < book.getPassFirstName().length - 1) {
+                namesBuilder.append("\n");
+            }
+        }
+
+        String Name24 = namesBuilder.toString();
+        
+        String[] seatNames = new String[10];  // Initialize with the appropriate size
+
+        for (int i = 0; i < seatNames.length; i++) {
+            seatNames[i] = (book.getSeatName()[i] != null) ? String.join(", ", book.getSeatName()[i]) : "";
+            }
+        // Concatenate seat names with " | " separator
+            String seatName11 = String.join(" | ", seatNames);
+
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();
@@ -457,10 +478,10 @@ public class PaymentP extends javax.swing.JPanel {
                 returnLong5,
                 passString6,
                 departDate7,
-                returnDate8 != null ? seatNames11 : "" ,
+                returnDate8 != null ? returnDate8 : "" ,
                 timeDepart9, 
-                timeReturn10 != null ? seatNames11 : "" ,
-                seatNames11 != null ? seatNames11 : "" ,// If null, set as empty string
+                timeReturn10 != null ? timeReturn10 : "" ,
+                seatName11,// If null, set as empty string
                 chName12,
                 eAddress13,
                 pNumber14,
@@ -472,7 +493,8 @@ public class PaymentP extends javax.swing.JPanel {
                 flightName20,
                 cabin21,
                 timeDepart22,
-                timeReturn23 != null ? seatNames11 : "" 
+                timeReturn23 != null ? timeReturn23: "" ,
+                Name24
             };
 
             // Convert the array to a CSV string and write to the file
