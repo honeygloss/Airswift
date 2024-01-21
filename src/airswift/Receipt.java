@@ -97,21 +97,43 @@ public class Receipt extends javax.swing.JFrame {
 }
     
     private List<String[]> loadTransactionsFromFile() {
-        try {
-            // Read all lines from transactions.txt
-            List<String> lines = Files.readAllLines(Paths.get("path/to/transactions.txt"));
+    try {
+        // Read all lines from transactions.txt
+        List<String> lines = Files.readAllLines(Paths.get("path/to/transactions.txt"));
 
-            // Check if there are any lines in the file
-            if (!lines.isEmpty()) {
-                // Split each line using the specified delimiter (comma in this case)
-                return lines.stream().map(line -> line.split(",")).collect(Collectors.toList());
+        // Check if there are any lines in the file
+        if (!lines.isEmpty()) {
+            // Split the first line (assuming it's the header) to get the column names
+            String[] header = lines.get(0).split(",");
+            int emailIndex = -1;
+
+            // Find the index of the email column in the header
+            for (int i = 0; i < header.length; i++) {
+                if (header[i].equalsIgnoreCase("Email")) {
+                    emailIndex = i;
+                    break;
+                }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        return Collections.emptyList();
+            // Check if the email index is found
+            if (emailIndex != -1) {
+                // Extract the email from the first transaction
+                String[] firstTransaction = lines.get(1).split(",");
+                String emailFromTransaction = firstTransaction[emailIndex];
+
+                // Check if the retrieved email matches the customer's email
+                if (emailFromTransaction.equals(emailcust)) {
+                    // Return all transactions
+                    return lines.stream().map(line -> line.split(",")).collect(Collectors.toList());
+                }
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    return Collections.emptyList();
+}
 
 
      
