@@ -393,7 +393,19 @@ public class PaymentP extends javax.swing.JPanel {
         String timeReturn10 = (timeReturn != null && timeReturn.length > 0) ? timeReturn[0] : "";
         String timeReturn23 = (timeReturn != null && timeReturn.length > 1) ? timeReturn[1] : "";
 
-        String seatNames11 = (book != null && book.getSeatName() != null) ? String.join(", ", book.getSeatName()): "";
+        String seatNames11 = "";
+
+        if (book != null && book.getSeatName() != null) {
+            for (String seat : book.getSeatName()) {
+                if (seat == null) {
+                // Break the loop if any seat name is null
+            break;
+            }
+            seatNames11 += seat + "|";
+        }
+            // Remove the trailing "|"
+        seatNames11 = seatNames11.isEmpty() ? "" : seatNames11.substring(0, seatNames11.length() - 1);
+}
  
         String chName12 = CardholderNameField.getText();
         String eAddress13 = EmailAddressField.getText();

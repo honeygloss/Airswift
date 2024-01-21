@@ -43,45 +43,15 @@ public class Receipt extends javax.swing.JFrame {
      * Creates new form Receipt
      */
     public Receipt(Booking booking) {
-        initComponents();
-        initializeTable();
-        this.booking = booking;
-        
-        String[] firstNames = this.booking.getPassFirstName();
-        String[] lastNames = this.booking.getPassLastName();
-
-        // Check if both arrays are not null
-        if (firstNames != null && lastNames != null) {
-            // Concatenate all elements of the arrays
-            StringBuilder fullName = new StringBuilder();
+    initComponents();
+    initializeTable();
+    this.booking = booking;
+    currentTransactionIndex = 0;  // Start with the first transaction
     
-            // Use an index to iterate over the arrays
-            int i = 0;
-    
-            // Continue as long as both arrays have elements at the current index
-            while (i < firstNames.length && i < lastNames.length && firstNames[i] != null && lastNames[i] != null) {
-            fullName.append(firstNames[i]).append(" ").append(lastNames[i]).append(", ");
-            i++;
-        }
+    // Initialize transactions
+    transactions = getTransactions();
 
-        if (fullName.length() > 0) {
-            // Remove the trailing comma and space
-            String result = fullName.toString().replaceAll(", $", "");
-            jLabel2.setText(result);
-        } else {
-            // Handle the case where either array is empty
-            jLabel2.setText("No Name Available");
-        }
-        } else {
-        // Handle the case where either array is null
-        jLabel2.setText("Name Data is Null");
-        }
-           
-        currentTransactionIndex = 0;  // Start with the first transaction
-
-        transactions = getTransactions();
-
-        displayTransactions();
+    displayTransactions();
     }
 
      public void displayTransactions() {
@@ -89,7 +59,36 @@ public class Receipt extends javax.swing.JFrame {
             // Handle case where no transactions are found for the email
             return;
         }
+        
+        String[] firstNames = this.booking.getPassFirstName();
+String[] lastNames = this.booking.getPassLastName();
 
+// Check if both arrays are not null
+if (firstNames != null && lastNames != null) {
+    // Concatenate all elements of the arrays
+    StringBuilder fullName = new StringBuilder();
+    
+    // Use an index to iterate over the arrays
+    int i = 0;
+    
+    // Continue as long as both arrays have elements at the current index
+    while (i < firstNames.length && i < lastNames.length && firstNames[i] != null && lastNames[i] != null) {
+        fullName.append(firstNames[i]).append(" ").append(lastNames[i]).append(", ");
+        i++;
+    }
+
+    if (fullName.length() > 0) {
+        // Remove the trailing comma and space
+        String result = fullName.toString().replaceAll(", $", "");
+        jLabel2.setText(result);
+    } else {
+        // Handle the case where either array is empty
+        jLabel2.setText("No Name Available");
+    }
+    } else {
+    // Handle the case where either array is null
+    jLabel2.setText("Name Data is Null");
+    }
         // Display the current transaction
         TransactionDisplay transactionDisplay = new TransactionDisplay();
         String[] transactionArray = transactions.get(currentTransactionIndex);
@@ -175,7 +174,6 @@ public class Receipt extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 800));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 800));
@@ -221,9 +219,9 @@ public class Receipt extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(ReceiptLayout.createSequentialGroup()
                         .addGroup(ReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 338, Short.MAX_VALUE))))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 17, Short.MAX_VALUE))))
         );
         ReceiptLayout.setVerticalGroup(
             ReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,8 +229,8 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(20, 20, 20)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
