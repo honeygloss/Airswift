@@ -527,8 +527,11 @@ public class FlightMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_toListdownActionPerformed
 
     private void myBookingTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myBookingTabMouseClicked
+        Booking book = null;
         if (myBookingTab.getSelectedIndex() == 1) {
             createBookingButtons();
+            Receipt receiptWindow = new Receipt(book);
+            receiptWindow.setVisible(true);
         }
     }//GEN-LAST:event_myBookingTabMouseClicked
 
