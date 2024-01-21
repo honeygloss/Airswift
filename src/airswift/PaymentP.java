@@ -32,7 +32,7 @@ public class PaymentP extends javax.swing.JPanel {
         book = booking;
         //availableS = new AvailableSeat();
   
-        TotPayment.setText(String.valueOf(booking.calculatePayment()));
+        TotPayment.setText("RM"+String.valueOf(booking.calculatePayment()));
 
     }
     
@@ -203,6 +203,7 @@ public class PaymentP extends javax.swing.JPanel {
             }
         });
 
+        TotPayment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TotPayment.setMaximumSize(new java.awt.Dimension(90, 20));
         TotPayment.setMinimumSize(new java.awt.Dimension(90, 20));
 
@@ -256,7 +257,7 @@ public class PaymentP extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(TotPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(28, Short.MAX_VALUE))))
+                        .addContainerGap(31, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ConfirmPaymentButton)

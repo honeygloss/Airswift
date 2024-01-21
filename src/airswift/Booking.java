@@ -15,9 +15,9 @@ public class Booking{
     private String timeReturn[]=new String[2];
     private String flightName;
     private String flightID;
-    private String passFirstName[]= new String[passenger];
-    private String passLastName[]= new String[passenger];
-    private String seatName[] = new String[passenger];
+    private String passFirstName[]= new String[10];
+    private String passLastName[]= new String[10];
+    private String seatName[] = new String[10];
 
     
 
@@ -177,6 +177,12 @@ public class Booking{
         }
     }
     
+    public String getDepartTimeFromTimeAvail() {
+        return "Depart Time (Start) :" +timeDepart[0]+
+                "\nDepart Time (arrival) : "+timeDepart[1];
+        
+    }
+    
     public void setReturnTimeFromTimeAvail(int index, String[][] timeAvail) {
         if (index >= 0 && index < timeAvail.length) {
             timeReturn[0] = timeAvail[index][0];
@@ -185,6 +191,12 @@ public class Booking{
             // Handle the case where the index is out of bounds
             System.out.println("Invalid index for timeAvail array.");
         }
+    }
+    
+    public String getReturnTimeFromTimeAvail() {
+        return "Return Time (Start) :" +timeReturn[0]+
+                "\nReturn Time (arrival) : "+timeReturn[1];
+        
     }
     public void setPassengerFirstName(String firstName, int index) {
         if (index >= 0 && index < passenger) {
@@ -200,7 +212,7 @@ public class Booking{
             passLastName[index] = lastName;
         } else {
             // Handle the case where the index is out of bounds
-            System.out.println("Invalid index for passFirstName array.");
+            System.out.println("Invalid index for passLastName array.");
         }
     }
     
@@ -209,7 +221,7 @@ public class Booking{
             this.seatName[index] = seatName;
         } else {
             // Handle the case where the index is out of bounds
-            System.out.println("Invalid index for passFirstName array.");
+            System.out.println("Invalid index for passengerSeat array.");
         }
     }
     

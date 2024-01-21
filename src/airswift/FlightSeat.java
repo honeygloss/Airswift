@@ -6,6 +6,7 @@ package airswift;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,13 +22,13 @@ import javax.swing.SwingUtilities;
  */
 public class FlightSeat extends javax.swing.JPanel {
     private GradientDropdownMenu gradientDropdownMenu;
-    private Booking book;
+    private Booking book= new Booking();
     private Image backgroundImage;
     private int selectedSeatIndex =-1;
     private boolean flagSeat[]= new boolean[69];
     private String seatName[]=new String[69];
     private int currentCustomerIndex = 0;
-    private AvailableSeat availableSeat;
+    private AvailableSeat availableSeat=new AvailableSeat();
     
     
     public GradientDropdownMenu getGradientDropdownMenu() {
@@ -168,53 +169,83 @@ public class FlightSeat extends javax.swing.JPanel {
                 }
             });
         }
+        String pass = ""+1;
+        numPass.setText(pass);
         //If user click continue button
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle the continuation of the booking process
-                // Save the selected flight information to the Booking class
-                if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
-                    
-                    
-                }
-                if(fNameInput==null || lNameInput==null){
-                    String message = "Please complete your personal details.";
-                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
-                }
-                else if(selectedSeatIndex==-1){
-                    // Handle the case where no flight is selected
-                    String message = "Please select a seat before continuing.";
-                    JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
-                }
-                book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
-                book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
-                book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                if(book.getPassenger()!=1){
+                    for(int i=currentCustomerIndex;i<book.getPassenger(); i++){
+                        numPass.setText(Integer.toString(i+1));
+                        // Clear the input fields
+                        fNameInput.setText("");
+                        lNameInput.setText("");
+                        seatInput.setText("");
 
-                // Clear the input fields
-                fNameInput.setText("");
-                lNameInput.setText("");
-                seatInput.setText("");
-                
-                // Reset the appearance of the selected seat button
-                if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
-                    buttons[selectedSeatIndex].setBackground(new Color(153, 153, 255));
-                    book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
-                    availableSeat.setSeatFlag(false, selectedSeatIndex);
-                }
-                
-                currentCustomerIndex++;
-                
-                if (currentCustomerIndex >= book.getPassenger()) {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            showPaymentPanel();
+                        //  make sure the personal details are not empty
+                        if(fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()){
+                            String message = "Please complete your personal details.";
+                            JOptionPane.showMessageDialog(null, message);
+
+                            //return;
                         }
-                    });
+                        //  make sure user choose seat
+                        else if(selectedSeatIndex==-1){
+                            // Handle the case where no flight is selected
+                            String message = "Please select a seat before continuing.";
+                            JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+
+                            //return;
+                        }
+                        else if(selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                            if(!availableSeat.getSeatFlag(selectedSeatIndex)){
+                                String message = "Please choose other seats.";
+                                JOptionPane.showMessageDialog(null, message, "Seat Is Taken", JOptionPane.WARNING_MESSAGE);
+                                //return;
+                            }
+                            else{
+                                buttons[selectedSeatIndex].setText("X"); // Set text to "X" for the selected seat
+                                buttons[selectedSeatIndex].setFont(new Font("Segoe UI", Font.BOLD, 12));
+                                book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                                availableSeat.setSeatFlag(false, selectedSeatIndex);
+                            }
+
+                        }
+                        book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
+                        book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
+                        book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+
+
+                    }
                 }
+                else{
+                    //  make sure the personal details are not empty
+                    if(fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()){
+                        String message = "Please complete your personal details.";
+                        JOptionPane.showMessageDialog(null, message);
+                        return;
+                    }
+                    //  make sure user choose seat
+                    else if(selectedSeatIndex==-1){
+                        // Handle the case where no flight is selected
+                        String message = "Please select a seat before continuing.";
+                        JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    book.setPassengerFirstName(fNameInput.getText(), 0);
+                    book.setPassengerLastName(lNameInput.getText(), 0);
+                    book.setPassengerSeat(seatName[selectedSeatIndex], 0);
+                }
+                
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showPaymentPanel();
+                    }
+                });
             }
-                 
+                
         });
         
         backButt.addActionListener(new ActionListener() {
@@ -223,21 +254,13 @@ public class FlightSeat extends javax.swing.JPanel {
                 // Handle the continuation of the booking process
                 // Save the selected flight information to the Booking class
                 if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                    availableSeat.setSeatFlag(true, selectedSeatIndex);
                     
-                    
-                }
-                if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {                    String message = "Please complete your personal details.";
-                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
-                }
-                else if(selectedSeatIndex==-1){
-                    // Handle the case where no flight is selected
-                    String message = "Please select a seat before continuing.";
-                    JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
                 }
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        showPaymentPanel();
+                        //showPaymentPanel();
                     }
                 });
             }
@@ -250,7 +273,7 @@ public class FlightSeat extends javax.swing.JPanel {
     public void showPaymentPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        PaymentP paymentPanel = new PaymentP(book, availableSeat);
+        PaymentP paymentPanel = new PaymentP(book);
 
         // Set booking information for paymentPanel
         paymentPanel.setBookingInformation(book);
@@ -458,6 +481,7 @@ public class FlightSeat extends javax.swing.JPanel {
         seatInput = new airswift.FTextField();
         jLabel10 = new javax.swing.JLabel();
         lNameInput = new airswift.FTextField();
+        numPass = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(900, 530));
         setLayout(null);
@@ -526,24 +550,24 @@ public class FlightSeat extends javax.swing.JPanel {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("         A                  B                         C                  D                          E                  F       ");
 
         jLabel3.setBackground(new java.awt.Color(102, 0, 102));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("1");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("2");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("3");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("4");
 
         button_1A.setBorder(null);
@@ -1247,28 +1271,28 @@ public class FlightSeat extends javax.swing.JPanel {
         });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("1");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText(" A             B             C                   D             E              F                   G             H             I  ");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("2");
 
         jLabel17.setBackground(new java.awt.Color(102, 0, 102));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("3");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("4");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("5");
 
         button2_3A.setBorder(null);
@@ -1850,13 +1874,13 @@ public class FlightSeat extends javax.swing.JPanel {
 
         pass.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         pass.setForeground(new java.awt.Color(153, 153, 153));
-        pass.setText("Passenger ?");
+        pass.setText("Passenger ");
 
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("First Name");
 
         fNameInput.setBorder(null);
-        fNameInput.setForeground(new java.awt.Color(255, 255, 255));
+        fNameInput.setForeground(new java.awt.Color(102, 102, 102));
         fNameInput.setFillColor(new java.awt.Color(204, 204, 204));
         fNameInput.setLineColor(new java.awt.Color(204, 204, 204));
 
@@ -1887,6 +1911,9 @@ public class FlightSeat extends javax.swing.JPanel {
         lNameInput.setFillColor(new java.awt.Color(204, 204, 204));
         lNameInput.setLineColor(new java.awt.Color(204, 204, 204));
 
+        numPass.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        numPass.setForeground(new java.awt.Color(153, 153, 153));
+
         javax.swing.GroupLayout passengerDetsLayout = new javax.swing.GroupLayout(passengerDets);
         passengerDets.setLayout(passengerDetsLayout);
         passengerDetsLayout.setHorizontalGroup(
@@ -1902,10 +1929,13 @@ public class FlightSeat extends javax.swing.JPanel {
                     .addGroup(passengerDetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel9)
                         .addComponent(jLabel8)
-                        .addComponent(pass, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                        .addComponent(fNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                         .addComponent(seatInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(passengerDetsLayout.createSequentialGroup()
+                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         passengerDetsLayout.setVerticalGroup(
@@ -1914,7 +1944,9 @@ public class FlightSeat extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(pass)
+                .addGroup(passengerDetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pass)
+                    .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2337,6 +2369,7 @@ public class FlightSeat extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private airswift.FTextField lNameInput;
+    private javax.swing.JLabel numPass;
     private javax.swing.JLabel pass;
     private airswift.RoundedPanel passengerDets;
     private javax.swing.JLabel seat;

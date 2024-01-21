@@ -244,10 +244,10 @@ public class FlightBooking extends javax.swing.JPanel {
                 // Handle the continuation of the booking process
                 // Save the selected flight information to the Booking class
                 if (selectedFlightIndex >= 0 && selectedFlightIndex < finalRandomNum) {
-                    book.setDepartTimeFromTimeAvail(selectedFlightIndex, timeAvail);
-                    book.setReturnTimeFromTimeAvail(selectedFlightIndex, timeAvail);
+                    book.setDepartTimeFromTimeAvail(selectedFlightIndex, flightTime);
+                    book.setReturnTimeFromTimeAvail(selectedFlightIndex, flightTime);
                     book.setFlightName(flightName, selectedFlightIndex);
-                    System.out.println(book);
+                    System.out.println(book.getDepartTimeFromTimeAvail() + book.getReturnTimeFromTimeAvail());
                     SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -269,7 +269,7 @@ public class FlightBooking extends javax.swing.JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        //showMenuPanel();
+                        //
                     }
                 });
             }
@@ -313,7 +313,7 @@ public class FlightBooking extends javax.swing.JPanel {
     /*public void showMenuPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
-        //FlightMenu menuPanel = new FlightMenu();
+        FlightMenu menuPanel = new FlightMenu();
 
         // Get the parent container of the current FlightBooking panel
         Container parent = this.getParent();
@@ -332,11 +332,11 @@ public class FlightBooking extends javax.swing.JPanel {
         }
     } catch (Exception ex) {
         ex.printStackTrace(); // Print the exception for debugging
-        System.err.println("Error creating or displaying PaymentP panel.");
+        System.err.println("Error creating or displaying FlightMenu panel.");
     }
-    }       */
+    }           */
         
-        public void setBooking(Booking booking){
+    public void setBooking(Booking booking){
         book = booking;
     }
     /**

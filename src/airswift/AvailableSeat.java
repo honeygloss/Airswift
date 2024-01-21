@@ -2,6 +2,9 @@ package airswift;
 
 public class AvailableSeat {
     
+    public AvailableSeat(){
+        
+    }
     private int flightScheduleID;
     private String seatName[] = new String[69];
     private boolean flag[]= new boolean[69];
@@ -46,6 +49,10 @@ public class AvailableSeat {
             // Handle the case where the index is out of bounds
             System.out.println("Invalid index for passFirstName array.");
         }
+    }
+    
+    public boolean getSeatFlag(int index) {
+        return flag[index];
     }
     
 }

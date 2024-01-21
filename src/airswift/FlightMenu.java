@@ -37,6 +37,8 @@ import net.miginfocom.swing.MigLayout;
  */
 public class FlightMenu extends javax.swing.JFrame {
     private GradientDropdownMenu menu;
+
+   
     private JButton[] bookingButtons; // Array to store dynamically created buttons
     private int numberOfBookings;
     private boolean buttonsCreated = false;
@@ -113,12 +115,10 @@ public class FlightMenu extends javax.swing.JFrame {
         if (com instanceof FlightBooking) {
             ((FlightBooking) com).setGradientDropdownMenu(menu);
         }
-        /*else if(com instanceof FlightSeat){
-            ((FlightSeat) com).setGradientDropdownMenu(menu);
-        }   */
         else if(com instanceof FlightBookingTwoWay){
             ((FlightBookingTwoWay) com).setGradientDropdownMenu(menu);
         }
+        
     }
     private void createBookingButtons() {
         SwingUtilities.invokeLater(() -> {
@@ -507,7 +507,7 @@ public class FlightMenu extends javax.swing.JFrame {
         book.setPassenger(Integer.parseInt(passengersListdown2.getSelectedItem().toString()));  
         book.setDepartDate(departDate.getDate());
         book.setCabin(classCabinListdown.getSelectedItem().toString());
-        book.setEmail(cust.getEmailAddress());
+        //book.setEmail(cust.getEmailAddress());
         if(returnCheckbox.isSelected()){
             book.setReturnDate(returnDate.getDate());
             showForm(new FlightBookingTwoWay(menu, book));
@@ -516,8 +516,6 @@ public class FlightMenu extends javax.swing.JFrame {
             book.setReturnDate(null);
             showForm(new FlightBooking(menu, book));
         }
-       //showForm(new FlightSeat(book, menu));
- 
     }//GEN-LAST:event_findaFlightButtonActionPerformed
 
     private void passengersListdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengersListdown2ActionPerformed
