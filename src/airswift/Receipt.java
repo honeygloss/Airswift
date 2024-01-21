@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -33,94 +34,96 @@ import javax.swing.table.TableColumnModel;
  * @author 60111
  */
 public class Receipt extends javax.swing.JFrame {
-    private javax.swing.GroupLayout jPanel2Layout;
-    private javax.swing.JScrollPane jScrollPane;
-    private JTable table;
     private Booking booking;
-    private List<String[]> transactions;
+    private String emailcust;
     private int currentTransactionIndex;
     private TransactionDisplay transactionDisplay;
-    private String emailcust;  // Add this variable to store the customer's email
-    private String[] emailRArray;  // Add this variable to store the emailR values from transactions.txt
-    private Customer cust;
-    
+    private javax.swing.GroupLayout jPanel2Layout;
+    private JTable table;
+    private JScrollPane jScrollPane;
+
+
+
     public Receipt(Booking booking) {
         initComponents();
-        initializeTable();
-        this.booking = booking; // Corrected assignment
-    // Set emailcust to the customer's email address
-        emailcust = this.booking.getEmail(); 
+        this.booking = booking;
+        emailcust = this.booking.getEmail();
+        currentTransactionIndex = 0;
+        transactionDisplay = new TransactionDisplay();
 
-        // Read array index 0 at transactions.txt for emailR
-        emailRArray = getEmailRArrayFromTransactionFile();
+        // Load transactions from file
+        List<String[]> transactions = loadTransactionsFromFile();
 
-        // Check if emailR and emailcust match
-        if (emailRArray != null && emailRArray.length > 0 && emailRArray[0].equals(emailcust)) {
-            displayTransactions();
+        // Check if there are transactions and the email matches
+        if (transactions != null && !transactions.isEmpty() && transactions.get(0)[0].equals(emailcust)) {
+            displayTransactions(transactions);
+            // Set customer name from the 24th index of the first transaction
+            if (transactions.get(0).length > 24) {
+                CustomerName.setText(transactions.get(0)[24]);
+            }
         } else {
             displayNoTransactionsMessage();
         }
     }
     
     private void showNextTransaction() {
-        if (transactions != null && !transactions.isEmpty()) {
-            // Iterate through transactions in reverse order (from newest to oldest)
-            for (int i = currentTransactionIndex + 1; i < transactions.size(); i++) {
-                String[] nextTransaction = transactions.get(i);
-                String emailR = nextTransaction[0];  // Assuming email is at index 0
+        List<String[]> transactions = loadTransactionsFromFile();
 
-                // Check if emailR and emailcust match
-                if (emailR.equals(emailcust)) {
+        if (!transactions.isEmpty()) {
+            for (int i = currentTransactionIndex + 1; i < transactions.size(); i++) {
+                if (transactions.get(i)[0].equals(emailcust)) {
                     currentTransactionIndex = i;
-                    displayTransactions();
+                    displayTransactions(transactions);
                     return;
                 }
             }
-
-            // No more transactions for the customer, handle accordingly
             displayNoTransactionsMessage();
         }
     }
     
     private void showPreviousTransaction() {
-        if (transactions != null && !transactions.isEmpty()) {
-            currentTransactionIndex--;
+    List<String[]> transactions = loadTransactionsFromFile();
 
-            if (currentTransactionIndex >= 0) {
-                displayTransactions();
-            } else {
-                currentTransactionIndex = transactions.size() - 1;
-                // You may want to disable the "PreviousTicket" button when there are no more previous transactions
-            }
+    if (transactions != null && !transactions.isEmpty()) {
+        currentTransactionIndex--;
+
+        if (currentTransactionIndex >= 0) {
+            displayTransactions(transactions);
+        } else {
+            currentTransactionIndex = transactions.size() - 1;
+            // You may want to disable the "PreviousTicket" button when there are no more previous transactions
         }
     }
+}
     
-     private String[] getEmailRArrayFromTransactionFile() {
+    private List<String[]> loadTransactionsFromFile() {
         try {
-            // Read the content of transactions.txt
+            // Read all lines from transactions.txt
             List<String> lines = Files.readAllLines(Paths.get("path/to/transactions.txt"));
 
+            // Check if there are any lines in the file
             if (!lines.isEmpty()) {
-                // Split the first line using a delimiter (assuming comma-separated values)
-                return lines.get(0).split(",");
+                // Split each line using the specified delimiter (comma in this case)
+                return lines.stream().map(line -> line.split(",")).collect(Collectors.toList());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return Collections.emptyList();
     }
 
 
      
-    public void displayTransactions() {
+    private void displayTransactions(List<String[]> transactions) {
         String[] transactionArray = transactions.get(currentTransactionIndex);
         transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
     }
 
-    public void displayNoTransactionsMessage() {
+    private void displayNoTransactionsMessage() {
         JOptionPane.showMessageDialog(this, "No transactions found for the email.", "No Transactions", JOptionPane.INFORMATION_MESSAGE);
     }
+
      
    private void initializeTable() {
         table = new JTable(new DefaultTableModel());
@@ -354,7 +357,7 @@ public class Receipt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     PrinterJob job = PrinterJob.getPrinterJob();
+    PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Data");
 
         job.setPrintable(new Printable() {
@@ -387,6 +390,7 @@ public class Receipt extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Close button action
+        Customer cust = null;
         new FlightMenu(cust).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -422,12 +426,12 @@ public class Receipt extends javax.swing.JFrame {
         }
         //</editor-fold>
         /* Create and display the form */
-        final Booking booking = new Booking(); 
+        final Booking booking = new Booking();
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Receipt(booking).setVisible(true);
-            }
-        });
+        public void run() {
+        new Receipt(booking).setVisible(true);
+    }
+});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -446,7 +450,4 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    void setCustomer(Customer customer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
