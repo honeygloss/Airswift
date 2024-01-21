@@ -254,7 +254,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MY BOOKING");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/airswift/Lyft _ Plane2.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\60111\\OneDrive\\Documents\\NetBeansProjects\\Airswift\\src\\airswift\\Lyft _ Plane2.png")); // NOI18N
 
         NextTicket.setBackground(new java.awt.Color(204, 204, 204));
         NextTicket.setText("NEXT");
