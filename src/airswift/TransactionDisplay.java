@@ -9,8 +9,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.util.Set;
 import java.util.HashSet;
-
-
 /**
  *
  * @author 60111
@@ -59,5 +57,5 @@ public class TransactionDisplay {
             }
         }
     }
-
 }
+

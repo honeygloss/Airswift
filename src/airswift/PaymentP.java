@@ -13,6 +13,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -464,59 +467,47 @@ public class PaymentP extends javax.swing.JPanel {
             return;
         }
         
-        FileWriter wr = null;
-        
-        try {
-            wr = new FileWriter("Transaction.txt", true);
-            // Save payment information as an array
-            String[] paymentInfo = {
-                custEmailAdress0,
-                flightID1,
-                departShort2,
-                departLong3,
-                returnShort4,
-                returnLong5,
-                passString6,
-                departDate7,
-                returnDate8 != null ? returnDate8 : "" ,
-                timeDepart9, 
-                timeReturn10 != null ? timeReturn10 : "" ,
-                seatName11,// If null, set as empty string
-                chName12,
-                eAddress13,
-                pNumber14,
-                cNumber15,
-                sCode16,
-                String.valueOf(Month17),
-                String.valueOf(Year18),
-                cType19,
-                flightName20,
-                cabin21,
-                timeDepart22,
-                timeReturn23 != null ? timeReturn23: "" ,
-                Name24
-            };
+        List<String> paymentInfoList = new ArrayList<>();
+    
+    paymentInfoList.add(custEmailAdress0);
+    paymentInfoList.add(flightID1);
+    paymentInfoList.add(departShort2);
+    paymentInfoList.add(departLong3);
+    paymentInfoList.add(returnShort4);
+    paymentInfoList.add(returnLong5);
+    paymentInfoList.add(passString6);
+    paymentInfoList.add(departDate7);
+    paymentInfoList.add(returnDate8 != null ? returnDate8 : "");
+    paymentInfoList.add(timeDepart9);
+    paymentInfoList.add(timeReturn10 != null ? timeReturn10 : "");
+    paymentInfoList.add(seatName11);
+    paymentInfoList.add(chName12);
+    paymentInfoList.add(eAddress13);
+    paymentInfoList.add(pNumber14);
+    paymentInfoList.add(cNumber15);
+    paymentInfoList.add(sCode16);
+    paymentInfoList.add(String.valueOf(Month17));
+    paymentInfoList.add(String.valueOf(Year18));
+    paymentInfoList.add(cType19);
+    paymentInfoList.add(flightName20);
+    paymentInfoList.add(cabin21);
+    paymentInfoList.add(timeDepart22);
+    paymentInfoList.add(timeReturn23 != null ? timeReturn23 : "");
+    paymentInfoList.add(Name24);
 
-            String paymentInfoCSV = String.join(",", paymentInfo);
-            wr.write(paymentInfoCSV);
-            wr.write(System.getProperty("line.separator"));
+    String[] paymentInfo = paymentInfoList.toArray(new String[0]);
+    String paymentInfoCSV = String.join(",", paymentInfo);
 
-            JOptionPane.showMessageDialog(null, "Success");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error");
-                e.printStackTrace(); // Print the stack trace for debugging
-            } finally {
-            try {
-                if (wr != null) {
-                    wr.close(); // Close the FileWriter in a finally block
-            }
-            } catch (IOException e) {
-                e.printStackTrace(); // Handle the exception or log it
-        }
+    try (FileWriter wr = new FileWriter("Transaction.txt", true)) {
+        wr.write(paymentInfoCSV);
+        wr.write(System.getProperty("line.separator"));
+        JOptionPane.showMessageDialog(null, "Success");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error");
+        e.printStackTrace();
     }
 
-// Open Receipt window only if the payment was successful
-new Receipt(book).setVisible(true);
+    new Receipt(book).setVisible(true);
 
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
