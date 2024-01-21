@@ -171,78 +171,62 @@ public class FlightSeat extends javax.swing.JPanel {
         }
         String pass = ""+1;
         numPass.setText(pass);
+        currentCustomerIndex=0;
         //If user click continue button
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(book.getPassenger()!=1){
-                    for(int i=currentCustomerIndex;i<book.getPassenger(); i++){
-                        numPass.setText(Integer.toString(i+1));
-                        // Clear the input fields
-                        fNameInput.setText("");
-                        lNameInput.setText("");
-                        seatInput.setText("");
-
-                        //  make sure the personal details are not empty
-                        if(fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()){
-                            String message = "Please complete your personal details.";
-                            JOptionPane.showMessageDialog(null, message);
-
-                            //return;
-                        }
-                        //  make sure user choose seat
-                        else if(selectedSeatIndex==-1){
-                            // Handle the case where no flight is selected
-                            String message = "Please select a seat before continuing.";
-                            JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
-
-                            //return;
-                        }
-                        else if(selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
-                            if(!availableSeat.getSeatFlag(selectedSeatIndex)){
-                                String message = "Please choose other seats.";
-                                JOptionPane.showMessageDialog(null, message, "Seat Is Taken", JOptionPane.WARNING_MESSAGE);
-                                //return;
-                            }
-                            else{
-                                buttons[selectedSeatIndex].setText("X"); // Set text to "X" for the selected seat
-                                buttons[selectedSeatIndex].setFont(new Font("Segoe UI", Font.BOLD, 12));
-                                book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
-                                availableSeat.setSeatFlag(false, selectedSeatIndex);
-                            }
-                        }
-                        book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
-                        book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
-                        book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
-                    }
-                }
-                else{
-                    //  make sure the personal details are not empty
-                    if(fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()){
+                
+                    numPass.setText(Integer.toString(currentCustomerIndex+1));
+                    // make sure the personal details are not empty
+                    if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {
                         String message = "Please complete your personal details.";
-                        JOptionPane.showMessageDialog(null, message);
+                        JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    //  make sure user choose seat
-                    else if(selectedSeatIndex==-1){
+
+                    // make sure user chooses a seat
+                    else if (selectedSeatIndex == -1) {
                         // Handle the case where no flight is selected
                         String message = "Please select a seat before continuing.";
                         JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
                         return;
+                    } 
+                    else if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                        if (!availableSeat.getSeatFlag(selectedSeatIndex)) {
+                            String message = "Please choose other seats.";
+                            JOptionPane.showMessageDialog(null, message, "Seat Is Taken", JOptionPane.WARNING_MESSAGE);
+                            return;
+
+                        } 
+                        else {
+                            buttons[selectedSeatIndex].setText("X"); // Set text to "X" for the selected seat
+                            buttons[selectedSeatIndex].setFont(new Font("Segoe UI", Font.BOLD, 12));
+                            book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                            availableSeat.setSeatFlag(false, selectedSeatIndex);
+                        }
                     }
-                    book.setPassengerFirstName(fNameInput.getText(), 0);
-                    book.setPassengerLastName(lNameInput.getText(), 0);
-                    book.setPassengerSeat(seatName[selectedSeatIndex], 0);
-                }
-                
-                SwingUtilities.invokeLater(new Runnable() {
+
+                    // Set passenger information
+                    book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
+                    book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
+                    book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+
+                    // Clear the input fields
+                    fNameInput.setText("");
+                    lNameInput.setText("");
+                    seatInput.setText("");
+                    currentCustomerIndex++;
+                if(currentCustomerIndex==booking.getPassenger()){
+                    SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
                         showPaymentPanel();
                     }
                 });
-            }
+                }
                 
+            }
         });
         
         backButt.addActionListener(new ActionListener() {
