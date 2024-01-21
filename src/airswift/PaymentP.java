@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class PaymentP extends javax.swing.JPanel {
     private Booking book;
     private AvailableSeat availableS;
-    private Customer cust;
+    private Customer customer;
     /**
      * Creates new form PaymentP
      */
@@ -371,8 +371,7 @@ public class PaymentP extends javax.swing.JPanel {
     }//GEN-LAST:event_CardNumberFieldActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-       Customer cust = null;
-       new FlightMenu(cust).setVisible(true);
+        new FlightMenu(customer).setVisible(true);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
@@ -464,10 +463,8 @@ public class PaymentP extends javax.swing.JPanel {
             return;
         }
         
-        FileWriter wr = null;
-        
         try {
-            wr = new FileWriter("Transaction.txt", true);
+            FileWriter wr = new FileWriter("Transaction.txt", true);
             // Save payment information as an array
             String[] paymentInfo = {
                 custEmailAdress0,
@@ -497,26 +494,18 @@ public class PaymentP extends javax.swing.JPanel {
                 Name24
             };
 
-            String paymentInfoCSV = String.join(",", paymentInfo);
-            wr.write(paymentInfoCSV);
-            wr.write(System.getProperty("line.separator"));
+            // Convert the array to a CSV string and write to the file
+             String paymentInfoCSV = String.join(",", paymentInfo);
+        wr.write(paymentInfoCSV);
+        wr.write(System.getProperty("line.separator"));
 
-            JOptionPane.showMessageDialog(null, "Success");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error");
-                e.printStackTrace(); // Print the stack trace for debugging
-            } finally {
-            try {
-                if (wr != null) {
-                    wr.close(); // Close the FileWriter in a finally block
-            }
-            } catch (IOException e) {
-                e.printStackTrace(); // Handle the exception or log it
-        }
+        wr.close();
+        JOptionPane.showMessageDialog(null, "Success");
+        setVisible(false);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error");
     }
-
-// Open Receipt window only if the payment was successful
-new Receipt(book).setVisible(true);
+    new Receipt(book).setVisible(true);
 
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
