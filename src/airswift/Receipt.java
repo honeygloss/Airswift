@@ -10,23 +10,17 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import airswift.TransactionDisplay;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import javax.swing.table.TableColumnModel;
 import java.util.Collections;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 
 
@@ -42,7 +36,7 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.GroupLayout jPanel2Layout;
     private javax.swing.JScrollPane jScrollPane;
     private JTable table;
-    private Customer cust;  
+    private Customer cust;
     private List<String[]> transactions;  // Maintain a list of transactions
     private int currentTransactionIndex;
     private TransactionDisplay transactionDisplay;
@@ -50,79 +44,95 @@ public class Receipt extends javax.swing.JFrame {
      * Creates new form Receipt
      */
     public Receipt(Customer cust) {
-        initComponents();
-        //readFile();
-        initializeTable();
-        displayTransactions(); 
-        this.cust = cust;
-        
-       CustomerName.setText(cust.getFName() + " " + cust.getLName());
-       transactions = getTransactionsForEmail(cust.getEmailAddress());
-       currentTransactionIndex = 0;  // Start with the first transaction
+    initComponents();
+    initializeTable();
+    this.cust = cust;
+    
+    transactions = getTransactionsForEmail(cust.getEmailAddress());
+    currentTransactionIndex = 0;  // Start with the first transaction
 
-        displayTransactions(); 
+    if (transactions != null && !transactions.isEmpty()) {
+        // Display the current transaction
+        String[] transactionArray = transactions.get(currentTransactionIndex);
+        String transactionCustomerName = transactionArray[0];  // Assuming the customer name is at index 0
+        CustomerName.setText(transactionCustomerName);
+
+        // Compare with cust.getEmailAddress()
+        if (transactionCustomerName.equals(cust.getEmailAddress())) {
+            // Names match, handle accordingly
+            displayTransactions();
+        } else {
+            // Names do not match, handle accordingly
+            displayNoTransactionsMessage();
+        }
+    } else {
+        // Handle case where no transactions are found for the email
+        displayNoTransactionsMessage();
+    }
     }
 
      public void displayTransactions() {
-       if (transactions == null || transactions.isEmpty()) {
-        // Handle case where no transactions are found for the email
-        return;
+        // Display the current transaction
+        String[] transactionArray = transactions.get(currentTransactionIndex);
+        transactionDisplay = new TransactionDisplay();
+        transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
     }
 
-    // Display the current transaction
-    TransactionDisplay transactionDisplay = new TransactionDisplay();
-    String[] transactionArray = transactions.get(currentTransactionIndex);
-    transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
-
+    public void displayNoTransactionsMessage() {
+        // Display a message or perform any other action when there are no transactions
+        // For example, you can set a label or show a JOptionPane
+        JOptionPane.showMessageDialog(this, "No transactions found for the email.", "No Transactions", JOptionPane.INFORMATION_MESSAGE);
     }
      
    private List<String[]> getTransactionsForEmail(String emailAddress) {
-    try {
-        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
-        return lines.stream()
-                .map(line -> line.split(","))
-                .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
-                .toList();
-    } catch (IOException e) {
-        e.printStackTrace();
-        return List.of();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+            return lines.stream()
+                    .map(line -> line.split(","))
+                    .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
+                    .toList();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return List.of();
+        }
     }
-}
     
     private void initializeTable() {
         table = new JTable(new DefaultTableModel());
-    jScrollPane = new JScrollPane(table);
+        jScrollPane = new JScrollPane(table);
 
-    // Set columns for the table
-    DefaultTableModel model = (DefaultTableModel) table.getModel();
-    model.addColumn("Departure | Arrival");
-    model.addColumn("Flight Name");
-    model.addColumn("Route");
-    model.addColumn("Seat Class");
+        // Set columns for the table
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.addColumn("Departure | Arrival");
+        model.addColumn("Flight Name");
+        model.addColumn("Route");
+        model.addColumn("Seat Class");
 
-    // Set preferred column widths
-    TableColumnModel columnModel = table.getColumnModel();
-    columnModel.getColumn(3).setPreferredWidth(100);
-    columnModel.getColumn(2).setPreferredWidth(200); // Route column width
-    columnModel.getColumn(1).setPreferredWidth(50);  // Flight ID column width
-    columnModel.getColumn(0).setPreferredWidth(150);
-    // Set the layout for jPanel2
-    jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20))
-    );
-    jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );    }
+        // Set preferred column widths
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(3).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(200); // Route column width
+        columnModel.getColumn(1).setPreferredWidth(50);  // Flight ID column width
+        columnModel.getColumn(0).setPreferredWidth(150);
+
+        // Set the layout for jPanel2
+        jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+        );
+        jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+    }
     
         // Additional components and layout code
         // ...
