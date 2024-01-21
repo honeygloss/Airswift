@@ -36,92 +36,108 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.GroupLayout jPanel2Layout;
     private javax.swing.JScrollPane jScrollPane;
     private JTable table;
-    private Customer cust;
-    private List<String[]> transactions;  // Maintain a list of transactions
+    private Booking booking;
+    private List<String[]> transactions;
     private int currentTransactionIndex;
     private TransactionDisplay transactionDisplay;
-    /**
-     * Creates new form Receipt
-     */
-    public Receipt() {
-    initComponents();
-    initializeTable();
+    private String emailcust;  // Add this variable to store the customer's email
+    private String[] emailRArray;  // Add this variable to store the emailR values from transactions.txt
+    private Customer cust;
     
-    transactions = getTransactionsForEmail(cust.getEmailAddress());
-    currentTransactionIndex = 0;  // Start with the first transaction
+    public Receipt(Booking booking) {
+        initComponents();
+        initializeTable();
+        this.booking = booking; // Corrected assignment
+    // Set emailcust to the customer's email address
+        emailcust = this.booking.getEmail(); 
 
-    if (transactions != null && !transactions.isEmpty()) {
-        // Display the current transaction
-        String[] transactionArray = transactions.get(currentTransactionIndex);
-        String transactionCustomerName = transactionArray[0];  // Assuming the customer name is at index 0
-        CustomerName.setText(transactionCustomerName);
+        // Read array index 0 at transactions.txt for emailR
+        emailRArray = getEmailRArrayFromTransactionFile();
 
-        // Compare with cust.getEmailAddress()
-        if (transactionCustomerName.equals(cust.getEmailAddress())) {
-            // Names match, handle accordingly
+        // Check if emailR and emailcust match
+        if (emailRArray != null && emailRArray.length > 0 && emailRArray[0].equals(emailcust)) {
             displayTransactions();
         } else {
-            // Names do not match, handle accordingly
             displayNoTransactionsMessage();
         }
-    } else {
-        // Handle case where no transactions are found for the email
-        displayNoTransactionsMessage();
     }
+    
+    private void showNextTransaction() {
+        if (transactions != null && !transactions.isEmpty()) {
+            // Iterate through transactions in reverse order (from newest to oldest)
+            for (int i = currentTransactionIndex + 1; i < transactions.size(); i++) {
+                String[] nextTransaction = transactions.get(i);
+                String emailR = nextTransaction[0];  // Assuming email is at index 0
+
+                // Check if emailR and emailcust match
+                if (emailR.equals(emailcust)) {
+                    currentTransactionIndex = i;
+                    displayTransactions();
+                    return;
+                }
+            }
+
+            // No more transactions for the customer, handle accordingly
+            displayNoTransactionsMessage();
+        }
+    }
+    
+    private void showPreviousTransaction() {
+        if (transactions != null && !transactions.isEmpty()) {
+            currentTransactionIndex--;
+
+            if (currentTransactionIndex >= 0) {
+                displayTransactions();
+            } else {
+                currentTransactionIndex = transactions.size() - 1;
+                // You may want to disable the "PreviousTicket" button when there are no more previous transactions
+            }
+        }
+    }
+    
+     private String[] getEmailRArrayFromTransactionFile() {
+        try {
+            // Read the content of transactions.txt
+            List<String> lines = Files.readAllLines(Paths.get("path/to/transactions.txt"));
+
+            if (!lines.isEmpty()) {
+                // Split the first line using a delimiter (assuming comma-separated values)
+                return lines.get(0).split(",");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
-     public void displayTransactions() {
-        // Display the current transaction
+
+     
+    public void displayTransactions() {
         String[] transactionArray = transactions.get(currentTransactionIndex);
-        transactionDisplay = new TransactionDisplay();
         transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
     }
 
     public void displayNoTransactionsMessage() {
-        // Display a message or perform any other action when there are no transactions
-        // For example, you can set a label or show a JOptionPane
         JOptionPane.showMessageDialog(this, "No transactions found for the email.", "No Transactions", JOptionPane.INFORMATION_MESSAGE);
     }
      
-   private List<String[]> getTransactionsForEmail(String emailAddress) {
-    try {
-        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
-        List<String[]> reversedTransactions = new ArrayList<>(lines.size());
-
-        // Reverse the order of transactions
-        for (int i = lines.size() - 1; i >= 0; i--) {
-            String[] transaction = lines.get(i).split(",");
-            reversedTransactions.add(transaction);
-        }
-
-        return reversedTransactions.stream()
-                .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
-                .toList();
-    } catch (IOException e) {
-        e.printStackTrace();
-        return List.of();
-    }
-}
-    
-    private void initializeTable() {
+   private void initializeTable() {
         table = new JTable(new DefaultTableModel());
         jScrollPane = new JScrollPane(table);
 
-        // Set columns for the table
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addColumn("Departure | Arrival");
         model.addColumn("Flight Name");
         model.addColumn("Route");
         model.addColumn("Seat Class");
 
-        // Set preferred column widths
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(3).setPreferredWidth(100);
-        columnModel.getColumn(2).setPreferredWidth(200); // Route column width
-        columnModel.getColumn(1).setPreferredWidth(50);  // Flight ID column width
+        columnModel.getColumn(2).setPreferredWidth(200);
+        columnModel.getColumn(1).setPreferredWidth(50);
         columnModel.getColumn(0).setPreferredWidth(150);
 
-        // Set the layout for jPanel2
         jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -370,32 +386,13 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Close button action
         new FlightMenu(cust).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void NextTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextTicketActionPerformed
-        if (transactions != null && !transactions.isEmpty()) {
-        currentTransactionIndex++;
-
-        // Check if there is another transaction with the same email
-        if (currentTransactionIndex < transactions.size()) {
-            // Display the next transaction
-            TransactionDisplay transactionDisplay = new TransactionDisplay();
-            String[] nextTransaction = transactions.get(currentTransactionIndex);
-
-            // Create a new ArrayList and add the nextTransaction directly
-            List<String[]> transactionList = new ArrayList<>();
-            transactionList.add(nextTransaction);
-
-            transactionDisplay.displayTransactions(transactionList, jPanel2, table);
-        } else {
-            // No more transactions, you can handle this case or reset the index
-            // For simplicity, let's reset the index to 0
-            currentTransactionIndex = 0;
-            // Alternatively, you can disable the "NextTicket" button when there are no more transactions
-        }
-    }
+        showNextTransaction();
     }//GEN-LAST:event_NextTicketActionPerformed
 
     /**
@@ -424,11 +421,11 @@ public class Receipt extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        final Customer cust = new Customer();
         /* Create and display the form */
+        final Booking booking = new Booking(); 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Receipt().setVisible(true);
+                new Receipt(booking).setVisible(true);
             }
         });
     }
@@ -448,4 +445,8 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    void setCustomer(Customer customer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

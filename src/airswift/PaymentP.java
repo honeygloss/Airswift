@@ -21,19 +21,16 @@ import javax.swing.JOptionPane;
 public class PaymentP extends javax.swing.JPanel {
     private Booking book;
     private AvailableSeat availableS;
-    private Customer cust;  
+    private Customer cust;
     /**
      * Creates new form PaymentP
      */
     public PaymentP(Booking booking) {
         initComponents();
-        //cust = new Customer();
+        this.book = booking;
+         // Initialize the customer object
 
-        book = booking;
-        //availableS = new AvailableSeat();
-  
-        TotPayment.setText("RM"+String.valueOf(booking.calculatePayment()));
-
+        TotPayment.setText("RM" + String.valueOf(booking.calculatePayment()));
     }
     
     boolean isFound = false;
@@ -374,11 +371,12 @@ public class PaymentP extends javax.swing.JPanel {
     }//GEN-LAST:event_CardNumberFieldActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        new FlightMenu(cust).setVisible(true);
+       Customer cust = null;
+       new FlightMenu(cust).setVisible(true);
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
-        String custEmailAdress0 = cust.getEmailAddress();
+        String custEmailAdress0 = book.getEmail();
 
         String flightID1 = book.getFlightIDDepart();
         String departShort2 = book.getDepartShort();
@@ -466,8 +464,10 @@ public class PaymentP extends javax.swing.JPanel {
             return;
         }
         
+        FileWriter wr = null;
+        
         try {
-            FileWriter wr = new FileWriter("Transaction.txt", true);
+            wr = new FileWriter("Transaction.txt", true);
             // Save payment information as an array
             String[] paymentInfo = {
                 custEmailAdress0,
@@ -497,18 +497,27 @@ public class PaymentP extends javax.swing.JPanel {
                 Name24
             };
 
-            // Convert the array to a CSV string and write to the file
-             String paymentInfoCSV = String.join(",", paymentInfo);
-        wr.write(paymentInfoCSV);
-        wr.write(System.getProperty("line.separator"));
+            String paymentInfoCSV = String.join(",", paymentInfo);
+            wr.write(paymentInfoCSV);
+            wr.write(System.getProperty("line.separator"));
 
-        wr.close();
-        JOptionPane.showMessageDialog(null, "Success");
-        setVisible(false);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Success");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error");
+                e.printStackTrace(); // Print the stack trace for debugging
+            } finally {
+            try {
+                if (wr != null) {
+                    wr.close(); // Close the FileWriter in a finally block
+            }
+            } catch (IOException e) {
+                e.printStackTrace(); // Handle the exception or log it
+        }
     }
-    new Receipt().setVisible(true);
+
+// Open Receipt window only if the payment was successful
+new Receipt(book).setVisible(true);
+
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
 
@@ -548,4 +557,5 @@ public class PaymentP extends javax.swing.JPanel {
     void setBookingInformation(Booking book) {
         this.book = book;
     }
+    
 }
