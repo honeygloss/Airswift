@@ -28,7 +28,7 @@ public class StartUp extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         try{
-        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\Lyft _ Plane1.png"));
+        Image icon = ImageIO.read(new File("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Lyft _ Plane2.png"));
         this.setIconImage(icon);
         this.setTitle("AirSwift");
         this.setFont(new java.awt.Font("Segoe UI", 1, 12));

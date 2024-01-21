@@ -90,6 +90,7 @@ public class FlightBooking extends javax.swing.JPanel {
         String flightid[] = new String[randomNum];
         int newValue;
         boolean isDuplicate;
+        int ind = 0;
         
         // generate random index for randomNum tickets
         for (int i = 0; i < randomNum; i++) {
@@ -232,8 +233,10 @@ public class FlightBooking extends javax.swing.JPanel {
                 }
             });
         }
+        if(selectedFlightIndex!=-1)
+            ind = selectedFlightIndex;
         final int finalRandomNum = randomNum;
-        final String finalfID = flightid[selectedFlightIndex];
+        final String finalfID = flightid[ind];
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
