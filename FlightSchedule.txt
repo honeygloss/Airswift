@@ -464,3 +464,6 @@
 1463;AS 641;Kuala Terengganu ;Kuala Lumpur ;Wed Jan 24 11:55:09 MYT 2024;null;17:00;
 1464;AS 369;Kuala Lumpur ;Johor Bahru ;Thu Jan 25 12:00:02 MYT 2024;null;17:00;
 1465;AS 721;Kuala Lumpur ;Johor Bahru ;Thu Jan 25 12:00:02 MYT 2024;null;12:05;
+1466;AS 459;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;12:05;
+1467;AS 812;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;09:15;
+1468;AS 697;Kuala Lumpur ;Kuala Terengganu ;Tue Jan 23 00:00:00 MYT 2024;null;19:55;
