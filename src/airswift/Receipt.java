@@ -44,14 +44,44 @@ public class Receipt extends javax.swing.JFrame {
      */
     public Receipt(Booking booking) {
         initComponents();
-        //readFile();
         initializeTable();
-        displayTransactions(); 
         this.booking = booking;
+        
+        String[] firstNames = this.booking.getPassFirstName();
+        String[] lastNames = this.booking.getPassLastName();
 
-       currentTransactionIndex = 0;  // Start with the first transaction
+        // Check if both arrays are not null
+        if (firstNames != null && lastNames != null) {
+            // Concatenate all elements of the arrays
+            StringBuilder fullName = new StringBuilder();
+    
+            // Use an index to iterate over the arrays
+            int i = 0;
+    
+            // Continue as long as both arrays have elements at the current index
+            while (i < firstNames.length && i < lastNames.length && firstNames[i] != null && lastNames[i] != null) {
+            fullName.append(firstNames[i]).append(" ").append(lastNames[i]).append(", ");
+            i++;
+        }
 
-        displayTransactions(); 
+        if (fullName.length() > 0) {
+            // Remove the trailing comma and space
+            String result = fullName.toString().replaceAll(", $", "");
+            jLabel2.setText(result);
+        } else {
+            // Handle the case where either array is empty
+            jLabel2.setText("No Name Available");
+        }
+        } else {
+        // Handle the case where either array is null
+        jLabel2.setText("Name Data is Null");
+        }
+           
+        currentTransactionIndex = 0;  // Start with the first transaction
+
+        transactions = getTransactions();
+
+        displayTransactions();
     }
 
      public void displayTransactions() {
