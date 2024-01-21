@@ -217,8 +217,6 @@ public class FlightMenu extends javax.swing.JFrame {
         passengersListdown2 = new combo_suggestion.ComboBoxSuggestion();
         returnCheckbox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
-        TicketButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -397,24 +395,6 @@ public class FlightMenu extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TicketButton.setBackground(new java.awt.Color(0, 204, 204));
-        TicketButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        TicketButton.setForeground(new java.awt.Color(255, 255, 255));
-        TicketButton.setText("TICKET");
-        TicketButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        TicketButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TicketButtonActionPerformed(evt);
-            }
-        });
-        jPanel3.add(TicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 70, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("View Flight Ticket:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
         myBookingTab.addTab("MY BOOKING", jPanel3);
 
         jLabel1.setText("jLabel1");
@@ -562,10 +542,6 @@ public class FlightMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_returnCheckboxActionPerformed
 
-    private void TicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicketButtonActionPerformed
-        new Receipt(cust).setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_TicketButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -604,7 +580,6 @@ public class FlightMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton TicketButton;
     private combo_suggestion.ComboBoxSuggestion classCabinListdown;
     private com.toedter.calendar.JDateChooser departDate;
     private javax.swing.JLabel departDateLabel;
@@ -615,7 +590,6 @@ public class FlightMenu extends javax.swing.JFrame {
     private combo_suggestion.ComboBoxSuggestion fromListdown;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
