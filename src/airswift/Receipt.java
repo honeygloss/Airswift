@@ -10,19 +10,18 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import airswift.TransactionDisplay;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.swing.table.TableColumnModel;
-
+import java.util.Collections;
 
 
 
@@ -34,152 +33,89 @@ import javax.swing.table.TableColumnModel;
  * @author 60111
  */
 public class Receipt extends javax.swing.JFrame {
-    private Booking booking;
-    private String emailcust;
-    private int currentTransactionIndex;
-    private TransactionDisplay transactionDisplay;
     private javax.swing.GroupLayout jPanel2Layout;
+    private javax.swing.JScrollPane jScrollPane;
     private JTable table;
-    private JScrollPane jScrollPane;
-
-
-
+    private Booking booking; 
+    private List<String[]> transactions;  // Maintain a list of transactions
+    private int currentTransactionIndex;
+    /**
+     * Creates new form Receipt
+     */
     public Receipt(Booking booking) {
         initComponents();
+        //readFile();
+        initializeTable();
+        displayTransactions(); 
         this.booking = booking;
-        emailcust = this.booking.getEmail();
-        currentTransactionIndex = 0;
-        transactionDisplay = new TransactionDisplay();
 
-        // Load transactions from file
-        List<String[]> transactions = loadTransactionsFromFile();
+       currentTransactionIndex = 0;  // Start with the first transaction
 
-        // Check if there are transactions and the email matches
-        if (transactions != null && !transactions.isEmpty() && transactions.get(0)[0].equals(emailcust)) {
-            displayTransactions(transactions);
-            // Set customer name from the 24th index of the first transaction
-            if (transactions.get(0).length > 24) {
-                CustomerName.setText(transactions.get(0)[24]);
-            }
-        } else {
-            displayNoTransactionsMessage();
-        }
-    }
-    
-    private void showNextTransaction() {
-        List<String[]> transactions = loadTransactionsFromFile();
-
-        if (!transactions.isEmpty()) {
-            for (int i = currentTransactionIndex + 1; i < transactions.size(); i++) {
-                if (transactions.get(i)[0].equals(emailcust)) {
-                    currentTransactionIndex = i;
-                    displayTransactions(transactions);
-                    return;
-                }
-            }
-            displayNoTransactionsMessage();
-        }
-    }
-    
-    private void showPreviousTransaction() {
-    List<String[]> transactions = loadTransactionsFromFile();
-
-    if (transactions != null && !transactions.isEmpty()) {
-        currentTransactionIndex--;
-
-        if (currentTransactionIndex >= 0) {
-            displayTransactions(transactions);
-        } else {
-            currentTransactionIndex = transactions.size() - 1;
-            // You may want to disable the "PreviousTicket" button when there are no more previous transactions
-        }
-    }
-}
-    
-    private List<String[]> loadTransactionsFromFile() {
-    try {
-        // Read all lines from transactions.txt
-        List<String> lines = Files.readAllLines(Paths.get("path/to/transactions.txt"));
-
-        // Check if there are any lines in the file
-        if (!lines.isEmpty()) {
-            // Split the first line (assuming it's the header) to get the column names
-            String[] header = lines.get(0).split(",");
-            int emailIndex = -1;
-
-            // Find the index of the email column in the header
-            for (int i = 0; i < header.length; i++) {
-                if (header[i].equalsIgnoreCase("Email")) {
-                    emailIndex = i;
-                    break;
-                }
-            }
-
-            // Check if the email index is found
-            if (emailIndex != -1) {
-                // Extract the email from the first transaction
-                String[] firstTransaction = lines.get(1).split(",");
-                String emailFromTransaction = firstTransaction[emailIndex];
-
-                // Check if the retrieved email matches the customer's email
-                if (emailFromTransaction.equals(emailcust)) {
-                    // Return all transactions
-                    return lines.stream().map(line -> line.split(",")).collect(Collectors.toList());
-                }
-            }
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
+        displayTransactions(); 
     }
 
-    return Collections.emptyList();
-}
+     public void displayTransactions() {
+        if (transactions.isEmpty()) {
+            // Handle case where no transactions are found for the email
+            return;
+        }
 
-
-     
-    private void displayTransactions(List<String[]> transactions) {
+        // Display the current transaction
+        TransactionDisplay transactionDisplay = new TransactionDisplay();
         String[] transactionArray = transactions.get(currentTransactionIndex);
-        transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
+        transactionDisplay.displayTransactions(Collections.singletonList(transactions.get(currentTransactionIndex)), jPanel2, table);
     }
-
-    private void displayNoTransactionsMessage() {
-        JOptionPane.showMessageDialog(this, "No transactions found for the email.", "No Transactions", JOptionPane.INFORMATION_MESSAGE);
-    }
-
      
-   private void initializeTable() {
+   private List<String[]> getTransactions() {
+    // Read all lines from the file
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+
+            // Filter transactions based on email
+            return lines.stream()
+                .map(line -> line.split(","))
+                .filter(transaction -> transaction.length > 0 && transaction[0].equals(this.booking.getEmail()))
+                .toList();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return List.of();
+        }
+}
+    
+    private void initializeTable() {
         table = new JTable(new DefaultTableModel());
-        jScrollPane = new JScrollPane(table);
+    jScrollPane = new JScrollPane(table);
 
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.addColumn("Departure | Arrival");
-        model.addColumn("Flight Name");
-        model.addColumn("Route");
-        model.addColumn("Seat Class");
+    // Set columns for the table
+    DefaultTableModel model = (DefaultTableModel) table.getModel();
+    model.addColumn("Departure | Arrival");
+    model.addColumn("Flight Menu");
+    model.addColumn("Route");
+    model.addColumn("Seat Class");
 
-        TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(3).setPreferredWidth(100);
-        columnModel.getColumn(2).setPreferredWidth(200);
-        columnModel.getColumn(1).setPreferredWidth(50);
-        columnModel.getColumn(0).setPreferredWidth(150);
-
-        jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
-        );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-    }
+    // Set preferred column widths
+    TableColumnModel columnModel = table.getColumnModel();
+    columnModel.getColumn(3).setPreferredWidth(100);
+    columnModel.getColumn(2).setPreferredWidth(200); // Route column width
+    columnModel.getColumn(1).setPreferredWidth(50);  // Flight ID column width
+    columnModel.getColumn(0).setPreferredWidth(150);
+    // Set the layout for jPanel2
+    jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20))
+    );
+    jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );    }
     
         // Additional components and layout code
         // ...
@@ -195,7 +131,7 @@ public class Receipt extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Receipt = new javax.swing.JPanel();
-        CustomerName = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -214,7 +150,7 @@ public class Receipt extends javax.swing.JFrame {
         Receipt.setBackground(new java.awt.Color(255, 255, 255));
         Receipt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        CustomerName.setText("jLabel2");
+        jLabel2.setText("jLabel2");
 
         jLabel9.setText("| Passenger Name");
 
@@ -252,7 +188,7 @@ public class Receipt extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(ReceiptLayout.createSequentialGroup()
                         .addGroup(ReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 338, Short.MAX_VALUE))))
         );
@@ -262,7 +198,7 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addGap(20, 20, 20)
-                .addComponent(CustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -294,7 +230,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MY BOOKING");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Airswift\\src\\airswift\\Lyft _ Plane2.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/airswift/Lyft _ Plane2.png"))); // NOI18N
 
         NextTicket.setBackground(new java.awt.Color(204, 204, 204));
         NextTicket.setText("NEXT");
@@ -379,7 +315,7 @@ public class Receipt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    PrinterJob job = PrinterJob.getPrinterJob();
+     PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Data");
 
         job.setPrintable(new Printable() {
@@ -411,14 +347,27 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // Close button action
         Customer cust = null;
         new FlightMenu(cust).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void NextTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextTicketActionPerformed
-        showNextTransaction();
+        // Handle "NextTicket" button click
+        currentTransactionIndex++;
+        
+        // Check if there is another transaction with the same email
+        if (currentTransactionIndex < transactions.size()) {
+            // Display the next transaction
+            TransactionDisplay transactionDisplay = new TransactionDisplay();
+            transactionDisplay.displayTransactions(Collections.singletonList(transactions.get(currentTransactionIndex)), jPanel2, table);
+
+        } else {
+            // No more transactions, you can handle this case or reset the index
+            // For simplicity, let's reset the index to 0
+            currentTransactionIndex = 0;
+            // Alternatively, you can disable the "NextTicket" button when there are no more transactions
+        }// TODO add your handling code here:
     }//GEN-LAST:event_NextTicketActionPerformed
 
     /**
@@ -447,17 +396,16 @@ public class Receipt extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        /* Create and display the form */
         final Booking booking = new Booking();
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-        new Receipt(booking).setVisible(true);
-    }
-});
+            public void run() {
+                new Receipt(booking).setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CustomerName;
     private javax.swing.JButton NextTicket;
     private javax.swing.JPanel Receipt;
     private javax.swing.JButton jButton1;
@@ -465,6 +413,7 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -472,4 +421,7 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
+    private List<String[]> getTransactionsForEmail(String emailAddress) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
