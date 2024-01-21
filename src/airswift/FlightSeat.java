@@ -180,7 +180,7 @@ public class FlightSeat extends javax.swing.JPanel {
                 // make sure the personal details are not empty
                 if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {
                     String message = "Please complete your personal details.";
-                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, message);
                     return;
                 }
 
