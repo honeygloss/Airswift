@@ -176,56 +176,54 @@ public class FlightSeat extends javax.swing.JPanel {
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                    numPass.setText(Integer.toString(currentCustomerIndex+1));
-                    // make sure the personal details are not empty
-                    if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {
-                        String message = "Please complete your personal details.";
-                        JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
+                numPass.setText(Integer.toString(currentCustomerIndex+1));
+                // make sure the personal details are not empty
+                if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {
+                    String message = "Please complete your personal details.";
+                    JOptionPane.showMessageDialog(null, message, "Personal Details Not Completed", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
-                    // make sure user chooses a seat
-                    else if (selectedSeatIndex == -1) {
-                        // Handle the case where no flight is selected
-                        String message = "Please select a seat before continuing.";
-                        JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+                // make sure user chooses a seat
+                else if (selectedSeatIndex == -1) {
+                    // Handle the case where no flight is selected
+                    String message = "Please select a seat before continuing.";
+                    JOptionPane.showMessageDialog(null, message, "No Seat Selected", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } 
+                else if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
+                    if (!availableSeat.getSeatFlag(selectedSeatIndex)) {
+                        String message = "Please choose other seats.";
+                        JOptionPane.showMessageDialog(null, message, "Seat Is Taken", JOptionPane.WARNING_MESSAGE);
                         return;
+
                     } 
-                    else if (selectedSeatIndex >= 0 && selectedSeatIndex < 69) {
-                        if (!availableSeat.getSeatFlag(selectedSeatIndex)) {
-                            String message = "Please choose other seats.";
-                            JOptionPane.showMessageDialog(null, message, "Seat Is Taken", JOptionPane.WARNING_MESSAGE);
-                            return;
-
-                        } 
-                        else {
-                            buttons[selectedSeatIndex].setText("X"); // Set text to "X" for the selected seat
-                            buttons[selectedSeatIndex].setFont(new Font("Segoe UI", Font.BOLD, 12));
-                            book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
-                            availableSeat.setSeatFlag(false, selectedSeatIndex);
-                        }
+                    else {
+                        buttons[selectedSeatIndex].setText("X"); // Set text to "X" for the selected seat
+                        buttons[selectedSeatIndex].setFont(new Font("Segoe UI", Font.BOLD, 12));
+                        book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                        availableSeat.setSeatFlag(false, selectedSeatIndex);
                     }
+                }
 
-                    // Set passenger information
-                    book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
-                    book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
-                    book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
+                // Set passenger information
+                book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
+                book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
+                book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
 
-                    // Clear the input fields
-                    fNameInput.setText("");
-                    lNameInput.setText("");
-                    seatInput.setText("");
-                    currentCustomerIndex++;
+                // Clear the input fields
+                fNameInput.setText("");
+                lNameInput.setText("");
+                seatInput.setText("");
+                currentCustomerIndex++;
                 if(currentCustomerIndex==booking.getPassenger()){
                     SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
                         showPaymentPanel();
                     }
-                });
-                }
-                
+                    });
+                }   
             }
         });
         
@@ -244,8 +242,7 @@ public class FlightSeat extends javax.swing.JPanel {
                         
                     }
                 });
-            }
-                 
+            }     
         });
             
     }

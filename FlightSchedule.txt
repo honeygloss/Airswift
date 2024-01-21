@@ -526,3 +526,8 @@
 1525;AS 374;Kuala Lumpur ;Johor Bahru ;Thu Jan 25 19:58:09 MYT 2024;null;04:55;
 1526;AS 895;Kuala Lumpur ;Johor Bahru ;Thu Jan 25 19:58:09 MYT 2024;null;09:15;
 1527;AS 485;Kuala Lumpur ;Johor Bahru ;Thu Jan 25 19:58:09 MYT 2024;null;14:45;
+1528;AS 739;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;07:05;
+1529;AS 342;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;09:15;
+1530;AS 439;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;12:05;
+1531;AS 641;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;17:00;
+1532;AS 714;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;14:45;
