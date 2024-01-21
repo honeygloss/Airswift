@@ -531,3 +531,7 @@
 1530;AS 439;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;12:05;
 1531;AS 641;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;17:00;
 1532;AS 714;Penang ;Kerteh ;Wed Jan 24 20:46:39 MYT 2024;null;14:45;
+1533;AS 643;Penang ;Long Akah ;Fri Jan 26 21:33:29 MYT 2024;null;19:55;
+1534;AS 196;Tawau ;Alor Setar ;Thu Jan 25 22:05:21 MYT 2024;null;04:55;
+1535;AS 806;Tawau ;Alor Setar ;Thu Jan 25 22:05:21 MYT 2024;null;09:15;
+1536;AS 456;Tawau ;Alor Setar ;Thu Jan 25 22:05:21 MYT 2024;null;23:00;

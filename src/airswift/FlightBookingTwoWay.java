@@ -157,14 +157,14 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                 int t = 0;      //  the first index of the temporary flight schedule
                 try (java.util.Scanner filein = new java.util.Scanner(new FileReader("FlightSchedule.txt"))) {
                     while(filein.hasNextLine()){        // assign all schedules in fstemp[] (for comparison)
-                        String line =filein.nextLine();
-                        StringTokenizer st =new StringTokenizer(line, ";");
+                        String line = filein.nextLine();
+                        StringTokenizer st = new StringTokenizer(line, ";");
                         int idTemp = Integer.parseInt(st.nextToken());
-                        String nameTemp= st.nextToken();
+                        String nameTemp = st.nextToken();
                         String departTemp = st.nextToken();
                         String returnTemp = st.nextToken();
-                        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-                        Date dateTemp = sdf.parse(st.nextToken());
+                        String dateString = st.nextToken();  // Read the date as a string
+                        Date dateTemp = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.forLanguageTag("ms-MY")).parse(dateString);
                         String timeTemp = st.nextToken();
                         String time2Temp = st.nextToken();
                         fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp, time2Temp);

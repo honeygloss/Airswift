@@ -169,14 +169,14 @@ public class FlightSeat extends javax.swing.JPanel {
                 }
             });
         }
-        String pass = ""+1;
-        numPass.setText(pass);
+        int pass =1;
+        numPass.setText(""+pass);
         currentCustomerIndex=0;
         //If user click continue button
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                numPass.setText(Integer.toString(currentCustomerIndex+1));
+                numPass.setText(""+(pass+1));
                 // make sure the personal details are not empty
                 if (fNameInput.getText().isEmpty() || lNameInput.getText().isEmpty()) {
                     String message = "Please complete your personal details.";
@@ -216,7 +216,7 @@ public class FlightSeat extends javax.swing.JPanel {
                 lNameInput.setText("");
                 seatInput.setText("");
                 currentCustomerIndex++;
-                if(currentCustomerIndex==booking.getPassenger()){
+                if(currentCustomerIndex-1==booking.getPassenger()){
                     SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -1913,7 +1913,7 @@ public class FlightSeat extends javax.swing.JPanel {
                         .addGroup(passengerDetsLayout.createSequentialGroup()
                             .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         passengerDetsLayout.setVerticalGroup(

@@ -63,6 +63,8 @@ public class FlightBooking extends javax.swing.JPanel {
         javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\airport2.jpg");
         backgroundImage = backgroundImageIcon.getImage();
         
+        
+        
         // Display booking information selected in the Flight Menu
         departShort.setText(book.getDepartShort());
         departLong.setText(book.getDepartLong().toUpperCase());
@@ -133,17 +135,17 @@ public class FlightBooking extends javax.swing.JPanel {
                 int t = 0;      //  the first index of the temporary flight schedule
                 try (Scanner filein = new Scanner(new FileReader("FlightSchedule.txt"))) {
                     while(filein.hasNextLine()){       
-                        String line =filein.nextLine();
-                        StringTokenizer st =new StringTokenizer(line, ";");
+                        String line = filein.nextLine();
+                        StringTokenizer st = new StringTokenizer(line, ";");
                         int idTemp = Integer.parseInt(st.nextToken());
-                        String nameTemp= st.nextToken();
+                        String nameTemp = st.nextToken();
                         String departTemp = st.nextToken();
                         String returnTemp = st.nextToken();
-                        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-                        Date dateTemp = sdf.parse(st.nextToken());
+                        String dateString = st.nextToken();  // Read the date as a string
+                        Date dateTemp = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.forLanguageTag("ms-MY")).parse(dateString);
                         String timeTemp = st.nextToken();
                         String time2Temp = st.nextToken();
-                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp, time2Temp);
+                        fstemp[t] = new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp, dateTemp, timeTemp, time2Temp);
                         t++;
                     }
                 }
@@ -263,18 +265,6 @@ public class FlightBooking extends javax.swing.JPanel {
                 
             }
         });
-        backButt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        
-                    }
-                });
-            }
-        });
-        
         //Create a JScrollPane and add your main panel to it
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
         scrollPane.setBounds(0, 260, 900,210);
@@ -316,33 +306,6 @@ public class FlightBooking extends javax.swing.JPanel {
         System.err.println("Error creating or displaying PaymentP panel.");
     }
     }
-    
-    /*public void showMenuPanel() {
-    try {
-        // Assuming paymentPanel is an instance of the PaymentP class
-        FlightMenu menuPanel = new FlightMenu();
-
-        // Get the parent container of the current FlightBooking panel
-        Container parent = this.getParent();
-
-        // Hide the menu before replacing the current panel
-        if (menu != null) {
-            menu.setVisible(false);
-        }
-
-        // Replace the current FlightBooking panel with the PaymentP panel
-        if (parent != null) {
-            parent.remove(this);
-            parent.add(menuPanel);
-            parent.revalidate();
-            parent.repaint();
-        }
-    } catch (Exception ex) {
-        ex.printStackTrace(); // Print the exception for debugging
-        System.err.println("Error creating or displaying FlightMenu panel.");
-    }
-    }           */
-        
     public void setBooking(Booking booking){
         book = booking;
     }
@@ -543,6 +506,8 @@ public class FlightBooking extends javax.swing.JPanel {
 
     private void backButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtActionPerformed
         // TODO add your handling code here:
+        Customer cust = new Customer();
+        new FlightMenu(cust).setVisible(true);
         
     }//GEN-LAST:event_backButtActionPerformed
 
