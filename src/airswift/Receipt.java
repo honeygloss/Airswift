@@ -44,22 +44,24 @@ public class Receipt extends javax.swing.JFrame {
      */
     public Receipt(Booking booking) {
         initComponents();
-        initializeTable();
-        this.booking = booking;
-        
-        String[] firstNames = this.booking.getPassFirstName();
-        String[] lastNames = this.booking.getPassLastName();
+    initializeTable();
+    this.booking = booking;
 
-        // Check if both arrays are not null
-        if (firstNames != null && lastNames != null) {
-            // Concatenate all elements of the arrays
-            StringBuilder fullName = new StringBuilder();
-    
-            // Use an index to iterate over the arrays
-            int i = 0;
-    
-            // Continue as long as both arrays have elements at the current index
-            while (i < firstNames.length && i < lastNames.length && firstNames[i] != null && lastNames[i] != null) {
+    Customer cust = new Customer();
+
+    String[] firstNames = this.booking.getPassFirstName();
+    String[] lastNames = this.booking.getPassLastName();
+
+    // Check if both arrays are not null
+    if (firstNames != null && lastNames != null) {
+        // Concatenate all elements of the arrays
+        StringBuilder fullName = new StringBuilder();
+
+        // Use an index to iterate over the arrays
+        int i = 0;
+
+        // Continue as long as both arrays have elements at the current index
+        while (i < firstNames.length && i < lastNames.length && firstNames[i] != null && lastNames[i] != null) {
             fullName.append(firstNames[i]).append(" ").append(lastNames[i]).append(", ");
             i++;
         }
@@ -72,44 +74,50 @@ public class Receipt extends javax.swing.JFrame {
             // Handle the case where either array is empty
             jLabel2.setText("No Name Available");
         }
-        } else {
+    } else {
         // Handle the case where either array is null
         jLabel2.setText("Name Data is Null");
-        }
-           
-        currentTransactionIndex = 0;  // Start with the first transaction
+    }
 
-        transactions = getTransactions();
+    currentTransactionIndex = 0;  // Start with the first transaction
 
+    transactions = getTransactions();
+
+    // Check if transactions exist and if the customer's email matches the latest transaction
+    if (!transactions.isEmpty() && cust.getEmailAddress().equals(transactions.get(0)[0])) {
         displayTransactions();
     }
+}
 
      public void displayTransactions() {
         if (transactions.isEmpty()) {
-            // Handle case where no transactions are found for the email
-            return;
-        }
+        // Handle case where no transactions are found for the email
+        return;
+    }
 
-        // Display the current transaction
-        TransactionDisplay transactionDisplay = new TransactionDisplay();
-        String[] transactionArray = transactions.get(currentTransactionIndex);
-        transactionDisplay.displayTransactions(Collections.singletonList(transactions.get(currentTransactionIndex)), jPanel2, table);
+    // Display the current transaction
+    TransactionDisplay transactionDisplay = new TransactionDisplay();
+    String[] transactionArray = transactions.get(currentTransactionIndex);
+    transactionDisplay.displayTransactions(Collections.singletonList(transactionArray), jPanel2, table);
     }
      
    private List<String[]> getTransactions() {
     // Read all lines from the file
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+    try {
+        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
 
-            // Filter transactions based on email
-            return lines.stream()
+        // Reverse the list to start comparing from the latest transaction
+        Collections.reverse(lines);
+
+        // Filter transactions based on email
+        return lines.stream()
                 .map(line -> line.split(","))
                 .filter(transaction -> transaction.length > 0 && transaction[0].equals(this.booking.getEmail()))
                 .toList();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return List.of();
-        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        return List.of();
+    }
 }
     
     private void initializeTable() {

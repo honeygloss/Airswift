@@ -527,7 +527,7 @@ public class FlightMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_toListdownActionPerformed
 
     private void myBookingTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myBookingTabMouseClicked
-        Booking book = null;
+        Booking book = new Booking(); // You need to replace this with the actual way you create a Booking object.
         if (myBookingTab.getSelectedIndex() == 1) {
             createBookingButtons();
             Receipt receiptWindow = new Receipt(book);
