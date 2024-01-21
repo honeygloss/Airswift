@@ -197,6 +197,10 @@ public class Booking{
         }
     }
     
+    public String[] getPassFirstName() {
+        return passFirstName;
+    }
+    
     public void setPassengerLastName(String lastName, int index) {
         if (index >= 0 && index < passenger) {
             passLastName[index] = lastName;
@@ -204,6 +208,10 @@ public class Booking{
             // Handle the case where the index is out of bounds
             System.out.println("Invalid index for passLastName array.");
         }
+    }
+    
+    public String[] getPassLastName() {
+        return passLastName;
     }
     
     public void setPassengerSeat(String seatName, int index) {

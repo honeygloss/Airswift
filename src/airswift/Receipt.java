@@ -85,17 +85,24 @@ public class Receipt extends javax.swing.JFrame {
     }
      
    private List<String[]> getTransactionsForEmail(String emailAddress) {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
-            return lines.stream()
-                    .map(line -> line.split(","))
-                    .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
-                    .toList();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return List.of();
+    try {
+        List<String> lines = Files.readAllLines(Paths.get("transaction.txt"));
+        List<String[]> reversedTransactions = new ArrayList<>(lines.size());
+
+        // Reverse the order of transactions
+        for (int i = lines.size() - 1; i >= 0; i--) {
+            String[] transaction = lines.get(i).split(",");
+            reversedTransactions.add(transaction);
         }
+
+        return reversedTransactions.stream()
+                .filter(transaction -> transaction.length > 0 && transaction[0].equals(emailAddress))
+                .toList();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return List.of();
     }
+}
     
     private void initializeTable() {
         table = new JTable(new DefaultTableModel());
