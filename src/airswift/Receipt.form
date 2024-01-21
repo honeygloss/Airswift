@@ -253,11 +253,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\60111\OneDrive\Documents\NetBeansProjects\Airswift\src\airswift\Lyft _ Plane2.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="NextTicket">
           <Properties>

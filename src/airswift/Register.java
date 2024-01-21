@@ -500,8 +500,13 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "This password must be 8 characters or longer"); 
             return;
         }
+        
+        if (!nationality.equals("Malaysian")){
+            JOptionPane.showMessageDialog(this, "Fill in the passport number"); 
+            return;
+        }
         if(title.isEmpty() || nationality.isEmpty() || emailAddress.isEmpty() || phoneNumber.isEmpty()
-           || fName.isEmpty() || lName.isEmpty() ||passport.isEmpty() || DOB.isEmpty() || pass.isEmpty()|| confirmPass.isEmpty()){
+           || fName.isEmpty() || lName.isEmpty()  || DOB.isEmpty() || pass.isEmpty()|| confirmPass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill all fields"); 
             return;
         }

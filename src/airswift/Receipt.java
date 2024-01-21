@@ -43,10 +43,9 @@ public class Receipt extends javax.swing.JFrame {
     /**
      * Creates new form Receipt
      */
-    public Receipt(Customer cust) {
+    public Receipt() {
     initComponents();
     initializeTable();
-    this.cust = cust;
     
     transactions = getTransactionsForEmail(cust.getEmailAddress());
     currentTransactionIndex = 0;  // Start with the first transaction
@@ -429,7 +428,7 @@ public class Receipt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Receipt(cust).setVisible(true);
+                new Receipt().setVisible(true);
             }
         });
     }

@@ -26,7 +26,7 @@ public class StartUp extends javax.swing.JFrame {
     
     public StartUp() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         try{
         Image icon = ImageIO.read(new File("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\Lyft _ Plane2.png"));
         this.setIconImage(icon);

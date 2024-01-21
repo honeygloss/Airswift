@@ -508,7 +508,7 @@ public class PaymentP extends javax.swing.JPanel {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error");
     }
-    new Receipt(cust).setVisible(true);
+    new Receipt().setVisible(true);
        
     }//GEN-LAST:event_ConfirmPaymentButtonActionPerformed
 
