@@ -21,7 +21,7 @@ public class TransactionDisplay {
         Set<String> uniqueEntries = new HashSet<>();
 
         for (String[] transaction : transactions) {
-            if (transaction.length >= 24) {
+            if (transaction.length >= 23) {
                 String departDate7 = transaction[7];
                 String timeDepartF9 = transaction[9];
                 String flightName20 = transaction[20];
