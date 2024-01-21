@@ -23,3 +23,4 @@ nurhaura@gmail.com,null,KUL,KUALA LUMPUR ,KBR,KOTA BHARU ,1,26 Jan 2024,,23:00,2
 nurhaura@gmail.com,null,KUL,KUALA LUMPUR ,JHB,JOHOR BAHRU ,1,26 Jan 2024,,12:05,12:05,3B, null, null, null, null, null, null, null, null, null,nasahsad,abddaido@gmail.com,024423546,9876 5434 2135 6909,235,0,2026,MasterCard,AS 399,Economy,13:05,13:05
 nurhaura@gmail.com,null,KUL,KUALA LUMPUR ,TGG,KUALA TERENGGANU ,1,26 Jan 2024,,02:00,02:00,4B,sdvsds,dfdfsf@gmail.com,3445373343,9876 5432 3546 7898,431,1,2024,MasterCard,AS 619,Economy,03:00,03:00
 nurhaura@gmail.com,null,KUL,KUALA LUMPUR ,JHB,JOHOR BAHRU ,1,24 Jan 2024,,02:00,02:00,3B,ghfxvx,dsgvsvf@gmail.com,0111234346,9876 5432 1345 6789,234,0,2024,MasterCard,AS 521,Economy,03:00,03:00
+nurhaura@gmail.com,null,KUL,KUALA LUMPUR ,AOR,ALOR SETAR ,1,26 Jan 2024,,23:00,23:00,3B,tgdffdg,sgsgss@gmail.com,023463657547,0897 6543 2245 6798,354,2,2026,MasterCard,AS 380,Economy,00:00,00:00
