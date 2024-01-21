@@ -14,12 +14,18 @@ public class Booking{
     private String timeDepart[]=new String[2];
     private String timeReturn[]=new String[2];
     private String flightName;
-    private String flightID;
+    private String flightIDDepart;
     private String passFirstName[]= new String[10];
     private String passLastName[]= new String[10];
     private String seatName[] = new String[10];
 
-    
+    public String getFlightIDDepart() {
+        return flightIDDepart;
+    }
+
+    public void setFlightIDDepart(String flightIDDepart) {
+        this.flightIDDepart = flightIDDepart;
+    }
 
     public String[] getSeatName() {
         return seatName;
@@ -27,11 +33,6 @@ public class Booking{
 
     public void setSeatName(String[] seatName) {
         this.seatName = seatName;
-    }
-
-    @Override
-    public String toString() {
-        return "Booking{" + "email=" + email + ", departShort=" + departShort + ", departLong=" + departLong + ", returnShort=" + returnShort + ", returnLong=" + returnLong + ", departDate=" + departDate + ", returnDate=" + returnDate + ", passenger=" + passenger + ", cabin=" + cabin + ", timeDepart=" + timeDepart + ", timeReturn=" + timeReturn + ", flightName=" + flightName + ", flightID=" + flightID + '}';
     }
 
     public String getEmail() {
@@ -129,29 +130,6 @@ public class Booking{
     public void setFlightName(String []flightName, int selectedIndex) {
         this.flightName = flightName[selectedIndex];
     }
-
-    public String getFlightID() {
-        return flightID;
-    }
-
-    public void setFlightID(String flightID) {
-        this.flightID = flightID;
-    }
-
-    public Booking(String email, String departShort, String departLong, String returnShort, String returnLong, Date departDate, Date returnDate, int passenger, String cabin, String flightName, String flightID) {
-        this.email = email;
-        this.departShort = departShort;
-        this.departLong = departLong;
-        this.returnShort = returnShort;
-        this.returnLong = returnLong;
-        this.departDate = departDate;
-        this.returnDate = returnDate;
-        this.passenger = passenger;
-        this.cabin = cabin;
-        this.flightName = flightName;
-        this.flightID = flightID;
-    }
-
     
     public double calculatePayment(){
         double price;
@@ -175,6 +153,18 @@ public class Booking{
             // Handle the case where the index is out of bounds
             System.out.println("Invalid index for timeAvail array.");
         }
+    }
+    
+    public void setDepartTimeFromTimeAvail(String time1, String time2) {
+        timeDepart[0] = time1;
+        timeDepart[1] = time2;
+        
+    }
+    
+    public void setReturnTimeFromTimeAvail(String time1, String time2) {
+        timeReturn[0] = time1;
+        timeReturn[1] = time2;
+        
     }
     
     public String getDepartTimeFromTimeAvail() {
@@ -207,10 +197,6 @@ public class Booking{
         }
     }
     
-    public String[] getPassFirstName() {
-        return passFirstName;
-    }
-    
     public void setPassengerLastName(String lastName, int index) {
         if (index >= 0 && index < passenger) {
             passLastName[index] = lastName;
@@ -218,10 +204,6 @@ public class Booking{
             // Handle the case where the index is out of bounds
             System.out.println("Invalid index for passLastName array.");
         }
-    }
-    
-    public String[] getPassLastName() {
-        return passLastName;
     }
     
     public void setPassengerSeat(String seatName, int index) {

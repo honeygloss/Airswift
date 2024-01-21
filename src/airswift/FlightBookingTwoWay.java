@@ -4,7 +4,9 @@
  */
 package airswift;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -88,8 +90,10 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         int indFTime[]=new int[2*randomNum], indFNum[]=new int[2*randomNum];
         String flightName[]=new String[2*randomNum];
         String flightTime[][]=new String[2*randomNum][2];
+        String flightid[] = new String[2*randomNum];
         int newValue;
         boolean isDuplicate;
+        int ind=0;
         
         //  assign random value (DEPART)
         for (int i = 0; i < randomNum; i++) {
@@ -162,7 +166,8 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
                         Date dateTemp = sdf.parse(st.nextToken());
                         String timeTemp = st.nextToken();
-                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp);
+                        String time2Temp = st.nextToken();
+                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp, time2Temp);
                         t++;
                     }
                 }
@@ -183,7 +188,8 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                         for(int i=0; i<randomNum; i++){
                             //  write the flight schedule to the file
                             pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + booking.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + null + ";" + flightTime[i][0]+ ";" + "\n");       
-                            fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0]);
+                            fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0], flightTime[i][1]);
+                            flightid[i]=Integer.toString(flightID);
                             flightID++;
                             t++;     
                         }
@@ -203,7 +209,6 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
          
-
         JButton[] buttons = new JButton[randomNum];
 
         for (int i = 0; i < randomNum; i++) {
@@ -214,7 +219,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<br><span style='font-size:16px;'><b>"
-                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='#666666'><font color='black'>Economy</b><br>"
+                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='#666666'><font color='black'>Economy</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -227,7 +232,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<br><font color='#666666'><span style='font-size:16px;'><b>"
-                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br><font color='#666666'>"
+                +flightTime[randomNum+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[randomNum+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br><font color='#666666'>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -261,9 +266,13 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                     }
                 }
             });
+            
+            if(selectedFlightIndex!=-1)
+                ind=selectedFlightIndex;
         }
             final int finalRandomNum = randomNum;
-
+            final String flightFinalId=flightid[ind];
+            
             continueButt.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -273,7 +282,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                         book.setDepartTimeFromTimeAvail(selectedFlightIndex, timeAvail);
                         book.setReturnTimeFromTimeAvail(selectedFlightIndex, timeAvail);
                         book.setFlightName(flightName, selectedFlightIndex);
-                        System.out.println(book);
+                        book.setFlightIDDepart(flightFinalId);
                         SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
@@ -295,13 +304,11 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            showSeatPanel();
+                            
                         }
                     });
                 }
             });
-
-        
         
         //Create a JScrollPane and add your main panel to it
         JScrollPane scrollPane = new JScrollPane(dynamicButtonsPanel);
@@ -311,7 +318,6 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         add(scrollPane);
 
     }
-    
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -344,6 +350,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         System.err.println("Error creating or displaying PaymentP panel.");
     }
     }
+    
     
     public void setGradientDropdownMenu(GradientDropdownMenu menu) {
         this.gradientDropdownMenu = menu;
@@ -391,7 +398,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("SELECT YOUR DEPARTURE :");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 

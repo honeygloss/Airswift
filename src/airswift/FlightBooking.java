@@ -27,7 +27,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import javaswingdev.GradientDropdownMenu;
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -42,7 +41,6 @@ import javax.swing.SwingUtilities;
 public class FlightBooking extends javax.swing.JPanel {
     private int randomNum;
     private GradientDropdownMenu menu;
-    private Customer cust;
     private Booking book;
     private int selectedFlightIndex =-1;
     private String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
@@ -82,7 +80,6 @@ public class FlightBooking extends javax.swing.JPanel {
         
         // Generate random number of available tickets
         Random random = new Random();
-        
         do{
             randomNum = random.nextInt(10);
         }while(randomNum==0);
@@ -90,9 +87,9 @@ public class FlightBooking extends javax.swing.JPanel {
         int indFTime[]=new int[randomNum], indFNum[]=new int[randomNum];
         String flightTime[][]=new String[randomNum][2];
         String flightName[]=new String[randomNum];
+        String flightid[] = new String[randomNum];
         int newValue;
         boolean isDuplicate;
-        
         
         // generate random index for randomNum tickets
         for (int i = 0; i < randomNum; i++) {
@@ -128,13 +125,13 @@ public class FlightBooking extends javax.swing.JPanel {
                 if (!Files.exists(filePath)) {
                     Files.createFile(filePath);
                 }
-
+                //  count how many lines in the file (How many schedules)
                 int lineCount = (int) Files.lines(Paths.get("FlightSchedule.txt")).count();
-                int flightID=1000+lineCount;
-                FlightSchedule fstemp[]=new FlightSchedule[900];
+                int flightID=1000+lineCount;        // to create new flightID for the newline
+                FlightSchedule fstemp[]=new FlightSchedule[900];        //  temporarily store the flight schedule
                 int t = 0;      //  the first index of the temporary flight schedule
                 try (Scanner filein = new Scanner(new FileReader("FlightSchedule.txt"))) {
-                    while(filein.hasNextLine()){        // assign all schedules in fstemp[] (for comparison)
+                    while(filein.hasNextLine()){       
                         String line =filein.nextLine();
                         StringTokenizer st =new StringTokenizer(line, ";");
                         int idTemp = Integer.parseInt(st.nextToken());
@@ -144,21 +141,20 @@ public class FlightBooking extends javax.swing.JPanel {
                         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
                         Date dateTemp = sdf.parse(st.nextToken());
                         String timeTemp = st.nextToken();
-                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp);
+                        String time2Temp = st.nextToken();
+                        fstemp[t]=new FlightSchedule(idTemp, nameTemp, departTemp, returnTemp,dateTemp, timeTemp, time2Temp);
                         t++;
                     }
                 }
-                
                 // Create a SimpleDateFormat object with the desired pattern and locale
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE dd MMM", Locale.ENGLISH);
-
                 // Format the date using the SimpleDateFormat
                 String formatDepartDate = sdf.format(book.getDepartDate());
                 
                 boolean hasTicket=false;        // check if the schedule has already written to the file
                 for(int s=0; s<lineCount; s++){
                     String tempDate = sdf.format(fstemp[s].getDate());
-                    if(formatDepartDate.equals(tempDate) && book.getDepartLong().equals(fstemp[s].getDestination()) && booking.getReturnLong().equals(fstemp[s].getArrival()) ){
+                    if(formatDepartDate.equalsIgnoreCase(tempDate) && book.getDepartLong().equals(fstemp[s].getDestination()) && booking.getReturnLong().equals(fstemp[s].getArrival()) ){
                         hasTicket=true;
                     }
                 }
@@ -169,7 +165,8 @@ public class FlightBooking extends javax.swing.JPanel {
                         for(int i=0; i<randomNum; i++){
                             //  write the flight schedule to the file
                             pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + booking.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + null + ";" + flightTime[i][0]+ ";" + "\n");       
-                            fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0]);
+                            fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0], flightTime[i][1]);
+                            flightid[i]=Integer.toString(flightID);
                             flightID++;
                             t++;     
                         }
@@ -182,29 +179,24 @@ public class FlightBooking extends javax.swing.JPanel {
                 e.printStackTrace();
         }
 
-        
-        
         JPanel dynamicButtonsPanel = new JPanel();
         dynamicButtonsPanel.setBackground(new Color(153, 153, 255));
-        //dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
         dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
         
-
-
         JButton[] buttons = new JButton[randomNum];
 
         for (int i = 0; i < randomNum; i++) {
             if(booking.getCabin().equalsIgnoreCase("Economy"))
-                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><font color='#666666'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Economy</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b></html>");
             else
-                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><span style='font-size:16px;'><b>"
+                buttons[i] = new JButton("<html><div style='text-align: center; line-height: 100%;'><font color='#666666'><span style='font-size:16px;'><b>"
                 +flightTime[i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getDepartShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
@@ -234,14 +226,14 @@ public class FlightBooking extends javax.swing.JPanel {
                     // Optionally, reset the appearance of other buttons
                     for (int j = 0; j < finalRandomNum; j++) {
                         if (j != index) {
-                            buttons[j].setBackground(new Color(227,227,254));
+                            buttons[j].setBackground(new Color(153, 153, 255));
                         }
                     }
                 }
             });
         }
         final int finalRandomNum = randomNum;
-        
+        final String finalfID = flightid[selectedFlightIndex];
         continueButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -251,7 +243,8 @@ public class FlightBooking extends javax.swing.JPanel {
                     book.setDepartTimeFromTimeAvail(selectedFlightIndex, flightTime);
                     book.setReturnTimeFromTimeAvail(selectedFlightIndex, flightTime);
                     book.setFlightName(flightName, selectedFlightIndex);
-                    System.out.println(book.getDepartTimeFromTimeAvail() + book.getReturnTimeFromTimeAvail());
+                    book.setFlightIDDepart(finalfID);
+                    
                     SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -377,10 +370,12 @@ public class FlightBooking extends javax.swing.JPanel {
         continueButt = new airswift.ButtonGradient();
         backButt = new airswift.ButtonGradient();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 255));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(900, 530));
 
         bg.setBackground(new java.awt.Color(204, 204, 255));
+        bg.setForeground(new java.awt.Color(204, 204, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setMaximumSize(new java.awt.Dimension(900, 530));
         bg.setMinimumSize(new java.awt.Dimension(900, 530));
@@ -388,7 +383,7 @@ public class FlightBooking extends javax.swing.JPanel {
         bg.setPreferredSize(new java.awt.Dimension(900, 530));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("SELECT YOUR DEPARTURE :");
 
         findAflight.setBackground(new java.awt.Color(255, 255, 255));

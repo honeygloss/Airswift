@@ -210,13 +210,10 @@ public class FlightSeat extends javax.swing.JPanel {
                                 book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
                                 availableSeat.setSeatFlag(false, selectedSeatIndex);
                             }
-
                         }
                         book.setPassengerFirstName(fNameInput.getText(), currentCustomerIndex);
                         book.setPassengerLastName(lNameInput.getText(), currentCustomerIndex);
                         book.setPassengerSeat(seatName[selectedSeatIndex], currentCustomerIndex);
-
-
                     }
                 }
                 else{
@@ -260,7 +257,7 @@ public class FlightSeat extends javax.swing.JPanel {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        //showPaymentPanel();
+                        
                     }
                 });
             }

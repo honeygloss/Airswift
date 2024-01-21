@@ -8,7 +8,34 @@ public class FlightSchedule {
     private String destination;
     private String arrival;
     private Date date;
-    private String flightTime;
+    private String flightTime1;
+    private String flightTime2;
+
+    public FlightSchedule(int flightScheduleID, String flightName, String destination, String arrival, Date date, String flightTime1, String flightTime2) {
+        this.flightScheduleID = flightScheduleID;
+        this.flightName = flightName;
+        this.destination = destination;
+        this.arrival = arrival;
+        this.date = date;
+        this.flightTime1 = flightTime1;
+        this.flightTime2 = flightTime2;
+    }
+
+    public String getFlightTime1() {
+        return flightTime1;
+    }
+
+    public void setFlightTime1(String flightTime1) {
+        this.flightTime1 = flightTime1;
+    }
+
+    public String getFlightTime2() {
+        return flightTime2;
+    }
+
+    public void setFlightTime2(String flightTime2) {
+        this.flightTime2 = flightTime2;
+    }
 
     public int getFlightScheduleID() {
         return flightScheduleID;
@@ -50,23 +77,10 @@ public class FlightSchedule {
         this.date = date;
     }
 
-    public String getFlightTime() {
-        return flightTime;
+   
+    public FlightSchedule(){
+        
     }
-
-    public void setFlightTime(String flightTime) {
-        this.flightTime = flightTime;
-    }
-
-    public FlightSchedule(int flightScheduleID, String flightName, String destination, String arrival, Date date, String flightTime) {
-        this.flightScheduleID = flightScheduleID;
-        this.flightName = flightName;
-        this.destination = destination;
-        this.arrival = arrival;
-        this.date = date;
-        this.flightTime = flightTime;
-    }
-
     
 
     

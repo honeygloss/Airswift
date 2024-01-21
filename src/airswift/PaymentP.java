@@ -380,7 +380,7 @@ public class PaymentP extends javax.swing.JPanel {
     private void ConfirmPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmPaymentButtonActionPerformed
         String custEmailAdress0 = cust.getEmailAddress();
 
-        String flightID1 = book.getFlightID();
+        String flightID1 = book.getFlightIDDepart();
         String departShort2 = book.getDepartShort();
         String departLong3 = book.getDepartLong().toUpperCase();
         String returnShort4 = book.getReturnShort();

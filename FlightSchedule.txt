@@ -477,3 +477,16 @@
 1476;AS 762;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;07:05;
 1477;AS 660;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;23:00;
 1478;AS 843;Kuala Lumpur ;Kuantan ;Wed Jan 24 14:53:28 MYT 2024;null;14:45;
+1479;AS 718;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;21:15;
+1480;AS 876;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;12:05;
+1481;AS 790;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;17:00;
+1482;AS 582;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;09:15;
+1483;AS 390;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;07:05;
+1484;AS 779;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;23:00;
+1485;AS 932;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;14:45;
+1486;AS 425;Penang ;Kuala Lumpur ;Wed Jan 24 18:52:53 MYT 2024;null;04:55;
+1487;AS 698;Kuala Lumpur ;Kerteh ;Tue Jan 23 18:53:19 MYT 2024;null;21:15;
+1488;AS 940;Kuala Lumpur ;Kerteh ;Tue Jan 23 18:53:19 MYT 2024;null;17:00;
+1489;AS 733;Kuala Lumpur ;Kerteh ;Tue Jan 23 18:53:19 MYT 2024;null;19:55;
+1490;AS 217;Kuala Lumpur ;Kerteh ;Tue Jan 23 18:53:19 MYT 2024;null;12:05;
+1491;AS 955;Kuala Lumpur ;Kerteh ;Tue Jan 23 18:53:19 MYT 2024;null;02:00;
