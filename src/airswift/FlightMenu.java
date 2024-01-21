@@ -50,7 +50,7 @@ public class FlightMenu extends javax.swing.JFrame {
         initComponents();
         this.cust = cust;
         try{
-        Image icon = ImageIO.read(new File("C:\\Users\\60111\\OneDrive\\Documents\\NetBeansProjects\\Airswift\\src\\airswift"));
+        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\Lyft _ Plane1.png"));
         this.setIconImage(icon);
         this.setTitle("AirSwift");
         this.setFont(new java.awt.Font("Segoe UI", 1, 12));

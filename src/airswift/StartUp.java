@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 import airswift.Login;
 import airswift.Register;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author user
@@ -22,7 +26,16 @@ public class StartUp extends javax.swing.JFrame {
     
     public StartUp() {
         initComponents();
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try{
+        Image icon = ImageIO.read(new File("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\Lyft _ Plane1.png"));
+        this.setIconImage(icon);
+        this.setTitle("AirSwift");
+        this.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        this.setForeground(Color.black);
+        }catch (IOException e) {
+         e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
+        }
         setResizable(false);
         
     }
