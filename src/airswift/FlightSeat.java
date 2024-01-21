@@ -351,7 +351,7 @@ public class FlightSeat extends javax.swing.JPanel {
     }
     }
     
-      @Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Draw the background image
@@ -1944,9 +1944,9 @@ public class FlightSeat extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addGroup(passengerDetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pass)
-                    .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(passengerDetsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numPass, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

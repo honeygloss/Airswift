@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
@@ -25,6 +27,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import javaswingdev.GradientDropdownMenu;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -46,7 +49,7 @@ public class FlightBooking extends javax.swing.JPanel {
                                     {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
                                     {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
     
-
+    private Image backgroundImage;
     /**
      * Creates new form FlightBooking
      */
@@ -57,8 +60,10 @@ public class FlightBooking extends javax.swing.JPanel {
      */
     public FlightBooking(GradientDropdownMenu menu, Booking booking) {
         book = booking;
+        this.menu = menu;
         initComponents();
-        
+        javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\airport2.jpg");
+        backgroundImage = backgroundImageIcon.getImage();
         
         // Display booking information selected in the Flight Menu
         departShort.setText(book.getDepartShort());
@@ -185,8 +190,7 @@ public class FlightBooking extends javax.swing.JPanel {
         dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
-        /*dynamicButtonsPanel.revalidate();
-        dynamicButtonsPanel.repaint();      */
+        
 
 
         JButton[] buttons = new JButton[randomNum];
@@ -208,9 +212,9 @@ public class FlightBooking extends javax.swing.JPanel {
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>250.00</b></html>");
           
             buttons[i].setFont(new Font("Segoe UI", Font.PLAIN, 12));
-            buttons[i].setBackground(new Color(153,153,255));
+            buttons[i].setBackground(new Color(153, 153, 255));
             buttons[i].setForeground(new Color(204,204,255));
-            buttons[i].setPreferredSize(new Dimension(200, 100));
+            buttons[i].setPreferredSize(new Dimension(200, 200));
           
             dynamicButtonsPanel.add(buttons[i]);
             
@@ -230,7 +234,7 @@ public class FlightBooking extends javax.swing.JPanel {
                     // Optionally, reset the appearance of other buttons
                     for (int j = 0; j < finalRandomNum; j++) {
                         if (j != index) {
-                            buttons[j].setBackground(new Color(153, 153, 255));
+                            buttons[j].setBackground(new Color(227,227,254));
                         }
                     }
                 }
@@ -282,6 +286,13 @@ public class FlightBooking extends javax.swing.JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll
         //scrollPane.getVerticalScrollBar().setUnitIncrement(16);  // Adjust the value as needed
         add(scrollPane);
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
     
     public void showSeatPanel() {
@@ -373,6 +384,7 @@ public class FlightBooking extends javax.swing.JPanel {
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setMaximumSize(new java.awt.Dimension(900, 530));
         bg.setMinimumSize(new java.awt.Dimension(900, 530));
+        bg.setOpaque(false);
         bg.setPreferredSize(new java.awt.Dimension(900, 530));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -438,11 +450,12 @@ public class FlightBooking extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setToolTipText("");
         jPanel1.setAutoscrolls(true);
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         departDateDis.setBackground(new java.awt.Color(255, 255, 255));
         departDateDis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        departDateDis.setForeground(new java.awt.Color(102, 102, 102));
+        departDateDis.setForeground(new java.awt.Color(51, 51, 51));
         departDateDis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         departDateDis.setText("jLabel2");
         departDateDis.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

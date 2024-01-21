@@ -4,13 +4,12 @@
  */
 package airswift;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
@@ -45,20 +44,24 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
     private String timeAvail[][] = {{"02:00", "03:00"},{"04:55","05:55"}, {"07:05","08:05"},{"09:15", "10:15"}, 
                                     {"12:05", "13:05"},{"14:45","15:45"}, {"17:00", "18:00"},
                                     {"19:55", "20:55"}, {"21:15", "22:15"},{"23:00", "00:00"}};
-  private int randomNum;
-    /**
-     * Creates new form FlightBookingTwoWay
-     */
-    public FlightBookingTwoWay() {
-        initComponents();
-    }
+    private int randomNum;
+    private Image backgroundImage;
     
+    /**
+     * Creates new form FlightBooking
+     */
+    /**
+     *
+     * @param menu
+     * @param booking
+     */
     public FlightBookingTwoWay(GradientDropdownMenu menu, Booking booking) {
         this.gradientDropdownMenu = menu;
         book = booking;
-       
-        
         initComponents();
+        javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon("C:\\Users\\zamhu\\Documents\\NetBeansProjects\\New Folder\\Airswift\\src\\airswift\\airport2.jpg");
+        backgroundImage = backgroundImageIcon.getImage();
+        
         
         departShort.setText(book.getDepartShort());
         departLong.setText(book.getDepartLong().toUpperCase());
@@ -194,12 +197,12 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         }
         
         JPanel dynamicButtonsPanel = new JPanel();
-        dynamicButtonsPanel.setBackground(new Color(0,0,0));
+        dynamicButtonsPanel.setBackground(new Color(153, 153, 255));
         //dynamicButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
         dynamicButtonsPanel.setLayout(new BoxLayout(dynamicButtonsPanel, BoxLayout.Y_AXIS));
         dynamicButtonsPanel.setBounds(0, 260, 900, 530);
         dynamicButtonsPanel.setVisible(true);
-        dynamicButtonsPanel.repaint(); 
+         
 
         JButton[] buttons = new JButton[randomNum];
 
@@ -224,7 +227,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getReturnShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>RM <b>100.00</b><br>---------------------------------------------------------------------------------<br><font color='#666666'><span style='font-size:16px;'><b>"
-                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br>"
+                +flightTime[(randomNum-1)+i][0]+"<span style='font-size:10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:16px;'>"+flightTime[(randomNum-1)+i][1]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='font-size:11px;'><font color='black'>Business</b><br><font color='#666666'>"
                 + "<span style='font-size:9px;'><b><font color='#666666'>"+book.getReturnShort()+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#666666'>" + book.getDepartShort()+ "</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'>From<br><font color='#666666'>AirSwift Airline - "+ flightName[randomNum+i] + 
                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -309,6 +312,13 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
 
     }
     
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+    }
     public void showSeatPanel() {
     try {
         // Assuming paymentPanel is an instance of the PaymentP class
@@ -350,7 +360,6 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         bg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         findAflight = new javax.swing.JPanel();
@@ -374,13 +383,10 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(900, 530));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(854, 551));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
         bg.setBackground(new java.awt.Color(204, 204, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setMinimumSize(new java.awt.Dimension(900, 530));
+        bg.setOpaque(false);
         bg.setPreferredSize(new java.awt.Dimension(900, 530));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -469,11 +475,12 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setToolTipText("");
         jPanel2.setAutoscrolls(true);
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         departDateDis.setBackground(new java.awt.Color(255, 255, 255));
         departDateDis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        departDateDis.setForeground(new java.awt.Color(102, 102, 102));
+        departDateDis.setForeground(new java.awt.Color(51, 51, 51));
         departDateDis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         departDateDis.setText("jLabel2");
         departDateDis.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -509,17 +516,15 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         });
         bg.add(backButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 80, 30));
 
-        jPanel1.add(bg, java.awt.BorderLayout.CENTER);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -528,7 +533,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -541,37 +546,36 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonGradient3ActionPerformed
 
-    private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_continueButtActionPerformed
-
     private void backButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtActionPerformed
+
+    private void continueButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_continueButtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private airswift.ButtonGradient backButt;
     private javax.swing.JPanel bg;
     private airswift.ButtonGradient continueButt;
-    public javax.swing.JLabel departDate;
-    public javax.swing.JLabel departDateDis;
-    public javax.swing.JLabel departLabel;
-    public javax.swing.JLabel departLong;
-    public javax.swing.JLabel departShort;
+    private javax.swing.JLabel departDate;
+    private javax.swing.JLabel departDateDis;
+    private javax.swing.JLabel departLabel;
+    private javax.swing.JLabel departLong;
+    private javax.swing.JLabel departShort;
     private javax.swing.JPanel findAflight;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    public javax.swing.JLabel passenger;
-    public javax.swing.JLabel passengerLabel;
-    public javax.swing.JLabel returnDate;
-    public javax.swing.JLabel returnLabel;
-    public javax.swing.JLabel returnLong;
-    public javax.swing.JLabel returnShort;
+    private javax.swing.JLabel passenger;
+    private javax.swing.JLabel passengerLabel;
+    private javax.swing.JLabel returnDate;
+    private javax.swing.JLabel returnLabel;
+    private javax.swing.JLabel returnLong;
+    private javax.swing.JLabel returnShort;
     // End of variables declaration//GEN-END:variables
 
     void refreshContent() {
