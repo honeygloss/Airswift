@@ -179,10 +179,7 @@ public class FlightMenu extends javax.swing.JFrame {
         // Handle the button click event for the specific booking (bookingNumber)
         JOptionPane.showMessageDialog(this, "Button " + bookingNumber + " clicked!");
         
-        SwingUtilities.invokeLater(() -> {
-        Receipt receipt = new Receipt(book);
-        receipt.setVisible(true);
-    });
+        
     }
         
         // Add the custom panel as the first component of myBookingTab
