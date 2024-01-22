@@ -116,7 +116,7 @@ public class FlightMenu extends javax.swing.JFrame {
         }
         
     }
-    private void createBookingButtons() {
+    /*private void createBookingButtons() {
         SwingUtilities.invokeLater(() -> {
         jPanel3.removeAll();
         // Replace the following line with code to fetch the number of bookings from your data source
@@ -180,7 +180,7 @@ public class FlightMenu extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Button " + bookingNumber + " clicked!");
         
         
-    }
+    }/*
         
         // Add the custom panel as the first component of myBookingTab
         
@@ -525,11 +525,7 @@ public class FlightMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_toListdownActionPerformed
 
     private void myBookingTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myBookingTabMouseClicked
-        Booking book = new Booking(); // You need to replace this with the actual way you create a Booking object.
-        if (myBookingTab.getSelectedIndex() == 1) {
-            createBookingButtons();
-            
-        }
+        
     }//GEN-LAST:event_myBookingTabMouseClicked
 
     private void returnCheckboxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_returnCheckboxItemStateChanged
