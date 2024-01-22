@@ -7,7 +7,7 @@ package airswift;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import airswift.Login;
+import airswift.Login1;
 import airswift.Register;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -212,7 +212,7 @@ public class StartUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        new Login().setVisible(true);
+        new Login1().setVisible(true);
 
     }//GEN-LAST:event_cmdLoginActionPerformed
 

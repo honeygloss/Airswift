@@ -81,7 +81,7 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background1 = new airswift.Background();
+        background1 = new Login.Background();
         panel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtTitle = new combo_suggestion.ComboBoxSuggestion();
@@ -546,7 +546,7 @@ public class Register extends javax.swing.JFrame {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         // TODO add your handling code here:
-        new Login().setVisible(true);
+        new Login1().setVisible(true);
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     /**
@@ -589,7 +589,7 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private airswift.Background background1;
+    private Login.Background background1;
     private javax.swing.JCheckBox checkR;
     private swing.ButtonGradient cmdLogin;
     private swing.ButtonGradient cmdSignUp;
