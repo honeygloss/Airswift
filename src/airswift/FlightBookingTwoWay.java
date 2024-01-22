@@ -187,7 +187,7 @@ public class FlightBookingTwoWay extends javax.swing.JPanel {
                     try (PrintWriter pr1 = new PrintWriter(new FileWriter("FlightSchedule.txt", true))) {
                         for(int i=0; i<randomNum; i++){
                             //  write the flight schedule to the file
-                            pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + booking.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" + null + ";" + flightTime[i][0]+ ";" + "\n");       
+                            pr1.write(flightID + ";" + flightName[i]+ ";" + book.getDepartLong() + ";" + booking.getReturnLong() + ";" + book.getDepartDate().toString()+ ";" +  flightTime[i][0]+ flightTime[i][1] + ";" + "\n");       
                             fstemp[t]= new FlightSchedule(flightID, flightName[i],book.getDepartLong(), book.getReturnLong(), book.getDepartDate(), flightTime[i][0], flightTime[i][1]);
                             flightid[i]=Integer.toString(flightID);
                             flightID++;

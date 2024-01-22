@@ -16,19 +16,14 @@ import java.awt.Image;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -43,6 +38,7 @@ public class FlightMenu extends javax.swing.JFrame {
     private int numberOfBookings;
     private boolean buttonsCreated = false;
     private Customer cust;
+    private Booking book;
     /**
      * Creates new form FlightMenu1
      */
@@ -182,6 +178,11 @@ public class FlightMenu extends javax.swing.JFrame {
     private void handleBookingButtonClick(int bookingNumber) {
         // Handle the button click event for the specific booking (bookingNumber)
         JOptionPane.showMessageDialog(this, "Button " + bookingNumber + " clicked!");
+        
+        SwingUtilities.invokeLater(() -> {
+        Receipt receipt = new Receipt(book);
+        receipt.setVisible(true);
+    });
     }
         
         // Add the custom panel as the first component of myBookingTab
@@ -472,7 +473,7 @@ public class FlightMenu extends javax.swing.JFrame {
             returnDateValue = returnDate.getDate();
         }
         
-        Booking book = new Booking();
+        book = new Booking();
         int startIndex = fromListdown.getSelectedItem().toString().indexOf("(");
         int lastIndex = fromListdown.getSelectedItem().toString().indexOf(")");
         book.setDepartShort(fromListdown.getSelectedItem().toString().substring((startIndex+1),lastIndex));
@@ -530,8 +531,7 @@ public class FlightMenu extends javax.swing.JFrame {
         Booking book = new Booking(); // You need to replace this with the actual way you create a Booking object.
         if (myBookingTab.getSelectedIndex() == 1) {
             createBookingButtons();
-            Receipt receiptWindow = new Receipt(book);
-            receiptWindow.setVisible(true);
+            
         }
     }//GEN-LAST:event_myBookingTabMouseClicked
 

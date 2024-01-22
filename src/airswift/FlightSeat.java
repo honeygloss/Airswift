@@ -216,7 +216,7 @@ public class FlightSeat extends javax.swing.JPanel {
                 lNameInput.setText("");
                 seatInput.setText("");
                 currentCustomerIndex++;
-                if(currentCustomerIndex-1==booking.getPassenger()){
+                if(currentCustomerIndex==booking.getPassenger()){
                     SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
