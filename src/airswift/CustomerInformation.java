@@ -38,7 +38,7 @@ public class CustomerInformation extends javax.swing.JPanel {
     public CustomerInformation(Customer cust) {
         initComponents();
         this.cust = cust;
-        ImageIcon backgroundImageIcon = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Documents\\NetBeansProjects\\AirSwift\\src\\airswift\\Flight window.jpeg");
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("/airswift/Flight window.jpeg"));
         backgroundImage = backgroundImageIcon.getImage();
         titleListdown.setSelectedItem(cust.getTitle());
         emailAddressField.setText(cust.getEmailAddress());
