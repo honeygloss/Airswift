@@ -395,6 +395,7 @@ public class FlightMenu extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         myBookingTab.addTab("MY BOOKING", jPanel3);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fa1bd79d-f460-43e5-80e5-cbe938e3739e-94.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
